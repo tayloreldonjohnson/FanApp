@@ -118,6 +118,13 @@ namespace Hello.Controllers
         // TODO: move RegisterModel
         public class RegisterModel
         {
+            public string UserName { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+
+            public DateTime DateCreated { get; set; }
+
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -141,10 +148,12 @@ namespace Hello.Controllers
         public async Task<IActionResult> Register([FromBody]RegisterModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-
+            DateTime now = DateTime.Now;
+            
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                
+                var user = new ApplicationUser { UserName = model.UserName , Email = model.Email , FirstName = model.FirstName ,LastName = model.LastName, DateCreated = now };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
