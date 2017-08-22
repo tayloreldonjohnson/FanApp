@@ -1,0 +1,52 @@
+<html ng-app="myApp">
+<head>
+    <title>Hello App</title>
+    <link href="/libs/bootstrap.min.css" rel="stylesheet" />
+    <link href="/libs/bootstrap-theme.min.css" rel="stylesheet" />
+    <base href="/" />
+</head>
+<body ng-controller="AccountController as account">
+    <div class="container">
+        <h1>Hello App</h1>
+        <div>
+          <a href="/">Home</a> /
+           <a href="/about">About</a>
+
+           / <a href="/secret">Secret</a> /
+           <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
+           <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+           <div ng-show="account.isLoggedIn()">
+               [{{account.getUserName()}}]
+           </div> 
+        </div>
+        <hr />
+
+        <ui-view></ui-view>
+
+    </div>
+
+    <!-- Library Files -->
+    <script src="/libs/angular.min.js"></script>
+    <script src="/libs/angular-resource.min.js"></script>
+    <script src="/libs/angular-animate.min.js"></script>
+    <script src="/libs/angular-touch.min.js"></script>
+    <script src="/libs/ui-bootstrap-tpls.min.js"></script>
+    <script src="/libs/angular-ui-router.min.js"></script>
+
+    <!-- controllers -->
+    <script src="/ngapp/controllers/aboutController.js"></script>
+    <script src="/ngapp/controllers/accountController.js"></script>
+    <script src="/ngapp/controllers/confirmEmailController.js"></script>
+    <script src="/ngapp/controllers/externalRegisterController.js"></script>
+    <script src="/ngapp/controllers/homeController.js"></script>
+    <script src="/ngapp/controllers/loginController.js"></script>
+    <script src="/ngapp/controllers/registerController.js"></script>
+    <script src="/ngapp/controllers/secretController.js"></script>
+
+    <!-- services -->
+    <script src="/ngapp/services/accountService.js"></script>
+
+    <script src="/ngapp/app.js"></script>
+
+</body>
+</html>
