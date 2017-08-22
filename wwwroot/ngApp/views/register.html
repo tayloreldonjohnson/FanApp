@@ -20,6 +20,18 @@
 
     <form ng-submit="controller.register()">
         <div>
+            <label>First Name:</label>
+            <input ng-model="controller.registerUser.firstname" />
+        </div>
+        <div>
+            <label>Last Name:</label>
+            <input ng-model="controller.registerUser.lastname" />
+        </div>
+        <div>
+            <label>User Name:</label>
+            <input ng-model="controller.registerUser.username" />
+        </div>
+        <div>
             <label>Email:</label>
             <input ng-model="controller.registerUser.email" />
         </div>
