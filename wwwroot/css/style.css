@@ -1,0 +1,114 @@
+﻿/*Fire & Ice color palette 
+teal #55dde0 
+blue #33658a
+darker blue #2f4858
+burnt orange #f26419
+orange #f6ae2d          */
+
+body {
+    background-color: #f6ae2d;    
+}
+
+label {
+    padding: 15px 0 2px 0;
+}
+
+
+
+/*--------------  NAVIGATION  -------------------------------------------------*/
+
+.navbar {
+    background-color: #33658a;
+}
+
+a.navbar-brand {
+    color: #f6ae2d;
+}
+
+
+
+.nav li a:link {
+    background-color: #33658a;
+    color: #f6ae2d;
+}
+
+.nav li a:visited {
+    background-color: #2f4858;
+    color: #f6ae2d;
+}
+
+.nav li a:hover {
+    background-color: #2f4858;
+    color: #f6ae2d;
+}
+
+.nav li a:active {
+    background-color: #2f4858;
+    color: #f6ae2d;
+}
+
+
+/*-----------------  UI-VIEW  --------------------------------------------------------*/
+.index-ui {
+    background-color: #f26419;
+}
+
+.shadow {
+    -moz-box-shadow: 1px 1px 4px 1px #000;
+    -webkit-box-shadow: 1px 1px 4px 1px #000;
+    box-shadow: 1px 1px 4px 1px #000;
+}
+
+
+/*------------------------------  LOGIN  ----------------------------------------------*/
+.input-group-btn {
+    display: inline;
+    margin-right: 20px;
+}
+
+
+
+.user-inputs {
+    padding: 5px 0px;
+}
+
+
+.login-btn {
+    background-color: #33658a;
+    color: #f6ae2d;
+    margin: 10px;
+}
+
+.login-btn:checked {
+    color: #f6ae2d;
+}
+
+.login-btn:hover {
+    background-color: #2f4858;
+    color: #f6ae2d;
+}
+
+.login-btn:focus:not(:active) {
+    color: #f6ae2d;
+}
+
+/*------------------------------  REGISTER  --------------------------------------------*/
+
+.reg-btn {
+    background-color: #33658a;
+    color: #f6ae2d;  
+    margin: 10px;
+}
+
+.reg-btn:checked {
+    color: #f6ae2d;
+}
+
+.reg-btn:hover {
+    background-color: #2f4858;
+    color: #f6ae2d;
+}
+
+.reg-btn:focus:not(:active) {
+    color: #f6ae2d;
+}

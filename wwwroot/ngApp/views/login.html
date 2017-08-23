@@ -18,15 +18,27 @@
     </ul>
 
     <form ng-submit="controller.login()">
-        <div>
-            <label>Email:</label>
-            <input ng-model="controller.loginUser.email" />
+        <div class="input-group">
+            <div class="form-group">
+                <label>Email:</label>
+                <input class="form-control" ng-model="controller.loginUser.email" />
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input class="form-control" ng-model="controller.loginUser.password" />
+            </div>
+            <!--<input type="submit" value="Login" />
+            <a href="/register">Register</a>-->
+
+            <br /><br />
+
+            <div>
+                <button class="btn login-btn btn-lg" type="submit">Log In</button>
+           
+           
+                <a href="/register" class="btn reg-btn btn-lg">Register</a>
+            </div>
         </div>
-        <div>
-            <label>Password:</label>
-            <input ng-model="controller.loginUser.password" />
-        </div>
-        <input type="submit" value="Login" />
-        <a href="/register">Register</a>
+
     </form>
 </fieldset>
