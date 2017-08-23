@@ -29,9 +29,14 @@ namespace Hello.Services
             var newUser = new UserVM
             {
               
+				UserName = user.UserName,
                 Email = user.Email,
-                FirstName = user.FirstName,
-                LastName = user.LastName
+				FirstName = user.FirstName,
+				LastName = user.LastName,
+				DateCreated = user.DateCreated,
+				AboutMe = user.AboutMe,
+				ImageUrl = user.ImageUrl
+
             };
             return newUser;
 

@@ -29,7 +29,7 @@ namespace Hello.Controllers
 
         // GET api/values/5
         [HttpGet("{email}")]
-        public UserVM Get(string  email)
+        public UserVM Get(string email)
         {
             return _userService.GetUserProfile(email);
         }
