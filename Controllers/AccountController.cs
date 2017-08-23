@@ -57,9 +57,12 @@ namespace Hello.Controllers
         public class LoginModel
         {
             [Required]
-            [EmailAddress]
+
+            //[EmailAddress]
             //public string Email { get; set; }
-            public string UserName { get; set; }
+           
+
+            public string Username { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
@@ -80,11 +83,11 @@ namespace Hello.Controllers
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
-                    var user = await GetUser(model.Email);
+                    var user = await GetUser(model.Username);
                     return Ok(user);
                 }
                 if (result.RequiresTwoFactor)
