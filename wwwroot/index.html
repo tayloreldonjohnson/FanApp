@@ -8,24 +8,6 @@
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
-<<<<<<< HEAD
-    <div class="container">
-        <h1>Hello App</h1>
-        <div>
-          <a href="/">Home</a> /
-           <a href="/about">About</a> /
-            <a href="/createProfile">Create Profile</a>
-
-
-           / <a href="/secret">Secret</a> /
-           <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
-           <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-           <div ng-show="account.isLoggedIn()">
-               [{{account.getUserName()}}]
-           </div> 
-=======
-    
-    
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -34,6 +16,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
+                <li><a href="/createProfile">Create Profile</a></li>
                 <li><a href="/secret">Secret</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -45,7 +28,6 @@
                     </div>
                 </li>
             </ul>            
->>>>>>> master
         </div>
     </nav>
 
