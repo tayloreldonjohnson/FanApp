@@ -8,6 +8,7 @@ myApp.controller("HomeController", HomeController);
 myApp.controller("LoginController", LoginController);
 myApp.controller("RegisterController", RegisterController);
 myApp.controller("SecretController", SecretController);
+myApp.controller("CreateProfileController", CreateProfileController);
 
 myApp.service("$accountService", AccountService);
 
@@ -48,6 +49,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/about',
             templateUrl: '/ngApp/views/about.html',
             controller: AboutController,
+            controllerAs: 'controller'
+        })
+        .state('createProfile', {
+            url: '/createProfile',
+            templateUrl: '/ngApp/views/createProfile.html',
+            controller: CreateProfileController,
             controllerAs: 'controller'
         })
         .state('notFound', {
