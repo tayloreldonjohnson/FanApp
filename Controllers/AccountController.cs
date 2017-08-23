@@ -35,6 +35,7 @@ namespace Hello.Controllers
         public class UserModel
         {
             public string UserName { get; set; }
+            public string Email { get; set; }
 
             public Dictionary<string, string> Claims { get; set; }
         }
@@ -45,6 +46,7 @@ namespace Hello.Controllers
             var claims = await _userManager.GetClaimsAsync(user);
             var vm = new UserModel
             {
+                Email = user.Email,
                 UserName = user.UserName,
                 Claims = claims.ToDictionary(c => c.Type, c => c.Value)
             };
@@ -56,7 +58,8 @@ namespace Hello.Controllers
         {
             [Required]
             [EmailAddress]
-            public string Email { get; set; }
+            //public string Email { get; set; }
+            public string UserName { get; set; }
 
             [Required]
             [DataType(DataType.Password)]

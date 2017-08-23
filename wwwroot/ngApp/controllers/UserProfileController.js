@@ -1,30 +1,28 @@
 ﻿class UserProfileController {
-    constructor($http, $state, $cookies) {
-        this.http = $http;
-        this.User = {};
-    
-        //this.state = $state
-        //this.cookies = $cookies;
+    constructor($UserProfileService) {
+        this.$UserProfileService = $UserProfileService;
+        this.email = sessionStorage.getItem("email");
+      
+        this.user; 
+        this.getUserProfile();  
+        console.log("words");
     }
 
 
     getUsers() {
-        this.http.get("api/AspNetUsers").then(res => {
-            this.User = res.data;
+        this.$UserProfileService.getUsers();
+    }
 
-        });
+    getUserProfile() {
 
 
-    
-        }
+     
+
+
+       this.user =  this.$UserProfileService.getUserProfile(this.email);
+
 
     }
-    //addCustomers() {
-    //    this.http.post("api/Customers", this.customer)
-    //        .then(res => {
-    //            this.customer = {};
-    //            //console.log(res);
-    //            this.state.go('orderpage');
-    //            this.cookies.put("customerId", res.data.customerId);
-    //        });
-    //}
+
+    }
+   

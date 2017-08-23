@@ -11,6 +11,7 @@ myApp.controller("SecretController", SecretController);
 myApp.controller("UserProfileController", UserProfileController);
 
 myApp.service("$accountService", AccountService);
+myApp.service("$UserProfileService", UserProfileService);
 
 myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -51,10 +52,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: AboutController,
             controllerAs: 'controller'
         })
-        .state('userProfile ', {
+        .state('userProfile', {
             url: '/userProfile',
             templateUrl: '/ngApp/views/userProfile.html',
-            controller: userProfileController,
+            controller: UserProfileController,
             controllerAs: 'controller'
         })
         .state('notFound', {

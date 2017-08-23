@@ -1,4 +1,5 @@
 ﻿using Hello.Data;
+using Hello.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -21,15 +22,18 @@ namespace Hello.Services
 
             return users;
         }
-        public ApplicationUser  GetUserProfile( string email )
+        public UserVM GetUserProfile( string email )
         {
-
-            var user = _uManager.Users.Where(m => m.Email == email).Select(m => new ApplicationUser
+            
+            var user = _uManager.Users.Where(m => m.Email == email).FirstOrDefault();
+            var newUser = new UserVM
             {
-                UserName = m.UserName
-               
-            }).FirstOrDefault();
-            return user;
+              
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+            return newUser;
 
         }
 

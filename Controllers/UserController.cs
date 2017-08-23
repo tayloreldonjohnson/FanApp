@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Hello.Services;
 using Hello.Data;
+using Hello.Data.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Hello.Controllers
 {
-    [Route("api/AspNetUsers")]
+    [Route("api/Users")]
     public class UserController : Controller
     {
         public IUserService _userService;
@@ -28,7 +29,7 @@ namespace Hello.Controllers
 
         // GET api/values/5
         [HttpGet("{email}")]
-        public ApplicationUser Get(string  email)
+        public UserVM Get(string  email)
         {
             return _userService.GetUserProfile(email);
         }
