@@ -130,7 +130,6 @@ namespace Hello.Controllers
 
             public DateTime DateCreated { get; set; }
 
-
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]

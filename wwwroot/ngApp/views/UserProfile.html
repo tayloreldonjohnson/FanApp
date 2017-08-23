@@ -1,10 +1,11 @@
-﻿<h1> profile </h1>
+﻿<h1> Your Profile </h1>
 
 
-{{controller.user.email}}  
-{{controller.user.userName}}  
+<div><img ng-src="{{controller.user.imageUrl}}"</div>
+<div>{{controller.user.email}}</div>  
+<div>{{controller.user.userName}}</div>  
 
-<!--<div>{controller.getUserProfile()}}  </div>-->
-
-
-<div>{{controller.user.lastName}}  </div>
+<div>{{controller.user.firstName}}</div>
+<div>{{controller.user.lastName}}</div>
+<div>{{controller.user.aboutMe}}</div>
+<div>{{controller.user.dateCreated}}</div>
