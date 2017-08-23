@@ -8,8 +8,10 @@ myApp.controller("HomeController", HomeController);
 myApp.controller("LoginController", LoginController);
 myApp.controller("RegisterController", RegisterController);
 myApp.controller("SecretController", SecretController);
+myApp.controller("UserProfileController", UserProfileController);
 
 myApp.service("$accountService", AccountService);
+myApp.service("$UserProfileService", UserProfileService);
 
 myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -50,6 +52,13 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: AboutController,
             controllerAs: 'controller'
         })
+        .state('userProfile', {
+            url: '/userProfile',
+            templateUrl: '/ngApp/views/UserProfile.html',
+            controller: UserProfileController,
+            controllerAs: 'controller'
+        })
+      
         .state('notFound', {
             url: '/notFound',
             templateUrl: '/ngApp/views/notFound.html'
