@@ -1,5 +1,14 @@
 ﻿class CreateProfileController {
-    constructor() {
-        this.message = 'Hello from the about page!';
+    constructor($http) {
+        this.http = $http;
+        this.userProfile = {};
+        this.addProfile();
+    }
+    addProfile() {
+        this.http.post("/createProfile", this.userProfile)
+            .then(res => {
+                this.userProfile = {};
+                this.state.go('UserProfile');
+            });
     }
 }

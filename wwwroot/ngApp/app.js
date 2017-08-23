@@ -8,11 +8,9 @@ myApp.controller("HomeController", HomeController);
 myApp.controller("LoginController", LoginController);
 myApp.controller("RegisterController", RegisterController);
 myApp.controller("SecretController", SecretController);
-<<<<<<< HEAD
 myApp.controller("CreateProfileController", CreateProfileController);
-=======
 myApp.controller("UserProfileController", UserProfileController);
->>>>>>> master
+
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
@@ -56,23 +54,19 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: AboutController,
             controllerAs: 'controller'
         })
-<<<<<<< HEAD
         .state('createProfile', {
             url: '/createProfile',
             templateUrl: '/ngApp/views/createProfile.html',
             controller: CreateProfileController,
             controllerAs: 'controller'
         })
-=======
         .state('userProfile', {
             url: '/userProfile',
             templateUrl: '/ngApp/views/UserProfile.html',
             controller: UserProfileController,
             controllerAs: 'controller'
         })
-      
->>>>>>> master
-        .state('notFound', {
+           .state('notFound', {
             url: '/notFound',
             templateUrl: '/ngApp/views/notFound.html'
         });
