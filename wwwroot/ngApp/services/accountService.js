@@ -10,7 +10,7 @@ class AccountService {
         // store user name
         this.window.sessionStorage.setItem('userName', userInfo.userName);
         this.window.sessionStorage.setItem('email', userInfo.email);
-
+    
         // store claims
         this.window.sessionStorage.setItem('claims', JSON.stringify(userInfo.claims));
     }

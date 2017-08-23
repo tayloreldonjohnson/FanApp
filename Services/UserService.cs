@@ -28,7 +28,7 @@ namespace Hello.Services
             var user = _uManager.Users.Where(m => m.Email == email).FirstOrDefault();
             var newUser = new UserVM
             {
-              
+                UserName = user.UserName,
                 Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName
