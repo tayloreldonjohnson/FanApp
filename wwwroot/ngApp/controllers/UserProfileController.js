@@ -5,23 +5,25 @@
       
         this.user; 
         this.getUserProfile();  
-        console.log("words");
+        //console.log("words");
     }
 
 
-    getUsers() {
-        this.$UserProfileService.getUsers();
-    }
+    //getUsers() {
+    //    this.$UserProfileService.getUsers();
+    //}
 
     getUserProfile() {
 
 
-     
 
 
-       this.user =  this.$UserProfileService.getUserProfile(this.email);
+        this.$UserProfileService.getUserProfile(this.email)
+            .then((res) => {               
+                this.user = res.data;             
+            });
 
-
+       
     }
 
     }

@@ -54,10 +54,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         })
         .state('userProfile', {
             url: '/userProfile',
-            templateUrl: '/ngApp/views/userProfile.html',
+            templateUrl: '/ngApp/views/UserProfile.html',
             controller: UserProfileController,
             controllerAs: 'controller'
         })
+      
         .state('notFound', {
             url: '/notFound',
             templateUrl: '/ngApp/views/notFound.html'
