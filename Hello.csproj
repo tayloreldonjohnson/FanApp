@@ -8,11 +8,7 @@
     <Compile Remove="Data\Migrations\**" />
     <Content Remove="Data\Migrations\**" />
     <EmbeddedResource Remove="Data\Migrations\**" />
-    <None Remove="Data\Migrations\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <None Remove="Data\Migrations\**" />  
   </ItemGroup>
 
   <ItemGroup>
