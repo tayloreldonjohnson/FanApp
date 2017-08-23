@@ -15,16 +15,11 @@
 
     getUserProfile() {
 
-
-
-
         this.$UserProfileService.getUserProfile(this.email)
             .then((res) => {               
-                this.user = res.data;             
-            });
-
-       
+				this.user = res.data;
+				console.log(res.data);
+            });       
     }
-
     }
    
