@@ -1,30 +1,45 @@
 <html ng-app="myApp">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello App</title>
     <link href="/libs/bootstrap.min.css" rel="stylesheet" />
     <link href="/libs/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
-    <div class="container">
-        <h1>Hello App</h1>
-        <div>
-          <a href="/">Home</a> /
-           <a href="/about">About</a>
-            <a href="/userProfile">Profile</a>
-
-           / <a href="/secret">Secret</a> /
-           <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
-           <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-           <div ng-show="account.isLoggedIn()">
-               [{{account.getUserName()}}]
-           </div> 
+    
+    
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Music Fan App</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/secret">Secret</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login" ng-show="!account.isLoggedIn()">Login</a></li>
+                <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
+                <li>
+                    <div ng-show="account.isLoggedIn()">
+                        [{{account.getUserName()}}]
+                    </div>
+                </li>
+            </ul>            
         </div>
+    </nav>
+
+    <div class="container index-ui shadow">
         <hr />
 
         <ui-view></ui-view>
 
     </div>
+
+    
 
     <!-- Library Files -->
     <script src="/libs/angular.min.js"></script>
