@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using Hello.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Hello.Services;
 
 namespace Hello
 {
@@ -34,6 +35,9 @@ namespace Hello
 				.AddDefaultTokenProviders();
 
 			services.AddMvc();
+
+            services.AddScoped<IUserService, UserService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
