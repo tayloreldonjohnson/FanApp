@@ -1,14 +1,15 @@
-﻿class CreateProfileController {
-    constructor($http) {
-        this.http = $http;
-        this.userProfile = {};
-        this.addProfile();
+﻿class createProfileController {
+    constructor($state , $http) {
+        this.$state = $state;
+        this.$http = $http;
+        this.user = {};
+        
     }
-    addProfile() {
-        this.http.post("/createProfile", this.userProfile)
+    postUsers() {
+        this.http.post("api/Users", this.user)
             .then(res => {
-                this.userProfile = {};
-                this.state.go('UserProfile');
+                this.user = {};    
             });
     }
+
 }

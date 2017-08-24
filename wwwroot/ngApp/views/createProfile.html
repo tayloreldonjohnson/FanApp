@@ -1,12 +1,10 @@
 ﻿<h1>Create Your Profile</h1>
-<form ng-submit="controller.addUserProfile()">
-   
-            <label>Photo</label>
+<form ng-submit="controller.postUsers()">
     
     Music Genres I Like:
     <select id="genreId" ng-model="controller.user.genreId" ng-options="genre.name for genre in controller.genres track by grenre.genreId"></select>
     <br />
-        <label for="about">About Me:</label><input type="text" ng-model="controller.user.about" />
+        <label for="about">About Me:</label><input type="text" ng-model="controller.user.aboutme" />
         
     <input type="submit" value="Save" />
 </form>
