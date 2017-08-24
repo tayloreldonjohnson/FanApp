@@ -14,7 +14,7 @@ legend {
 
 @keyframes backgroundgradient {
     0% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
 
     50% {
@@ -22,7 +22,7 @@ legend {
     }
 
     100% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
 }
 
@@ -36,7 +36,7 @@ label {
     background-color: #262628;
 }
 
-a.navbar-brand {
+.navbar-brand {
     /*color: #f6ae2d;*/
     color: #1A8FE3;
 }
@@ -95,7 +95,7 @@ a.navbar-brand {
 
 
 .user-inputs {
-    padding: 5px 0px;
+    padding: 5px 0;
 }
 
 
@@ -134,7 +134,6 @@ a.navbar-brand {
     margin: 10px;
     background-color: #000;
     color: #F7FFF7;
-    margin: 10px;
     border: 1px solid white;
 }
 
