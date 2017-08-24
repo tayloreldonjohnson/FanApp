@@ -8,5 +8,6 @@ namespace Hello.Services
     {
         List<ApplicationUser> GetAllUsers();
         UserVM GetUserProfile( string email);
+        ApplicationUser AddUserProfile(UserVM user);
     }
 }
