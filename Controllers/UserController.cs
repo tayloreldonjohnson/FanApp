@@ -33,11 +33,17 @@ namespace Hello.Controllers
         {
             return _userService.GetUserProfile(email);
         }
+      
+
+
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public ApplicationUser Post( [FromBody] UserVM user)
         {
+            return _userService.AddUserProfile(user);
+            
+
         }
 
         // PUT api/values/5
