@@ -28,7 +28,6 @@
 		this.http.post(this.route, this.user)
             .then((res) => {
                 this.user = {};
-           
             });
     }
 }
