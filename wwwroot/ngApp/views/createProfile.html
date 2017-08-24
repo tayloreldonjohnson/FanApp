@@ -6,7 +6,13 @@
 </head>
 <body>
 
+	<div class="profile-text"><span class="profile-heads">Email</span>: {{controller.user.email}}</div>
 
+	<div class="profile-text"><span class="profile-heads">UserName</span>: {{controller.user.userName}}</div>
+
+	<div class="profile-text"><span class="profile-heads">First Name</span>: {{controller.user.firstName}}</div>
+
+	<div class="profile-text"><span class="profile-heads">Last Name</span>: {{controller.user.lastName}}</div>
 
     <form ng-submit="controller.PostUserProfile(aboutMe, imageUrl)">
 
