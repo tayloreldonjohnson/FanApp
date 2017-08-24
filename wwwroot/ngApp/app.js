@@ -8,7 +8,7 @@ myApp.controller("HomeController", HomeController);
 myApp.controller("LoginController", LoginController);
 myApp.controller("RegisterController", RegisterController);
 myApp.controller("SecretController", SecretController);
-myApp.controller("createProfileController", createProfileController);
+myApp.controller("createProfileController",createProfileController);
 myApp.controller("UserProfileController", UserProfileController);
 
 

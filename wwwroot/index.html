@@ -2,17 +2,18 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello App</title>
-    <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
     <link href="/libs/bootstrap.min.css" rel="stylesheet" />
     <link href="/libs/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <link href="css/homestyle.css" rel="stylesheet" />
+
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Music Fan App</a>
+                <a class="navbar-brand" id="FB" href="/" style=" font-family: 'Monoton', cursive; font-size:50px;">FB</a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
@@ -59,8 +60,8 @@
     <script src="/ngapp/controllers/loginController.js"></script>
     <script src="/ngapp/controllers/registerController.js"></script>
     <script src="/ngapp/controllers/secretController.js"></script>
-    <script src="/ngapp/controllers/createProfileController.js"></script>
     <script src="/ngapp/controllers/UserProfileController.js"></script>
+    <script src="/ngapp/controllers/createProfileController.js"></script>
 
 
     <!-- services -->
