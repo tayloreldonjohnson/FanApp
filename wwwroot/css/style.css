@@ -112,3 +112,37 @@ a.navbar-brand {
 .reg-btn:focus:not(:active) {
     color: #f6ae2d;
 }
+
+
+/*------------------- USER PROFILE --------------------------------*/
+
+.profile-header {
+    margin-bottom: 20px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.profile-heads {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.profile-text {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 1.5em;
+    padding: 5px 0;
+    margin-left: 25px;
+}
+
+.profile-text:last-child {
+    margin-bottom: 50px;
+}
+
+.profile-img img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    
+}
