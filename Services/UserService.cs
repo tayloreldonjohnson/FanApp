@@ -38,19 +38,17 @@ namespace Hello.Services
 				ImageUrl = user.ImageUrl
 
             };
-
-
-             
+    
             return newUser;
 
         }
-
 
         public ApplicationUser AddUserProfile(UserVM user)
         {
 
             var IntendedUser = _uManager.Users.Where(m => m.Email == user.Email).FirstOrDefault();
             IntendedUser.AboutMe = user.AboutMe;
+			IntendedUser.ImageUrl = user.ImageUrl;
             _uManager.UpdateAsync(IntendedUser);
            
             return IntendedUser;

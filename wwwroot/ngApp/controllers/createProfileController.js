@@ -4,11 +4,10 @@
         this.route = "api/users/";  
         this.email = sessionStorage.getItem("email");
         this.user = {
-            aboutMe: "",
+			aboutMe: "",
+			imageUrl: "",
             email: ""
         };
-       
-        console.log("words");
     }
 
 
@@ -16,10 +15,11 @@
     //    this.$UserProfileService.getUsers();
     //}
 
-   PostUserProfile(aboutMe) {
+   PostUserProfile(aboutMe, imageUrl) {
        console.log("postMethod");
        this.user.email = this.email;
-       this.user.aboutMe = aboutMe;
+	   this.user.aboutMe = aboutMe;
+	   this.user.imageUrl = imageUrl;
 
        this.http.post(this.route, this.user)
             .then((res) => {
