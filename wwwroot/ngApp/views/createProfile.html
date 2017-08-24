@@ -6,29 +6,24 @@
 </head>
 <body>
 
-
     ﻿<h1>Create Your Profile</h1>
-    <form ng-submit="controller.PostUserProfile(aboutMe)">
+
+    <form ng-submit="controller.PostUserProfile(aboutMe, imageUrl)">
+
 
         <div class="input-group">
 
             <div class="form-group">
-                <label>About:</label>
+				<label>Image:</label>
+				<input class="form-control" ng-model="imageUrl" />
+				<label>About:</label>
                 <input class="form-control" ng-model="aboutMe" />
             </div>
 
-            <!--<div class="form-group">
-                <label>Likes:</label>
-                <input class="form-control" ng-model="controller.loginUser.password" />
-            </div>
-
-            <br /><br />
-
             <div>-->
                 <button class="btn login-btn btn-lg" type="submit">Save</button>
-                <!--<a href="/register" class="btn reg-btn btn-lg">Register</a>-->
             </div>
-
+           </div>
         </form>>
 </body>
 </html>
