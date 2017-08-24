@@ -2,6 +2,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello App</title>
+    <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
     <link href="/libs/bootstrap.min.css" rel="stylesheet" />
     <link href="/libs/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
@@ -16,8 +17,8 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
-                <li><a href="/createProfile">Create Profile</a></li>
-               <li> <a href="/userProfile"> Profile</a></li>
+               <li> <a href="/userProfile" ng-show="account.isLoggedIn()"> Profile</a></li>
+                <li> <a href="/createProfile" ng-show="account.isLoggedIn()"> Create Profile</a></li>
                 <li><a href="/secret">Secret</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
