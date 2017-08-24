@@ -1,11 +1,26 @@
-﻿<h1> Your Profile </h1>
+﻿<div class="profile-header">
+    
+    <h1>
+      <!--  <span class="glyphicon glyphicon-music"></span>  -->
+        {{controller.user.userName}}'s Profile
+       <!-- <span class="glyphicon glyphicon-music"></span>  -->
+    </h1>
+    
+</div>
 
 
-<div><img ng-src="{{controller.user.imageUrl}}"</div>
-<div>{{controller.user.email}}</div>  
-<div>{{controller.user.userName}}</div>  
 
-<div>{{controller.user.firstName}}</div>
-<div>{{controller.user.lastName}}</div>
-<div>{{controller.user.aboutMe}}</div>
-<div>{{controller.user.dateCreated}}</div>
+<div class="text-center profile-img"><img ng-src="{{controller.user.imageUrl}}" /></div>
+<br />
+
+<div class="profile-text"><span class="profile-heads">Email</span>: {{controller.user.email}}</div>  
+
+<div class="profile-text"><span class="profile-heads">UserName</span>: {{controller.user.userName}}</div>  
+
+<div class="profile-text"><span class="profile-heads">First Name</span>: {{controller.user.firstName}}</div>
+
+<div class="profile-text"><span class="profile-heads">Last Name</span>: {{controller.user.lastName}}</div>
+
+<div class="profile-text"><span class="profile-heads">About Me</span>: {{controller.user.aboutMe}}</div>
+
+<div class="profile-text"><span class="profile-heads">Account Created on</span>: {{controller.user.dateCreated}}</div>
