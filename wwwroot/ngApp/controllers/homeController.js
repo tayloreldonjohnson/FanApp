@@ -1,16 +1,13 @@
 ﻿class HomeController {
-    constructor($accountService, $location) {
+    constructor() {
         this.message = 'Hello from the home page!';
 
-        
-        this.accountService = $accountService;
-        this.location = $location;
 
     }
 
-    var client = filestack.init("AdqhVmjnDSXuLRRPEfvdbz");
+    //var client = filestack.init("AdqhVmjnDSXuLRRPEfvdbz");
 
-    pickPhoto() {
-        console.log("picking photo");
-    }
+    //pickPhoto() {
+    //    console.log("picking photo");
+    //}
 }
