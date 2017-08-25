@@ -1,10 +1,9 @@
 ﻿class CreateProfileController {
-    constructor($http, $UserProfileService) {
+	constructor($http, $UserProfileService) {
         this.http = $http;
         this.route = "api/users/";  
         this.email = sessionStorage.getItem("email");
 		this.$UserProfileService = $UserProfileService;
-		this.user;
 		this.getUserProfile(); 
 		this.user = {
 			aboutMe: "",

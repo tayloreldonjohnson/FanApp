@@ -9,7 +9,6 @@
 </head>
 <body ng-controller="AccountController as account">
     
-    
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -27,7 +26,7 @@
                 <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
                 <li>
                     <div ng-show="account.isLoggedIn()">
-                        [{{account.getUserName()}}]
+                        {{account.getUserName()}}
                     </div>
                 </li>
             </ul>            
