@@ -1,6 +1,7 @@
 ﻿using Hello.Data;
 using Hello.Data.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Hello.Services
 {
@@ -8,6 +9,6 @@ namespace Hello.Services
     {
         List<ApplicationUser> GetAllUsers();
         UserVM GetUserProfile( string email);
-      
+        void AddUserProfile(UserVM userVM);
     }
 }

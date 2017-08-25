@@ -10,7 +10,6 @@ namespace Hello.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -24,6 +23,6 @@ namespace Hello.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<Hello.Data.ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 }
