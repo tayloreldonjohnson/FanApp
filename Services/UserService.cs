@@ -12,9 +12,11 @@ namespace Hello.Services
     {
 
         public UserManager<ApplicationUser> _uManager;
-        public UserService(UserManager<ApplicationUser> uManager)
+		public ApplicationDbContext _db;
+        public UserService(UserManager<ApplicationUser> uManager, ApplicationDbContext db)
         {
             _uManager = uManager;
+			_db = db;
         }
         public List<ApplicationUser> GetAllUsers()
         {
@@ -43,16 +45,22 @@ namespace Hello.Services
 
         }
 
-        public ApplicationUser AddUserProfile(UserVM user)
+        public void AddUserProfile(UserVM userVm)
         {
 
-            var IntendedUser = _uManager.Users.Where(m => m.Email == user.Email).FirstOrDefault();
-            IntendedUser.AboutMe = user.AboutMe;
-			IntendedUser.ImageUrl = user.ImageUrl;
-            _uManager.UpdateAsync(IntendedUser);
-           
-            return IntendedUser;
+			//         var IntendedUser = _uManager.Users.Where(m => m.Email == user.Email).FirstOrDefault();
+			//         IntendedUser.AboutMe = user.AboutMe;
+			//IntendedUser.ImageUrl = user.ImageUrl;
+			//         await _uManager.UpdateAsync(IntendedUser);
+			// _db.SaveChanges();
 
+			//return;
+
+			var user = _db.ApplicationUser.Where(u => u.Email == userVm.Email).FirstOrDefault();
+			user.AboutMe = userVm.AboutMe;
+			user.ImageUrl = userVm.ImageUrl;
+			_db.Update(user);
+			_db.SaveChanges();
         }
 
     }
