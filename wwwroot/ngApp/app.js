@@ -14,6 +14,15 @@ myApp.controller("UserProfileController", UserProfileController);
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
+myApp.service("$filepicker", function ($window) {
+    return $window.filepicker;
+});
+
+
+
+
+
+
 
 myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -97,3 +106,27 @@ angular.module('myApp')
 angular.module('myApp').config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');
 });
+
+/*----------------------------------------------  FILESTACK  ---------------------------------------------------------------*/
+//angular.module('myApp')
+//    .service('angularFilepicker', function ($window) {
+//        return $window.filepicker;
+//    });
+
+
+//angular.module('angularFilepickerExample')
+//    .controller('UserProfileController', function ($scope, angularFilepicker) {
+//        $scope.files = [];
+       
+
+//        $scope.pickFile = pickFile;
+
+        
+
+
+//        function onSuccess(Blob) {
+//            $scope.files.push(Blob);
+//            $scope.$apply();
+//        };
+
+//    });

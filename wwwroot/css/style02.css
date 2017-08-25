@@ -1,15 +1,7 @@
 ﻿body {
-    /*background-color: #f6ae2d;*/
     background: linear-gradient(132deg, #F9FC3A, #F17105, #D11149, #1A8FE3, #31D843 );
     background-size: 400% 400%;
     animation: backgroundgradient 30s ease infinite;
-    color: white;
-    font-family: 'Mukta Mahee', 'Lucida Sans', sans-serif;
-    font-size: 1.5em;
-}
-
-legend {
-    color: white;
 }
 
 @keyframes backgroundgradient {
@@ -26,6 +18,7 @@ legend {
     }
 }
 
+
 label {
     padding: 15px 0 2px 0;
 }
@@ -35,41 +28,31 @@ label {
 /*--------------  NAVIGATION  -------------------------------------------------*/
 
 .navbar {
-    /*background-color: #33658a;*/
     background-color: #262628;
 }
 
-.navbar-brand {
-    /*color: #f6ae2d;*/
+a.navbar-brand {
     color: #1A8FE3;
 }
 
 
 
 .nav li a:link {
-    /*background-color: #33658a;
-    color: #f6ae2d;*/
     background-color: #262628;
     color: #F7FFF7;
 }
 
 .nav li a:visited {
-    /*background-color: #2f4858;
-    color: #f6ae2d;*/
     background-color: #262628;
     color: #F7FFF7;
 }
 
 .nav li a:hover {
-    /*background-color: #2f4858;
-    color: #f6ae2d;*/
     background-color: #1A8FE3;
     color: #F7FFF7;
 }
 
 .nav li a:active {
-    /*background-color: #2f4858;
-    color: #f6ae2d;*/
     background-color: #262628;
     color: #F7FFF7;
 }
@@ -77,7 +60,6 @@ label {
 
 /*-----------------  UI-VIEW  --------------------------------------------------------*/
 .index-ui {
-    /*background-color: #f26419;*/
     background-color: #262628;
     color: #F7FFF7;
 }
@@ -98,71 +80,55 @@ label {
 
 
 .user-inputs {
-    padding: 5px 0;
+    padding: 5px 0px;
 }
 
 
 .login-btn {
-    /*background-color: #33658a;
-    color: #f6ae2d;
-    margin: 10px;*/
     background-color: #000;
     color: #F7FFF7;
     margin: 10px;
-    border: 1px solid white;
 }
 
-.login-btn:checked {
-    /*color: #f6ae2d;*/
-    color: #F7FFF7;
-}
-
-.login-btn:hover {
-    /*background-color: #2f4858;
-    color: #f6ae2d;*/
-    background-color: #1A8FE3;
+    .login-btn:checked {
         color: #F7FFF7;
-}
+    }
 
-.login-btn:focus:not(:active) {
-    /*color: #f6ae2d;*/
-    color: #F7FFF7;
-}
+    .login-btn:hover {
+        background-color: #1A8FE3;
+        color: #F7FFF7;
+    }
+
+    .login-btn:focus:not(:active) {
+        color: #F7FFF7;
+    }
 
 /*------------------------------  REGISTER  --------------------------------------------*/
 
 .reg-btn {
-    /*background-color: #33658a;
-    color: #f6ae2d;*/
-    margin: 10px;
     background-color: #000;
     color: #F7FFF7;
     margin: 10px;
-    border: 1px solid white;
 }
 
-.reg-btn:checked {
-    /*color: #f6ae2d;*/
-    color: #F7FFF7;
-}
-
-.reg-btn:hover {
-    /*background-color: #2f4858;
-    color: #f6ae2d;*/
-    background-color: #1A8FE3;
+    .reg-btn:checked {
         color: #F7FFF7;
-}
+    }
 
-.reg-btn:focus:not(:active) {
-    /*color: #f6ae2d;*/
-    color: #F7FFF7;
-}
+    .reg-btn:hover {
+        background-color: #1A8FE3;
+        color: #F7FFF7;
+    }
 
+    .reg-btn:focus:not(:active) {
+        color: #F7FFF7;
+    }
 
 /*------------------- USER PROFILE --------------------------------*/
 
 .profile-header {
     margin-bottom: 20px;
+    text-decoration: underline;
     text-align: center;
 }
 
@@ -172,7 +138,9 @@ label {
 }
 
 .profile-text {
-    font-size: 1.75em;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    font-size: 1.5em;
     padding: 5px 0;
     margin-left: 25px;
     color: #F7FFF7;
@@ -182,29 +150,9 @@ label {
         margin-bottom: 50px;
     }
 
-.profile-img {
-    background: linear-gradient(132deg, #31D843, #1A8FE3, #D11149, #F17105, #F9FC3A );
-    background-size: 100% 100%;
-    animation: backgroundgradient 30s ease infinite;
-    padding-top: 12px;
-    width: 226px;
+.profile-img img {
+    width: 200px;
     height: auto;
+    margin-bottom: 10px;
     border-radius: 50%;
-    margin: 0 auto;
 }
-
-    .profile-img img {
-        width: 200px;
-        height: auto;
-        margin-bottom: 10px;
-        border-radius: 50%;
-    }
-
-    /*---------------------------------------Home Page----------------------------------------------------------------*/
-
-
-#micimg{
-    height:auto;
-    width:60px;
-}
-       
