@@ -4,9 +4,14 @@
     <title>Hello App</title>
     <link href="/libs/bootstrap.min.css" rel="stylesheet" />
     <link href="/libs/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Monoton&effect=-neon|neon" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
+    <link rel="stylesheet" href="css/homestyle.css">
     <link href="css/style.css" rel="stylesheet" />
-    <link href="css/homestyle.css" rel="stylesheet" />
-
+    
+    <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
+    
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
@@ -37,6 +42,17 @@
     <div class="container index-ui shadow">
         <hr />
 
+        <!--<script>
+            var client = filestack.init("AdqhVmjnDSXuLRRPEfvdbz");
+            client.pick({
+                accept: 'image/*',
+                maxFiles: 5,
+                imageMax: [1024, 1024]
+            }).then(function (result) {
+                console.log(JSON.stringify(result.filesUploaded))
+            });
+        </script>-->
+
         <ui-view></ui-view>
 
     </div>
@@ -48,8 +64,12 @@
     <script src="/libs/angular-resource.min.js"></script>
     <script src="/libs/angular-animate.min.js"></script>
     <script src="/libs/angular-touch.min.js"></script>
+    <script src="/libs/jquery.min.js"></script>
+    <script src="/libs/ui-bootstrap.min.js"></script>
     <script src="/libs/ui-bootstrap-tpls.min.js"></script>
     <script src="/libs/angular-ui-router.min.js"></script>
+    
+    
 
     <!-- controllers -->
     <script src="/ngapp/controllers/aboutController.js"></script>
