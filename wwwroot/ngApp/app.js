@@ -8,7 +8,7 @@ myApp.controller("HomeController", HomeController);
 myApp.controller("LoginController", LoginController);
 myApp.controller("RegisterController", RegisterController);
 myApp.controller("SecretController", SecretController);
-myApp.controller("createProfileController",createProfileController);
+myApp.controller("CreateProfileController",CreateProfileController);
 myApp.controller("UserProfileController", UserProfileController);
 
 
@@ -57,7 +57,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('createProfile', {
             url: '/createProfile',
             templateUrl: '/ngApp/views/createProfile.html',
-            controller: createProfileController,
+            controller: CreateProfileController,
             controllerAs: 'controller'
         })
         .state('userProfile', {
