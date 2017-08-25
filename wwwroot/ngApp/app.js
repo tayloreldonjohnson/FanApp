@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ui.bootstrap', 'angular-filepicker']);
+var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ui.bootstrap']);
 
 myApp.controller("AboutController", AboutController);
 myApp.controller("AccountController", AccountController);
@@ -8,15 +8,19 @@ myApp.controller("HomeController", HomeController);
 myApp.controller("LoginController", LoginController);
 myApp.controller("RegisterController", RegisterController);
 myApp.controller("SecretController", SecretController);
+myApp.controller("CreateProfileController",CreateProfileController);
 myApp.controller("UserProfileController", UserProfileController);
-myApp.controller("CreateProfileController", CreateProfileController);
+
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
+myApp.service("$filepicker", function ($window) {
+    return $window.filepicker;
+});
 
 
 
-//myApp.service("$fileUploadService", FileUploadService);
+
 
 
 
@@ -59,21 +63,19 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: AboutController,
             controllerAs: 'controller'
         })
-        .state('userProfile', {
-            url: '/userProfile',
-            templateUrl: '/ngApp/views/UserProfile.html',
-            controller: UserProfileController,
-            controllerAs: 'controller'
-        })
-    $stateProvider
         .state('createProfile', {
             url: '/createProfile',
             templateUrl: '/ngApp/views/createProfile.html',
             controller: CreateProfileController,
             controllerAs: 'controller'
         })
-      
-        .state('notFound', {
+        .state('userProfile', {
+            url: '/userProfile',
+            templateUrl: '/ngApp/views/UserProfile.html',
+            controller: UserProfileController,
+            controllerAs: 'controller'
+        })
+           .state('notFound', {
             url: '/notFound',
             templateUrl: '/ngApp/views/notFound.html'
         });
@@ -115,17 +117,11 @@ angular.module('myApp').config(function ($httpProvider) {
 //angular.module('angularFilepickerExample')
 //    .controller('UserProfileController', function ($scope, angularFilepicker) {
 //        $scope.files = [];
-//        angularFilepicker.setKey('AdqhVmjnDSXuLRRPEfvdbz');
+       
 
 //        $scope.pickFile = pickFile;
 
-//        function pickFile() {
-//            angularFilepicker.pick({
-//                mimetype: "image/*"
-//            },
-//                onSuccess
-//            );
-//        };
+        
 
 
 //        function onSuccess(Blob) {

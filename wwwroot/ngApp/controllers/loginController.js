@@ -9,7 +9,7 @@ class LoginController {
     login() {
         this.accountService.login(this.loginUser)
             .then(() => {
-                this.location.path('/');
+                this.location.path('/userProfile');
             }).catch((results) => {
                 this.validationMessages = results;
             });
