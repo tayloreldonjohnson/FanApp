@@ -1,5 +1,6 @@
-﻿class CreateProfileController {
-    constructor($http, $UserProfileService) {
+class CreateProfileController {
+    constructor($http, $UserProfileService, $location) {
+        this.location = $location;
         this.http = $http;
         this.route = "api/users/";  
         this.email = sessionStorage.getItem("email");
@@ -16,7 +17,7 @@
 		this.$UserProfileService.getUserProfile(this.email)
 			.then((res) => {
 				this.user = res.data;
-				console.log(res.data);
+                console.log(res.data);
 			});
 	}
 
@@ -28,6 +29,7 @@
 		this.http.post(this.route, this.user)
             .then((res) => {
                 this.user = {};
+                this.location.path('/userProfile');
             });
     }
 }

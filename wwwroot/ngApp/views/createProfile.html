@@ -5,6 +5,7 @@
     <title></title>
 </head>
 <body>
+    ﻿<h1>Create Your Profile</h1>
 
 	<div class="profile-text"><span class="profile-heads">Email</span>: {{controller.user.email}}</div>
 
@@ -14,7 +15,9 @@
 
 	<div class="profile-text"><span class="profile-heads">Last Name</span>: {{controller.user.lastName}}</div>
 
+
     <form ng-submit="controller.PostUserProfile(aboutMe, imageUrl)">
+
 
         <div class="input-group">
 
@@ -25,11 +28,11 @@
                 <input class="form-control" ng-model="aboutMe" />
             </div>
 
-            <div>-->
+            <div>
                 <button class="btn login-btn btn-lg" type="submit">Save</button>
             </div>
-
-        </div>
+           </div>
         </form>>
 </body>
 </html>
+

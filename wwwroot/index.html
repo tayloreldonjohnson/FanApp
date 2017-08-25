@@ -5,21 +5,21 @@
     <link href="/libs/bootstrap.min.css" rel="stylesheet" />
     <link href="/libs/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <link href="css/homestyle.css" rel="stylesheet" />
+
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
-    
-    
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Music Fan App</a>
+                <a class="navbar-brand" id="FB" href="/" style=" font-family: 'Monoton', cursive; font-size:50px;">FB</a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
-               <li> <a href="/userProfile"> Profile</a></li>
-                <li> <a href="/createProfile"> Profile</a></li>
+               <li> <a href="/userProfile" ng-show="account.isLoggedIn()"> Profile</a></li>
+                <li> <a href="/createProfile" ng-show="account.isLoggedIn()"> Create Profile</a></li>
                 <li><a href="/secret">Secret</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -61,7 +61,8 @@
     <script src="/ngapp/controllers/registerController.js"></script>
     <script src="/ngapp/controllers/secretController.js"></script>
     <script src="/ngapp/controllers/UserProfileController.js"></script>
-    <script src="/ngapp/controllers/createProfileController.js"></script>
+    <script src="/ngapp/controllers/CreateProfileController.js"></script>
+
 
     <!-- services -->
     <script src="/ngapp/services/accountService.js"></script>
