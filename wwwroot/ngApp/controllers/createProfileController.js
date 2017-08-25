@@ -27,8 +27,9 @@ class CreateProfileController {
 
 		this.http.post(this.route, this.user)
             .then((res) => {
-                this.user = {};
-                this.location.path('/userProfile');
+				this.user = {};
+				this.getUserProfile();
+                //this.location.path('/userProfile');
             });
     }
 }
