@@ -1,5 +1,5 @@
 class CreateProfileController {
-    constructor($http, $UserProfileService, $location) {
+	constructor($http, $UserProfileService, $location, $filepicker) {
         this.location = $location;
         this.http = $http;
         this.route = "api/users/";  
@@ -10,7 +10,12 @@ class CreateProfileController {
 			aboutMe: "",
 			imageUrl: "",
             email: ""
-        };
+		};
+		//imgstuff
+		this.file;
+		this.filepicker = $filepicker;
+		this.filepicker.setKey('AdqhVmjnDSXuLRRPEfvdbz'); 
+
     }
 	getUserProfile() {
 		this.$UserProfileService.getUserProfile(this.email)
@@ -31,5 +36,24 @@ class CreateProfileController {
 				this.getUserProfile();
                 //this.location.path('/userProfile');
             });
-    }
+	}
+	//img stuff
+   pickFile() {
+	   this.filepicker.pick(
+		   {
+			   mimetype: 'image/*',
+			   imageQuality: 60
+		   },
+		   this.fileUploaded.bind(this)
+	   );
+   }
+
+   fileUploaded(file) {
+	   // save file url to database
+	   this.file = file;
+	   console.log(this.file);
+	   console.log(this);
+	   this.$scope.$apply(); // force page to update
+	   this.file.url;  //change 'item' to imageUrl property
+   }
 }
