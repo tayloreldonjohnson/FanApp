@@ -11,13 +11,15 @@
 	<div class="profile-text"><span class="profile-heads">Last Name</span>: {{controller.user.lastName}}</div>
 
 	<div class="profile-text"><span class="profile-heads">About Me</span>: {{controller.user.aboutMe}}</div>-->
-	<form ng-submit="controller.PostUserProfile(aboutMe, imageUrl)">
+	<form ng-submit="controller.PostUserProfile(aboutMe, controller.file.url)">
 		<div class="form-group">
 			<label class="col-lg-4 control-label" for="focusedInput">Image:</label>
 		</div>
-		<div class="col-lg-12">
-			<input ng-model="imageUrl" rows="4" class="form-control" id="focusedInput" type="text" value="">
-		</div>
+
+		<button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
+		<img ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
+		<br />
+
 		<br />
 		<div class="form-group">
 			<label for="textArea" class="col-lg-4 control-label">About Me:</label>
