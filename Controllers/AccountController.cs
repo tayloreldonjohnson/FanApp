@@ -127,8 +127,10 @@ namespace Hello.Controllers
             public string UserName { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
+			public string AboutMe { get; set; }
+			public string ImageUrl { get; set; }
 
-            public DateTime DateCreated { get; set; }
+			public DateTime DateCreated { get; set; }
 
             [Required]
             [EmailAddress]
@@ -158,7 +160,7 @@ namespace Hello.Controllers
             if (ModelState.IsValid)
             {
                 
-                var user = new ApplicationUser { UserName = model.UserName , Email = model.Email , FirstName = model.FirstName ,LastName = model.LastName, DateCreated = now };
+                var user = new ApplicationUser { UserName = model.UserName , Email = model.Email , FirstName = model.FirstName ,LastName = model.LastName, DateCreated = now, AboutMe = model.AboutMe, ImageUrl = model.ImageUrl };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

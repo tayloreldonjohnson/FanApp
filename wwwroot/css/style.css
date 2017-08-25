@@ -14,7 +14,7 @@ legend {
 
 @keyframes backgroundgradient {
     0% {
-        background-position: 0 50%;
+        background-position: 0% 50%;
     }
 
     50% {
@@ -22,13 +22,16 @@ legend {
     }
 
     100% {
-        background-position: 0 50%;
+        background-position: 0% 50%;
     }
 }
 
 label {
     padding: 15px 0 2px 0;
 }
+
+
+
 /*--------------  NAVIGATION  -------------------------------------------------*/
 
 .navbar {
@@ -115,13 +118,13 @@ label {
     border: 1px solid white;
 }
 
-    .login-btn:checked {
-        /*color: #f6ae2d;*/
-        color: #F7FFF7;
-    }
+.login-btn:checked {
+    /*color: #f6ae2d;*/
+    color: #F7FFF7;
+}
 
-    .login-btn:hover {
-        /*background-color: #2f4858;
+.login-btn:hover {
+    /*background-color: #2f4858;
     color: #f6ae2d;*/
         background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
         background-size: 400% 400%;
@@ -129,10 +132,10 @@ label {
         color: white;
     }
 
-    .login-btn:focus:not(:active) {
-        /*color: #f6ae2d;*/
-        color: #F7FFF7;
-    }
+.login-btn:focus:not(:active) {
+    /*color: #f6ae2d;*/
+    color: #F7FFF7;
+}
 
 #loginusername {
     background-color: rgba(0, 0, 0, 0);
@@ -172,16 +175,17 @@ label {
     margin: 10px;
     background-color: #000;
     color: #F7FFF7;
+    margin: 10px;
     border: 1px solid white;
 }
 
-    .reg-btn:checked {
-        /*color: #f6ae2d;*/
-        color: #F7FFF7;
-    }
+.reg-btn:checked {
+    /*color: #f6ae2d;*/
+    color: #F7FFF7;
+}
 
-    .reg-btn:hover {
-        /*background-color: #2f4858;
+.reg-btn:hover {
+    /*background-color: #2f4858;
     color: #f6ae2d;*/
         background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
         background-size: 400% 400%;
@@ -189,10 +193,10 @@ label {
         color: white;
     }
 
-    .reg-btn:focus:not(:active) {
-        /*color: #f6ae2d;*/
-        color: #F7FFF7;
-    }
+.reg-btn:focus:not(:active) {
+    /*color: #f6ae2d;*/
+    color: #F7FFF7;
+}
 
 
 /*------------------- USER PROFILE --------------------------------*/
@@ -243,7 +247,4 @@ label {
     height:auto;
     width:60px;
 }
- /*--------Logo--------*/
- #logo {
-     padding-bottom:2px;
- }
+       

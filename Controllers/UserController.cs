@@ -39,9 +39,17 @@ namespace Hello.Controllers
 
         // POST api/values
         [HttpPost]
-        public ApplicationUser Post( [FromBody] UserVM user)
+        public string Post( [FromBody] UserVM user)
         {
-            return _userService.AddUserProfile(user);
+			try
+			{
+				_userService.AddUserProfile(user);
+				return "Success!";
+			}
+			catch
+			{
+				return "Fail! user was not updated";
+			}
             
 
         }
