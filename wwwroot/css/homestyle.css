@@ -1,0 +1,37 @@
+﻿
+#FanAppHome {
+    font-family: 'Monoton', cursive;
+    font-size: 100px;
+}
+
+ul#change {
+    list-style-type: none;
+    font-size: 30px;
+    font-family: 'Graduate', cursive;
+}
+
+#a {
+    color: #faff00;
+    font-stretch: ultra-expanded;
+}
+
+#b {
+    color: #3fff00;
+    font-stretch: ultra-expanded;
+}
+
+#c {
+    color: #00f2ff;
+    font-stretch: ultra-expanded;
+}
+
+#aTag {
+    color: hotpink;
+}
+
+    #aTag:hover {
+        color: lightgreen;
+    }
+.container index-ui shadow{
+    display:none;
+}
