@@ -36,7 +36,7 @@ label {
 
 .navbar {
     /*background-color: #33658a;*/
-    background-color: #262628;
+    background-color: #000;
 }
 
 .navbar-brand {
@@ -49,14 +49,14 @@ label {
 .nav li a:link {
     /*background-color: #33658a;
     color: #f6ae2d;*/
-    background-color: #262628;
+    background-color: #000;
     color: #F7FFF7;
 }
 
 .nav li a:visited {
     /*background-color: #2f4858;
     color: #f6ae2d;*/
-    background-color: #262628;
+    background-color: #000;
     color: #F7FFF7;
 }
 
@@ -70,7 +70,7 @@ label {
 .nav li a:active {
     /*background-color: #2f4858;
     color: #f6ae2d;*/
-    background-color: #262628;
+    background-color: #000;
     color: #F7FFF7;
 }
 
@@ -78,7 +78,7 @@ label {
 /*-----------------  UI-VIEW  --------------------------------------------------------*/
 .index-ui {
     /*background-color: #f26419;*/
-    background-color: #262628;
+    background-color: #000;
     color: #F7FFF7;
 }
 
@@ -90,6 +90,12 @@ label {
 
 
 /*------------------------------  LOGIN  ----------------------------------------------*/
+
+
+#loginform {
+    padding-top: 10em;
+}
+
 .input-group-btn {
     display: inline;
     margin-right: 20px;
@@ -120,14 +126,46 @@ label {
 .login-btn:hover {
     /*background-color: #2f4858;
     color: #f6ae2d;*/
-    background-color: #1A8FE3;
-        color: #F7FFF7;
-}
+        background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
+        background-size: 400% 400%;
+        animation: backgroundgradient 5s ease infinite;
+        color: white;
+    }
 
 .login-btn:focus:not(:active) {
     /*color: #f6ae2d;*/
     color: #F7FFF7;
 }
+
+#loginusername {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: solid;
+    outline: white;
+    height: 30px;
+    transition: height 1s;
+    -webkit-transition: height 1s;
+    
+}
+#loginusername::-webkit-input-placeholder { /* Chrome */
+    color: white;
+}
+
+#loginusername:-ms-input-placeholder { /* IE 10+ */
+    color: white;
+}
+
+#loginusername::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+    opacity: 1;
+}
+
+#loginusername:-moz-placeholder { /* Firefox 4 - 18 */
+    color: white;
+    opacity: 1;
+}
+
+   
 
 /*------------------------------  REGISTER  --------------------------------------------*/
 
@@ -149,9 +187,11 @@ label {
 .reg-btn:hover {
     /*background-color: #2f4858;
     color: #f6ae2d;*/
-    background-color: #1A8FE3;
-        color: #F7FFF7;
-}
+        background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
+        background-size: 400% 400%;
+        animation: backgroundgradient 5s ease infinite;
+        color: white;
+    }
 
 .reg-btn:focus:not(:active) {
     /*color: #f6ae2d;*/

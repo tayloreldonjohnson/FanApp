@@ -1,55 +1,61 @@
-<h1>Register</h1>
+
+
+
 
 <fieldset>
-    <legend>Register with a Social Provider</legend>
-    <ul>
-        <li ng-repeat="externalLogin in account.externalLogins">
-            <a target="_self" href="{{externalLogin.url}}">{{externalLogin.name}}</a>
-        </li>
-    </ul>
-
-</fieldset>
-
-<fieldset>
-    <legend>Local Registration</legend>
+    
     <ul>
         <li ng-repeat="message in controller.validationMessages">
             {{message}}
         </li>
     </ul>
-
-    <form ng-submit="controller.register()">
+    <center>
+    <form  ng-submit="controller.register()">
 
         <div class="input-group">
           
             <div class="form-group">
-                <label>First Name:</label>
-                <input class="form-control" ng-model="controller.registerUser.firstname" />
+                <br />
+                <br />
+                <br />
+                <br />
+              
+                <input id="loginusername"  placeholder="First Name"class="form-control" ng-model="controller.registerUser.firstname" />
             </div>
             
             <div class="form-group">
-                <label>Last Name:</label>
-                <input class="form-control" ng-model="controller.registerUser.lastname" />
+                <br />
+                <br />
+                <br />
+                <input  id="loginusername" placeholder="Last Name" class="form-control" ng-model="controller.registerUser.lastname" />
             </div>
             
             <div class="form-group">
-                <label>User Name:</label>
-                <input class="form-control" ng-model="controller.registerUser.username" />
+                <br />
+                <br />
+                <br />
+                <input  id="loginusername" placeholder="Username" class="form-control" ng-model="controller.registerUser.username" />
             </div>
             
             <div class="form-group">
-                <label>Email:</label>
-                <input class="form-control" ng-model="controller.registerUser.email" />
+                <br />
+                <br />
+                <br />
+                <input  id="loginusername" placeholder="Email" class="form-control" ng-model="controller.registerUser.email" />
             </div>
             
             <div class="form-group">
-                <label>Password:</label>
-                <input class="form-control" ng-model="controller.registerUser.password" />
+                <br />
+                <br />
+                <br />
+                <input id="loginusername" placeholder="Password" class="form-control" ng-model="controller.registerUser.password" />
             </div>
             
             <div class="form-group">
-                <label>Confirm Password:</label>
-                <input class="form-control" ng-model="controller.registerUser.confirmPassword" />
+                <br />
+                <br />
+                <br />
+                <input  id="loginusername" placeholder="Confirm Password" class="form-control" ng-model="controller.registerUser.confirmPassword" />
             </div>
 
 			<div class="form-group">
@@ -71,5 +77,5 @@
         </div>
 
     </form>
-
+    </center>
 </fieldset>
