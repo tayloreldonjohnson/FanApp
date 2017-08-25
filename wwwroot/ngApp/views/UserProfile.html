@@ -21,10 +21,6 @@
 <div class="profile-text"><span >About Me</span>: {{controller.user.aboutMe}}</div>
 
 
-<button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
-<img ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
-<br />
-
-<div class="profile-text"><span >Account Created on</span>: {{controller.user.dateCreated | date}}</div>
+<div class="profile-text"><span class="profile-heads">Account Created on</span>: {{controller.user.dateCreated | date}}</div>
 
 </form>
