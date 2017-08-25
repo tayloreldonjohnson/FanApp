@@ -5,7 +5,6 @@ class CreateProfileController {
         this.route = "api/users/";  
         this.email = sessionStorage.getItem("email");
 		this.$UserProfileService = $UserProfileService;
-		this.user;
 		this.getUserProfile(); 
 		this.user = {
 			aboutMe: "",
@@ -28,8 +27,9 @@ class CreateProfileController {
 
 		this.http.post(this.route, this.user)
             .then((res) => {
-                this.user = {};
-                this.location.path('/userProfile');
+				this.user = {};
+				this.getUserProfile();
+                //this.location.path('/userProfile');
             });
     }
 }
