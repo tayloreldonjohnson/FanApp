@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ui.bootstrap']);
+var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ui.bootstrap', 'angular-filepicker']);
 
 myApp.controller("AboutController", AboutController);
 myApp.controller("AccountController", AccountController);
@@ -13,6 +13,12 @@ myApp.controller("CreateProfileController", CreateProfileController);
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
+
+
+
+//myApp.service("$fileUploadService", FileUploadService);
+
+
 
 myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -98,3 +104,33 @@ angular.module('myApp')
 angular.module('myApp').config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');
 });
+
+/*----------------------------------------------  FILESTACK  ---------------------------------------------------------------*/
+//angular.module('myApp')
+//    .service('angularFilepicker', function ($window) {
+//        return $window.filepicker;
+//    });
+
+
+//angular.module('angularFilepickerExample')
+//    .controller('UserProfileController', function ($scope, angularFilepicker) {
+//        $scope.files = [];
+//        angularFilepicker.setKey('AdqhVmjnDSXuLRRPEfvdbz');
+
+//        $scope.pickFile = pickFile;
+
+//        function pickFile() {
+//            angularFilepicker.pick({
+//                mimetype: "image/*"
+//            },
+//                onSuccess
+//            );
+//        };
+
+
+//        function onSuccess(Blob) {
+//            $scope.files.push(Blob);
+//            $scope.$apply();
+//        };
+
+//    });

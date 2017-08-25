@@ -21,5 +21,5 @@
 				console.log(res.data);
             });       
     }
-    }
+}
    
