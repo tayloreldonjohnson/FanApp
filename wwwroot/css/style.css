@@ -37,6 +37,9 @@ label {
 .navbar {
     /*background-color: #33658a;*/
     background-color: #000;
+    /*top: 0;
+    position: fixed;
+    width: 100%;*/
 }
 
 .navbar-brand {
@@ -140,7 +143,7 @@ label {
 #loginusername {
     background-color: rgba(0, 0, 0, 0);
     color: white;
-    border: solid;
+    border: 1px solid;
     outline: white;
     height: 30px;
     transition: height 1s;
@@ -200,6 +203,13 @@ label {
 
 
 /*------------------- USER PROFILE --------------------------------*/
+#profile {
+    background-color: rgba(105,100,100,0.8);
+    padding: 2em;
+    margin-left: 1em;
+   margin-right: 1em;
+}
+
 
 .profile-header {
     margin-bottom: 20px;
