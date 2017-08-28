@@ -10,6 +10,8 @@ myApp.controller("RegisterController", RegisterController);
 myApp.controller("SecretController", SecretController);
 myApp.controller("CreateProfileController",CreateProfileController);
 myApp.controller("UserProfileController", UserProfileController);
+myApp.controller("OtherProfilesController", OtherProfilesController);
+
 
 
 myApp.service("$accountService", AccountService);
@@ -73,6 +75,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/userProfile',
             templateUrl: '/ngApp/views/UserProfile.html',
             controller: UserProfileController,
+            controllerAs: 'controller'
+        })
+        .state('otherUserProfiles', {
+            url: '/OtherUsersProfiles',
+            templateUrl: '/ngApp/views/OtherUsersProfiles.html',
+            controller: OtherProfilesController,
             controllerAs: 'controller'
         })
         .state('artistProfile', {
