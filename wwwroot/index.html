@@ -27,6 +27,8 @@
                <li> <a href="/userProfile" ng-show="account.isLoggedIn()"> Profile</a></li>
                 <li> <a href="/createProfile" ng-show="account.isLoggedIn()"> Create Profile</a></li>
                 <li> <a href="/OtherUsersProfiles" ng-show="account.isLoggedIn()"> Other Users</a></li>
+                <li> <a href="/OtherUserProfile/:id" ng-show="account.isLoggedIn()"> Other User Profile</a></li>
+
                 <li><a href="/secret">Secret</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -85,6 +87,8 @@
     <script src="/ngapp/controllers/UserProfileController.js"></script>
     <script src="/ngapp/controllers/CreateProfileController.js"></script>
     <script src="/ngapp/controllers/OtherProfilesController.js"></script>
+    <script src="/ngapp/controllers/OtherUserProfileController.js"></script>
+
 
 
 

@@ -1,5 +1,5 @@
 ﻿<div>
     <ul style="list-style: none;">
-        <li ng-repeat="user in controller.users"><img ng-src="{{user.imageUrl}}" style="width: 400px" /> {{user.userName}} {{user.firstName}} {{user.lastName}}</li>
+        <li ng-repeat="user in controller.users"><img ng-src="{{user.imageUrl}}" style="width: 400px" /> <a ui-sref="otherUserProfile({ id: user.email})">{{user.email}}</a>{{user.userName}} {{user.firstName}} {{user.lastName}}</li>
     </ul>
 </div>

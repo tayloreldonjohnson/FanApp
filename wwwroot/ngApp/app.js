@@ -11,6 +11,8 @@ myApp.controller("SecretController", SecretController);
 myApp.controller("CreateProfileController",CreateProfileController);
 myApp.controller("UserProfileController", UserProfileController);
 myApp.controller("OtherProfilesController", OtherProfilesController);
+myApp.controller("OtherUserProfileController", OtherUserProfileController);
+
 
 
 
@@ -77,10 +79,16 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: UserProfileController,
             controllerAs: 'controller'
         })
-        .state('otherUserProfiles', {
+        .state('otherUsersProfiles', {
             url: '/OtherUsersProfiles',
             templateUrl: '/ngApp/views/OtherUsersProfiles.html',
             controller: OtherProfilesController,
+            controllerAs: 'controller'
+        })
+        .state('otherUserProfile', {
+            url: '/OtherUserProfile/:id',
+            templateUrl: '/ngApp/views/OtherUserProfile.html',
+            controller: OtherUserProfileController,
             controllerAs: 'controller'
         })
            .state('notFound', {
