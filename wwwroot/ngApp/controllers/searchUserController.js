@@ -1,4 +1,4 @@
-﻿class OtherProfilesController {
+﻿class SearchUserController {
     constructor($http, $location, $UserProfileService , $stateParams) {
         this.http = $http;
         this.users = [];
