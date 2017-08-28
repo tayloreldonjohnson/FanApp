@@ -51,9 +51,9 @@ class CreateProfileController {
    fileUploaded(file) {
 	   // save file url to database
 	   this.file = file;
-	   console.log(this.file);
+	   console.log(this.file.url);
 	   console.log(this);
-	   this.$scope.$apply(); // force page to update
-	   this.file.url;  //change 'item' to imageUrl property
+	/*   this.$scope.$apply(); */// force page to update
+	   /*this.file.url; */ //change 'item' to imageUrl property
    }
 }
