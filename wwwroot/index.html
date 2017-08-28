@@ -4,6 +4,7 @@
     <title>Hello App</title>
     <link href="/libs/bootstrap.min.css" rel="stylesheet" />
     <link href="/libs/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Monoton&effect=-neon|neon" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
@@ -34,15 +35,18 @@
                 <li>
                     <div ng-show="account.isLoggedIn()">
                         {{account.getUserName()}}
+                        
+
+
+
                     </div>
                 </li>
             </ul>            
         </div>
     </nav>
 
-    <!--<div class="container index-ui shadow">-->
-        
-
+    <!--</div>-->
+        <!--<div class="container index-ui shadow">-->
         <!--<script>
             var client = filestack.init("AdqhVmjnDSXuLRRPEfvdbz");
             client.pick({
@@ -56,19 +60,18 @@
 
         <ui-view></ui-view>
 
-    <!--</div>-->
+        <!--</div>-->
+        <!-- Library Files -->
+        <script src="/libs/angular.min.js"></script>
+        <script src="/libs/angular-resource.min.js"></script>
+        <script src="/libs/angular-animate.min.js"></script>
+        <script src="/libs/angular-touch.min.js"></script>
+        <script src="/libs/jquery.min.js"></script>
+        <script src="/libs/ui-bootstrap.min.js"></script>
+        <script src="/libs/ui-bootstrap-tpls.min.js"></script>
+        <script src="/libs/angular-ui-router.min.js"></script>
 
-    <!-- Library Files -->
-    <script src="/libs/angular.min.js"></script>
-    <script src="/libs/angular-resource.min.js"></script>
-    <script src="/libs/angular-animate.min.js"></script>
-    <script src="/libs/angular-touch.min.js"></script>
-    <script src="/libs/jquery.min.js"></script>
-    <script src="/libs/ui-bootstrap.min.js"></script>
-    <script src="/libs/ui-bootstrap-tpls.min.js"></script>
-    <script src="/libs/angular-ui-router.min.js"></script>
-    
-    
+
 
     <!-- controllers -->
     <script src="/ngapp/controllers/aboutController.js"></script>
@@ -85,11 +88,11 @@
 
 
 
-    <!-- services -->
-    <script src="/ngapp/services/accountService.js"></script>
-    <script src="/ngapp/services/UserProfileService.js"></script>
+        <!-- services -->
+        <script src="/ngapp/services/accountService.js"></script>
+        <script src="/ngapp/services/UserProfileService.js"></script>
 
-    <script src="/ngapp/app.js"></script>
+        <script src="/ngapp/app.js"></script>
 
 </body>
 </html>
