@@ -1,5 +1,5 @@
 ﻿class OtherUserProfileController {
-    constructor() {
+    constructor($stateParams , ) {
 
     }
 }

@@ -1,4 +1,7 @@
-﻿body {
+﻿/*@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");*/
+
+
+/*body {
     background: linear-gradient(132deg, #F9FC3A, #F17105, #D11149, #1A8FE3, #31D843 );
     background-size: 400% 400%;
     animation: backgroundgradient 30s ease infinite;

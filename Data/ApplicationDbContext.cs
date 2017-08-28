@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Hello.Data;
+using Hello.Data.Models;
 
 namespace Hello.Data
 {
@@ -24,5 +25,6 @@ namespace Hello.Data
         }
 
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<ApplicationArtist> ApplicationArtist { get; set; }
     }
 }

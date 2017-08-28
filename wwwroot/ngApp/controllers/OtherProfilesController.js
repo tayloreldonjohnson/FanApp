@@ -1,28 +1,25 @@
 ﻿class OtherProfilesController {
-    constructor($http, $userService, $state) {
+    constructor($http, $location, $UserProfileService , $stateParams) {
         this.http = $http;
         this.users = [];
         this.users = {};
         this.getUsers();
-        this.state = $state;
-        this.userService = $userService;
+        this.$stateParams = $stateParams["email"];
+        this.$UserProfileService = $UserProfileService;
         this.email = sessionStorage.getItem("email");
-        this.user;
     }
 
     getUsers() {
         this.http.get("api/Users")
             .then(res => {
-                this.users = res.data;
-                this.state.go("OtherUserProfile");
+                this.users = res.data;                              
             });
     }
-    getUser() {
-        this.userService.getUserProfile(this.email)
+    getUserProfile() {
+         this.$UserProfileService.getUserProfile(this.email)
             .then((res) => {
                 this.user = res.data;
                 console.log(res.data);
-            });
+            });  
     }
-
 }

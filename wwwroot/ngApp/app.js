@@ -80,13 +80,13 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controllerAs: 'controller'
         })
         .state('otherUsersProfiles', {
-            url: '/OtherUsersProfiles/:email',
+            url: '/OtherUsersProfiles',
             templateUrl: '/ngApp/views/OtherUsersProfiles.html',
             controller: OtherProfilesController,
             controllerAs: 'controller'
         })
         .state('otherUserProfile', {
-            url: '/OtherUserProfile',
+            url: '/OtherUserProfile/:id',
             templateUrl: '/ngApp/views/OtherUserProfile.html',
             controller: OtherUserProfileController,
             controllerAs: 'controller'

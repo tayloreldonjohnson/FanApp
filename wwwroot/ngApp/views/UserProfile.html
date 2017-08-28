@@ -11,6 +11,10 @@
 <div class="text-center profile-img"><img ng-src="{{controller.user.imageUrl}}" /></div>
 <br />
 
+
+<!--<ul ng-repeat="users in controller.user">-->
+
+ 
 <div class="profile-text"><span class="profile-heads">Email</span>: {{controller.user.email}}</div>  
 
 <div class="profile-text"><span class="profile-heads">UserName</span>: {{controller.user.userName}}</div>  
@@ -23,4 +27,22 @@
 
 
 <div class="profile-text"><span class="profile-heads">Account Created on</span>: {{controller.user.dateCreated | date}}</div>
+<!--<div id="search">
+    <div class="">-->
+        <!--<input type="text"  placeholder="Search" ng-model="search"/>-->
+        <!--placeholder="Search"-->
+        <!--<span class="input-group-btn">-->
+        <!--<button class="btn btn-danger" type="button">
+            <span class=" glyphicon glyphicon-search"></span>
+        </button>-->
+        <!--<!--<select ng-model="search" ng-options="planet.firstName for planet in controller.user track by planet.firstName">-->-->
+         
 
+            <!--</select>-->
+        <!--<ul ng-repeat="users in controller.getUserProfile() | filter:search ">
+            <li>    </li>
+        </ul>-->
+      
+
+
+          
