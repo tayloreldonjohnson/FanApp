@@ -32,7 +32,7 @@ namespace Hello.Services
                 var artist = _db.ApplicationArtist.Where(m => m.Name == name).FirstOrDefault();
                 var newArtist = new ArtistVM
                 {
-
+                    Id = artist.Id,
                     Name = artist.Name,
                     Genre = artist.Genre,
                     ImageUrl = artist.ImageUrl

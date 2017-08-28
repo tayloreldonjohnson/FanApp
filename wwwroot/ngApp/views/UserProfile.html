@@ -26,29 +26,23 @@
 <div class="profile-text"><span class="profile-heads">About Me</span>: {{controller.user.aboutMe}}</div>
 
 
-<div class="profile-text"><span class="profile-heads">Account Created on</span>: {{controller.user.dateCreated}}</div>
-
 <div class="profile-text"><span class="profile-heads">Account Created on</span>: {{controller.user.dateCreated | date}}</div>
-<div id="search">
-    <div class="">
-        <input type="text"  placeholder="Search" ng-model="search"/>
+<!--<div id="search">
+    <div class="">-->
+        <!--<input type="text"  placeholder="Search" ng-model="search"/>-->
         <!--placeholder="Search"-->
         <!--<span class="input-group-btn">-->
-        <button class="btn btn-danger" type="button">
+        <!--<button class="btn btn-danger" type="button">
             <span class=" glyphicon glyphicon-search"></span>
-        </button>
+        </button>-->
         <!--<!--<select ng-model="search" ng-options="planet.firstName for planet in controller.user track by planet.firstName">-->-->
          
 
             <!--</select>-->
-        <ul ng-repeat="users in controller.getUserProfile() | filter:search ">
+        <!--<ul ng-repeat="users in controller.getUserProfile() | filter:search ">
             <li>    </li>
-        </ul>
-      >
+        </ul>-->
+      
 
 
-            <!--<ul ng-repeat="user in controller.planets | filter:search ">
-                
           
-</div>
-</div>
