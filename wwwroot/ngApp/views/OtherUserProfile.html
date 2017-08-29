@@ -1,26 +1,27 @@
-﻿<div class="profile-header">
-
+﻿<div class="username">
     <h1>
-        {{controller.user.userName}}'s Profile
+        {{controller.user.userName}}
     </h1>
-
 </div>
 
+<div class="column-layout">
+    <div class="left-column">
+        <div><strong>{{controller.user.firstName}} {{controller.user.lastName}}</strong></div> <br />
+        <div><span></span> {{controller.user.email}}</div> <br />
+        <div><span>Member since</span>: {{controller.user.dateCreated | date}}</div>
+       
+    </div>
 
+    <div class="main-column">
+        
+        <p href="/userProfile" class="profile-img"><img ng-src="{{controller.user.imageUrl}}" /></p>
+    </div>
 
-<div class="text-center profile-img"><img ng-src="{{controller.user.imageUrl}}" /></div>
-<br />
-
-<div class="profile-text"><span class="profile-heads">Email</span>: {{controller.user.email}}</div>
-
-<div class="profile-text"><span class="profile-heads">UserName</span>: {{controller.user.userName}}</div>
-
-<div class="profile-text"><span class="profile-heads">Name</span>: {{controller.user.firstName}} {{controller.user.lastName}}</div>
-
-<!--<div class="profile-text"><span class="profile-heads">Last Name</span>: {{controller.user.lastName}}</div>-->
-
-<div class="profile-text"><span class="profile-heads">About Me</span>: {{controller.user.aboutMe}}</div>
-
-
-<div class="profile-text"><span class="profile-heads">Account Created on</span>: {{controller.user.dateCreated | date}}</div>
-
+    <div class="right-column">
+        <div><span>0 Uploads</span> &nbsp &nbsp
+        <span href="#">0 Following</span>  &nbsp &nbsp
+        <span href="#">0 Followers</span></div> <br />
+        <div>{{controller.user.aboutMe}}</div> <br />
+        <div><button href="/createProfile" type="submit" class="btn btn-info">Follow</button></div>
+    </div>
+    </div>
