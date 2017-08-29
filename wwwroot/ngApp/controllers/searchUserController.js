@@ -19,7 +19,6 @@
          this.$UserProfileService.getUserProfile(this.email)
             .then((res) => {
                 this.user = res.data;
-                console.log(res.data);
                 this.location.path("/OtherUserProfile");
             });  
     }
