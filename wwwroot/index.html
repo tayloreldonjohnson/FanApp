@@ -4,7 +4,7 @@
     <title>Hello App</title>
     <link href="/libs/bootstrap.min.css" rel="stylesheet" />
     <link href="/libs/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Monoton&effect=-neon|neon" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
@@ -22,30 +22,45 @@
                 <a class="navbar-brand"  href="/" ><!--<img width="50" height="50" src="" id="logo"/>-->LOGO</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-               <li> <a href="/userProfile" ng-show="account.isLoggedIn()"> Profile</a></li>
+                <li class="active"><a  href="/" >
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a></li>
+                <li><a href="/about">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                </a></li>
+               <li> <a href="/userProfile" ng-show="account.isLoggedIn()">
+                        <span class="glyphicon glyphicon-user"></span>
+                </a></li>
                 <li> <a href="/createProfile" ng-show="account.isLoggedIn()"> Create Profile</a></li>
                 <li> <a href="/searchUser" ng-show="account.isLoggedIn()"> Search Users</a></li>
-                
+                <li> <a href="/artist" ng-show="account.isLoggedIn()"> Artist</a></li>
 
                 <li><a href="/secret">Secret</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"  ng-show="account.isLoggedIn()">
+                    <span class="glyphicon glyphicon-globe"></span>
+                </a></li>
+                <li><a href="#"  ng-show="account.isLoggedIn()">
+                    <span class="glyphicon glyphicon-bell"></span>
+                </a></li>
+               <li><a href="#"  ng-show="account.isLoggedIn()">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                </a></li>
                 <li><a href="/login" ng-show="!account.isLoggedIn()">Login</a></li>
                 <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
-                <li>
+                <!--<li>
                     <div ng-show="account.isLoggedIn()">
                         {{account.getUserName()}}
-                        
                     </div>
-                </li>
+                </li>-->
             </ul>            
         </div>
     </nav>
 
-    <!--</div>-->
-        <!--<div class="container index-ui shadow">-->
+    <!--<div class="container index-ui shadow">-->
+        
+
         <!--<script>
             var client = filestack.init("AdqhVmjnDSXuLRRPEfvdbz");
             client.pick({
@@ -59,18 +74,22 @@
 
         <ui-view></ui-view>
 
-        <!--</div>-->
-        <!-- Library Files -->
-        <script src="/libs/angular.min.js"></script>
-        <script src="/libs/angular-resource.min.js"></script>
-        <script src="/libs/angular-animate.min.js"></script>
-        <script src="/libs/angular-touch.min.js"></script>
-        <script src="/libs/jquery.min.js"></script>
-        <script src="/libs/ui-bootstrap.min.js"></script>
-        <script src="/libs/ui-bootstrap-tpls.min.js"></script>
-        <script src="/libs/angular-ui-router.min.js"></script>
+    <!--</div>-->
+    <!-- Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
+    <!-- Library Files -->
+    <script src="/libs/angular.min.js"></script>
+    <script src="/libs/angular-resource.min.js"></script>
+    <script src="/libs/angular-animate.min.js"></script>
+    <script src="/libs/angular-touch.min.js"></script>
+    <script src="/libs/jquery.min.js"></script>
+    <script src="/libs/ui-bootstrap.min.js"></script>
+    <script src="/libs/ui-bootstrap-tpls.min.js"></script>
+    <script src="/libs/angular-ui-router.min.js"></script>
+    
+    
 
     <!-- controllers -->
     <script src="/ngapp/controllers/aboutController.js"></script>
