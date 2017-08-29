@@ -294,4 +294,13 @@ label {
     height:auto;
     width:60px;
 }
-       
+
+/*-------Create Profile---------*/
+
+#textarea {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 1px solid;
+    outline: white;
+    
+}

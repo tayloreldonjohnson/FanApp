@@ -1,6 +1,6 @@
-﻿	<h1>Tell Us About You</h1>
+﻿	
 
-	<!--<div class="text-center profile-img"><img ng-src="{{controller.user.imageUrl}}" /></div>
+	<!--<div class="text-center profile-img"><img ng-src="{{controller.user.imageUrl}}{{controller.file.url}}" /></div>
 
 	<div class="profile-text"><span class="profile-heads">Email</span>: {{controller.user.email}}</div>
 
@@ -11,24 +11,42 @@
 	<div class="profile-text"><span class="profile-heads">Last Name</span>: {{controller.user.lastName}}</div>
 
 	<div class="profile-text"><span class="profile-heads">About Me</span>: {{controller.user.aboutMe}}</div>-->
-	<form ng-submit="controller.PostUserProfile(aboutMe, controller.file.url)">
-		<div class="form-group">
-			<label class="col-lg-4 control-label" for="focusedInput">Image:</label>
-		</div>
+	
 
-		<button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
-		<img ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
-		<br />
 
-		<br />
-		<div class="form-group">
-			<label for="textArea" class="col-lg-4 control-label">About Me:</label>
-			<div class="col-lg-12">
-				<textarea class="form-control" rows="4" id="textArea" ng-model="aboutMe"></textarea>
-				<div>
-					<button class="login-btn btn-lg" type="submit">Save Profile</button>
-				</div>
-			</div>
-		</div>
-	</form>
+<form ng-submit="controller.PostUserProfile(aboutMe, controller.file.url)">
+    <div class="username">
+        <h1>
+            {{controller.user.userName}}
+        </h1>
+    </div>
+
+    <div class="column-layout">
+        <div class="left-column">
+            <div><strong>{{controller.user.firstName}} {{controller.user.lastName}}</strong></div> <br />
+            <div><span></span> {{controller.user.email}}</div> <br />
+            <div><span>Member since</span>: {{controller.user.dateCreated | date}}</div>
+
+        </div>
+
+        <div class="main-column">
+
+            <button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
+            <img ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
+            <br />
+        </div>
+
+        <div class="right-column">
+            <div>
+                <span>0 Uploads</span> &nbsp &nbsp
+                <span href="#">0 Following</span>  &nbsp &nbsp
+                <span href="#">0 Followers</span>
+            </div> <br />
+            <textarea placeholder="Tell the World about yourself" class="form-control" rows="1" id="loginusername" ng-model="aboutMe"></textarea> <br />
+            <button class="login-btn btn-lg" type="submit" goto="/userProfile">Save Profile</button>
+        </div>
+    </div>
+</form>
+
+
 
