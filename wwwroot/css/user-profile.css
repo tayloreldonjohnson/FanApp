@@ -1,0 +1,205 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #666;
+}
+
+/* STRUCTURE */
+
+#pagewrap {
+    padding: 5px;
+    width: 960px;
+    margin: 20px auto;
+}
+
+header {
+    height: 100px;
+    padding: 0 15px;
+}
+
+#content {
+    width: 290px;
+    float: left;
+    padding: 5px 15px;
+}
+
+#middle {
+    width: 294px; /* Account for margins + border values */
+    float: left;
+    padding: 5px 15px;
+    margin: 0px 5px 5px 5px;
+}
+
+#sidebar {
+    width: 270px;
+    padding: 5px 15px;
+    float: left;
+}
+
+footer {
+    clear: both;
+    padding: 0 15px;
+}
+
+/************************************************************************************
+MEDIA QUERIES
+*************************************************************************************/
+/* for 980px or less */
+@media screen and (max-width: 980px) {
+
+    #pagewrap {
+        width: 94%;
+    }
+
+    #content {
+        width: 41%;
+        padding: 1% 4%;
+    }
+
+    #middle {
+        width: 41%;
+        padding: 1% 4%;
+        margin: 0px 0px 5px 5px;
+        float: right;
+    }
+
+    #sidebar {
+        clear: both;
+        padding: 1% 4%;
+        width: auto;
+        float: none;
+    }
+
+    header, footer {
+        padding: 1% 4%;
+    }
+}
+
+/* for 700px or less */
+@media screen and (max-width: 600px) {
+
+    #content {
+        width: auto;
+        float: none;
+    }
+
+    #middle {
+        width: auto;
+        float: none;
+        margin-left: 0px;
+    }
+
+    #sidebar {
+        width: auto;
+        float: none;
+    }
+}
+
+/* for 480px or less */
+@media screen and (max-width: 480px) {
+
+    header {
+        height: auto;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    #sidebar {
+        display: none;
+    }
+}
+
+
+#content {
+    background: #f8f8f8;
+}
+
+#sidebar {
+    background: #f0efef;
+}
+
+header, #content, #middle, #sidebar {
+    margin-bottom: 5px;
+}
+
+#pagewrap, header, #content, #middle, #sidebar, footer {
+    border: solid 1px #ccc;
+}
+
+
+/*#profile {
+    background-color: rgba(105,100,100,0.8);
+    padding: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+#Main {
+    font-size: 1.75em;
+    padding: 5px 0;
+    margin-left: 25px;
+    color: mediumvioletred
+}
+
+.username {
+    position: center;
+    color: #fff;
+    text-align: center;
+}
+
+.name {
+}
+
+.bio {
+}
+
+.settings {
+}
+
+.profile-img {
+    position: center;
+}
+
+.activity {
+    float: right
+}
+
+.email {
+    float: right;
+}
+
+.member {
+    float: right;
+}
+
+.profile-heads {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+
+.profile-text:last-child {
+    margin-bottom: 50px;
+}
+
+.profile-img {
+    background: linear-gradient(132deg, #31D843, #1A8FE3, #D11149, #F17105, #F9FC3A );
+    background-size: 100% 100%;
+    animation: backgroundgradient 30s ease infinite;
+    padding-top: 12px;
+    width: 226px;
+    height: auto;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.profile-img img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}*/

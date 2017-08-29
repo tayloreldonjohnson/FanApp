@@ -83,12 +83,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: OtherProfilesController,
             controllerAs: 'controller'
         })
-        .state('artistProfile', {
-            url: '/artistProfile',
-            templateUrl: '/ngApp/views/artistProfile.html',
-            controller: ArtistProfileController,
-            controllerAs: 'controller'
-        })
+        //.state('artistProfile', {
+        //    url: '/artistProfile',
+        //    templateUrl: '/ngApp/views/artistProfile.html',
+        //    controller: ArtistProfileController,
+        //    controllerAs: 'controller'
+        //})
            .state('notFound', {
             url: '/notFound',
             templateUrl: '/ngApp/views/notFound.html'
