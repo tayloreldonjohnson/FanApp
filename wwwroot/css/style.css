@@ -1,9 +1,9 @@
 ﻿body {
-     /*background-color: #f6ae2d;*/
+    /*background-color: #f6ae2d;*/
     background: linear-gradient(132deg, #F9FC3A, #F17105, #D11149, #1A8FE3, #31D843 );
     background-size: 400% 400%;
     animation: backgroundgradient 30s ease infinite;
-    /*color: white;*/
+    color: white;
     font-family: 'Mukta Mahee', 'Lucida Sans', sans-serif;
     font-size: 1.5em;
 }
@@ -32,65 +32,63 @@ label {
 
 
 
---------------  NAVIGATION  -------------------------------------------------
+/*--------------  NAVIGATION  -------------------------------------------------*/
 
 .navbar {
-    background-color: #33658a;
+    /*background-color: #33658a;*/
     background-color: #000;
- 
+    /*top: 0;
+    position: fixed;
+    width: 100%;*/
 }
 
 .navbar-brand {
-    color: #f6ae2d;
+    /*color: #f6ae2d;*/
     color: #1A8FE3;
 }
 
 
 
 .nav li a:link {
-    background-color: #33658a;
-    color: #f6ae2d;
+    /*background-color: #33658a;
+    color: #f6ae2d;*/
     background-color: #000;
-    color: #F7FFF7;
+    color: #7c7c7c;
 }
 
 .nav li a:visited {
-    background-color: #2f4858;
-    color: #f6ae2d;
+    /*background-color: #2f4858;
+    color: #f6ae2d;*/
     background-color: #000;
     color: #F7FFF7;
 }
 
 .nav li a:hover {
-    background-color: #2f4858;
-    color: #f6ae2d;
-    background-color: #1A8FE3;
-    color: #F7FFF7;
+    /*background-color: #2f4858;
+    color: #f6ae2d;*/
+    
+    color: rgba(255, 255, 255, 1.00);
 }
 
 .nav li a:active {
-    background-color: #2f4858;
-    color: #f6ae2d;
+    /*background-color: #2f4858;
+    color: #f6ae2d;*/
     background-color: #000;
     color: #F7FFF7;
 }
 
 
------------------  UI-VIEW  --------------------------------------------------------
+/*-----------------  UI-VIEW  --------------------------------------------------------*/
 .index-ui {
-    background-color: #f26419;
+    /*background-color: #f26419;*/
     background-color: #000;
     color: #F7FFF7;
 }
 
-.shadow {
-    -moz-box-shadow: 1px 1px 4px 1px #000;
-    -webkit-box-shadow: 1px 1px 4px 1px #000;
-    box-shadow: 1px 1px 4px 1px #000;
-}
 
 
-------------------------------  LOGIN  ----------------------------------------------
+
+/*------------------------------  LOGIN  ----------------------------------------------*/
 
 
 #loginform {
@@ -110,9 +108,9 @@ label {
 
 
 .login-btn {
-    background-color: #33658a;
+    /*background-color: #33658a;
     color: #f6ae2d;
-    margin: 10px;
+    margin: 10px;*/
     background-color: #000;
     color: #F7FFF7;
     margin: 10px;
@@ -120,13 +118,13 @@ label {
 }
 
 .login-btn:checked {
-    color: #f6ae2d;
+    /*color: #f6ae2d;*/
     color: #F7FFF7;
 }
 
 .login-btn:hover {
-    background-color: #2f4858;
-    color: #f6ae2d;
+    /*background-color: #2f4858;
+    color: #f6ae2d;*/
         background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
         background-size: 400% 400%;
         animation: backgroundgradient 5s ease infinite;
@@ -134,45 +132,45 @@ label {
     }
 
 .login-btn:focus:not(:active) {
-    color: #f6ae2d;
+    /*color: #f6ae2d;*/
     color: #F7FFF7;
 }
 
 #loginusername {
     background-color: rgba(0, 0, 0, 0);
     color: white;
-    border: solid;
+    border: 1px solid;
     outline: white;
     height: 30px;
     transition: height 1s;
     -webkit-transition: height 1s;
     
 }
-#loginusername::-webkit-input-placeholder {  Chrome 
+#loginusername::-webkit-input-placeholder { /* Chrome */
     color: white;
 }
 
-#loginusername:-ms-input-placeholder {  IE 10+ 
+#loginusername:-ms-input-placeholder { /* IE 10+ */
     color: white;
 }
 
-#loginusername::-moz-placeholder {  Firefox 19+ 
+#loginusername::-moz-placeholder { /* Firefox 19+ */
     color: white;
     opacity: 1;
 }
 
-#loginusername:-moz-placeholder {  Firefox 4 - 18 
+#loginusername:-moz-placeholder { /* Firefox 4 - 18 */
     color: white;
     opacity: 1;
 }
 
    
 
-------------------------------  REGISTER  --------------------------------------------
+/*------------------------------  REGISTER  --------------------------------------------*/
 
 .reg-btn {
-    background-color: #33658a;
-    color: #f6ae2d;
+    /*background-color: #33658a;
+    color: #f6ae2d;*/
     margin: 10px;
     background-color: #000;
     color: #F7FFF7;
@@ -181,13 +179,13 @@ label {
 }
 
 .reg-btn:checked {
-    color: #f6ae2d;
+    /*color: #f6ae2d;*/
     color: #F7FFF7;
 }
 
 .reg-btn:hover {
-    background-color: #2f4858;
-    color: #f6ae2d;
+    /*background-color: #2f4858;
+    color: #f6ae2d;*/
         background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
         background-size: 400% 400%;
         animation: backgroundgradient 5s ease infinite;
@@ -195,16 +193,68 @@ label {
     }
 
 .reg-btn:focus:not(:active) {
-    color: #f6ae2d;
+    /*color: #f6ae2d;*/
     color: #F7FFF7;
 }
 
 
-------------------- USER PROFILE --------------------------------
+/*------------------- USER PROFILE --------------------------------*/
 
-.profile-header {
-    margin-bottom: 20px;
+#profile {
+    /*background-color: rgba(105,100,100,0.8);*/
+    padding: 2em;
+    margin-left: 1em;
+   margin-right: 1em;
+}
+
+#Main {
+    font-size: 1.75em;
+    padding: 5px 0;
+    margin-left: 25px;
+    color: mediumvioletred
+}
+
+.username {
+    text-align:center;
+    padding-top:4em;
+}
+.column-layout {
+    padding:3em;
+    display:flex;
+    justify-content:space-between;
+}
+
+.left-column {
+    flex: 1;
+    order: 1;
+    box-sizing: border-box;
+    flex-basis: 30%;
+    margin-left:1em;
+    font-size: 1.25em;
+    padding-left: 10em;
+    
+    
+
+}
+
+.main-column {
+    flex: 1;
+    order: 2;
+    box-sizing: border-box;
+    position: center;
+    flex-basis: 30%;
     text-align: center;
+}
+
+.right-column {
+    flex: 1;
+    order: 3;
+    box-sizing: border-box;
+    flex-basis: 30%;
+    margin-right: 1em;
+    font-size: 1.25em;
+    text-align:left;
+    
 }
 
 .profile-heads {
@@ -212,12 +262,7 @@ label {
     font-weight: bold;
 }
 
-.profile-text {
-    font-size: 1.75em;
-    padding: 5px 0;
-    margin-left: 25px;
-    color: #F7FFF7;
-}
+
 
     .profile-text:last-child {
         margin-bottom: 50px;
@@ -239,22 +284,14 @@ label {
         height: auto;
         margin-bottom: 10px;
         border-radius: 50%;
-       
     }
 
-    ---------------------------------------Home Page----------------------------------------------------------------
+
+    /*---------------------------------------Home Page----------------------------------------------------------------*/
 
 
 #micimg{
     height:auto;
     width:60px;
-}
-
-
-#search {
-    margin: 20px;
-    margin-top: 10px;
-    padding: 2px;
-    display: inline-block;
 }
        
