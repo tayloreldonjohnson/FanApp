@@ -10,19 +10,13 @@ myApp.controller("RegisterController", RegisterController);
 myApp.controller("SecretController", SecretController);
 myApp.controller("CreateProfileController",CreateProfileController);
 myApp.controller("UserProfileController", UserProfileController);
-
+myApp.controller("SearchUserController", SearchUserController);
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
 myApp.service("$filepicker", function ($window) {
     return $window.filepicker;
 });
-
-
-
-
-
-
 
 myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -73,6 +67,24 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/userProfile',
             templateUrl: '/ngApp/views/UserProfile.html',
             controller: UserProfileController,
+            controllerAs: 'controller'
+        })
+        .state('searchUser', {
+            url: '/searchUser',
+			templateUrl: '/ngApp/views/searchUser.html',
+			controller: SearchUserController,
+            controllerAs: 'controller'
+        })
+        .state('otherUserProfile', {
+            url: '/OtherUserProfile/:email',
+            templateUrl: '/ngApp/views/OtherUserProfile.html',
+            controller: OtherUserProfileController,
+            controllerAs: 'controller'
+        })
+        .state('artist', {
+            url: '/artist',
+            templateUrl: '/ngApp/views/artist.html',
+            controller: artistController,
             controllerAs: 'controller'
         })
            .state('notFound', {
