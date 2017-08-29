@@ -29,15 +29,15 @@ namespace Hello.Controllers
         }
 
         // GET: api/ApplicationArtists/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetApplicationArtist([FromRoute] int id)
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetArtist(string name)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var applicationArtist = await _context.ApplicationArtist.SingleOrDefaultAsync(m => m.Id == id);
+            var applicationArtist = await _context.ApplicationArtist.SingleOrDefaultAsync(m => m.Name == name);
 
             if (applicationArtist == null)
             {

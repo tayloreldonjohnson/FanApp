@@ -3,8 +3,7 @@
 
 <ul style="list-style: none;">
     <li ng-repeat="artist in controller.artists"><img ng-src="{{artist.imageUrl}}" style="width: 400px" />
-
-        {{artist.name}}
+		<a ui-sref="artistProfile({ name: artist.name})">{{artist.name}}</a>
         {{artist.genre}}
         
     </li>
