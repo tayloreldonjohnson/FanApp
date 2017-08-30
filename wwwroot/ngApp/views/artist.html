@@ -1,8 +1,10 @@
-﻿
+﻿<div class="input-group">
+    <input type="text" class="form-control" placeholder="Search Artist" ng-model="myArtistFilter.name" aria-describedby="basic-addon1">
+</div>
 
 
-<ul style="list-style: none;">
-    <li ng-repeat="artist in controller.artists"><img ng-src="{{artist.imageUrl}}" style="width: 400px" />
+<ul style="list-style: none;" ng-show="myArtistFilter.name">
+    <li ng-repeat="artist in controller.artists | filter:myArtistFilter | orderBy:'name'"><img ng-src="{{artist.imageUrl}}" style="width: 400px" />
 		<a ui-sref="artistProfile({ name: artist.name})">{{artist.name}}</a>
         {{artist.genre}}
         
