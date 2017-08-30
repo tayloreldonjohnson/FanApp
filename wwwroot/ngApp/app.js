@@ -126,6 +126,46 @@ angular.module('myApp')
 angular.module('myApp').config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');
 });
+/*----search bar filters----*/
+myApp.filter('myfilter', function () {
+    function strStartsWith(str, prefix) {
+        //str = str.toLowerCase();
+        //prefix = prefix.toLowerCase();
+        var result = (str + "").indexOf(prefix) === 0;
+        return result;
+    }
+    return function (items, userName) {
+        var filtered = [];
+        angular.forEach(items, function (item) {
+            if (strStartsWith(item.userName, userName)) {
+                filtered.push(item);
+            }
+        });
+        return filtered;
+    };
+});
+myApp.filter('myArtistfilter', function () {
+    function strStartsWith(str, prefix) {
+        //str = str.toLowerCase();
+        //prefix = prefix.toLowerCase();
+        var result = (str + "").indexOf(prefix) === 0;
+        return result;
+    }
+    return function (items, name) {
+        var filtered = [];
+        angular.forEach(items, function (item) {
+            if (strStartsWith(item.name, name)) {
+                filtered.push(item);
+            }
+        });
+        return filtered;
+    };
+});
+
+
+
+
+
 
 /*----------------------------------------------  FILESTACK  ---------------------------------------------------------------*/
 //angular.module('myApp')

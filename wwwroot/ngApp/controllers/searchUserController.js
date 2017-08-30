@@ -1,5 +1,5 @@
 ﻿class SearchUserController {
-    constructor($http, $location, $UserProfileService , $stateParams) {
+    constructor($http, $location, $UserProfileService , $stateParams ) {
         this.http = $http;
         this.users = [];
         this.users = {};
@@ -8,11 +8,11 @@
         this.$UserProfileService = $UserProfileService;
         this.email = sessionStorage.getItem("email");
     }
-
     getUsers() {
         this.http.get("api/Users")
             .then(res => {
-                this.users = res.data;                              
+                this.users = res.data;
+                
             });
     }
     getUserProfile() {
@@ -22,4 +22,5 @@
                 this.location.path("/OtherUserProfile");
             });  
     }
-}
+  
+  }

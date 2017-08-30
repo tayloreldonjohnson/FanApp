@@ -34,7 +34,7 @@ class CreateProfileController {
             .then((res) => {
 				this.user = {};
 				this.getUserProfile();
-                //this.location.path('/userProfile');
+                this.location.path('/userProfile');
             });
 	}
 	//img stuff
