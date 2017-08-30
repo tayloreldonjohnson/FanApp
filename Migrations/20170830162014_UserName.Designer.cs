@@ -11,9 +11,10 @@ using System;
 namespace Hello.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170830162014_UserName")]
+    partial class UserName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,7 +24,8 @@ namespace Hello.Migrations
             modelBuilder.Entity("Hello.Data.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("UserId");
 
                     b.Property<string>("AboutMe");
 
@@ -84,7 +86,8 @@ namespace Hello.Migrations
             modelBuilder.Entity("Hello.Data.Models.ApplicationArtist", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ArtistId");
 
                     b.Property<string>("Genre");
 
@@ -95,28 +98,6 @@ namespace Hello.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ApplicationArtist");
-                });
-
-            modelBuilder.Entity("Hello.Data.Models.Post", b =>
-                {
-                    b.Property<int>("PostId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("ApplicationArtistId");
-
-                    b.Property<string>("ApplicationUserId");
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<string>("Media");
-
-                    b.HasKey("PostId");
-
-                    b.HasIndex("ApplicationArtistId");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.ToTable("Post");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -225,17 +206,6 @@ namespace Hello.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Hello.Data.Models.Post", b =>
-                {
-                    b.HasOne("Hello.Data.Models.ApplicationArtist")
-                        .WithMany("Posts")
-                        .HasForeignKey("ApplicationArtistId");
-
-                    b.HasOne("Hello.Data.ApplicationUser")
-                        .WithMany("Posts")
-                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
