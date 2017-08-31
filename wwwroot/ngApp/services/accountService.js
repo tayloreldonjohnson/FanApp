@@ -13,7 +13,7 @@ class AccountService {
 
         // store claims
         this.window.sessionStorage.setItem('claims', JSON.stringify(userInfo.claims));
-    }
+	}
 
     getUserName() {
         return this.window.sessionStorage.getItem('userName');

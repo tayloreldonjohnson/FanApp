@@ -90,7 +90,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controllerAs: 'controller'
 		})
 		.state('artistProfile', {
-			url: '/artistProfile/:name',
+			url: '/artistProfile/:id',
 			templateUrl: '/ngApp/views/artistProfile.html',
 			controller: ArtistProfileController,
 			controllerAs: 'controller'
