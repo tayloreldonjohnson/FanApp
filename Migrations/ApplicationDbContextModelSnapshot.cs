@@ -23,7 +23,8 @@ namespace Hello.Migrations
             modelBuilder.Entity("Hello.Data.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("UserId");
 
                     b.Property<string>("AboutMe");
 
@@ -84,7 +85,8 @@ namespace Hello.Migrations
             modelBuilder.Entity("Hello.Data.Models.ApplicationArtist", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ArtistId");
 
                     b.Property<string>("Genre");
 
@@ -102,7 +104,7 @@ namespace Hello.Migrations
                     b.Property<int>("PostId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ApplicationArtistId");
+                    b.Property<int>("ApplicationArtistId");
 
                     b.Property<string>("ApplicationUserId");
 
@@ -231,7 +233,8 @@ namespace Hello.Migrations
                 {
                     b.HasOne("Hello.Data.Models.ApplicationArtist")
                         .WithMany("Posts")
-                        .HasForeignKey("ApplicationArtistId");
+                        .HasForeignKey("ApplicationArtistId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Hello.Data.ApplicationUser")
                         .WithMany("Posts")

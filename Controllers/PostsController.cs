@@ -28,6 +28,13 @@ namespace Hello.Controllers
             return _context.Post;
         }
 
+
+        [HttpGet("{id}")]
+        public List<Post> Get(string id)
+        {
+            var posts = _context.Post.Where(u => u.ApplicationUserId == id).ToList();
+            return posts;
+        }
         // GET: api/Posts/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPost([FromRoute] int id)
