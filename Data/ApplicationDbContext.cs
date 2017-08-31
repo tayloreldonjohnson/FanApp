@@ -20,14 +20,13 @@ namespace Hello.Data
         {
             base.OnModelCreating(builder);
 
-			//builder.Entity<ApplicationArtist>()
-			//.Property(p => p.Id)
-			//.HasColumnName("ArtistId");
+			builder.Entity<ApplicationArtist>()
+			.Property(p => p.Id)
+			.HasColumnName("ArtistId");
 
-			//builder.Entity<ApplicationUser>()
-			//.Property(p => p.Id)
-			//.HasColumnName("UserId");
-			
+			builder.Entity<ApplicationUser>()
+			.Property(p => p.Id)
+			.HasColumnName("UserId");
 
 			// Customize the ASP.NET Identity model and override the defaults if needed.
 			// For example, you can rename the ASP.NET Identity table names and more.
@@ -35,7 +34,7 @@ namespace Hello.Data
 		}
 
 		public DbSet<ApplicationUser> ApplicationUser { get; set; }
-        public DbSet<ApplicationArtist> ApplicationArtist { get; set; }
+		public DbSet<ApplicationArtist> ApplicationArtist { get; set; }
 		public DbSet<Post> Post { get; set; }
 
 	}
