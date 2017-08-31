@@ -29,26 +29,44 @@ namespace Hello.Controllers
         }
 
         // GET: api/ApplicationArtists/5
-        [HttpGet("{name}")]
-        public async Task<IActionResult> GetArtist(string name)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+  //      [HttpGet("search/{name}")]
+		//public async Task<IActionResult> GetArtist(string name)
+  //      {
+  //          if (!ModelState.IsValid)
+  //          {
+  //              return BadRequest(ModelState);
+  //          }
 
-            var applicationArtist = await _context.ApplicationArtist.SingleOrDefaultAsync(m => m.Name == name);
+  //          var applicationArtist = await _context.ApplicationArtist.SingleOrDefaultAsync(m => m.Name == name);
 
-            if (applicationArtist == null)
-            {
-                return NotFound();
-            }
+  //          if (applicationArtist == null)
+  //          {
+  //              return NotFound();
+  //          }
 
-            return Ok(applicationArtist);
-        }
+  //          return Ok(applicationArtist);
+  //      }
 
-        // PUT: api/ApplicationArtists/5
-        [HttpPut("{id}")]
+		[HttpGet("{id}")]
+		public async Task<IActionResult> GetArtistid(int id)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
+			var applicationArtistId = await _context.ApplicationArtist.SingleOrDefaultAsync(m => m.Id == id);
+
+			if (applicationArtistId == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(applicationArtistId);
+		}
+
+		// PUT: api/ApplicationArtists/5
+		[HttpPut("{id}")]
         public async Task<IActionResult> PutApplicationArtist([FromRoute] int id, [FromBody] ApplicationArtist applicationArtist)
         {
             if (!ModelState.IsValid)
