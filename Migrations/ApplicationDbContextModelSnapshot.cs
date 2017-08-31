@@ -102,7 +102,7 @@ namespace Hello.Migrations
                     b.Property<int>("PostId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ApplicationArtistId");
+                    b.Property<int>("ApplicationArtistId");
 
                     b.Property<string>("ApplicationUserId");
 
@@ -231,7 +231,8 @@ namespace Hello.Migrations
                 {
                     b.HasOne("Hello.Data.Models.ApplicationArtist")
                         .WithMany("Posts")
-                        .HasForeignKey("ApplicationArtistId");
+                        .HasForeignKey("ApplicationArtistId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Hello.Data.ApplicationUser")
                         .WithMany("Posts")
