@@ -26,10 +26,10 @@ namespace Hello.Services
 
                 return users;
             }
-            public ArtistVM GetArtist(string name)
+            public ArtistVM GetArtist(int id)
             {
 
-                var artist = _db.ApplicationArtist.Where(m => m.Name == name).FirstOrDefault();
+                var artist = _db.ApplicationArtist.Where(m => m.Id == id).FirstOrDefault();
                 var newArtist = new ArtistVM
                 {
                     Id = artist.Id,

@@ -26,9 +26,9 @@ namespace Hello.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public List<Post> Get(string id)
+        public List<Post> Get(int id)
         {
-			var posts = _db.Post.Where(u => u.ApplicationUserId == id).ToList();
+			var posts = _db.Post.Where(u => u.ApplicationArtistId == id).ToList();
 			return posts;
 		}
 

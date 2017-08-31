@@ -4,7 +4,7 @@
 		this.route = "api/artists/";
 	}
 
-	getArtist(name) {
-		return this.http.get(this.route + name);
+	getArtist(id) {
+		return this.http.get(this.route + id);
 	}
 }

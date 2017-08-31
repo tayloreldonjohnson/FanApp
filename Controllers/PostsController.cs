@@ -28,45 +28,52 @@ namespace Hello.Controllers
             return _context.Post;
         }
 
-        // GET: api/Posts/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetPost([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var post = await _context.Post.SingleOrDefaultAsync(m => m.PostId == id);
-
-            if (post == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(post);
-
-        }
-
-		[HttpGet("{ApplicationUserid}")]
-		public async Task<IActionResult> GetPost([FromRoute] string ApplicationUserid)
+		// GET: api/Posts/5
+		[HttpGet("{id}")]
+		public List<Post> Get(int id)
 		{
-			if (!ModelState.IsValid)
-			{
-				return BadRequest(ModelState);
-			}
-			var Userpost = await _context.Post.SingleOrDefaultAsync(m => m.ApplicationUserId == ApplicationUserid);
-
-			if (Userpost == null)
-			{
-				return NotFound();
-			}
-
-			return Ok(Userpost);
+			var posts = _context.Post.Where(u => u.ApplicationArtistId == id).ToList();
+			return posts;
 		}
 
-	// PUT: api/Posts/5
-	[HttpPut("{id}")]
+		//[HttpGet("{ApplicationArtistid}")]
+		//public async Task<IActionResult> GetPost([FromRoute] int ApplicationArtistid)
+		//{
+		//	if (!ModelState.IsValid)
+		//	{
+		//		return BadRequest(ModelState);
+		//	}
+		//	var Userpost = await _context.Post.SingleOrDefaultAsync(m => m.ApplicationArtistId == ApplicationArtistid);
+
+		//	if (Userpost == null)
+		//	{
+		//		return NotFound();
+		//	}
+
+		//	return Ok(Userpost);
+		//}
+
+		//[HttpGet("{id}")]
+		//public async Task<IActionResult> GetPost([FromRoute] int id)
+		//{
+		//	if (!ModelState.IsValid)
+		//	{
+		//		return BadRequest(ModelState);
+		//	}
+
+		//	var post = await _context.Post.SingleOrDefaultAsync(m => m.PostId == id);
+
+		//	if (post == null)
+		//	{
+		//		return NotFound();
+		//	}
+
+		//	return Ok(post);
+
+		//}
+
+		// PUT: api/Posts/5
+		[HttpPut("{id}")]
         public async Task<IActionResult> PutPost([FromRoute] int id, [FromBody] Post post)
         {
             if (!ModelState.IsValid)

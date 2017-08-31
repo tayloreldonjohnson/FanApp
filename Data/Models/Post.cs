@@ -7,17 +7,6 @@ using System.Threading.Tasks;
 
 namespace Hello.Data.Models
 {
-	//  public class Post
-	//  {
-	//[Key]
-	//public int PostId { get; set; }
-	////other properties
-	//public string Media { get; set; }
-	//public DateTime DateCreated { get; set; }
-
-	//public ICollection<UserPost> UserPost { get; set; }
-	//public ICollection<ArtistPost> ArtistPost { get; set; }
-	//  }
 	public class Post
 	{
 		[Key]
