@@ -36,6 +36,7 @@ namespace Hello.Controllers
         {
             public string UserName { get; set; }
             public string Email { get; set; }
+            public string Id { get; set; }
 
             public Dictionary<string, string> Claims { get; set; }
         }
@@ -48,6 +49,8 @@ namespace Hello.Controllers
             {
                 Email = user.Email,
                 UserName = user.UserName,
+                Id = user.Id,
+                
                 Claims = claims.ToDictionary(c => c.Type, c => c.Value)
             };
             return vm;
