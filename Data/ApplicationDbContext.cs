@@ -28,10 +28,10 @@ namespace Hello.Data
 			.Property(p => p.Id)
 			.HasColumnName("UserId");
 
-			// Customize the ASP.NET Identity model and override the defaults if needed.
-			// For example, you can rename the ASP.NET Identity table names and more.
-			// Add your customizations after calling base.OnModelCreating(builder);
-		}
+            // Customize the ASP.NET Identity model and override the defaults if needed.
+            // For example, you can rename the ASP.NET Identity table names and more.
+            // Add your customizations after calling base.OnModelCreating(builder);
+        }
 
 		public DbSet<ApplicationUser> ApplicationUser { get; set; }
 		public DbSet<ApplicationArtist> ApplicationArtist { get; set; }

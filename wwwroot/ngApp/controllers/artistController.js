@@ -3,7 +3,8 @@
         this.$http = $http;
         this.getArtists();
 		this.artists = [];
-		this.$stateParams = $stateParams["id"];
+        this.$stateParams = $stateParams["id"];
+        this.$stateParams = $stateParams["userId"];
 		this.$ArtistProfileService = $ArtistProfileService;
 
     }
