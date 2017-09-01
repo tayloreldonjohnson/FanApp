@@ -13,6 +13,7 @@ myApp.controller("UserProfileController", UserProfileController);
 myApp.controller("SearchUserController", SearchUserController);
 myApp.controller("ArtistController", ArtistController);
 
+
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
 myApp.service("$ArtistProfileService", ArtistProfileService);
