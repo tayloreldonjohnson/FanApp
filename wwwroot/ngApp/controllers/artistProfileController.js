@@ -11,7 +11,7 @@
         this.post = {
             ApplicationArtistId: this.posts,
             ApplicationUserId: this.user,
-            DateCreated: "2017-08-31 16:59:47.0000000",
+            DateCreated: new Date(),
             Media: ""
 
          
