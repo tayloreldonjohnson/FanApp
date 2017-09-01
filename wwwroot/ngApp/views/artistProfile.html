@@ -1,26 +1,64 @@
-﻿<ul>
+﻿<!--<ul>
 	<li><img ng-src="{{controller.artist.imageUrl}}" style="width: 400px" /></li>
 	<li>{{controller.artist.name}}</li>
 	<li>{{controller.artist.genre}}</li>
-</ul>
+</ul>-->
+
+<form id="artistProfile">
+
+
+	<div class="column-layout" style="background-image:url({{controller.artist.headerUrl}}); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+
+		<div class="main-artist-column">
+			<p class="profile-img"><img ng-src="{{controller.artist.imageUrl}}" /></p>
+		</div>
+		<div class="right-artist-column">
+			<div>
+				<div><h2><strong>{{controller.artist.name}}</strong></h2> </div> <br />
+				<div>Genre: &nbsp{{controller.artist.genre}}</div> <br />
+				<span>0 Uploads</span> &nbsp &nbsp
+				<span href="#">0 Following</span>  &nbsp &nbsp
+				<span href="#">0 Followers</span>
+			</div> <br />
+
+
+		</div>
+	</div>
+
+</form>
+<div id="artistProfile">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#album" data-toggle="tab">Albums</a></li>
+		<li><a href="#YoutubeVideos" data-toggle="tab">Youtube Videos</a></li>
+
+	</ul>
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane fade active in" id="album">
+			<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+		</div>
+		<div class="tab-pane fade" id="YoutubeVideos">
+			<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+		</div>
+	</div>
+
+</div>
 
     How You Feel: <input type="text" name="text"><br>
-    <form ng-submit="controller.addPost( controller.file.url)">
-        <input type="submit" value="Submit">
- 
+<form ng-submit="controller.addPost( controller.file.url)">
+	<input type="submit" value="Submit">
 
 
-<div class="main-column">
 
-    <button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
-    <img class="profile-img" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
-    <br />
-</div>
+	<div class="main-column">
+
+		<button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
+		<img class="profile-img" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
+		<br />
+	</div>
 </form>
-<ul >
-    <li ng-repeat ="p in controller.posts"> <img class="profile-img"  ng-src="{{p.media}}" ></li>
-	
-</ul>
-		
+<ul>
+	<li ng-repeat="p in controller.posts"> <img class="profile-img" ng-src="{{p.media}}"></li>
+
+</ul>		
 			
 			
