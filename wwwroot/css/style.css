@@ -1,11 +1,14 @@
 ﻿body {
-    /*background-color: #f6ae2d;*/
     background: linear-gradient(132deg, #F9FC3A, #F17105, #D11149, #1A8FE3, #31D843 );
     background-size: 400% 400%;
     animation: backgroundgradient 30s ease infinite;
     color: white;
     font-family: 'Mukta Mahee', 'Lucida Sans', sans-serif;
     font-size: 1.5em;
+}
+
+ul {
+    list-style-type: none;
 }
 
 legend {
@@ -28,6 +31,7 @@ legend {
 
 label {
     padding: 15px 0 2px 0;
+    color: #000;
 }
 
 
@@ -35,44 +39,31 @@ label {
 /*--------------  NAVIGATION  -------------------------------------------------*/
 
 .navbar {
-    /*background-color: #33658a;*/
-    background-color: #000;
-    /*top: 0;
-    position: fixed;
-    width: 100%;*/
+    background-color: #000;    
 }
 
 .navbar-brand {
-    /*color: #f6ae2d;*/
     color: #1A8FE3;
 }
 
 
 
 .nav li a:link {
-    /*background-color: #33658a;
-    color: #f6ae2d;*/
     background-color: #000;
     color: #7c7c7c;
 }
 
 .nav li a:visited {
-    /*background-color: #2f4858;
-    color: #f6ae2d;*/
     background-color: #000;
     color: #F7FFF7;
 }
 
 .nav li a:hover {
-    /*background-color: #2f4858;
-    color: #f6ae2d;*/
-    
-    color: rgba(255, 255, 255, 1.00);
+    color: #000;
+    background-color: #aaa;
 }
 
 .nav li a:active {
-    /*background-color: #2f4858;
-    color: #f6ae2d;*/
     background-color: #000;
     color: #F7FFF7;
 }
@@ -80,16 +71,36 @@ label {
 
 /*-----------------  UI-VIEW  --------------------------------------------------------*/
 .index-ui {
-    /*background-color: #f26419;*/
     background-color: #000;
     color: #F7FFF7;
 }
 
+.gen-btn {
+    background-color: #000;
+    color: #F7FFF7;
+    margin: 20px 10px 10px 10px;
+    border: 1px solid white;
 
+}
 
+.gen-btn:hover {
+    background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
+    background-size: 400% 400%;
+    animation: backgroundgradient 5s ease infinite;
+    color: black;
+    border: 1px solid black;
+    font-weight: bold;
+}
 
-/*------------------------------  LOGIN  ----------------------------------------------*/
+.gen-btn:focus:not(:active) {
+    color: #F7FFF7;
+}
 
+.search-input {
+    margin: 20px;
+}
+
+ /*------------------------------  LOGIN  ----------------------------------------------*/
 
 #loginform {
     padding-top: 10em;
@@ -106,38 +117,8 @@ label {
     padding: 5px 0;
 }
 
-
-.login-btn {
-    /*background-color: #33658a;
-    color: #f6ae2d;
-    margin: 10px;*/
-    background-color: #000;
-    color: #F7FFF7;
-    margin: 10px;
-    border: 1px solid white;
-}
-
-.login-btn:checked {
-    /*color: #f6ae2d;*/
-    color: #F7FFF7;
-}
-
-.login-btn:hover {
-    /*background-color: #2f4858;
-    color: #f6ae2d;*/
-        background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
-        background-size: 400% 400%;
-        animation: backgroundgradient 5s ease infinite;
-        color: white;
-    }
-
-.login-btn:focus:not(:active) {
-    /*color: #f6ae2d;*/
-    color: #F7FFF7;
-}
-
 #loginusername {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: #000;
     color: white;
     border: 1px solid;
     outline: white;
@@ -162,49 +143,32 @@ label {
 #loginusername:-moz-placeholder { /* Firefox 4 - 18 */
     color: white;
     opacity: 1;
-}*/
+}
 
    
 
 /*------------------------------  REGISTER  --------------------------------------------*/
-
-.reg-btn {
-    /*background-color: #33658a;
-    color: #f6ae2d;*/
-    margin: 10px;
-    background-color: #000;
-    color: #F7FFF7;
-    margin: 10px;
-    border: 1px solid white;
+.reg-inputs {
+    padding: 28px 0;
 }
 
-.reg-btn:checked {
-    /*color: #f6ae2d;*/
-    color: #F7FFF7;
-}
-
-.reg-btn:hover {
-    /*background-color: #2f4858;
-    color: #f6ae2d;*/
-        background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
-        background-size: 400% 400%;
-        animation: backgroundgradient 5s ease infinite;
-        color: white;
-    }
-
-.reg-btn:focus:not(:active) {
-    /*color: #f6ae2d;*/
-    color: #F7FFF7;
-}
 
 
 /*------------------- USER PROFILE --------------------------------*/
+
+.user-container {
+    background-color: rgba(0,0,0,0.75);
+    margin: 0 auto;
+    padding: 20px;
+    width: 95%;
+    border-radius: 2em/5em;
+}
 
 #profile {
     /*background-color: rgba(105,100,100,0.8);*/
     padding: 2em;
     margin-left: 1em;
-   margin-right: 1em;
+    margin-right: 1em;
 }
 
 #Main {
@@ -217,11 +181,13 @@ label {
 .username {
     text-align:center;
     padding-top:4em;
+    color: white;
 }
 .column-layout {
     padding:3em;
     display:flex;
     justify-content:space-between;
+    color: white;
 }
 
 .left-column {
@@ -229,12 +195,13 @@ label {
     order: 1;
     box-sizing: border-box;
     flex-basis: 30%;
-    margin-left:1em;
-    font-size: 1.25em;
-    padding-left: 10em;
-    
-    
+    margin:0 0 0 1em;
+    font-size: 1.25em;    
+}
 
+.profile-name {
+    text-transform: capitalize;
+    font-weight: bold;    
 }
 
 .main-column {
@@ -244,6 +211,7 @@ label {
     position: center;
     flex-basis: 30%;
     text-align: center;
+    margin: 1em;
 }
 
 .right-column {
@@ -251,7 +219,7 @@ label {
     order: 3;
     box-sizing: border-box;
     flex-basis: 30%;
-    margin-right: 1em;
+    margin: 0 1em 0 0;
     font-size: 1.25em;
     text-align:left;
     
@@ -268,7 +236,7 @@ label {
         margin-bottom: 50px;
     }
 
-.profile-img {
+/*.profile-img {
     background: linear-gradient(132deg, #31D843, #1A8FE3, #D11149, #F17105, #F9FC3A );
     background-size: 100% 100%;
     animation: backgroundgradient 30s ease infinite;
@@ -277,7 +245,7 @@ label {
     height: auto;
     border-radius: 50%;
     margin: 0 auto;
-}
+}*/
 
     .profile-img img {
         width: 200px;
@@ -301,7 +269,67 @@ label {
     background-color: rgba(0, 0, 0, 0);
     color: white;
     border: 1px solid;
-    outline: white;
+    outline: white;    
+}
+
+/*---------------- User Classes ---------------------*/
+.user-search {
     
 }
 
+.users-list {
+    margin: 20px;
+}
+
+.user-info-list {
+    font-size: 1.25em;
+    color: white;
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.user-info-list a:link{
+    color: deeppink;
+}
+
+.user-info-list a:visited {
+    color: deeppink;
+}
+
+.user-info-list a:hover {
+    color: deeppink;
+}
+
+.user-info-list a:active {
+    color: white;
+}
+
+
+/*-------------- Artist Classes ----------------------------------*/
+
+.artist-name {
+    text-transform: capitalize;
+    font-weight: bold;   
+    font-size: 1.5em;
+}
+
+.artist-name a:link {
+    color: deeppink;
+}
+
+.artist-name a:visited {
+    color: deeppink;
+}
+
+.artist-name a:hover {
+    color: deeppink;
+}
+
+.artist-name a:active {
+    color: white;
+}
+
+.artist-genre {
+    color: white;
+    text-transform: capitalize;
+}

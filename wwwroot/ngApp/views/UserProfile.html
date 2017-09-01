@@ -1,30 +1,38 @@
-﻿<div class="username">
-    <h1>
-        {{controller.user.userName}}
-    </h1>
+﻿<div class="user-container">
+    
+    <div class="username">
+        <h1>{{controller.user.userName}}</h1>
+    </div>
+
+    <div class="column-layout">
+        <div class="left-column">
+            <div class="profile-name">{{controller.user.firstName}} {{controller.user.lastName}}</div>
+            <br />
+            <div>{{controller.user.email}}</div>
+            <br />
+            <div>Member since: {{controller.user.dateCreated | date}}</div>       
+        </div>
+
+        <div class="main-column">
+            <div class="profile-img">
+                <img ng-src="{{controller.user.imageUrl}}" />
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div>
+                0 Uploads &nbsp &nbsp
+                0 Following &nbsp &nbsp
+                0 Followers
+            </div> 
+            <br />
+            <div>{{controller.user.aboutMe}}</div> 
+            <br />
+            <a href="/createProfile" class="btn gen-btn btn-lg">Edit Profile</a>
+        </div>
+    </div>
+
 </div>
-
-<div class="column-layout">
-    <div class="left-column">
-        <div><strong>{{controller.user.firstName}} {{controller.user.lastName}}</strong></div> <br />
-        <div><span></span> {{controller.user.email}}</div> <br />
-        <div><span>Member since</span>: {{controller.user.dateCreated | date}}</div>
-       
-    </div>
-
-    <div class="main-column">
-        
-        <p href="/userProfile" class="profile-img"><img ng-src="{{controller.user.imageUrl}}" /></p>
-    </div>
-
-    <div class="right-column">
-        <div><span>0 Uploads</span> &nbsp &nbsp
-        <span href="#">0 Following</span>  &nbsp &nbsp
-        <span href="#">0 Followers</span></div> <br />
-        <div>{{controller.user.aboutMe}}</div> <br />
-        <a href="/createProfile" class="btn btn-info">Edit Profile</a>
-    </div>
-    </div>
 
 
 

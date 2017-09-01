@@ -22,5 +22,13 @@
 				console.log(res.data);
 				this.location.path("/artistProfile");
 			});
-	}
+    }
+
+
+    //service?
+    getAOArtist() {
+        return this.$http.get('http://api.openaura.com/v1/search/artists_all')
+            .map((res) => res.json());
+    }
+
 }

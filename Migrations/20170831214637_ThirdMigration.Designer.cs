@@ -11,8 +11,8 @@ using System;
 namespace Hello.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170830214554_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20170831214637_ThirdMigration")]
+    partial class ThirdMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
