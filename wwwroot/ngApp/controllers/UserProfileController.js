@@ -1,24 +1,12 @@
 ﻿class UserProfileController {
-    constructor($UserProfileService) {
-        this.$UserProfileService = $UserProfileService;
-        this.email = sessionStorage.getItem("email");
-     
-        this.getUserProfile(); 
-        this.user; 
-        //this.planets = [
-        //    {
-        //        name: 'Mercury',
-        //        distance: 0.4,
-        //        mass: 0.055
-        //    },
-        //    {
-        //        name: 'Venus',
-        //        distance: 0.7,
-        //        mass: 0.815
-        //    },
-            
-        
-        //console.log("words"); 
+    constructor($UserProfileService, $http) {
+		this.$UserProfileService = $UserProfileService;
+		this.$http = $http;
+		this.email = sessionStorage.getItem("email");
+		this.posts = sessionStorage.getItem("userid");
+		this.getPost();
+		this.getUserProfile(); 
+		this.user;
     }
 
 
@@ -34,7 +22,15 @@
              
 				console.log(res.data);
             });       
-    }    
+	} 
+
+	getPost() {
+		this.$http.get("api/Posts/" + this.posts)
+			.then(res => {
+				this.posts = res.data;
+				console.log(res.data);
+			});
+	}
 }
 
    

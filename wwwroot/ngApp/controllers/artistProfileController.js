@@ -1,6 +1,7 @@
 ﻿class ArtistProfileController {
-	constructor($ArtistProfileService, $stateParams, $http, $filepicker) {
+	constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state) {
 		this.$ArtistProfileService = $ArtistProfileService;
+		this.$state = $state;
 		this.$http = $http;
 		//this.name = $stateParams["name"];
 		this.id = $stateParams["id"];
@@ -52,8 +53,9 @@
         this.$http.post("api/Posts", this.post)
             .then((res) => {
               
-                this.getPostId();
-                console.log("after put")
+				this.getPostId();
+				this.$state.reload();
+				console.log("after put");
                 //this.addPost();
                 //this.location.path('/userProfile');
               
