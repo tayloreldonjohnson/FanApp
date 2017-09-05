@@ -33,5 +33,10 @@
             </div>
         </div>
     </div>
-
+</div>
+<div>
+	<h1></h1>
+	<ul>
+		<li ng-repeat="p in controller.posts"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
+	</ul>
 </div>
