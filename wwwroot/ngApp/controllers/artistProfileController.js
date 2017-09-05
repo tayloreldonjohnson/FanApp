@@ -53,7 +53,7 @@
             .then((res) => {
               
                 this.getPostId();
-                console.log("after put")
+				console.log("after put");
                 //this.addPost();
                 //this.location.path('/userProfile');
               

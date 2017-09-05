@@ -38,52 +38,61 @@ namespace Hello.Controllers
             return _context.Post;
         }
 
-        // GET: api/Posts/5
-        [HttpGet("{id}")]
-        public List<Post> Get(int id)
-        {
-            var posts = _context.Post.Where(u => u.ApplicationArtistId == id).ToList();
-            return posts;
-        }
+		//GET: api/Posts/5
+		// Gets Posts for Artist by ArtistId
+		[HttpGet("{id:int}")]
+		public List<Post> Get(int id)
+		{
+			var posts = _context.Post.Where(u => u.ApplicationArtistId == id).ToList();
+			return posts;
+		}
 
-        //[HttpGet("{ApplicationArtistid}")]
-        //public async Task<IActionResult> GetPostId([FromRoute] int ApplicationArtistid)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-        //    var Userpost = await _context.Post.SingleOrDefaultAsync(m => m.ApplicationArtistId == ApplicationArtistid);
+		// Gets User post by UserId
+		[HttpGet("{id}")]
+		public List<Post> GetUserId(string id)
+		{
+			var userposts = _context.Post.Where(u => u.ApplicationUserId == id).ToList();
+			return userposts;
+		}
 
-        //    if (Userpost == null)
-        //    {
-        //        return NotFound();
-        //    }
+		//[HttpGet("{ApplicationArtistid}")]
+		//public async Task<IActionResult> GetPostId([FromRoute] int ApplicationArtistid)
+		//{
+		//    if (!ModelState.IsValid)
+		//    {
+		//        return BadRequest(ModelState);
+		//    }
+		//    var Userpost = await _context.Post.SingleOrDefaultAsync(m => m.ApplicationArtistId == ApplicationArtistid);
 
-        //    return Ok(Userpost);
-        //}
+		//    if (Userpost == null)
+		//    {
+		//        return NotFound();
+		//    }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetPost([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+		//    return Ok(Userpost);
+		//}
 
-        //    var post = await _context.Post.SingleOrDefaultAsync(m => m.PostId == id);
+		//[HttpGet("{id}")]
+		//public async Task<IActionResult> GetPost([FromRoute] int id)
+		//{
+		//    if (!ModelState.IsValid)
+		//    {
+		//        return BadRequest(ModelState);
+		//    }
 
-        //    if (post == null)
-        //    {
-        //        return NotFound();
-        //    }
+		//    var post = await _context.Post.SingleOrDefaultAsync(m => m.PostId == id);
 
-        //    return Ok(post);
+		//    if (post == null)
+		//    {
+		//        return NotFound();
+		//    }
 
-        //}
+		//    return Ok(post);
 
-        // PUT: api/Posts/5
-        [HttpPut("{id}")]
+		//}
+
+		// PUT: api/Posts/5
+		[HttpPut("{id}")]
         public async Task<IActionResult> PutPost([FromRoute] int id, [FromBody] Post post)
         {
             if (!ModelState.IsValid)
