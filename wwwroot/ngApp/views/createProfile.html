@@ -14,10 +14,11 @@
             </div>
 
             <div class="main-column">
-                <button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload New Snapshot</button>
+               
                 <div class="profile-img">
                     <img ng-src="{{controller.user.imageUrl}}" alt="{{controller.file.filename}}" />
                 </div>
+                <button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload New Snapshot</button>
                 <br />
             </div>
 
@@ -30,7 +31,8 @@
                 <br />
                 <textarea placeholder="Tell the World about yourself..." class="form-control" rows="1" id="loginusername" ng-model="aboutMe"></textarea>
                 <br />
-                <button class="gen-btn btn-lg" type="submit" goto="/userProfile">Save Profile</button>
+                <a type="submit button"  class="btn btn-success btn-lg" href="/userProfile">Save Profile</a>
+                <a type="button"  href="/userProfile" class="btn btn-danger btn-lg">Cancel</a>
             </div>
         </div>
     </form>
