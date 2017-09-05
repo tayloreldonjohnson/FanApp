@@ -39,22 +39,22 @@ class CreateProfileController {
             });
 	}
 	//img stuff
-   pickFile() {
-	   this.filepicker.pick(
-		   {
-			   mimetype: 'image/*',
-			   imageQuality: 60
-		   },
-		   this.fileUploaded.bind(this)
-	   );
+	pickFile() {
+		this.filepicker.pick(
+		{
+			mimetype: 'image/*',
+			imageQuality: 60
+		},
+			this.fileUploaded.bind(this)
+		);
    }
 
    fileUploaded(file) {
-	   // save file url to database
-	   this.file = file;
-	   console.log(this.file.url);
-	   console.log(this);
-	/*   this.$scope.$apply(); */// force page to update
-	   /*this.file.url; */ //change 'item' to imageUrl property
+		// save file url to database
+		this.file = file;
+		console.log(this.file.url);
+		console.log(this);
+		/*this.$scope.$apply(); */// force page to update
+		/*this.file.url; */ //change 'item' to imageUrl property
    }
 }
