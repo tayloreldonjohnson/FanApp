@@ -4,7 +4,6 @@
 		this.$http = $http;
 		this.email = $stateParams["email"];
 		this.getUserProfile(); 
-		this.getPost();
     }
     getUserProfile() {
         this.$UserProfileService.getUserProfile(this.email)
@@ -12,13 +11,5 @@
                 this.user = res.data;
                 console.log(res.data);
             });
-	}
-
-	getPost() {
-		this.$http.get("api/Posts/")
-			.then(res => {
-				this.posts = res.data;
-				console.log(res.data);
-			});
 	}
 }

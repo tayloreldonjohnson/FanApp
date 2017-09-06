@@ -32,10 +32,22 @@ namespace Hello.Controllers
 			return posts;
 		}
 
+	
+
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public string Post([FromBody]string data)
         {
+			//foreach (var artist in artistCon.Artist)
+			//{
+			//	var newartist = new ApplicationArtist
+			//	{
+			//		Name = artist.Name,
+			//		ImageUrl = artist.Image[4]
+			//	};
+			//	_db.Add(newartist);
+			//}
+			return "success!";
         }
 
         // PUT api/values/5
