@@ -31,7 +31,7 @@ namespace Hello.Controllers
         [HttpGet("{email}")]
         public UserVM Get(string email)
         {
-            return _userService.GetUserProfile(email);
+            return _userService.GetUserwithpost(email);
         }
       
 

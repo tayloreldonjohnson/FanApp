@@ -6,7 +6,6 @@
         this.userFollow = $stateParams["userid"] ;
         this.addUserFollower();
 		this.getUserProfile(); 
-		this.getPost();
     }
     addUserFollower() {
         this.$http.post("api/UserFollowers", this.userFollow, this.email)
@@ -22,13 +21,5 @@
                 this.user = res.data;
                 console.log(res.data);
             });
-	}
-
-	getPost() {
-		this.$http.get("api/Posts/")
-			.then(res => {
-				this.posts = res.data;
-				console.log(res.data);
-			});
 	}
 }
