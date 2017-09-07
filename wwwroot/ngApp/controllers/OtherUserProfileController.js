@@ -3,17 +3,16 @@
 		this.$UserProfileService = $UserProfileService;
 		this.$http = $http;
         this.email = $stateParams["email"];
-        this.followeduser = {};
-        this.id = $stateParams["id"];
-        sessionStorage.setItem("id", this.id);
-        this.addFollower();
+        this.userFollow = $stateParams["userid"] ;
+        this.addUserFollower();
 		this.getUserProfile(); 
 		this.getPost();
     }
-    addFollower() {
-        this.$http.post("api/UserFollowers", this.followeduser)
+    addUserFollower() {
+        this.$http.post("api/UserFollowers", this.userFollow, this.email)
             .then(res => {
-                this.followeduser = {};
+                this.userFollow = res.data;
+                this.email = res.data;
                 console.log(res.data);
             });
     }
