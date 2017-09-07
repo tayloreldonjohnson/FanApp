@@ -29,14 +29,14 @@
             <div>{{controller.user.aboutMe}}</div>
             <br />
             <div>
-                <a href="#" class="btn gen-btn btn-lg">Follow</a>
+                <a href="#" class="btn gen-btn btn-lg" ng-click="controller.AddFollower()">Follow</a>
             </div>
         </div>
     </div>
 </div>
 <div>
-	<h1></h1>
+	<h1>Posts</h1>
 	<ul>
-		<li ng-repeat="p in controller.posts"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
+		<li ng-repeat="post in controller.user.posts"><img ng-src="{{post.media}}" /></li>
 	</ul>
 </div>

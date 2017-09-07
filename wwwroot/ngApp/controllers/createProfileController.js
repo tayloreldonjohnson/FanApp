@@ -13,8 +13,8 @@ class CreateProfileController {
 		};
 		//imgstuff
 		this.file;
-		this.filepicker = $filepicker;
-		this.filepicker.setKey('AdqhVmjnDSXuLRRPEfvdbz'); 
+        this.filepicker = $filepicker;
+		this.filepicker.setKey('A7qbx1ZNSuGCfsnjhoIXuz'); 
 
     }
 	getUserProfile() {

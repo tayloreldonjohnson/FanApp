@@ -30,7 +30,7 @@ namespace Hello.Services
             var user = _uManager.Users.Where(m => m.Email == email).FirstOrDefault();
             var newUser = new UserVM
             {
-              
+				UserId = user.Id,
 				UserName = user.UserName,
                 Email = user.Email,
 				FirstName = user.FirstName,
@@ -45,7 +45,30 @@ namespace Hello.Services
 
         }
 
-        public void AddUserProfile(UserVM userVm)
+		public UserVM GetUserwithpost(string email)
+		{
+
+			var user = _uManager.Users.Where(m => m.Email == email).FirstOrDefault();
+			var posts = _db.Post.Where(u => u.ApplicationUserId == user.Id).ToList();
+			var newUser = new UserVM
+			{
+				UserId = user.Id,
+				UserName = user.UserName,
+				Email = user.Email,
+				FirstName = user.FirstName,
+				LastName = user.LastName,
+				DateCreated = user.DateCreated,
+				AboutMe = user.AboutMe,
+				ImageUrl = user.ImageUrl,
+				Posts = posts
+
+			};
+
+			return newUser;
+
+		}
+
+		public void AddUserProfile(UserVM userVm)
         {
 
 			//         var IntendedUser = _uManager.Users.Where(m => m.Email == user.Email).FirstOrDefault();
