@@ -14,7 +14,7 @@ class CreateProfileController {
 		//imgstuff
 		this.file;
 		this.filepicker = $filepicker;
-		this.filepicker.setKey('AdqhVmjnDSXuLRRPEfvdbz'); 
+        this.filepicker.setKey('AolWdzFvkT5aFnci5DlWbz'); 
 
     }
 	getUserProfile() {
@@ -43,7 +43,8 @@ class CreateProfileController {
 		this.filepicker.pick(
 		{
 			mimetype: 'image/*',
-			imageQuality: 60
+            imageQuality: 60,
+            
 		},
 			this.fileUploaded.bind(this)
 		);
