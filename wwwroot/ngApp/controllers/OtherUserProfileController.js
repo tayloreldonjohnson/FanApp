@@ -2,8 +2,19 @@
     constructor($UserProfileService , $stateParams, $http) {
 		this.$UserProfileService = $UserProfileService;
 		this.$http = $http;
-		this.email = $stateParams["email"];
+        this.email = $stateParams["email"];
+        this.followeduser = {};
+        this.id = $stateParams["id"];
+        sessionStorage.setItem("id", this.id);
+        this.addFollower();
 		this.getUserProfile(); 
+    }
+    addFollower() {
+        this.$http.post("api/UserFollowers", this.followeduser)
+            .then(res => {
+                this.followeduser = {};
+                console.log(res.data);
+            });
     }
     getUserProfile() {
         this.$UserProfileService.getUserProfile(this.email)
