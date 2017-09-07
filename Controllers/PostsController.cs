@@ -55,8 +55,6 @@ namespace Hello.Controllers
 			return userposts;
 		}
 
-
-
 		//[HttpGet("{ApplicationArtistid}")]
 		//public async Task<IActionResult> GetPostId([FromRoute] int ApplicationArtistid)
 		//{

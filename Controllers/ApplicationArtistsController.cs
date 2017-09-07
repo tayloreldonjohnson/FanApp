@@ -100,23 +100,37 @@ namespace Hello.Controllers
             return NoContent();
         }
 
-        // POST: api/ApplicationArtists
-        [HttpPost]
-        public async Task<IActionResult> PostApplicationArtist([FromBody] ApplicationArtist applicationArtist)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+		// POST: api/ApplicationArtists
+		[HttpPost]
+		public void Post([FromBody]ArtistParent artistsP)
+		{
+			foreach (Artist artist in artistsP.Artists.Artist)
+			{
+				var newArtist = new ApplicationArtist
+				{
+					//Name = artist.Name,
+					ImageUrl = artist.Image[4].Text
+				};
+				_context.Add(newArtist);
+				_context.SaveChanges();
+			}
+		}
+		//[HttpPost]
+		//public async Task<IActionResult> PostApplicationArtist([FromBody] ApplicationArtist applicationArtist)
+		//{
+		//    if (!ModelState.IsValid)
+		//    {
+		//        return BadRequest(ModelState);
+		//    }
 
-            _context.ApplicationArtist.Add(applicationArtist);
-            await _context.SaveChangesAsync();
+		//    _context.ApplicationArtist.Add(applicationArtist);
+		//    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetApplicationArtist", new { id = applicationArtist.Id }, applicationArtist);
-        }
+		//    return CreatedAtAction("GetApplicationArtist", new { id = applicationArtist.Id }, applicationArtist);
+		//}
 
-        // DELETE: api/ApplicationArtists/5
-        [HttpDelete("{id}")]
+		// DELETE: api/ApplicationArtists/5
+		[HttpDelete("{id}")]
         public async Task<IActionResult> DeleteApplicationArtist([FromRoute] int id)
         {
             if (!ModelState.IsValid)

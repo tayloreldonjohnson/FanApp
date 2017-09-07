@@ -90,14 +90,14 @@
 			.then((res) => {
 				this.artists = res.data;
 				console.log(this.artists);
-				this.saveArtists(this.artists);
+				this.$http.post("api/Artists", this.artists);
 			});
 	}
 
-	saveArtists(artists) {
-		var stringyobj = JSON.stringify(artists);
-		localStorage.setItem("thedata", stringyobj);
-		var string_artists = localStorage.getItem("thedata");
-		this.$http.post("api/values", "hey bro");
-	}
+	//saveArtists(artists) {
+	//	var stringyobj = JSON.stringify(artists);
+	//	localStorage.setItem("thedata", stringyobj);
+	//	var string_artists = localStorage.getItem("thedata");
+	//	this.$http.post("api/values", "hey bro");
+	//}
 }
