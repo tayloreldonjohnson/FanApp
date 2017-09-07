@@ -8,7 +8,6 @@
         sessionStorage.setItem("id", this.id);
         this.addFollower();
 		this.getUserProfile(); 
-		this.getPost();
     }
     addFollower() {
         this.$http.post("api/UserFollowers", this.followeduser)
@@ -23,13 +22,5 @@
                 this.user = res.data;
                 console.log(res.data);
             });
-	}
-
-	getPost() {
-		this.$http.get("api/Posts/")
-			.then(res => {
-				this.posts = res.data;
-				console.log(res.data);
-			});
 	}
 }
