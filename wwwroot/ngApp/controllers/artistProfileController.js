@@ -1,5 +1,5 @@
 ﻿class ArtistProfileController {
-	constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state) {
+	constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state, $lastFM) {
 		this.$ArtistProfileService = $ArtistProfileService;
 		this.$state = $state;
 		this.$http = $http;
@@ -20,7 +20,10 @@
         this.getPostId();
         this.file;
         this.filepicker = $filepicker;
-		this.filepicker.setKey('AdqhVmjnDSXuLRRPEfvdbz'); 
+        this.filepicker.setKey('AfFjXrzLQi24J9Obh6rewz'); 
+
+        this.lastFM = $lastFM;
+    
 
 
 	}
