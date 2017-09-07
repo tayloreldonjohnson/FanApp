@@ -32,14 +32,38 @@ namespace Hello.Controllers
 			return posts;
 		}
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+		// POST api/values
+		//[HttpPost]
+		//public string Post([FromBody]string data)
+		//{
+		//	foreach (var artist in artistCon.Artist)
+		//	{
+		//		var newartist = new ApplicationArtist
+		//		{
+		//			Name = artist.Name,
+		//			ImageUrl = artist.Image[4]
+		//		};
+		//		_db.Add(newartist);
+		//	}
+		//}
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
+		// POST api/values
+		//[HttpPost]
+		//public void Post([FromBody]ArtistParent artistsP)
+		//{
+		//	foreach (Artist artist in artistsP.Artists.Artist)
+		//	{
+		//		var newArtist = new ApplicationArtist
+		//		{
+		//			Name = artist.Name,
+		//			//ImageUrl = artist.Image[4].Text
+		//		};
+		//		_db.Add(newArtist);
+		//	}
+		//}
+
+		// PUT api/values/5
+		[HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
