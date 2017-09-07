@@ -108,7 +108,7 @@ namespace Hello.Controllers
 			{
 				var newArtist = new ApplicationArtist
 				{
-					//Name = artist.Name,
+					Name = artist.Name,
 					ImageUrl = artist.Image[4].Text
 				};
 				_context.Add(newArtist);

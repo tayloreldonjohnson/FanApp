@@ -15,16 +15,13 @@
 			DateCreated: new Date(),
 			Media: ""
 		};
-
 		this.getArtist();
 		this.getPostId();
 		this.file;
 		this.filepicker = $filepicker;
-		this.filepicker.setKey('AdqhVmjnDSXuLRRPEfvdbz');
+		this.filepicker.setKey('A7qbx1ZNSuGCfsnjhoIXuz');
 		this.artists;
-		
-		this.getlastfm();
-		//this.lastfm.setKey('87bdb2c24f5d7ea2e34ac5d1bdc419f1');
+		//this.getlastfm();
 
 	}
 	getArtist() {
@@ -85,19 +82,12 @@
 		/*this.file.url; */ //change 'item' to imageUrl property
 	}
 
-	getlastfm() {
-		this.$http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=87bdb2c24f5d7ea2e34ac5d1bdc419f1&format=json&limit=1000")
-			.then((res) => {
-				this.artists = res.data;
-				console.log(this.artists);
-				this.$http.post("api/Artists", this.artists);
-			});
-	}
-
-	//saveArtists(artists) {
-	//	var stringyobj = JSON.stringify(artists);
-	//	localStorage.setItem("thedata", stringyobj);
-	//	var string_artists = localStorage.getItem("thedata");
-	//	this.$http.post("api/values", "hey bro");
+	//getlastfm() {
+	//	this.$http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=87bdb2c24f5d7ea2e34ac5d1bdc419f1&format=json&limit=1000")
+	//		.then((res) => {
+	//			this.artists = res.data;
+	//			console.log(this.artists);
+	//			this.$http.post("api/Artists", this.artists);
+	//		});
 	//}
 }
