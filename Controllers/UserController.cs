@@ -27,18 +27,21 @@ namespace Hello.Controllers
             return _userService.GetAllUsers();
         }
 
-        // GET api/values/5
-        [HttpGet("{email}")]
-        public UserVM Get(string email)
-        {
-            return _userService.GetUserwithpost(email);
-        }
-      
+		// GET api/values/5
+		[HttpGet("{email}")]
+		public UserVM Get(string email)
+		{
+			return _userService.GetUserwithpost(email);
+		}
 
+		[HttpGet("email/{id}")]
+		public UserVM Getid(string id)
+		{
+			return _userService.GetOtherUserwithpost(id);
+		}
 
-
-        // POST api/values
-        [HttpPost]
+		// POST api/values
+		[HttpPost]
         public string Post( [FromBody] UserVM user)
         {
 			try
