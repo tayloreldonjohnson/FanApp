@@ -1,5 +1,5 @@
 ﻿class ArtistProfileController {
-	constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state, $lastFM) {
+	constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state) {
 		this.$ArtistProfileService = $ArtistProfileService;
 		this.$state = $state;
 		this.$http = $http;
@@ -13,7 +13,8 @@
 			ApplicationArtistId: this.posts,
 			ApplicationUserId: this.user,
 			DateCreated: new Date(),
-			Media: ""
+			Media: "",
+            Caption: ""
 		};
 		this.getArtist();
 		this.getPostId();
@@ -21,7 +22,7 @@
 		this.filepicker = $filepicker;
 		this.filepicker.setKey('AfFjXrzLQi24J9Obh6rewz');
 		this.artists;
-		//this.getlastfm();
+	//    this.getlastfm();
 
 	}
 	getArtist() {
@@ -39,7 +40,7 @@
 				console.log("postdata" + res.data);
 			});
 	}
-	addPost(media) {
+	addPost(media, caption) {
 		console.log("addPost");
 
 
@@ -48,6 +49,7 @@
 
 
 		this.post.Media = media;
+        this.post.Caption = caption;
 
 		console.log(this.post);
 		this.$http.post("api/Posts", this.post)
