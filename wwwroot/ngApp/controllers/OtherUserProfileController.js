@@ -5,15 +5,23 @@
         this.email = $stateParams["email"];
         this.followeduser = {};
         this.id = $stateParams["id"];
-        sessionStorage.setItem("otherid", this.id);
-        this.addFollower();
+		sessionStorage.setItem("otherid", this.id);
+		this.userid = sessionStorage.getItem("userid");
+		this.otherid = sessionStorage.getItem("otherid");
+        //this.addFollower();
 		//this.getUserProfile(); 
 		this.getOtherUserProfile();
+		this.userfollower = {
+			FollowingUserId: this.userid,
+			FollowedUserId: this.otherid,
+		};
     }
-    addFollower() {
-        this.$http.post("api/UserFollowers", this.followeduser)
+	addFollower() {
+		//this.userfollower.FollowedUserId = user;
+		//this.userfollower.FollowingUserId = otheruser;
+        this.$http.post("api/UserFollowers", this.userfollower)
             .then(res => {
-                this.followeduser = {};
+				this.userfollower = {};
                 console.log(res.data);
             });
     }
