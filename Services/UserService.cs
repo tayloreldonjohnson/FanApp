@@ -68,6 +68,29 @@ namespace Hello.Services
 
 		}
 
+		public UserVM GetOtherUserwithpost(string id)
+		{
+
+			var user = _uManager.Users.Where(m => m.Id == id).FirstOrDefault();
+			var posts = _db.Post.Where(u => u.ApplicationUserId == user.Id).ToList();
+			var newotherUser = new UserVM
+			{
+				UserId = user.Id,
+				UserName = user.UserName,
+				Email = user.Email,
+				FirstName = user.FirstName,
+				LastName = user.LastName,
+				DateCreated = user.DateCreated,
+				AboutMe = user.AboutMe,
+				ImageUrl = user.ImageUrl,
+				Posts = posts
+
+			};
+
+			return newotherUser;
+
+		}
+
 		public void AddUserProfile(UserVM userVm)
         {
 

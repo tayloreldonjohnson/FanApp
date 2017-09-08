@@ -79,7 +79,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controllerAs: 'controller'
         })
         .state('otherUserProfile', {
-            url: '/OtherUserProfile/:email',
+            url: '/OtherUserProfile/:id',
             templateUrl: '/ngApp/views/OtherUserProfile.html',
             controller: OtherUserProfileController,
             controllerAs: 'controller'
