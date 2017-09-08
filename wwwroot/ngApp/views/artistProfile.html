@@ -56,10 +56,11 @@
 		<br />
 	</div>
 </form>
-<ul>
-	<li ng-repeat="p in controller.posts"> <img class="profile-img" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
+<div>
+    <header><h6>{{controller.user.userName}}</h6></header>
+	<div> ng-repeat="p in controller.posts"> <img  type="filepicker-preview" data-fp-url="https://www.filestackapi.com/api/file/AolWdzFvkT5aFnci5DlWbz" style="width:600px; height:auto" class="profile-img" ng-src="{{p.media}}" /> {{p.dateCreated | date}} </div>
 
-</ul>		
+</div>		
 
 {{controller.artists}}		
 			

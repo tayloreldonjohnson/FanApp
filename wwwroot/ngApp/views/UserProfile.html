@@ -1,5 +1,5 @@
 ﻿<div class="user-container">
-    
+
     <div class="username">
         <h1>{{controller.user.userName}}</h1>
     </div>
@@ -10,7 +10,7 @@
             <br />
             <div>{{controller.user.email}}</div>
             <br />
-            <div>Member since: {{controller.user.dateCreated | date}}</div>       
+            <div>Member since: {{controller.user.dateCreated | date}}</div>
         </div>
 
         <div class="main-column">
@@ -24,9 +24,9 @@
                 0 Uploads &nbsp &nbsp
                 0 Following &nbsp &nbsp
                 0 Followers
-            </div> 
+            </div>
             <br />
-            <div>{{controller.user.aboutMe}}</div> 
+            <div>{{controller.user.aboutMe}}</div>
             <br />
             <a href="/createProfile" class="btn gen-btn btn-lg">Edit Profile</a>
         </div>
@@ -34,9 +34,12 @@
 
 </div>
 <div>
-	<h1></h1>
-	<ul>
-		<li ng-repeat="p in controller.posts"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
+    <h1></h1>
+    <ul ng-repeat="p in controller.posts" id="post">
+        <li class="profile-img-post"><div class="post-header-container"><img class="nametag2" ng-src="{{controller.user.imageUrl}}" />&nbsp<h4 class="nametag">{{controller.user.userName}}</h4>
+</div></li>
+
+<li class="post-box-img"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
 	</ul>
 </div>
 

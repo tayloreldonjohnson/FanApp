@@ -19,7 +19,7 @@
 		this.getPostId();
 		this.file;
 		this.filepicker = $filepicker;
-		this.filepicker.setKey('A7qbx1ZNSuGCfsnjhoIXuz');
+        this.filepicker.setKey('AolWdzFvkT5aFnci5DlWbz');
 		this.artists;
 		//this.getlastfm();
 
@@ -64,12 +64,17 @@
 	//im
 
 	pickFile() {
-		this.filepicker.pick(
-			{
+        this.filepicker.pick(
+            
+            {
+                cropRatio: 16/9,
 				mimetype: 'image/*',
-				imageQuality: 60
+                imageQuality: 60,
+                services: ['CONVERT', 'COMPUTER'],
+                conversions: ['crop', 'rotate',]
 			},
-			this.fileUploaded.bind(this)
+            this.fileUploaded.bind(this)
+
 		);
 	}
 
@@ -87,7 +92,7 @@
 	//		.then((res) => {
 	//			this.artists = res.data;
 	//			console.log(this.artists);
-	//			this.$http.post("api/Artists", this.artists);
+	//			this.$http.post("api/artists", this.artists);
 	//		});
 	//}
 }

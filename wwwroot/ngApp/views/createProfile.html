@@ -16,8 +16,9 @@
             <div class="main-column">
                
                 <div class="profile-img">
-                    <img ng-src="{{controller.user.imageUrl}}" alt="{{controller.file.filename}}" />
+                    <img ng-src="{{controller.user.imageUrl}}" alt="{{controller.file.filename}}"  type="filepicker-preview" data-fp-url="https://www.filestackapi.com/api/file/AolWdzFvkT5aFnci5DlWbz" style="width:200px; height:200px"/>
                 </div>
+               
                 <button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload New Snapshot</button>
                 <br />
             </div>
@@ -31,7 +32,7 @@
                 <br />
                 <textarea placeholder="Tell the World about yourself..." class="form-control" rows="1" id="loginusername" ng-model="aboutMe"></textarea>
                 <br />
-                <a type="submit button"  class="btn btn-success btn-lg" href="/userProfile">Save Profile</a>
+                <button class="gen-btn btn-lg" type="submit" goto="/userProfile">Save Profile</button>
                 <a type="button"  href="/userProfile" class="btn btn-danger btn-lg">Cancel</a>
             </div>
         </div>
