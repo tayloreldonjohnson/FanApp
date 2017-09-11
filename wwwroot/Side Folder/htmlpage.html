@@ -1,0 +1,44 @@
+﻿<div class="user-container">
+    <div class="input-group">
+        <input type="text" class="search-input form-control" placeholder="Search Artist" ng-model="myArtistFilter.name" aria-describedby="basic-addon1">
+    </div>
+
+    <ul style="list-style: none;" ng-show="myArtistFilter.name">
+        <li ng-repeat="artist in controller.artists | filter:myArtistFilter | orderBy:'name'" class="users-list">
+
+            <div class="user-container">
+                <div class="profile-img">
+                    <img ng-src="{{artist.imageUrl}}" />
+                </div>
+                <div class="user-info-list">
+                    <div class="artist-name">
+                        <a ui-sref="artistProfile({ id: artist.id })">
+                            {{artist.name}}
+                        </a>
+                    </div>
+                    <div class="artist-genre">{{artist.genre}}</div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+<div class="user-container" {{controller.artist.genre}}>
+
+</div>
+
+<!--<div  class="artist-genre"{{controller.artists.genre}}>
+
+
+            <ul id="artist-ul" ng-repeat="artist in controller.artists">
+                <li id="artist-li"><div class="profile-img"><img ng-src="{{artist.imageUrl}}" /></div></li>
+
+                <li id="artist-li">
+                    <div class="user-info-list">
+                        <div class="artist-name"> <a ui-sref="artistProfile({ id: artist.id })">{{artist.name}}</a></div>
+                    </div>
+                </li>
+            </ul>
+
+
+</div>-->
