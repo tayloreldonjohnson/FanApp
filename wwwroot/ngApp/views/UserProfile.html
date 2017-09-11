@@ -34,9 +34,13 @@
 
 </div>
 <div>
-	<h1></h1>
+    <h1>Following</h1>
+    <p ng-repeat="f in controller.following"></p>
+</div>
+<div>
+	<h1>My Posts</h1>
 	<ul>
-		<li ng-repeat="p in controller.posts"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
+		<li ng-repeat="p in controller.posts"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}}<button ng-click="controller.deletePost()"></button></li>
 	</ul>
 </div>
 

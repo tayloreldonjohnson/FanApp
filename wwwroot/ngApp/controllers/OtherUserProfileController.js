@@ -1,20 +1,20 @@
 ﻿class OtherUserProfileController {
-    constructor($UserProfileService , $stateParams, $http) {
+    constructor($UserProfileService, $stateParams, $http) {
 		this.$UserProfileService = $UserProfileService;
 		this.$http = $http;
         this.email = $stateParams["email"];
-        this.userFollow = $stateParams["userid"] ;
-        this.addUserFollower();
+        //this.userFollowId = $stateParams["userfollowid"];
+        //sessionStorage.setItem("userfollowid", this.userFollowId);
+        //this.postUserFollower();   
 		this.getUserProfile(); 
     }
-    addUserFollower() {
-        this.$http.post("api/UserFollowers", this.userFollow, this.email)
-            .then(res => {
-                this.userFollow = res.data;
-                this.email = res.data;
-                console.log(res.data);
-            });
-    }
+    //postUserFollower() {
+    //    this.$http.post("api/UserFollowers", this.userFollowId)
+    //        .then(res => {
+    //            this.userFollowId = {};
+    //            console.log(res.data);
+    //        });
+    //}
     getUserProfile() {
         this.$UserProfileService.getUserProfile(this.email)
             .then((res) => {
