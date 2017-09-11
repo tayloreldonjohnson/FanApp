@@ -77,6 +77,13 @@
         <br />
    
 </section>
+<div>
+	<h1></h1>
+	<ul>
+		<li ng-repeat="p in controller.posts"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}} <a href="#" class="btn gen-btn btn-lg" ng-click="controller.deletePost(p.postId)">Delete</a></li>
+	</ul>
+</div>
+
 
 
 
