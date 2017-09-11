@@ -42,8 +42,13 @@ class CreateProfileController {
 	pickFile() {
 		this.filepicker.pick(
 		{
-			mimetype: 'image/*',
-			imageQuality: 60
+                cropRatio: 5 / 6,
+               
+                mimetype: 'image/*',
+                imageQuality: 60,
+                services: ['CONVERT', 'COMPUTER'],
+                conversions: ['crop', 'rotate',]
+            
 		},
 			this.fileUploaded.bind(this)
 		);
