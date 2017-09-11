@@ -42,7 +42,9 @@ class CreateProfileController {
 	pickFile() {
 		this.filepicker.pick(
 		{
-                cropRatio: 16/9,
+                cropRatio: 5 / 6,
+                w: 500,
+                h: 600,
                 mimetype: 'image/*',
                 imageQuality: 60,
                 services: ['CONVERT', 'COMPUTER'],

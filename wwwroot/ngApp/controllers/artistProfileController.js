@@ -67,7 +67,7 @@
         this.filepicker.pick(
             
             {
-                cropRatio: 16/9,
+                cropRatio: 5/6,
 				mimetype: 'image/*',
                 imageQuality: 60,
                 services: ['CONVERT', 'COMPUTER'],

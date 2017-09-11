@@ -33,16 +33,50 @@
     </div>
 
 </div>
-<div>
-    <h1></h1>
-    <ul ng-repeat="p in controller.posts" id="post">
-        <li class="profile-img-post"><div class="post-header-container"><img class="nametag2" ng-src="{{controller.user.imageUrl}}" />&nbsp<h4 class="nametag">{{controller.user.userName}}</h4>
-</div></li>
 
-<li class="post-box-img"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
-	</ul>
-</div>
+<br />
+<br />
+<section ng-repeat="p in controller.posts" class="container-post">
+    <div class="card-post">
+        <div class="card-header-post">
+            <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}"/>
 
+            
+            <div class="profile-info-post">
+                <div class="name-post">{{controller.user.userName}}</div>
+                    <div class="location"></div>
+
+                    </div>
+                    <div class="time" {{p.dateCreated | date}}>
+
+                    </div>
+                
+            </div>
+        <div class="content-post" width="498" height="500">
+            <img ng-src="{{p.media}}" width="498"height="500"/>
+        </div>
+
+        <div class="card-footer">
+            <div class="Favorites">
+                21 Favorites
+            </div>
+            <div class="description">
+                <p>
+                    <span>username</span>XO till we overdose
+                </p>
+            </div>
+            <div class="comments">
+
+            </div>
+            <div class="form">
+
+            </div>
+        </div>
+        </div>
+        <br />
+        <br />
+   
+</section>
 
 
 
