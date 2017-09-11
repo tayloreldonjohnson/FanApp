@@ -1,0 +1,7 @@
+﻿<h1>Home Feed</h1>
+<div>
+    <h3>All Posts</h3>
+    <ul>
+        <li ng-repeat="p in controller.Id"><img style="height:auto; width:300px;" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
+    </ul>
+</div>

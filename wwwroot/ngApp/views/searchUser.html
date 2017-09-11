@@ -8,7 +8,7 @@
                 <div class="profile-img">
                     <img ng-src="{{user.imageUrl}}" />
                     <div class="user-info-list">
-                        <a ui-sref="otherUserProfile({ email: user.email })">
+                        <a ui-sref="otherUserProfile({ id: user.id })">
                             {{user.userName}}
                         </a>
                         <div>{{user.email}}</div>

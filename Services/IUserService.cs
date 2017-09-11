@@ -11,5 +11,6 @@ namespace Hello.Services
         UserVM GetUserProfile( string email);
         void AddUserProfile(UserVM userVM);
 		UserVM GetUserwithpost(string email);
+		UserVM GetOtherUserwithpost(string id);
 	}
 }

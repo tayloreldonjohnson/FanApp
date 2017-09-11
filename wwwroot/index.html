@@ -23,7 +23,7 @@
                 <a class="navbar-brand"  href="/" ><!--<img width="50" height="50" src="" id="logo"/>-->LOGO</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a  href="/" >
+                <li class="active"><a  href="/homeFeed" ng-show="account.isLoggedIn()" >
                         <span class="glyphicon glyphicon-home"></span>
                     </a></li>
                 <li><a href="/about">
@@ -32,7 +32,7 @@
                <li> <a href="/userProfile" ng-show="account.isLoggedIn()">
                         <span class="glyphicon glyphicon-user"></span>
                 </a></li>
-                <li> <a href="/createProfile" ng-show="account.isLoggedIn()"> Create Profile</a></li>
+                <!--<li> <a href="/homeFeed" ng-show="account.isLoggedIn()"> Create Profile</a></li>-->
                 <li> <a href="/searchUser" ng-show="account.isLoggedIn()"> Search Users</a></li>
                 <li> <a href="/artist" ng-show="account.isLoggedIn()"> Search Artist</a></li>
 
@@ -107,6 +107,7 @@
     <script src="/ngapp/controllers/OtherUserProfileController.js"></script>
     <script src="/ngapp/controllers/artistController.js"></script>
 	<script src="/ngapp/controllers/artistProfileController.js"></script>
+    <script src="/ngapp/controllers/homeFeedController.js"></script>
 
 
     <!-- services -->

@@ -41,9 +41,6 @@ namespace Hello.Controllers
                 posts.Add(post);
             }
 
-
-
-
             return posts;
         }
 
