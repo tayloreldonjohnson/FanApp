@@ -1,7 +1,7 @@
 ﻿body {
     background: linear-gradient(132deg, #F9FC3A, #F17105, #D11149, #1A8FE3, #31D843 );
     background-size: 400% 400%;
-    animation: backgroundgradient 30s ease infinite;
+    animation: backgroundgradient 22.5s ease infinite;
     color: white;
     font-family: 'Mukta Mahee', 'Lucida Sans', sans-serif;
     font-size: 1.5em;
@@ -401,47 +401,7 @@ label {
 
 /*------------------------UserPosts----------------------------*/
 
-.profile-img-post img {
-    width: 50px;
-    height: auto;
-    margin-bottom: 10px;
-    border-radius: 50%;
-}
 
-#post {
-    display: flex;
-    margin: 0 auto;
-    flex-direction: column;
-    align-items:center;
-}
-
-.nametag {
-    
-    float: left;
-   flex:1 100%;
-    color:white;
-    padding-top:0.5em;
-    padding-left:1em;
-    align-self:stretch
-}
-.nametag2 {
-    flex: 1 100%;
-    float: left;
-    color: white;
-}
-.post-box-img {
-    float: left;
-    flex: 1 100%;
-    width:auto;
-}
-.post-header-container {
-    background-color: rgba(0,0,0,0.75);
-    flex: 1 100%;
-    width: 35em;
-    height: 4em;
-    align-self:stretch
-    
-}
 
 .card-post {
     background-color: rgba(0,0,0,0.75);

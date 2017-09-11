@@ -53,7 +53,7 @@
                 
             </div>
         <div class="content-post" width="498" height="500">
-            <img ng-src="{{p.media}}" width="498"height="500"/>
+            <img ng-src="{{p.media}}" width="498" height="500" />
         </div>
 
         <div class="card-footer">
@@ -62,27 +62,29 @@
             </div>
             <div class="description">
                 <p>
-                    <span>username</span>XO till we overdose
+                    <span>{{controller.user.userName}}</span>XO till we overdose
+                   
                 </p>
+                
             </div>
             <div class="comments">
 
             </div>
             <div class="form">
-
-            </div>
+               
+        </div>
         </div>
         </div>
         <br />
         <br />
    
 </section>
-<div>
+<!--<div>
 	<h1></h1>
 	<ul>
 		<li ng-repeat="p in controller.posts"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}} <a href="#" class="btn gen-btn btn-lg" ng-click="controller.deletePost(p.postId)">Delete</a></li>
 	</ul>
-</div>
+</div>-->
 
 
 

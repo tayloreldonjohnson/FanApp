@@ -56,11 +56,50 @@
 		<br />
 	</div>
 </form>
-<div>
-    <header><h6>{{controller.user.userName}}</h6></header>
-	<div> ng-repeat="p in controller.posts"> <img  type="filepicker-preview" data-fp-url="https://www.filestackapi.com/api/file/AolWdzFvkT5aFnci5DlWbz" style="width:600px; height:auto" class="profile-img" ng-src="{{p.media}}" /> {{p.dateCreated | date}} </div>
 
-</div>		
+<br />
+<br />
+<section ng-repeat="p in controller.posts" class="container-post">
+    <div class="card-post">
+        <div class="card-header-post">
+            <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
 
-	
+
+            <div class="profile-info-post">
+                <div class="name-post">{{controller.user.userName}}</div>
+                <div class="location"></div>
+
+            </div>
+            <div class="time" {{p.dateCreated | date}}>
+
+            </div>
+
+        </div>
+        <div class="content-post" width="498" height="500">
+            <img ng-src="{{p.media}}" width="498" height="500" />
+        </div>
+
+        <div class="card-footer">
+            <div class="Favorites">
+                21 Favorites
+            </div>
+            <div class="description">
+                <p>
+                    <span>{{controller.user.userName}}</span>XO till we overdose
+
+                </p>
+
+            </div>
+            <div class="comments">
+
+            </div>
+            <div class="form">
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+
+</section>
 			
