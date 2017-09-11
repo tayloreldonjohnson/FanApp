@@ -1,4 +1,29 @@
-﻿<div class="user-container">
+﻿<div class="container-fluid">
+    <div class="jumbotron">
+        <div class="input-group">
+            <input type="text" class="search-input form-control" placeholder="Search Username" ng-model="myFilter.userName" aria-describedby="basic-addon1">
+        </div>
+        <div ng-show="myFilter.userName">
+            <ul class="user-info">
+                <li ng-repeat="user in controller.users | filter:myFilter | orderBy:'userName'" class="users-list">
+                    <div id="users-list-img">
+                        <img ng-src="{{user.imageUrl}}" />
+                        <div class="user-info-list">
+                            <a ui-sref="otherUserProfile({ id: user.id })">
+                                {{user.userName}}
+                            </a>
+                            <div>{{user.email}}</div>
+                            <div class="profile-name">{{user.firstName}} {{user.lastName}}</div>
+                        </div>
+                    </div>                
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="user-container">
     <div class="input-group">
         <input type="text" class="search-input form-control" placeholder="Search Username" ng-model="myFilter.userName" aria-describedby="basic-addon1">
     </div>
@@ -14,8 +39,8 @@
                         <div>{{user.email}}</div>
                         <div class="profile-name">{{user.firstName}} {{user.lastName}}</div>
                     </div>
-                </div>                
+                </div>
             </li>
         </ul>
     </div>
-</div>
+</div>-->

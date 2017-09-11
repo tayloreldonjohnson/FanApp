@@ -2,8 +2,7 @@
     background: linear-gradient(132deg, #F9FC3A, #F17105, #D11149, #1A8FE3, #31D843 );
     background-size: 400% 400%;
     animation: backgroundgradient 30s ease infinite;
-    color: white;
-    font-family: 'Mukta Mahee', 'Lucida Sans', sans-serif;
+    color: white;    
     font-size: 1.5em;
 }
 
@@ -46,8 +45,6 @@ label {
     color: #1A8FE3;
 }
 
-
-
 .nav li a:link {
     background-color: #000;
     color: #7c7c7c;
@@ -80,7 +77,6 @@ label {
     color: #F7FFF7;
     margin: 20px 10px 10px 10px;
     border: 1px solid white;
-
 }
 
 .gen-btn:hover {
@@ -102,8 +98,7 @@ label {
 
 .search-input {
     margin: 0px 20px 20px 20px;
-    display: block;
-    
+    display: block;    
 }
 
  /*------------------------------  LOGIN  ----------------------------------------------*/
@@ -116,8 +111,6 @@ label {
     display: inline;
     margin-right: 20px;
 }
-
-
 
 .user-inputs {
     padding: 5px 0;
@@ -377,9 +370,6 @@ label {
 }
 
 
-.posted-items {
-
-}
 
 /*--------------------------------------------Artist Profile-----------------------------------------------------*/
 

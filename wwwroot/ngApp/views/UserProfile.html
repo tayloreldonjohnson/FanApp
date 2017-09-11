@@ -1,55 +1,35 @@
-﻿<div class="user-container">
-    
-    <div class="username">
-        <h1>{{controller.user.userName}}</h1>
-    </div>
-
-    <div class="column-layout">
-        <div class="left-column">
-            <div class="profile-name">{{controller.user.firstName}} {{controller.user.lastName}}</div>
-            <br />
-            <div>{{controller.user.email}}</div>
-            <br />
-            <div>Member since: {{controller.user.dateCreated | date}}</div>       
+﻿<div class="container-fluid text-center">    
+    <div class="row profile-container">        
+        <div class="col-sm-4 profile-cols">
+            <ul class="profile-lists">
+                <li class="user-name">{{controller.user.firstName}} {{controller.user.lastName}}</li>
+                <li>{{controller.user.email}}</li>
+                <li>Member Since: {{controller.user.dateCreated | date}}</li>
+            </ul>
         </div>
-
-        <div class="main-column">
-            <div class="profile-img">
-                <img ng-src="{{controller.user.imageUrl}}" />
-            </div>
+        <div class="col-sm-3 profile-cols profile-img">
+            <h1 class="username">{{controller.user.userName}}</h1>
+            <img ng-src="{{controller.user.imageUrl}}" />
         </div>
-
-        <div class="right-column">
-            <div>
-                0 Uploads &nbsp &nbsp
-                0 Following &nbsp &nbsp
-                0 Followers
-            </div> 
-            <br />
-            <div>{{controller.user.aboutMe}}</div> 
-            <br />
-            <a href="/createProfile" class="btn gen-btn btn-lg">Edit Profile</a>
+        <div class="col-sm-5 profile-cols">
+            <ul class="profile-lists">
+                <li>
+                    0 Uploads &nbsp &nbsp
+                    0 Following &nbsp &nbsp
+                    0 Followers
+                </li>
+                <li>{{controller.user.aboutMe}}</li>
+                <li><a href="/createProfile" class="btn gen-btn btn-lg">Edit Profile</a></li>
+            </ul>
         </div>
     </div>
-
+    <div class="row">
+        <ul class="posts-lists">
+            <li ng-repeat="p in controller.posts">
+                <div class="posts-img">
+                    <img ng-src="{{p.media}}" />{{p.dateCreated | date}}
+                </div>                
+            </li>
+        </ul>
+    </div>
 </div>
-<div>
-	<h1></h1>
-	<ul>
-		<li ng-repeat="p in controller.posts"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
-	</ul>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
