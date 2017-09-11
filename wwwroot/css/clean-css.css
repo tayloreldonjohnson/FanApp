@@ -302,3 +302,56 @@ ul.user-info {
     color: deeppink;
     text-decoration: none;
 }
+
+
+
+/*------------------------------------------------- UserPosts  ---------------------------------------------*/
+
+.container-post {
+    margin: 2em;
+}
+
+.card-post {
+    background-color: rgba(0,0,0,0.75);
+    margin: 0 auto;
+    width: 500px;
+    height: auto;
+    border: 1px solid rgba(0,0,0,0.75);
+    border-radius: 2px;
+    color: white;
+}
+
+.card-header-post {
+    padding: 0.5em 1em 0 1em;
+    text-align: left;
+}
+
+.profile-img-post {
+    display: inline-block;    
+    width: 3em;
+    height: auto;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 1em;
+    padding: 0 0 0.5em 0;
+}
+
+.profile-info-post {
+    display: inline-block;
+}
+
+.name-post {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.content-post img{
+    width: 498px;
+    height: 500px;
+    padding: 15px;
+}
+
+.card-footer {
+    padding: 0 1em 1em 1em;
+    text-align: left;
+}

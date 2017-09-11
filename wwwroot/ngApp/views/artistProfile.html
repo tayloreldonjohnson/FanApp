@@ -1,12 +1,5 @@
 ﻿<!--Artist Merch to post: Ramones, Madonna, Jesus&MaryChain, Talking Heads, Cat Power, Crystal Castles, Angel Olsen, Nick Cave, Warpaint, Rolling Stones, NIN, Radiohead-->
 
-<!--<ul>
-	<li><img ng-src="{{controller.artist.imageUrl}}" style="width: 400px" /></li>
-	<li>{{controller.artist.name}}</li>
-	<li>{{controller.artist.genre}}</li>
-</ul>-->
-
-
 <div class="artist-profile">
 	<div class="column-layout"> <!--style="background-image:url({{controller.artist.headerUrl}}); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"-->
 		<div class="main-artist-column">
@@ -26,68 +19,49 @@
 	</div>
 </div>
 
-<div class="artist-profile">
-	<!--<ul class="nav nav-tabs">
-		<li class="active"><a href="#album" data-toggle="tab">Albums</a></li>
-		<li><a href="#YoutubeVideos" data-toggle="tab">Youtube Videos</a></li>
-	</ul>-->
-    		
+<div class="artist-profile">    		
 	<p>This is the FanBase Page for <span class="big-text">{{controller.artist.name}}</span>.</p>
     <p>Post your favorite memorabilia, merchandise, concert photos, and more!</p>
     <p>Use the <span class="big-text">Upload</span> button below to add your files and click <span class="big-text">Submit</span> to save your post.</p>
+    <div>
+        How You Feel: <input type="text" name="text">
+        <form ng-submit="controller.addPost( controller.file.url)">
+            <input type="submit" value="Submit">
+            <div class="main-column">
+                <button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
+                <div class="image-post">
+                    <img class="image-post" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
-    How You Feel: <input type="text" name="text"><br>
-<form ng-submit="controller.addPost( controller.file.url)">
-	<input type="submit" value="Submit">
 
-
-
-	<div class="main-column">
-
-		<button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
-		<div class="image-post"><img class="image-post" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" /></div>
-		<br />
-	</div>
-</form>
-
-<br />
-<br />
 <section ng-repeat="p in controller.posts" class="container-post">
     <div class="card-post">
         <div class="card-header-post">
             <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
-
-
             <div class="profile-info-post">
                 <div class="name-post">{{controller.user.userName}}</div>
                 <div class="location"></div>
-
             </div>
             <div class="time" {{p.dateCreated | date}}>
-
             </div>
-
         </div>
         <div class="content-post" width="498" height="500">
             <img ng-src="{{p.media}}" width="498" height="500" />
         </div>
-
         <div class="card-footer">
             <div class="Favorites">
                 21 Favorites
             </div>
             <div class="description">
-                <p>
-                    <span>{{controller.user.userName}}</span>XO till we overdose
-
-                </p>
-
+                <p><span>{{controller.user.userName}}</span>XO till we overdose</p>
             </div>
             <div class="comments">
-
             </div>
             <div class="form">
-
             </div>
         </div>
     </div>
