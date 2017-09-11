@@ -55,10 +55,21 @@
 		<img class="profile-img" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
 		<br />
 	</div>
+    <div class="main-column">
+
+        <button type="button" ng-click="controller.pickVideo()" class="btn btn-warning">Upload Video</button>
+        <img class="profile-img" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
+        <br />
+    </div>
 </form>
 <ul>
-	<li ng-repeat="p in controller.posts"> <img class="profile-img" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
-
+    <li ng-repeat="p in controller.posts">
+        <img class="profile-img" ng-src="{{p.media}}" />
+        <!--<video width="320" height="240" controls>
+            <source src="{{p.mediaVid}}" type="video/mp4">
+        </video>-->
+        {{p.dateCreated | date}}
+    </li>
 </ul>		
 
 	

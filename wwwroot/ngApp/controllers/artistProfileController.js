@@ -21,7 +21,6 @@
 		this.filepicker = $filepicker;
 		this.filepicker.setKey('A7qbx1ZNSuGCfsnjhoIXuz');
 		this.artists;
-		//this.getlastfm();
 
 	}
 	getArtist() {
@@ -41,45 +40,42 @@
 	}
 	addPost(media) {
 		console.log("addPost");
-
-
-		//this.post.ApplicationArtistid = this.id;
-		//this.post.ApplicationUserId = artistid;
-
-
 		this.post.Media = media;
-
 		console.log(this.post);
 		this.$http.post("api/Posts", this.post)
 			.then((res) => {
-
 				this.getPostId();
 				this.$state.reload();
 				console.log("after put");
-				//this.addPost();
-				//this.location.path('/userProfile');
-
 			});
 	}
-	//im
 
-	pickFile() {
-		this.filepicker.pick(
-			{
-				mimetype: 'image/*',
-				imageQuality: 60
-			},
-			this.fileUploaded.bind(this)
-		);
-	}
+	//pickVideo() {
+	//	this.filepicker.pick(
+	//		{
+ //               imageQuality: 60,  
+ //               mimetype: 'video/mp4'
+ //           },
+			
+	//		this.fileUploaded.bind(this)
+	//	);
+	//}
+    pickFile() {
+        this.filepicker.pick(
+            {
+                mimetype: 'image/*',
+                imageQuality: 60,               
+            },
+
+            this.fileUploaded.bind(this)
+        );
+    }
+
 
 	fileUploaded(file) {
-		// save file url to database
 		this.file = file;
 		console.log(this.file.url);
 		console.log(this);
-		/*this.$scope.$apply(); */// force page to update
-		/*this.file.url; */ //change 'item' to imageUrl property
 	}
 
 	//getlastfm() {

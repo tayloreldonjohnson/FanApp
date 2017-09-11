@@ -1,5 +1,6 @@
 ﻿class UserProfileController {
-    constructor($UserProfileService, $http) {
+	constructor($UserProfileService, $http, $state) {
+		this.$state = $state;
 		this.$UserProfileService = $UserProfileService;
 		this.$http = $http;
 		this.email = sessionStorage.getItem("email");
@@ -10,21 +11,6 @@
         this.deletePost();
 		this.user;
     }
-    deletePost() {
-        this.$http.delete("api/Posts/5" + this.posts)
-            .then(res => {
-                this.posts = res.data;
-                console.log(res.data);
-            });
-        }     
-    
-    //getFollowing() {
-    //    this.$http.get(this.id)
-    //}
-    //getUsers() {
-    //    this.$UserProfileService.getUsers();
-    //}
-
     getUserProfile() {
 
         this.$UserProfileService.getUserProfile(this.email)
@@ -39,7 +25,15 @@
 		this.$http.get("api/Posts/" + this.posts)
 			.then(res => {
 				this.posts = res.data;
-				console.log(res.data);
+				//console.log(res.data);
+			});
+	}
+
+	deletePost(postid) {
+		this.$http.delete("api/Posts/" + postid)
+			.then((res) => {
+				this.postid = res.data;
+				this.$state.reload();
 			});
 	}
 }
