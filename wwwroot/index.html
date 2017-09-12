@@ -36,15 +36,15 @@
                     <li class="active"><a href="/" class="glyphicon glyphicon-home"></a></li>
                     <li><a href="/about" class="glyphicon glyphicon-info-sign"></a></li>
                     <li><a href="/userProfile" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-user"></a></li>
-                    <li><a href="/createProfile" ng-show="account.isLoggedIn()">Profile</a></li>
+                    <!--<li><a href="/createProfile" ng-show="account.isLoggedIn()">Create Profile</a></li>-->
                     <li><a href="/searchUser" ng-show="account.isLoggedIn()">Search Users</a></li>
                     <li><a href="/artist" ng-show="account.isLoggedIn()">Search Artists</a></li>
-                    <li><a href="/secret">Secret</a></li>
+                    <!--<li><a href="/secret">Secret</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-globe"></a></li>
+                    <!--<li><a href="#" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-globe"></a></li>
                     <li><a href="#" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-bell"></a></li>
-                    <li><a href="#" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-envelope"></a></li>
+                    <li><a href="#" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-envelope"></a></li>-->
                     <li><a href="/login" ng-show="!account.isLoggedIn()">Login</a></li>
                     <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>                    
                     {{account.getUserName()}}

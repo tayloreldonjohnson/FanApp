@@ -1,17 +1,17 @@
 ﻿<div class="container-fluid text-center">    
     <div class="row profile-container">        
-        <div class="col-sm-4 profile-cols">
+        <div class="col-sm-3 col-lg-4 profile-cols">
             <ul class="profile-lists">
                 <li class="user-name">{{controller.user.firstName}} {{controller.user.lastName}}</li>
                 <li>{{controller.user.email}}</li>
                 <li>Member Since: {{controller.user.dateCreated | date}}</li>
             </ul>
         </div>
-        <div class="col-sm-3 profile-cols profile-img">
+        <div class="col-sm-3 col-lg-4 profile-cols profile-img">
             <h1 class="username">{{controller.user.userName}}</h1>
             <img ng-src="{{controller.user.imageUrl}}" />
         </div>
-        <div class="col-sm-5 profile-cols">
+        <div class="col-sm-6 col-lg-4 profile-cols">
             <ul class="profile-lists">
                 <li>
                     0 Uploads &nbsp &nbsp

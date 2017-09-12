@@ -7,6 +7,10 @@ body {
     font-family: 'Mukta Mahee', 'Lucida Sans', sans-serif;    
 }
 
+form {
+   margin: 0 auto;
+}
+
 @keyframes backgroundgradient {
     0% {
         background-position: 0% 50%;
@@ -77,6 +81,11 @@ body {
 
 .gen-btn:focus:not(:active) {
     color: #F7FFF7;
+}
+
+.btn-danger {
+    border: .1em solid white;
+    margin: 0.8em 0.2em;
 }
 
 .input-group {
@@ -189,6 +198,48 @@ ul#home-list {
 
 /*--------------------------------------  Log In  ----------------------------------------------------*/
 
+.site-form {
+   
+    margin: 0 auto;
+}
+
+.form-control {
+    border-radius: 0.2em/0.2em;    
+}
+
+.form-control:last-child {   
+    border-top-left-radius: 0.2em;
+    border-bottom-left-radius: 0.2em;
+}
+
+.login-username {
+    background-color: #000;
+    color: white;
+    border: 0.1em solid;
+    outline: white;
+    height: 2.5em;
+    transition: height 1s;
+    -webkit-transition: height 1s; 
+    margin: 0.4em 0;
+}
+
+.login-username::-webkit-input-placeholder { /* Chrome */
+    color: white;
+}
+
+.login-username:-ms-input-placeholder { /* IE 10+ */
+    color: white;
+}
+
+.login-username::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+    opacity: 1;
+}
+
+.login-username:-moz-placeholder { /* Firefox 4 - 18 */
+    color: white;
+    opacity: 1;
+}
 
 /*--------------------------------------  Register  ----------------------------------------------------*/
 
@@ -251,7 +302,7 @@ ul.user-info {
     color: white;
 }
 
-/*--------------------------------------  Artist Profiles  ----------------------------------------------------*/
+/*--------------------------------------  ArtistProfiles  Search----------------------------------------------------*/
 .artist-block {
     margin-top: 25px;
     margin: 0 auto;
@@ -275,14 +326,14 @@ ul.user-info {
 .artist-img img {
     width: 16em;
     height: auto;
-    padding-bottom: 5px;
+    padding-bottom: 1em;
     border-radius: 50%;
 }
 
 .artist-name {
     text-transform: capitalize;
     font-size: 1.6em;
-    padding: 10px 0;
+    padding-bottom: .5em;
 }
 
 .artists-list a:link {
@@ -304,6 +355,33 @@ ul.user-info {
 }
 
 
+/*------------------------------------------------  Artist Profiles Individual  --------------------------------------*/
+
+.artist-profile-cols {
+    display: inline-block;
+    padding: 0.5em 1em;
+}
+
+.artist-profile-img img {
+    margin: 2em 2em 1em 1em;
+    width: 14em;
+    height: auto;
+    /*padding: 1em;*/
+    border-radius: 50%;
+
+}
+
+.artist-profile {
+    margin: 0.5em;
+    color: #F1F1F1;
+    font-size: 0.9em;
+}
+
+.big-text {
+    font-weight: bold;
+    color: deeppink;
+    font-size: 1.15em;
+}
 
 /*------------------------------------------------- UserPosts  ---------------------------------------------*/
 
