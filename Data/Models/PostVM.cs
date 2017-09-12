@@ -12,8 +12,11 @@ namespace Hello.Data.Models
             public int PostId  { get; set; }
             public int ApplicationArtistId { get; set; }
             public string ApplicationUserId { get; set; }
-        
-            public DateTime DateCreated { get; set; }
+
+            public string Video { get; set; }
+           public string Caption { get; set; }
+
+        public DateTime DateCreated { get; set; }
          
             public string media{ get; set; }
 

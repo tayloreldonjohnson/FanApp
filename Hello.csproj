@@ -9,7 +9,6 @@
     <Compile Remove="Data\Migrations\**" />
     <Content Remove="Data\Migrations\**" />
     <EmbeddedResource Remove="Data\Migrations\**" />
-    <Folder Include="Migrations\" />
     <None Remove="Data\Migrations\**" />  
   </ItemGroup>
 
