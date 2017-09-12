@@ -27,6 +27,8 @@
     }
 
 
+
+
     //service?
     //getAOArtist() {
     //    return this.$http.get('http://api.openaura.com/v1/search/artists_all')
