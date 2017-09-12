@@ -14,15 +14,16 @@
         <div class="col-sm-4 profile-cols">
             <ul class="profile-lists">
                 <li>
-                    0 Uploads &nbsp &nbsp
-                    0 Following &nbsp &nbsp
-                    0 Followers
+                    Uploads &nbsp &nbsp  {{controller.post.numberOfPosts}}
+                    Following &nbsp &nbsp {{controller.posts.numberOfFollowing}}
+                    Followers  &nbsp &nbsp {{controller.posts.numberOfFollowers}}
                 </li>
                 <li>{{controller.user.aboutMe}}</li>
                 <li><a href="#" class="btn gen-btn btn-lg" ng-click="controller.addFollower()">Follow</a></li>
             </ul>
         </div>
     </div>
+</div>
     <!--<div class="row">
         <ul class="posts-lists">
             <li ng-repeat="post in controller.user.posts">
@@ -80,9 +81,9 @@
         </div>
         <div class="right-column">
             <div>
-                0 Uploads &nbsp &nbsp
-                0 Following &nbsp &nbsp
-                0 Followers
+                Uploads &nbsp &nbsp  {{controller.post.numberOfPosts}}
+                Following &nbsp &nbsp {{controller.posts.numberOfFollowing}}
+                Followers  &nbsp &nbsp {{controller.posts.numberOfFollowers}}
             </div>
             <br />
             <div>{{controller.user.aboutMe}}</div>
@@ -90,7 +91,11 @@
             <div>
 
                 <a href="#" class="btn gen-btn btn-lg" ng-click="controller.addFollower()">Follow</a>
+<<<<<<< HEAD
 
+=======
+             
+>>>>>>> master
             </div>
         </div>
     </div>
