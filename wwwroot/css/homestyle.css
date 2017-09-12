@@ -35,3 +35,12 @@ ul#change {
 .container index-ui shadow{
     display:none;
 }
+
+
+main image style {
+    style ="height:320px; width:100%;"
+}
+
+clip article {
+    style ="height:auto; width:130px;"
+}

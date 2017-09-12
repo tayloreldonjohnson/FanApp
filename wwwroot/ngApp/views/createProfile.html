@@ -1,40 +1,33 @@
-﻿<div class="user-container">
+﻿<div class="container-fluid text-center">
     <form ng-submit="controller.PostUserProfile(aboutMe, controller.file.url)">
-        <div class="username">
-            <h1>{{controller.user.userName}}</h1>
-        </div>
-
-        <div class="column-layout">
-            <div class="left-column">
-                <div>{{controller.user.firstName}} {{controller.user.lastName}}</div>
-                <br />
-                <div>{{controller.user.email}}</div>
-                <br />
-                <div>Member since: {{controller.user.dateCreated | date}}</div>
+        <div class="row profile-container">
+            <div class="col-sm-3 col-lg-4 profile-cols">
+                <ul class="profile-lists">
+                    <li class="user-name">{{controller.user.firstName}} {{controller.user.lastName}}</li>
+                    <li>{{controller.user.email}}</li>
+                    <li>Member Since: {{controller.user.dateCreated | date}}</li>
+                </ul>
             </div>
-
-            <div class="main-column">
-               
-                <div class="profile-img">
-                    <img ng-src="{{controller.user.imageUrl}}" alt="{{controller.file.filename}}"  type="filepicker-preview" data-fp-url="https://www.filestackapi.com/api/file/AolWdzFvkT5aFnci5DlWbz" style="width:200px; height:200px"/>
-                </div>
-               
-                <button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload New Snapshot</button>
-                <br />
-            </div>
-
-            <div class="right-column">
+            <div class="col-sm-3 col-lg-4 profile-cols profile-img">
+                <h1 class="username">{{controller.user.userName}}</h1>
+                <img ng-src="{{controller.user.imageUrl}}" />
                 <div>
-                    0 Uploads &nbsp &nbsp
-                    0 Following &nbsp &nbsp
-                    0 Followers
-                </div> 
-                <br />
-                <textarea placeholder="Tell the World about yourself..." class="form-control" rows="1" id="loginusername" ng-model="aboutMe"></textarea>
-                <br />
-                <button class="gen-btn btn-lg" type="submit" goto="/userProfile">Save Profile</button>
-                <a type="button"  href="/userProfile" class="btn btn-danger btn-lg">Cancel</a>
+                    <button type="button" ng-click="controller.pickFile()" class="btn gen-btn btn-lg">Upload</button>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 profile-cols">
+                <ul class="profile-lists">
+                    <li>
+                        0 Uploads &nbsp &nbsp
+                        0 Following &nbsp &nbsp
+                        0 Followers
+                    </li>
+                </ul>
+                <textarea placeholder="About Me..." class="form-control" rows="1" ng-model="aboutMe"></textarea>
+                <button class="btn gen-btn btn-lg" type="submit" goto="/userProfile">Save Profile</button>
+                <a type="button" href="/userProfile" class="btn btn-danger btn-lg">Cancel</a>
             </div>
         </div>
     </form>
 </div>
+
