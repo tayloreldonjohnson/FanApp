@@ -21,50 +21,48 @@ namespace Hello.Controllers
             _context = context;
         }
 
-        // GET: api/UserFollowers
-        [HttpGet]
-        public IEnumerable<UserFollow> GetUserFollower()
-        {
-            return _context.UserFollow;
-        }
+		// GET: api/UserFollowers
+		[HttpGet]
+		public IEnumerable<UserFollow> GetUserFollower()
+		{
+			return _context.UserFollow;
+		}
 
-        [HttpGet("{id}")]
-        public List<Post> GetFollowedPost(string id)
+		[HttpGet("{id}")]
+		public List<Post> GetFollowedPost(string id)
+		{
+			var follows = _context.UserFollow.Where(f => f.FollowingUserId == id).ToList();
+			var posts = new List<Post>();
+			foreach (var follow in follows)
+			{
+				var post = _context.Post.Where(a => a.ApplicationUserId == follow.FollowedUserId).FirstOrDefault();
+				posts.Add(post);
+			}
 
-        {
+			return posts;
+		}
 
-            var follows = _context.UserFollow.Where(f => f.FollowingUserId == id).ToList();
-            var posts = new List<Post>();
-            foreach (var follow in follows)
-            {
-                var post = _context.Post.Where(a => a.ApplicationUserId == follow.FollowedUserId).FirstOrDefault();
-                posts.Add(post);
-            }
+		// GET: api/UserFollowers/5
+		[HttpGet("User/{followedid}")]
+		public async Task<IActionResult> GetUserFollower([FromRoute] string followedid)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-            return posts;
-        }
+			var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.FollowedUserId == followedid);
 
-        // GET: api/UserFollowers/5
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetUserFollower([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+			if (userFollower == null)
+			{
+				return NotFound();
+			}
 
-        //    var userFollower = await _context.UserFollower.SingleOrDefaultAsync(m => m.Id == id);
+			return Ok(userFollower);
+		}
 
-        //    if (userFollower == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(userFollower);
-        //}
-
-        // PUT: api/UserFollowers/5
-        [HttpPut("{id}")]
+		// PUT: api/UserFollowers/5
+		[HttpPut("{id}")]
         public async Task<IActionResult> PutUserFollower([FromRoute] int id, [FromBody] UserFollow userFollow)
         {
             if (!ModelState.IsValid)
@@ -114,15 +112,15 @@ namespace Hello.Controllers
         }
 
         // DELETE: api/UserFollowers/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUserFollower([FromRoute] int id)
+        [HttpDelete()]
+        public async Task<IActionResult> DeleteUserFollower([FromRoute] string FollowingUserId, string FollowedUserId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.Id == id);
+            var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.FollowedUserId == FollowingUserId && FollowedUserId == FollowingUserId);
             if (userFollower == null)
             {
                 return NotFound();

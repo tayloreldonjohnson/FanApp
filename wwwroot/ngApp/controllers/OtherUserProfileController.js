@@ -36,8 +36,8 @@
             });
 	}
 
-	deleteFollower(id) {
-		this.$http.delete("api/UserFollowers/" + id)
+	deleteFollower() {
+		this.$http.delete("api/UserFollowers/", this.userid, this.otherid)
 			.then((res) => {
 				this.userfollower = {};
 				this.$state.reload();
