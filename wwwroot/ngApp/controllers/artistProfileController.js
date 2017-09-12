@@ -52,16 +52,15 @@
 	}
 
 	pickFile() {
-        this.filepicker.pick(
-            
+        this.filepicker.pick(            
             {
-                cropRatio: 5/6,
-				mimetype: 'image/*',
+                cropRatio: 1/1,
+                mimetype: 'image/*',
+                container: 'window',
                 imageQuality: 60,
                 conversions: ['crop', 'rotate',]
 			},
             this.fileUploaded.bind(this)
-
 		);
 	}
 
