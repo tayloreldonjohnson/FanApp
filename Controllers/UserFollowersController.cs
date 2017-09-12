@@ -158,27 +158,27 @@ namespace Hello.Controllers
 
             return count;
         }
-        // GET: api/UserFollowers/5
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetUserFollower([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+		// GET: api/UserFollowers/5
+		//[HttpGet("{id}")]
+		//public async Task<IActionResult> GetUserFollower([FromRoute] int id)
+		//{
+		//	if (!ModelState.IsValid)
+		//	{
+		//		return BadRequest(ModelState);
+		//	}
 
-        //    var userFollower = await _context.UserFollower.SingleOrDefaultAsync(m => m.Id == id);
+		//	var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.FollowedUserId == id);
 
-        //    if (userFollower == null)
-        //    {
-        //        return NotFound();
-        //    }
+		//	if (userFollower == null)
+		//	{
+		//		return NotFound();
+		//	}
 
-        //    return Ok(userFollower);
-        //}
+		//	return Ok(userFollower);
+		//}
 
-        // PUT: api/UserFollowers/5
-        [HttpPut("{id}")]
+		// PUT: api/UserFollowers/5
+		[HttpPut("{id}")]
         public async Task<IActionResult> PutUserFollower([FromRoute] int id, [FromBody] UserFollow userFollow)
         {
             if (!ModelState.IsValid)
@@ -228,15 +228,15 @@ namespace Hello.Controllers
         }
 
         // DELETE: api/UserFollowers/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUserFollower([FromRoute] int id)
+        [HttpDelete()]
+        public async Task<IActionResult> DeleteUserFollower([FromRoute] string FollowingUserId, string FollowedUserId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.Id == id);
+            var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.FollowedUserId == FollowingUserId && FollowedUserId == FollowingUserId);
             if (userFollower == null)
             {
                 return NotFound();
