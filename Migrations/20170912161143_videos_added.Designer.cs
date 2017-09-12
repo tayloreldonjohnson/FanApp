@@ -11,9 +11,10 @@ using System;
 namespace Hello.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170912161143_videos_added")]
+    partial class videos_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,8 +134,6 @@ namespace Hello.Migrations
                     b.Property<string>("Media");
 
                     b.Property<string>("Video");
-
-                    b.Property<string>("caption");
 
                     b.HasKey("PostId");
 
