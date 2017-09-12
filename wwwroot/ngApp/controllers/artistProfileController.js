@@ -19,9 +19,8 @@
 		this.getPostId();
 		this.file;
 		this.filepicker = $filepicker;
-        this.filepicker.setKey('AolWdzFvkT5aFnci5DlWbz');
+		this.filepicker.setKey('A7qbx1ZNSuGCfsnjhoIXuz');
 		this.artists;
-
 	}
 	getArtist() {
 		this.$ArtistProfileService.getArtist(this.id)
@@ -57,7 +56,7 @@
                 cropRatio: 5/6,
 				mimetype: 'image/*',
                 imageQuality: 60,
-                services: ['CONVERT', 'COMPUTER'],
+                //services: ['CONVERT', 'COMPUTER'],
                 conversions: ['crop', 'rotate',]
 			},
             this.fileUploaded.bind(this)
