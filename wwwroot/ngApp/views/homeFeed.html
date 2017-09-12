@@ -1,7 +1,47 @@
 ﻿<h1>Home Feed</h1>
-<div>
-    <h3>All Posts</h3>
-    <ul>
-        <li ng-repeat="p in controller.Id"><img style="height:auto; width:300px;" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
-    </ul>
+<div >
+<section class="container-post" ng-repeat="p in controller.posts | orderBy: 'userId' " >
+    <div class="card-post">
+        <div class="card-header-post" >
+            <img class="profile-img-post" ng-src="{{u.imageUrl}}" />
+
+
+
+            <div class="profile-info-post">
+                <div class="name-post">{{u.userName}}</div>
+                <div class="location"></div>
+
+            </div>
+            <div class="time" {{p.dateCreated | date}}>
+                
+            </div>
+
+        </div>
+        <div class="content-post" width="498" height="500" >
+            <img ng-src="{{p.media}}" width="498" height="500" />
+        </div>
+
+        <div class="card-footer">
+            <div class="Favorites">
+                21 Favorites
+            </div>
+            <div class="description">
+                <p>
+                    <!--<span>{controller.user.userName}}</span>-->
+
+                </p>
+
+            </div>
+            <div class="comments">
+
+            </div>
+            <div class="form">
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+
+</section>
 </div>

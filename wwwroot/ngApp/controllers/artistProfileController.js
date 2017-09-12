@@ -19,7 +19,7 @@
 		this.getPostId();
 		this.file;
 		this.filepicker = $filepicker;
-		this.filepicker.setKey('A7qbx1ZNSuGCfsnjhoIXuz');
+        this.filepicker.setKey('AolWdzFvkT5aFnci5DlWbz');
 		this.artists;
 
 	}
@@ -60,16 +60,21 @@
 	//		this.fileUploaded.bind(this)
 	//	);
 	//}
-    pickFile() {
+ 
+	pickFile() {
         this.filepicker.pick(
+            
             {
-                mimetype: 'image/*',
-                imageQuality: 60,               
-            },
-
+                cropRatio: 5/6,
+				mimetype: 'image/*',
+                imageQuality: 60,
+                services: ['CONVERT', 'COMPUTER'],
+                conversions: ['crop', 'rotate']
+			},
             this.fileUploaded.bind(this)
-        );
-    }
+
+		);
+	}
 
 
 	fileUploaded(file) {
@@ -83,7 +88,7 @@
 	//		.then((res) => {
 	//			this.artists = res.data;
 	//			console.log(this.artists);
-	//			this.$http.post("api/Artists", this.artists);
+	//			this.$http.post("api/artists", this.artists);
 	//		});
 	//}
 }
