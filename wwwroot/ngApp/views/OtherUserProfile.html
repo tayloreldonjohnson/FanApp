@@ -1,24 +1,57 @@
-﻿<div class="user-container">
-    
+﻿<div class="container-fluid text-center">
+    <div class="row profile-container">
+        <div class="col-sm-4 profile-cols">
+            <ul class="profile-lists">
+                <li class="user-name">{{controller.user.firstName}} {{controller.user.lastName}}</li>
+                <li>{{controller.user.email}}</li>
+                <li>Member Since: {{controller.user.dateCreated | date}}</li>
+            </ul>
+        </div>
+        <div class="col-sm-4 profile-cols profile-img">
+            <h1 class="username">{{controller.user.userName}}</h1>
+            <img ng-src="{{controller.user.imageUrl}}" />
+        </div>
+        <div class="col-sm-4 profile-cols">
+            <ul class="profile-lists">
+                <li>
+                    0 Uploads &nbsp &nbsp
+                    0 Following &nbsp &nbsp
+                    0 Followers
+                </li>
+                <li>{{controller.user.aboutMe}}</li>
+                <li><a href="#" class="btn gen-btn btn-lg" ng-click="controller.addFollower()">Follow</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="posts-lists">
+            <li ng-repeat="post in controller.user.posts">
+                <div class="posts-img">
+                    <img ng-src="{{post.media}}" />{{post.dateCreated | date}}
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<!--<div class="user-container">
     <div class="username">
         <h1>{{controller.user.userName}}</h1>
     </div>
-
     <div class="column-layout">
         <div class="left-column">
-            <div id="profile-name">{{controller.user.firstName}} {{controller.user.lastName}}</div>
+            <div class="profile-name">{{controller.user.firstName}} {{controller.user.lastName}}</div>
             <br />
             <div>{{controller.user.email}}</div>
             <br />
             <div>Member since: {{controller.user.dateCreated | date}}</div>
         </div>
-
         <div class="main-column">
             <div class="profile-img">
                 <img ng-src="{{controller.user.imageUrl}}" />
             </div>
         </div>
-
         <div class="right-column">
             <div>
                 0 Uploads &nbsp &nbsp
@@ -36,8 +69,8 @@
     </div>
 </div>
 <div>
-	<h1>Posts</h1>
-	<ul>
-		<li ng-repeat="post in controller.user.posts"><img ng-src="{{post.media}}" /></li>
-	</ul>
-</div>
+    <h1>Posts</h1>
+    <ul>
+        <li ng-repeat="post in controller.user.posts"><img ng-src="{{post.media}}" /></li>
+    </ul>
+</div>-->

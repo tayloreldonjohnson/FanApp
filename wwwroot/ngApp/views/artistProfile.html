@@ -1,100 +1,128 @@
-﻿<!--<ul>
-	<li><img ng-src="{{controller.artist.imageUrl}}" style="width: 400px" /></li>
-	<li>{{controller.artist.name}}</li>
-	<li>{{controller.artist.genre}}</li>
-</ul>-->
+﻿<!--Artist Merch to post: Ramones, Madonna, Jesus&MaryChain, Talking Heads, Cat Power, Crystal Castles, Angel Olsen, Nick Cave, Warpaint, Rolling Stones, NIN, Radiohead-->
 
-<form id="artistProfile">
+<div class="container-fluid text-center">  
 
-
-	<div class="column-layout" style="background-image:url({{controller.artist.headerUrl}}); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
-
-		<div class="main-artist-column">
-			<p class="profile-img"><img ng-src="{{controller.artist.imageUrl}}" /></p>
+    <div class="row profile-container">
+        <div class="col-sm-6 col-md-4 col-lg-2 artist-profile-img">
+			<img ng-src="{{controller.artist.imageUrl}}" />
+        </div>
+		<div class="col-sm-6 col-md-8 col-lg-10 artist-profile-cols">			
+		    <h2>{{controller.artist.name}}</h2>		        
+		    <div>
+                0 Uploads &nbsp &nbsp
+		        0 Following &nbsp &nbsp
+		        0 Followers
+            </div>
+            <div class="artist-profile">
+                <p>This is the FanBase Page for <span class="big-text">{{controller.artist.name}}</span>.</p>
+                <p>Post your favorite memorabilia, merchandise, concert photos, and more!</p>
+                <p>Use the <span class="big-text">Upload</span> button below to add your files, then click <span class="big-text">Submit</span> to save your post.</p>
+                <div>
+                    <!--How You Feel: <input type="text" name="text">-->
+                    <form ng-submit="controller.addPost( controller.file.url)">
+                        <button type="button" ng-click="controller.pickFile()" class="btn gen-btn btn-lg">Upload</button>
+                        <!--<div class="image-post">
+                                <img class="image-post" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
+                            </div>-->
+                        <input type="submit" value="Submit" class="btn gen-btn btn-lg">
+                    </form>
+                </div>
+            </div>
 		</div>
-		<div class="right-artist-column">
-			<div>
-				<div><h2><strong>{{controller.artist.name}}</strong></h2> </div> <br />
-				<div>Genre: &nbsp{{controller.artist.genre}}</div> <br />
-				<span>0 Uploads</span> &nbsp &nbsp
-				<span href="#">0 Following</span>  &nbsp &nbsp
-				<span href="#">0 Followers</span>
-			</div> <br />
+    </div>
 
 
-		</div>
-	</div>
-
-</form>
-<div id="artistProfile">
-	<ul class="nav nav-tabs">
-		<li class="active"><a href="#album" data-toggle="tab">Albums</a></li>
-		<li><a href="#YoutubeVideos" data-toggle="tab">Youtube Videos</a></li>
-
-	</ul>
-	<div id="myTabContent" class="tab-content">
-		<div class="tab-pane fade active in" id="album">
-			<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-		</div>
-		<div class="tab-pane fade" id="YoutubeVideos">
-			<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-		</div>
-	</div>
+    <section ng-repeat="p in controller.posts" class="container-post">
+        <div class="card-post">
+            <div class="card-header-post">
+                <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
+                <div class="profile-info-post">
+                    <div class="name-post">{{controller.user.userName}}</div>
+                    <div class="location"></div>
+                </div>
+                <div class="time" {{p.dateCreated | date}}></div>
+            </div>
+            <div class="content-post">
+                <img ng-src="{{p.media}}" />
+            </div>
+            <div class="card-footer">
+                <div class="Favorites">## FAVORITES</div>
+                <div class="description">TEST DESCRIPTION</div>
+                <div class="comments"></div>
+                <div class="form"></div>
+            </div>
+        </div>
+    </section>
 
 </div>
 
-    How You Feel: <input type="text" name="text"><br>
-<form ng-submit="controller.addPost( controller.file.url)">
-	<input type="submit" value="Submit">
 
 
+<!--
+    
+    <div class="artist-profile">
+    <div class="column-layout">
+        style="background-image:url({{controller.artist.headerUrl}}); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"
+        <div class="main-artist-column">
+            <p class="profile-img">
+                <img ng-src="{{controller.artist.imageUrl}}" />
+            </p>
+        </div>
+        <div class="right-artist-column">
+            <h2>{{controller.artist.name}}</h2>
+            <div>Genre: &nbsp{{controller.artist.genre}}</div> <br />
+            <div>
+                0 Uploads &nbsp &nbsp
+                0 Following &nbsp &nbsp
+                0 Followers
+            </div>
+        </div>
+    </div>
+</div>
 
-	<div class="main-column">
+<div class="artist-profile">
+    <p>This is the FanBase Page for <span class="big-text">{{controller.artist.name}}</span>.</p>
+    <p>Post your favorite memorabilia, merchandise, concert photos, and more!</p>
+    <p>Use the <span class="big-text">Upload</span> button below to add your files and click <span class="big-text">Submit</span> to save your post.</p>
+    <div>
+        How You Feel: <input type="text" name="text">
+        <form ng-submit="controller.addPost( controller.file.url)">
+            <input type="submit" value="Submit">
+            <div class="main-column">
+                <button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
+                <div class="image-post">
+                    <img class="image-post" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
-		<button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
-		<div class="image-post"><img class="image-post" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" /></div>
-		<br />
-	</div>
-</form>
 
-<br />
-<br />
 <section ng-repeat="p in controller.posts" class="container-post">
     <div class="card-post">
         <div class="card-header-post">
             <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
-
-
             <div class="profile-info-post">
                 <div class="name-post">{{controller.user.userName}}</div>
                 <div class="location"></div>
-
             </div>
             <div class="time" {{p.dateCreated | date}}>
-
             </div>
-
         </div>
         <div class="content-post" width="498" height="500">
             <img ng-src="{{p.media}}" width="498" height="500" />
         </div>
-
         <div class="card-footer">
             <div class="Favorites">
                 21 Favorites
             </div>
             <div class="description">
-                <p>
-                    <span>{{controller.user.userName}}</span>XO till we overdose
-
-                </p>
-
+                <p><span>{{controller.user.userName}}</span>XO till we overdose</p>
             </div>
             <div class="comments">
-
             </div>
             <div class="form">
-
             </div>
         </div>
     </div>
@@ -102,4 +130,6 @@
     <br />
 
 </section>
+
+-->
 			

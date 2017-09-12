@@ -1,0 +1,435 @@
+﻿
+body {
+    background: linear-gradient(132deg, #F9FC3A, #F17105, #D11149, #1A8FE3, #31D843 );
+    background-size: 400% 400%;
+    animation: backgroundgradient 30s ease infinite;
+    color: white;
+    font-family: 'Mukta Mahee', 'Lucida Sans', sans-serif;    
+}
+
+form {
+   margin: 0 auto;
+}
+
+@keyframes backgroundgradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/*--------------------------------------  Navigation  ----------------------------------------------------*/
+
+.navbar {
+    background-color: #000;    
+}
+
+.nav li a:link {
+    background-color: #000;
+    color: #7C7C7C;
+}
+
+.nav li a:visited {
+    background-color: #000;
+    color: #7C7C7C;
+}
+
+.nav li a:hover {
+    color: #000;
+    background-color: #7C7C7C;
+}
+
+.nav li a:active {
+    background-color: #000;
+    color: #7C7C7C;
+}
+
+.glyphicon {
+    top: 0;
+}
+
+.icon-bar {
+   background-color: #7C7C7C;
+}
+
+/*--------------------------------------  Shared Elements  ----------------------------------------------------*/
+
+
+.gen-btn {
+    background-color: #000;
+    color: #F7FFF7;
+    margin: 0.8em 0.2em;
+    border: .1em solid white;
+}
+
+.gen-btn:hover {
+    background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
+    background-size: 400% 400%;
+    animation: backgroundgradient 5s ease infinite;
+    color: black;
+    border: .1em solid black;
+    font-weight: bold;
+}
+
+.gen-btn:focus:not(:active) {
+    color: #F7FFF7;
+}
+
+.btn-danger {
+    border: .1em solid white;
+    margin: 0.8em 0.2em;
+}
+
+.input-group {
+    margin: 0.75em;
+}
+
+.search-input {
+    display: block;
+}
+
+.logo-name {
+    font-family: 'Monoton', cursive;
+}
+
+#logo-name-index {
+    color: lightgreen;
+}
+
+/*.font-effect-neon#logo-name-index {
+    text-shadow: 0.5em 0.5em 5em white;
+}*/
+
+/*------------------------------------------  User/Artist Profile Classes  --------------------------------*/
+
+.profile-container {
+    background-color: rgba(0,0,0,0.75);
+    margin: 0 auto;
+    padding: 0em 0.5em 1em 0.5em;
+    width: 85%;
+    border-radius: 2em/2em;
+    font-size: 1.5em;
+}
+
+.profile-cols {
+    display: inline-block;
+    padding: 2em 4em;
+}
+
+.profile-cols ul li {
+    padding: 0.75em 0em;
+}
+
+.profile-img img {
+    width: 10em;
+    height: auto;
+    margin-bottom: .1em;
+    border-radius: 50%;
+}
+
+ul.profile-lists {
+    list-style-type: none;
+    text-align: left;
+}
+
+ul.posts-lists {
+    list-style-type: none;
+    margin-top: 4em;
+}
+
+.posts-lists li {
+    margin: 2em;
+}
+
+.posts-img img {
+    width: auto;
+    height: 30em;
+}
+
+
+
+/*------------------------------------  Grid  ----------------------------------------------------*/
+
+
+
+
+/*--------------------------------------  Home  ----------------------------------------------------*/
+
+.jumbotron {
+    background-color: rgba(0,0,0,0.75);
+    background-size: cover;
+    padding: .25em;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.jumbotron img{
+    height: 45%;
+    width: 100%;
+    margin-bottom: 1.75em;
+    border-radius: 0.5em/0.5em;
+}
+
+#logo-name-home {
+    font-size: 4em;
+    color: deeppink;
+    margin-bottom: 0.4em;
+}
+
+ul#home-list {
+    list-style-type: none;
+    font-size: 2em;
+    font-family: 'Graduate', sans-serif;
+}
+
+#friends-icon {
+    width: 10%;
+    height: auto;
+}
+
+
+/*--------------------------------------  Log In  ----------------------------------------------------*/
+
+.site-form {
+   
+    margin: 0 auto;
+}
+
+.form-control {
+    border-radius: 0.2em/0.2em;    
+}
+
+.form-control:last-child {   
+    border-top-left-radius: 0.2em;
+    border-bottom-left-radius: 0.2em;
+}
+
+.login-username {
+    background-color: #000;
+    color: white;
+    border: 0.1em solid;
+    outline: white;
+    height: 2.5em;
+    transition: height 1s;
+    -webkit-transition: height 1s; 
+    margin: 0.4em 0;
+}
+
+.login-username::-webkit-input-placeholder { /* Chrome */
+    color: white;
+}
+
+.login-username:-ms-input-placeholder { /* IE 10+ */
+    color: white;
+}
+
+.login-username::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+    opacity: 1;
+}
+
+.login-username:-moz-placeholder { /* Firefox 4 - 18 */
+    color: white;
+    opacity: 1;
+}
+
+/*--------------------------------------  Register  ----------------------------------------------------*/
+
+
+/*--------------------------------------  User Profiles  ----------------------------------------------------*/
+
+.username {    
+    text-align: center;
+    color: white;
+    padding-bottom: .5em;
+}
+
+.user-name {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.users-list {
+    margin: 1em;
+    padding: 2em 1em 1em 1em;
+    border-radius: 2em/2em;
+}
+
+#users-list-img img {
+    width: 10em;
+    height: auto;
+    margin-bottom: .1em;
+    border-radius: 50%;
+}
+
+.users-list:first-child {
+    margin-top: 2em;
+}
+
+.user-info-list {
+    font-size: 1.25em;
+    color: white;
+    display: inline-block;
+    text-align: justify;
+    padding-left: 2em;    
+}
+
+ul.user-info {
+    list-style-type: none;
+}
+
+.user-info-list a:link{
+    color: deeppink;
+}
+
+.user-info-list a:visited {
+    color: deeppink;
+}
+
+.user-info-list a:hover {
+    color: deeppink;
+}
+
+.user-info-list a:active {
+    color: white;
+}
+
+/*--------------------------------------  ArtistProfiles  Search----------------------------------------------------*/
+.artist-block {
+    margin-top: 25px;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.artist-block li {
+    list-style-type: none;
+}
+
+.artists-list {
+    background-color: rgba(0,0,0,0.75);
+    margin: 1em;
+    padding: 0.5em;
+    width: 22em;
+    height: 22em;
+    border-radius: 2em/2em;
+    text-align: center;
+}
+
+.artist-img img {
+    width: 16em;
+    height: auto;
+    padding-bottom: 1em;
+    border-radius: 50%;
+}
+
+.artist-name {
+    text-transform: capitalize;
+    font-size: 1.6em;
+    padding-bottom: .5em;
+}
+
+.artists-list a:link {
+    color: deeppink;
+}
+
+.artists-list a:visited {
+    color: #CC1075;
+}
+
+.artists-list a:hover {
+    color: #93FF14;
+    text-decoration: underline;
+}
+
+.artists-list a:active {
+    color: deeppink;
+    text-decoration: none;
+}
+
+
+/*------------------------------------------------  Artist Profiles Individual  --------------------------------------*/
+
+.artist-profile-cols {
+    display: inline-block;
+    padding: 0.5em 1em;
+}
+
+.artist-profile-img img {
+    margin: 2em 2em 1em 1em;
+    width: 14em;
+    height: auto;
+    /*padding: 1em;*/
+    border-radius: 50%;
+
+}
+
+.artist-profile {
+    margin: 0.5em;
+    color: #F1F1F1;
+    font-size: 0.9em;
+}
+
+.big-text {
+    font-weight: bold;
+    color: deeppink;
+    font-size: 1.15em;
+}
+
+/*------------------------------------------------- UserPosts  ---------------------------------------------*/
+
+.container-post {
+    margin: 2em;
+}
+
+.card-post {
+    background-color: rgba(0,0,0,0.75);
+    margin: 0 auto;
+    width: 500px;
+    height: auto;
+    border: 1px solid rgba(0,0,0,0.75);
+    border-radius: 2px;
+    color: white;
+}
+
+.card-header-post {
+    padding: 0.5em 1em 0 1em;
+    text-align: left;
+}
+
+.profile-img-post {
+    display: inline-block;    
+    width: 3em;
+    height: auto;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 1em;
+    padding: 0 0 0.5em 0;
+}
+
+.profile-info-post {
+    display: inline-block;
+}
+
+.name-post {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.content-post img{
+    width: 498px;
+    height: 500px;
+    padding: 15px;
+}
+
+.card-footer {
+    padding: 0 1em 1em 1em;
+    text-align: left;
+}

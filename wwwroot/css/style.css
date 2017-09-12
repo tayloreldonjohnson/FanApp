@@ -46,8 +46,6 @@ label {
     color: #1A8FE3;
 }
 
-
-
 .nav li a:link {
     background-color: #000;
     color: #7c7c7c;
@@ -95,6 +93,10 @@ label {
         color: #F7FFF7;
     }
 
+.search-bar {
+    margin-bottom: 10px;
+}
+
 .search-input {
     margin: 20px;
     display: block;
@@ -114,8 +116,6 @@ label {
     display: inline-flex;
     margin-right: 20px;
 }
-
-
 
 .user-inputs {
     padding: 5px 0;
@@ -162,10 +162,10 @@ label {
 
 .user-container {
     background-color: rgba(0,0,0,0.75);
-    margin: 0 auto;
+    margin: 0 auto;    
     padding: 20px;
     width: 95%;
-    border-radius: 2em/5em;
+    border-radius: 2em/2em;
 }
 
 #profile {
@@ -304,8 +304,7 @@ label {
 .user-info-list {
     font-size: 1.25em;
     color: white;
-    display: inline-block;
-    margin-left: 30px;
+    display: inline-block;    
 }
 
     .user-info-list a:link {
@@ -326,6 +325,38 @@ label {
 
 
 /*-------------- Artist Classes ----------------------------------*/
+
+.list-space {
+    padding-bottom: 30px;
+}
+
+.artist-block {
+    margin-top: 25px;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.artist-block li {
+    list-style-type: none;
+}
+
+.artists-list {
+    background-color: rgba(0,0,0,0.75);
+    margin: 20px;
+    padding: 10px 10px 10px 10px;
+    width: 300px;
+    height: 300px;
+    border-radius: 2em/2em;
+    text-align: center;
+}
+
+
+.artist-img img {
+    width: 200px;
+    height: auto;
+    padding-bottom: 5px;
+    border-radius: 50%;
+}
 
 .artist-name {
     text-transform: capitalize;
@@ -349,10 +380,7 @@ label {
         color: white;
     }
 
-.artist-genre {
-    color: white;
-    text-transform: capitalize;
-}
+
 
 /*--------------------------------------------Artist Profile-----------------------------------------------------*/
 
