@@ -32,6 +32,8 @@ namespace Hello.Services
             {
                 ApplicationArtistId = post.ApplicationArtistId,
                 ApplicationUserId = post.ApplicationUserId,
+                Video = post.Video,
+                caption = post.caption,
                 Media = post.Media,
                 DateCreated = post.DateCreated
             };

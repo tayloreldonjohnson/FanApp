@@ -47,8 +47,28 @@ namespace Hello.Controllers
 			return posts;
 		}
 
-		// Gets User post by UserId
-		[HttpGet("{id}")]
+        // Added to get amount of uploads will change how you get posts----------------------------------------------------------------------------------------------------------
+        public class PostsUploadedDataVM
+        {
+            public List<Post> Posts { get; set; }
+            public int NumberOfPosts { get; set; }
+        
+        }
+
+        [HttpGet("numberOfPosts/{id}")]
+        public PostsUploadedDataVM GetUserPosts(string id)
+        {
+            var data = new PostsUploadedDataVM();
+            //var allPosts = new List<Post>();
+            var userPosts = _context.Post.Where(u => u.ApplicationUserId == id).ToList();
+            var NumberOfPosts = userPosts.Count();
+            data.Posts = userPosts;
+            data.NumberOfPosts = NumberOfPosts;
+            return data;
+        }
+        // ------------------------------------------------------------------------------------------------------------------------------------------
+        // Gets User post by UserId
+        [HttpGet("{id}")]
 		public List<Post> GetUserId(string id)
 		{
 			var userposts = _context.Post.Where(u => u.ApplicationUserId == id).ToList();

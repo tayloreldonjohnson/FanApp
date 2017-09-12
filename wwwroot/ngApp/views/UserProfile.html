@@ -1,4 +1,43 @@
-﻿<div class="container-fluid text-center">    
+﻿<!--<div class="user-container">
+    
+    <div class="username">
+        <h1>{{controller.user.userName}}</h1>
+    </div>
+
+    <div class="column-layout">
+        <div class="left-column">
+            <div class="profile-name">{{controller.user.firstName}} {{controller.user.lastName}}</div>
+            <br />
+            <div>{{controller.user.email}}</div>
+            <br />
+            <div>Member since: {{controller.user.dateCreated | date}}</div>       
+        </div>
+
+        <div class="main-column">
+            <div class="profile-img">
+                <img ng-src="{{controller.user.imageUrl}}" />
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div>
+                    
+          
+            </div> 
+            <br />
+            <div>{{controller.user.aboutMe}}</div> 
+            <br />
+            <a href="/createProfile" class="btn gen-btn btn-lg">Edit Profile</a>
+        </div>
+    </div>
+
+</div>
+<div>
+	<h1></h1>
+	<ul>
+		<li ng-repeat="p in controller.posts"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
+	</ul>-->
+<div class="container-fluid text-center">    
     <div class="row profile-container">        
         <div class="col-sm-3 col-lg-4 profile-cols">
             <ul class="profile-lists">
@@ -14,9 +53,9 @@
         <div class="col-sm-6 col-lg-4 profile-cols">
             <ul class="profile-lists">
                 <li>
-                    0 Uploads &nbsp &nbsp
-                    0 Following &nbsp &nbsp
-                    0 Followers
+                    Uploads &nbsp &nbsp  {{controller.post.numberOfPosts}}
+                    Following &nbsp &nbsp {{controller.posts.numberOfFollowing}}
+                    Followers  &nbsp &nbsp {{controller.posts.numberOfFollowers}}
                 </li>
                 <li>{{controller.user.aboutMe}}</li>
                 <li><a href="/createProfile" class="btn gen-btn btn-lg">Edit Profile</a></li>
