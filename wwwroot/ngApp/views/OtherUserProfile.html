@@ -21,16 +21,16 @@
 
         <div class="right-column">
             <div>
-                0 Uploads &nbsp &nbsp
-                0 Following &nbsp &nbsp
-                0 Followers
+                Uploads &nbsp &nbsp  {{controller.post.numberOfPosts}}
+                Following &nbsp &nbsp {{controller.posts.numberOfFollowing}}
+                Followers  &nbsp &nbsp {{controller.posts.numberOfFollowers}}
             </div>
             <br />
             <div>{{controller.user.aboutMe}}</div>
             <br />
             <div>
-                <a href="#" class="btn gen-btn btn-lg" ng-click="controller.AddFollower(
-        )">Follow</a>
+                <a href="#" class="btn gen-btn btn-lg" ng-click="controller.addFollower()">Follow</a>
+             
             </div>
         </div>
     </div>

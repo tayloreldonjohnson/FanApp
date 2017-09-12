@@ -57,8 +57,10 @@
 	</div>
 </form>
 <ul>
-	<li ng-repeat="p in controller.posts"> <img class="profile-img" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
-
+	<li ng-repeat="p in controller.posts"> <a ui-sref="({ id:p.postid })">
+                                               {{p.Id}}
+</a>{{p.postid}}<img class="profile-img" ng-src="{{p.media}}" /> {{p.dateCreated | date}}</li>
+    
 </ul>		
 
 	

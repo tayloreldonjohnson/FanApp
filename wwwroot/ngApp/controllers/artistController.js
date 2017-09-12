@@ -4,6 +4,7 @@
         this.getArtists();
 		this.artists = [];
         this.$stateParams = $stateParams["id"];
+        this.$stateParams = $stateParams["postid"];
         this.$stateParams = $stateParams["userId"];
 		this.$ArtistProfileService = $ArtistProfileService;
 

@@ -6,14 +6,32 @@
 		this.posts = sessionStorage.getItem("userid");
 		this.getPost();
 		this.getUserProfile(); 
-		this.user;
+        this.user;
+        this.getFollowInfo();
+        this.getNumberOfPosts();
+        
     }
 
+    getFollowInfo() {
+        this.$http.get("api/UserFollowers/" + this.posts)
+            .then(res => {
+                this.posts = res.data;
+                
+                console.log(this.posts.numberOfFollowing);
+            });
+    }
+    
+    getNumberOfPosts() {
 
-    //getUsers() {
-    //    this.$UserProfileService.getUsers();
-    //}
 
+        this.$http.get("api/posts/numberOfPosts/" + this.posts)
+            .then(res => {
+                this.post = res.data;
+                console.log("amount of Posts " + this.post.numberOfPosts);
+            });
+
+
+    }
     getUserProfile() {
 
         this.$UserProfileService.getUserProfile(this.email)
@@ -22,7 +40,8 @@
              
 				console.log(res.data);
             });       
-	} 
+    } 
+
 
 	getPost() {
 		this.$http.get("api/Posts/" + this.posts)
