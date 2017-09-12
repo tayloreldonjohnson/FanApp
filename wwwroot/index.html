@@ -8,9 +8,13 @@
     <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Monoton&effect=-neon|neon" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
+    <!--    
     <link rel="stylesheet" href="css/homestyle.css"/>
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/user-profile.css" rel="stylesheet" />
+    -->
+    <link href="css/clean-css.css" rel="stylesheet" />
+    
     
     <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
     
@@ -20,9 +24,15 @@
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand"  href="/" ><!--<img width="50" height="50" src="" id="logo"/>-->LOGO</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#appNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand logo-name" id="logo-name-index" href="/" >FanBase</a>
             </div>
-            <ul class="nav navbar-nav">
+            <div class="collapse navbar-collapse" id="appNavbar">
+             <ul class="nav navbar-nav">
                 <li class="active"><a  href="/homeFeed" ng-show="account.isLoggedIn()" >
                         <span class="glyphicon glyphicon-home"></span>
                     </a></li>
@@ -56,26 +66,13 @@
                     </div>
                 </li>-->
             </ul>            
+
         </div>
     </nav>
+    
+    <ui-view></ui-view>
 
-    <!--<div class="container index-ui shadow">-->
-        
-
-        <!--<script>
-            var client = filestack.init("AdqhVmjnDSXuLRRPEfvdbz");
-            client.pick({
-                accept: 'image/*',
-                maxFiles: 5,
-                imageMax: [1024, 1024]
-            }).then(function (result) {
-                console.log(JSON.stringify(result.filesUploaded))
-            });
-        </script>-->
-
-        <ui-view></ui-view>
-
-    <!--</div>-->
+    
     <!-- Bootstrap -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

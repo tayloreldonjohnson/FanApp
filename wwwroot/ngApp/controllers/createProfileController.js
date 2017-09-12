@@ -14,7 +14,7 @@ class CreateProfileController {
 		//imgstuff
 		this.file;
 		this.filepicker = $filepicker;
-        this.filepicker.setKey('AolWdzFvkT5aFnci5DlWbz'); 
+        this.filepicker.setKey('AfFjXrzLQi24J9Obh6rewz'); 
 
     }
 	getUserProfile() {
@@ -42,11 +42,9 @@ class CreateProfileController {
 	pickFile() {
 		this.filepicker.pick(
 		{
-                cropRatio: 5 / 6,
-               
+                cropRatio: 5/6,               
                 mimetype: 'image/*',
                 imageQuality: 60,
-                services: ['CONVERT', 'COMPUTER'],
                 conversions: ['crop', 'rotate',]
             
 		},

@@ -13,13 +13,14 @@
 			ApplicationArtistId: this.posts,
 			ApplicationUserId: this.user,
 			DateCreated: new Date(),
-			Media: ""
+			Media: "",
+            Caption: ""
 		};
 		this.getArtist();
 		this.getPostId();
 		this.file;
 		this.filepicker = $filepicker;
-        this.filepicker.setKey('AolWdzFvkT5aFnci5DlWbz');
+		this.filepicker.setKey('AfFjXrzLQi24J9Obh6rewz');
 		this.artists;
 
 	}
