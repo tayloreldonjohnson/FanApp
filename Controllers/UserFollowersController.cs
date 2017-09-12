@@ -158,24 +158,24 @@ namespace Hello.Controllers
 
             return count;
         }
-        // GET: api/UserFollowers/5
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetUserFollower([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+		// GET: api/UserFollowers/5
+		//[HttpGet("{id}")]
+		//public async Task<IActionResult> GetUserFollower([FromRoute] int id)
+		//{
+		//	if (!ModelState.IsValid)
+		//	{
+		//		return BadRequest(ModelState);
+		//	}
 
-			var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.FollowedUserId == followedid);
+		//	var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.FollowedUserId == id);
 
-			if (userFollower == null)
-			{
-				return NotFound();
-			}
+		//	if (userFollower == null)
+		//	{
+		//		return NotFound();
+		//	}
 
-			return Ok(userFollower);
-		}
+		//	return Ok(userFollower);
+		//}
 
 		// PUT: api/UserFollowers/5
 		[HttpPut("{id}")]
