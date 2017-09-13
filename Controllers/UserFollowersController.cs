@@ -190,23 +190,23 @@ namespace Hello.Controllers
 
         //--------------------------------------------
         // GET: api/UserFollowers/5
-        [HttpGet("{FollowedUserId}")]
-        public async Task<IActionResult> GetUserFollowerinfo( [FromRoute]  string id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpGet("{FollowedUserId}")]
+        //public async Task<IActionResult> GetUserFollowerinfo( [FromRoute]  string id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.FollowedUserId == id  );
+        //    var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.FollowedUserId == id  );
 
-            if (userFollower == null)
-            {
-                return NotFound();
-            }
+        //    if (userFollower == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(userFollower);
-        }
+        //    return Ok(userFollower);
+        //}
 
 		// PUT: api/UserFollowers/5
 		[HttpPut("{id}")]
