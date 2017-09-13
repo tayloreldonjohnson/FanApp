@@ -18,8 +18,6 @@
             FollowingUserId: this.userid,
             FollowedUserId: this.otherid,
 		};
-		this.getFollowinginfo();
-
     }
 
         addFollower() {
@@ -42,15 +40,8 @@
 				});
 		}
 
-		getFollowinginfo() {
-			this.$http.get("api/UserFollowers/unfollow/" + this.otherid)
-				.then(res => {
-					console.log(res.data);
-				});
-		}
-
 		deleteFollower() {
-			this.$http.delete("api/UserFollowers")
+			this.$http.delete("api/UserFollowers/unfollow/" + this.otherid + "/" + this.userid)
 				.then(res => {
 					console.log(res.data);
 				});
