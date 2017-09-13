@@ -12,7 +12,8 @@
         this.userfollower;
         this.userfollowerinfo;
         this.getFollowInfo(); 
-    
+     
+  
         this.getOtherUserProfile();
         this.userfollower = {         
             FollowingUserId: this.userid,
