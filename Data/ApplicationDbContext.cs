@@ -38,6 +38,7 @@ namespace Hello.Data
 		public DbSet<Post> Post { get; set; }
 		public DbSet<Follow> Follow { get; set; }
 		public DbSet<UserFollow> UserFollow { get; set; }
+        public DbSet<Inbox> Inbox { get; set; }
 
-	}
+    }
 }
