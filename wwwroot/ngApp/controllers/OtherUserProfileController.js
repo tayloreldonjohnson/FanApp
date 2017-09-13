@@ -12,7 +12,8 @@
         this.userfollower;
         this.userfollowerinfo;
         this.getFollowInfo(); 
-    
+     
+  
         this.getOtherUserProfile();
         this.userfollower = {         
             FollowingUserId: this.userid,
@@ -33,10 +34,10 @@
         }
 
         getFollowInfo() {
-                   this.$http.get("api/UserFollowers/" + this.otherid)
+                   this.$http.get("api/UserFollowers/unfollow/" + this.otherid)
                    .then(res => {
                     this.posts = res.data;
-                    console.log(this.posts);
+                    console.log(res.data + "FollowInfo");
                     console.log(this.posts.numberOfFollowing);
                 });
                }
@@ -53,8 +54,14 @@
                     this.$http.get("api/Users/email/" + this.id)
                         .then((res) => {
                             this.user = res.data;
-                            console.log(res.data);
+                            console.log(this.user.imageUrl);
                         });
+               }
+              unFollow(personFollowing, personFollowed ) {
+                    this.$http.delete("api/userFollowers/" + unfollow).then((res) => {
+                        this.followid = res.data;
+                        console.log(this.otherid);
+                    });
                 }
              
      }
