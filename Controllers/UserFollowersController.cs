@@ -27,33 +27,178 @@ namespace Hello.Controllers
         {
             return _context.UserFollow;
         }
-
-        [HttpGet("{id}")]
-        public List<Post> GetFollowedPost(string id)
-
+        public class UserPostVm
         {
+            public int PostId { get; set; }
+            public int ApplicationArtistId { get; set; }
+            public string FirstNameOfPersonWhoPosted { get; set; }
+            public string LastNameOfPersonWhoPosted { get; set; }
 
-            var follows = _context.UserFollow.Where(f => f.FollowingUserId == id).ToList();
-            var posts = new List<Post>();
-            foreach (var follow in follows)
-            {
-                var post = _context.Post.Where(a => a.ApplicationUserId == follow.FollowedUserId).FirstOrDefault();
-                posts.Add(post);
-            }
+            public string ArtistName { get; set; }
+            public string BeingFollowedId { get; set; }
+            public DateTime DateCreated { get; set; }
+            public string media { get; set; }
+            public string Video { get; set; }
+            public string Caption { get; set; }
+            public string ProfileImage { get; set; }
 
-            return posts;
+
         }
 
+        [HttpGet("postandprofile/{id}")]
+        //public List<Post> GetFollowedPost(string id)
+        public List<UserPostVm> GetPostWithProfile(string id)
+        {
+            var newpost = new UserPostVm();
+            var allPosts = new List<UserPostVm>();
+            var usersBeingFollowed = _context.UserFollow.Where(uf => uf.FollowingUserId == id).ToList();
+            //var followingYou = _context.UserFollow.Where(uf => uf.FollowedUserId == id).ToList();
+
+
+            foreach (var uf in usersBeingFollowed)
+            {
+                var user = _context.ApplicationUser.Where(u => u.Id == uf.FollowedUserId).FirstOrDefault();
+                var posts = _context.Post.Where(u => u.ApplicationUserId == uf.FollowedUserId).ToList();
+                var userWithPosts = new UserPostVm()
+                {
+                    BeingFollowedId = uf.FollowedUserId,
+                    ProfileImage = user.ImageUrl,
+                    FirstNameOfPersonWhoPosted = user.FirstName,
+                    LastNameOfPersonWhoPosted = user.LastName
+
+
+                };
+
+                foreach (var posted in posts)
+                {
+                    foreach (var artist in posts)
+                    {
+                        var artistinfo = _context.ApplicationArtist.Where(m => m.Id == posted.ApplicationArtistId).FirstOrDefault();
+                        userWithPosts.ArtistName = artistinfo.Name;
+                        userWithPosts.ApplicationArtistId = artistinfo.Id;
+                    }
+
+                    userWithPosts.PostId = posted.PostId;
+                    userWithPosts.media = posted.Media;
+                    userWithPosts.Video = posted.Video;
+                    userWithPosts.Caption = posted.caption;
+                    userWithPosts.DateCreated = posted.DateCreated;
+
+                }
+                allPosts.Add(userWithPosts);
+
+            }
+
+            return allPosts;
+        }
+
+        //----------------TEST------------------TEST--------TEST------------TEST--------------------------------------------------------------------
+        public class PostsFollowDataVM
+        {
+            public List<Post> Posts { get; set; }
+            public int NumberOfFollowers { get; set; }
+            public int NumberOfFollowing { get; set; }
+
+
+        }
+
+        [HttpGet("{id}")]
+        //public List<Post> GetFollowedPost(string id)
+        public PostsFollowDataVM GetFollowedPost(string id)
+        {
+            var data = new PostsFollowDataVM();
+            var allPosts = new List<Post>();
+            var YouFollow = _context.UserFollow.Where(uf => uf.FollowingUserId == id).ToList();
+            var followingYou = _context.UserFollow.Where(uf => uf.FollowedUserId == id).ToList();
+            var countOfYourFollowers = followingYou.Count();
+            var NumberOfPeopleYouFollow = YouFollow.Count();
+
+
+            foreach (var user in YouFollow)
+            {
+                var postList = _context.Post.Where(p => p.ApplicationUserId == user.FollowedUserId).ToList();
+
+                foreach (var post in postList)
+                {
+                    allPosts.Add(post);
+                }
+
+            }
+            data.Posts = allPosts;
+
+            data.NumberOfFollowers = countOfYourFollowers;
+            data.NumberOfFollowing = NumberOfPeopleYouFollow;
+            return data;
+        }
+      //  ----------------------------
+
+        [HttpPost]
+        public async Task<IActionResult> PostUserFollowerWithNoDuplicates([FromBody] UserFollow userFollow)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var duplicates = _context.UserFollow.Where(uf => uf.FollowedUserId == userFollow.FollowedUserId && uf.FollowingUserId == userFollow.FollowingUserId).Count();
+
+            if (duplicates > 0 || userFollow.FollowedUserId == userFollow.FollowingUserId)
+            {
+
+                var error = new
+                {
+                    message = "You are either following this person or attempting to follow yourself",
+                    status = Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError
+                };
+                //Context.Response.StatusCode = error.status;
+                return new ObjectResult(error);
+
+
+            }
+
+            _context.UserFollow.Add(userFollow);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetUserFollower", new { id = userFollow.Id }, userFollow);
+        }
+
+
+
+        //----------------------------------
+        [HttpGet("count/{id}")]
+        //public List<Post> GetFollowedPost(string id)
+
+        public int Getcountoffollowing(string id)
+        {
+
+            var users = _context.UserFollow.Where(uf => uf.FollowingUserId == id).ToList();
+            var count = users.Count();
+
+            return count;
+        }
+
+        [HttpGet("followers/{id}")]
+        public int Getcountoffollowers(string id)
+        {
+
+            var users = _context.UserFollow.Where(uf => uf.FollowedUserId == id).ToList();
+            var count = users.Count();
+
+            return count;
+        }
+        /////------------------------------------------------------------------
+
+        //--------------------------------------------
         // GET: api/UserFollowers/5
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetUserFollower([FromRoute] int id)
+        //[HttpGet("{FollowedUserId}")]
+        //public async Task<IActionResult> GetUserFollowerinfo( [FromRoute]  string id)
         //{
         //    if (!ModelState.IsValid)
         //    {
         //        return BadRequest(ModelState);
         //    }
 
-        //    var userFollower = await _context.UserFollower.SingleOrDefaultAsync(m => m.Id == id);
+        //    var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.FollowedUserId == id  );
 
         //    if (userFollower == null)
         //    {
@@ -63,8 +208,8 @@ namespace Hello.Controllers
         //    return Ok(userFollower);
         //}
 
-        // PUT: api/UserFollowers/5
-        [HttpPut("{id}")]
+		// PUT: api/UserFollowers/5
+		[HttpPut("{id}")]
         public async Task<IActionResult> PutUserFollower([FromRoute] int id, [FromBody] UserFollow userFollow)
         {
             if (!ModelState.IsValid)
@@ -99,44 +244,44 @@ namespace Hello.Controllers
         }
 
         // POST: api/UserFollowers
-        [HttpPost]
-        public async Task<IActionResult> PostUserFollower([FromBody] UserFollow userFollow)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPost]
+        //public async Task<IActionResult> PostUserFollower([FromBody] UserFollow userFollow)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+           
+        //    _context.UserFollow.Add(userFollow);
+        //    await _context.SaveChangesAsync();
 
-            _context.UserFollow.Add(userFollow);
-            await _context.SaveChangesAsync();
+        //    return CreatedAtAction("GetUserFollower", new { id = userFollow.Id }, userFollow);
+        //}
 
-            return CreatedAtAction("GetUserFollower", new { id = userFollow.Id }, userFollow);
-        }
+		// DELETE: api/UserFollowers/5
+		[HttpDelete("unfollow/{followedid}/{followingid}")]
+		public async Task<IActionResult> DeleteUserFollower([FromRoute] string followedid, string followingid)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-        // DELETE: api/UserFollowers/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUserFollower([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+			var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.FollowedUserId == followedid && m.FollowingUserId == followingid);
+			if (userFollower == null)
+			{
+				return NotFound();
+			}
 
-            var userFollower = await _context.UserFollow.SingleOrDefaultAsync(m => m.Id == id);
-            if (userFollower == null)
-            {
-                return NotFound();
-            }
+			_context.UserFollow.Remove(userFollower);
+			await _context.SaveChangesAsync();
 
-            _context.UserFollow.Remove(userFollower);
-            await _context.SaveChangesAsync();
+			return Ok(userFollower);
+		}
 
-            return Ok(userFollower);
-        }
-
-        private bool UserFollowerExists(int id)
-        {
-            return _context.UserFollow.Any(e => e.Id == id);
-        }
-    }
+		private bool UserFollowerExists(int id)
+		{
+			return _context.UserFollow.Any(e => e.Id == id);
+		}
+	}
 }

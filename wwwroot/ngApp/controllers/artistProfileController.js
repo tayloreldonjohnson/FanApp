@@ -20,15 +20,26 @@
 		this.getPostId();
 		this.file;
 		this.filepicker = $filepicker;
-		this.filepicker.setKey('AfFjXrzLQi24J9Obh6rewz');
-		this.artists;
+		this.filepicker.setKey('A7qbx1ZNSuGCfsnjhoIXuz');
+        this.artists;
+   
+		//this.getlastfm();
 
-	}
+    }
+    findPostId() {
+
+        this.$http.get("api/Posts/" + this.post.ApplicationArtistId)
+            .then((res) => {
+                this.posts = res.data;
+                console.log("postdata" + res.date);
+
+            })
+    };
 	getArtist() {
 		this.$ArtistProfileService.getArtist(this.id)
 			.then((res) => {
 				this.artist = res.data;
-				console.log(res.data);
+				console.log(this.artist);
 			});
 	}
 
@@ -36,7 +47,7 @@
 		this.$http.get("api/Posts/" + this.posts)
 			.then((res) => {
 				this.posts = res.data;
-				console.log("postdata" + res.data);
+				console.log("postdata" + this.posts.id);
 			});
 	}
 	addPost(media) {

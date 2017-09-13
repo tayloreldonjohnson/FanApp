@@ -14,9 +14,9 @@
         <div class="col-sm-6 col-lg-4 profile-cols">
             <ul class="profile-lists">
                 <li>
-                    0 Uploads &nbsp &nbsp
-                    0 Following &nbsp &nbsp
-                    0 Followers
+                    Uploads &nbsp &nbsp  {{controller.post.numberOfPosts}}
+                    Following &nbsp &nbsp {{controller.postinfo.numberOfFollowing}}
+                    Followers  &nbsp &nbsp {{controller.postinfo.numberOfFollowers}}
                 </li>
                 <li>{{controller.user.aboutMe}}</li>
                 <li><a href="/createProfile" class="btn gen-btn btn-lg">Edit Profile</a></li>
@@ -57,13 +57,6 @@
             </div>
         </div>
     </section>
-    <!--<div>
-        <h1></h1>
-        <ul>
-            <li ng-repeat="p in controller.posts"><img class="" ng-src="{{p.media}}" /> {{p.dateCreated | date}} <a href="#" class="btn gen-btn btn-lg" ng-click="controller.deletePost(p.postId)">Delete</a></li>
-        </ul>
-    </div>-->
-
 </div>
 
 
