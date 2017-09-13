@@ -12,13 +12,20 @@
         this.userfollower;
         this.userfollowerinfo;
         this.getFollowInfo(); 
-    
+        this.inbox = {
+
+            DateCreated: new Date(),
+            MessagerUserId: this.userid,
+            RecieverOfMessageId: this.otherid
+
+        };
+     
+  
         this.getOtherUserProfile();
         this.userfollower = {         
             FollowingUserId: this.userid,
             FollowedUserId: this.otherid,
-        };
-
+		};
     }
 
         addFollower() {
@@ -33,30 +40,48 @@
         }
 
         getFollowInfo() {
-                   this.$http.get("api/UserFollowers/" + this.otherid)
-                   .then(res => {
-                    this.posts = res.data;
-                    console.log(this.posts);
-                    console.log(this.posts.numberOfFollowing);
+			this.$http.get("api/UserFollowers/" + this.otherid)
+                .then(res => {
+					this.posts = res.data;
+					console.log(this.posts);
+					console.log(this.posts.numberOfFollowing);
+				});
+		}
+
+		deleteFollower() {
+			this.$http.delete("api/UserFollowers/unfollow/" + this.otherid + "/" + this.userid)
+				.then(res => {
+					console.log(res.data);
+				});
+
+		}
+
+        getNumberOfPosts() {
+            this.$http.get("api/posts/numberOfPosts/" + this.otherid)
+                .then(res => {
+                    this.post = res.data;
+                    console.log("amount of Posts " + this.post.numberOfPosts);
                 });
-               }
+		}
 
-               getNumberOfPosts() {
-                    this.$http.get("api/posts/numberOfPosts/" + this.otherid)
-                        .then(res => {
-                            this.post = res.data;
-                            console.log("amount of Posts " + this.post.numberOfPosts);
-                        });
-                 }
-
-                getOtherUserProfile() {
-                    this.$http.get("api/Users/email/" + this.id)
-                        .then((res) => {
-                            this.user = res.data;
-                            console.log(res.data);
-                        });
-                }
-             
+        getOtherUserProfile() {
+            this.$http.get("api/Users/email/" + this.id)
+                .then((res) => {
+                    this.user = res.data;
+                    console.log(res.data);
+                });
+        }
+      
+           InboxUser(message) {
+                        console.log("addMessage");
+                    this.inbox.Message = message;
+                      console.log(this.post);
+                   this.$http.post("api/Inboxes", this.inbox)
+                     .then((res) => {
+                 
+                    console.log("after put");
+                });
+        }
      }
         
     

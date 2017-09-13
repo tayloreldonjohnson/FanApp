@@ -25,8 +25,6 @@ namespace Hello.Controllers
 
         public PostsController(ApplicationDbContext context)
         {
-
-
             //_postService = postService;
             _context = context;
         }

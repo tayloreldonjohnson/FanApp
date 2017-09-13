@@ -10,131 +10,131 @@ using Hello.Data.Models;
 
 namespace Hello.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Follows")]
-    public class FollowsController : Controller
-    {
-        private readonly ApplicationDbContext _context;
+	[Produces("application/json")]
+	[Route("api/Follows")]
+	public class FollowsController : Controller
+	{
+		private readonly ApplicationDbContext _context;
 
-        public FollowsController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+		public FollowsController(ApplicationDbContext context)
+		{
+			_context = context;
+		}
 
-        // GET: api/Follows
-        [HttpGet]
-        public IEnumerable<Follow> GetFollow()
-        {
-            return _context.Follow;
-        }
+		// GET: api/Follows
+		[HttpGet]
+		public IEnumerable<Follow> GetFollow()
+		{
+			return _context.Follow;
+		}
 
-        // GET: api/Follows/5
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetFollow([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+		// GET: api/Follows/5
+		//[HttpGet("{id}")]
+		//public async Task<IActionResult> GetFollow([FromRoute] int id)
+		//{
+		//    if (!ModelState.IsValid)
+		//    {
+		//        return BadRequest(ModelState);
+		//    }
 
-        //    var follow = await _context.Follow.SingleOrDefaultAsync(m => m.Id == id);
+		//    var follow = await _context.Follow.SingleOrDefaultAsync(m => m.Id == id);
 
-        //    if (follow == null)
-        //    {
-        //        return NotFound();
-        //    }
+		//    if (follow == null)
+		//    {
+		//        return NotFound();
+		//    }
 
-        //    return Ok(follow);
-        //}
-
-
-
-        [HttpGet("{id}")]
-        public List<ApplicationArtist> GetFollowedArtist(string id)
-
-        {
-
-            var follows = _context.Follow.Where(f => f.FollowerId == id).ToList();
-            var artists = new List<ApplicationArtist>();
-            foreach (var follow in follows)
-            {
-                var artist = _context.ApplicationArtist.Where(a => a.Id == follow.FollowedArtistId).FirstOrDefault();
-                artists.Add(artist);
-            }
+		//    return Ok(follow);
+		//}
 
 
 
+		[HttpGet("{id}")]
+		public List<ApplicationArtist> GetFollowedArtist(string id)
 
-            return artists;
-        }
+		{
+
+			var follows = _context.Follow.Where(f => f.FollowerId == id).ToList();
+			var artists = new List<ApplicationArtist>();
+			foreach (var follow in follows)
+			{
+				var artist = _context.ApplicationArtist.Where(a => a.Id == follow.FollowedArtistId).FirstOrDefault();
+				artists.Add(artist);
+			}
 
 
-        // PUT: api/Follows/5
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutFollow([FromRoute] int id, [FromBody] Follow follow)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
 
-        //    if (id != follow.Id)
-        //    {
-        //        return BadRequest();
-        //    }
 
-        //    _context.Entry(follow).State = EntityState.Modified;
+			return artists;
+		}
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!FollowExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
 
-        //    return NoContent();
-        //}
+		// PUT: api/Follows/5
+		//[HttpPut("{id}")]
+		//public async Task<IActionResult> PutFollow([FromRoute] int id, [FromBody] Follow follow)
+		//{
+		//    if (!ModelState.IsValid)
+		//    {
+		//        return BadRequest(ModelState);
+		//    }
 
-        // POST: api/Follows
-        [HttpPost]
-        public async Task<IActionResult> PostFollow([FromBody] Follow follow)
+		//    if (id != follow.Id)
+		//    {
+		//        return BadRequest();
+		//    }
+
+		//    _context.Entry(follow).State = EntityState.Modified;
+
+		//    try
+		//    {
+		//        await _context.SaveChangesAsync();
+		//    }
+		//    catch (DbUpdateConcurrencyException)
+		//    {
+		//        if (!FollowExists(id))
+		//        {
+		//            return NotFound();
+		//        }
+		//        else
+		//        {
+		//            throw;
+		//        }
+		//    }
+
+		//    return NoContent();
+		//}
+
+		// POST: api/Follows
+		[HttpPost]
+		public async Task<IActionResult> PostFollow([FromBody] Follow follow)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+
+			_context.Follow.Add(follow);
+			await _context.SaveChangesAsync();
+
+			return CreatedAtAction("GetFollow", new { id = follow.Id }, follow);
+		}
+
+		// DELETE: api/Follows/5
+		[HttpDelete("{FollowingUserId}")]
+        public async Task<IActionResult> DeleteFollow([FromRoute] string FollowingUserId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Follow.Add(follow);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetFollow", new { id = follow.Id }, follow);
-        }
-
-        // DELETE: api/Follows/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFollow([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var follow = await _context.Follow.SingleOrDefaultAsync(m => m.Id == id);
+            var follow = await _context.UserFollow.SingleOrDefaultAsync(m => m.FollowedUserId == FollowingUserId);
             if (follow == null)
             {
                 return NotFound();
             }
 
-            _context.Follow.Remove(follow);
+            _context.UserFollow.Remove(follow);
             await _context.SaveChangesAsync();
 
             return Ok(follow);
