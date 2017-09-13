@@ -15,8 +15,8 @@
             <ul class="profile-lists">
                 <li>
                     Uploads &nbsp &nbsp  {{controller.post.numberOfPosts}}
-                    Following &nbsp &nbsp {{controller.posts.numberOfFollowing}}
-                    Followers  &nbsp &nbsp {{controller.posts.numberOfFollowers}}
+                    Following &nbsp &nbsp {{controller.postinfo.numberOfFollowing}}
+                    Followers  &nbsp &nbsp {{controller.postinfo.numberOfFollowers}}
                 </li>
                 <li>{{controller.user.aboutMe}}</li>
                 <li><a href="/createProfile" class="btn gen-btn btn-lg">Edit Profile</a></li>
@@ -29,7 +29,7 @@
 
 <br />
 <br />
-    <section  class="container-post">
+    <section  class="container-post" ng-repeat="p in controller.posts ">
         <div class="card-post">
             <div class="card-header-post">
                 <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
@@ -38,18 +38,20 @@
 
                     <div class="location"></div>
                 </div>
-                <div>{{controller.posts.dateCreated | date}}</div>
+                <div>{{p.dateCreated | date}}</div>
             </div>
             <div class="content-post">
-                <img ng-src="{{controller.posts.media}}" />
+                <img ng-src="{{p.media}}" />
             </div>
             <div class="card-footer">
                 <div class="Favorites">## FAVORITES</div>               
                 <div class="description">TEST DESCRIPTION</div>
                 <div class="comments"></div>
                 <div class="form"></div>
+				<a href="#" class="btn gen-btn btn-lg" ng-click="controller.deletePost(p.postId)">Delete</a>
             </div>
         </div>
+
         <br />
         <br />
    

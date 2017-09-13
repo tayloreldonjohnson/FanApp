@@ -1,14 +1,14 @@
 ﻿<h1>Home Feed</h1>
-<div >
-<section class="container-post" ng-repeat="p in controller.posts | orderBy: 'userId' " >
-    <div class="card-post">
+
+<section class="container-post" ng-repeat="p in controller.post ">
+    <div class="card-post"   >
         <div class="card-header-post" >
-            <img class="profile-img-post" ng-src="{{u.imageUrl}}" />
+            <img class="profile-img-post" ng-src="{{p.profileImage}}" />
 
 
 
             <div class="profile-info-post">
-                <div class="name-post">{{u.userName}}</div>
+                <div class="name-post">{{p.firstNameOfPersonWhoPosted}} {{p.lastNameOfPersonWhoPosted}} posted on {{p.artistName}} profile</div>
                 <div class="location"></div>
 
             </div>
@@ -44,4 +44,3 @@
     <br />
 
 </section>
-</div>

@@ -15,7 +15,6 @@ class CreateProfileController {
 		this.file;
 		this.filepicker = $filepicker;
         this.filepicker.setKey('Aowd5dVQ06CyRYPl9EaAVz'); 
-
     }
 	getUserProfile() {
 		this.$UserProfileService.getUserProfile(this.email)
@@ -45,7 +44,7 @@ class CreateProfileController {
                 cropRatio: 5/6,               
                 mimetype: 'image/*',
                 imageQuality: 60,
-                conversions: ['crop', 'rotate',]
+                conversions: ['crop', 'rotate']
             
 		},
 			this.fileUploaded.bind(this)

@@ -33,8 +33,8 @@
                 this.posts = res.data;
                 console.log("postdata" + res.date);
 
-            })
-    };
+            });
+    }
 	getArtist() {
 		this.$ArtistProfileService.getArtist(this.id)
 			.then((res) => {
