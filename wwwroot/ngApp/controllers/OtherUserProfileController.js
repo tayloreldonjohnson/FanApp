@@ -17,7 +17,8 @@
         this.userfollower = {         
             FollowingUserId: this.userid,
             FollowedUserId: this.otherid,
-        };
+		};
+		this.getFollowinginfo();
 
     }
 
@@ -33,30 +34,44 @@
         }
 
         getFollowInfo() {
-                   this.$http.get("api/UserFollowers/" + this.otherid)
-                   .then(res => {
-                    this.posts = res.data;
-                    console.log(this.posts);
-                    console.log(this.posts.numberOfFollowing);
+			this.$http.get("api/UserFollowers/" + this.otherid)
+                .then(res => {
+					this.posts = res.data;
+					console.log(this.posts);
+					console.log(this.posts.numberOfFollowing);
+				});
+		}
+
+		getFollowinginfo() {
+			this.$http.get("api/UserFollowers/unfollow/" + this.otherid)
+				.then(res => {
+					console.log(res.data);
+				});
+		}
+
+		deleteFollower() {
+			this.$http.delete("api/UserFollowers")
+				.then(res => {
+					console.log(res.data);
+				});
+
+		}
+
+        getNumberOfPosts() {
+            this.$http.get("api/posts/numberOfPosts/" + this.otherid)
+                .then(res => {
+                    this.post = res.data;
+                    console.log("amount of Posts " + this.post.numberOfPosts);
                 });
-               }
+		}
 
-               getNumberOfPosts() {
-                    this.$http.get("api/posts/numberOfPosts/" + this.otherid)
-                        .then(res => {
-                            this.post = res.data;
-                            console.log("amount of Posts " + this.post.numberOfPosts);
-                        });
-                 }
-
-                getOtherUserProfile() {
-                    this.$http.get("api/Users/email/" + this.id)
-                        .then((res) => {
-                            this.user = res.data;
-                            console.log(res.data);
-                        });
-                }
-             
+        getOtherUserProfile() {
+            this.$http.get("api/Users/email/" + this.id)
+                .then((res) => {
+                    this.user = res.data;
+                    console.log(res.data);
+                });
+        }
      }
         
     
