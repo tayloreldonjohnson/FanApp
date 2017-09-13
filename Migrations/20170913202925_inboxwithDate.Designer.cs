@@ -11,9 +11,10 @@ using System;
 namespace Hello.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170913202925_inboxwithDate")]
+    partial class inboxwithDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,26 +118,6 @@ namespace Hello.Migrations
                     b.HasIndex("FollowerId");
 
                     b.ToTable("Follow");
-                });
-
-            modelBuilder.Entity("Hello.Data.Models.Inbox", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<string>("MessagerUserId");
-
-                    b.Property<string>("RecieverOfMessageId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MessagerUserId");
-
-                    b.HasIndex("RecieverOfMessageId");
-
-                    b.ToTable("Inbox");
                 });
 
             modelBuilder.Entity("Hello.Data.Models.Post", b =>
@@ -301,17 +282,6 @@ namespace Hello.Migrations
                     b.HasOne("Hello.Data.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("FollowerId");
-                });
-
-            modelBuilder.Entity("Hello.Data.Models.Inbox", b =>
-                {
-                    b.HasOne("Hello.Data.ApplicationUser", "MessagerUser")
-                        .WithMany()
-                        .HasForeignKey("MessagerUserId");
-
-                    b.HasOne("Hello.Data.ApplicationUser", "RecieverOfMessage")
-                        .WithMany()
-                        .HasForeignKey("RecieverOfMessageId");
                 });
 
             modelBuilder.Entity("Hello.Data.Models.Post", b =>

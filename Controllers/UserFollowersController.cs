@@ -27,20 +27,21 @@ namespace Hello.Controllers
         {
             return _context.UserFollow;
         }
+
         public class UserPostVm
         {
-            public int PostId { get; set; }
             public int ApplicationArtistId { get; set; }
-            public string FirstNameOfPersonWhoPosted { get; set; }
-            public string LastNameOfPersonWhoPosted { get; set; }
+            public string UserName { get; set; }
+            public int PostId { get; set; }
 
             public string ArtistName { get; set; }
-            public string BeingFollowedId { get; set; }
+            public string UserId { get; set; }
             public DateTime DateCreated { get; set; }
-            public string media { get; set; }
+            public string Media { get; set; }
             public string Video { get; set; }
             public string Caption { get; set; }
             public string ProfileImage { get; set; }
+
 
 
         }
@@ -49,7 +50,7 @@ namespace Hello.Controllers
         //public List<Post> GetFollowedPost(string id)
         public List<UserPostVm> GetPostWithProfile(string id)
         {
-            var newpost = new UserPostVm();
+          
             var allPosts = new List<UserPostVm>();
             var usersBeingFollowed = _context.UserFollow.Where(uf => uf.FollowingUserId == id).ToList();
             //var followingYou = _context.UserFollow.Where(uf => uf.FollowedUserId == id).ToList();
@@ -57,36 +58,31 @@ namespace Hello.Controllers
 
             foreach (var uf in usersBeingFollowed)
             {
-                var user = _context.ApplicationUser.Where(u => u.Id == uf.FollowedUserId).FirstOrDefault();
+           //     var user = _context.ApplicationUser.Where(u => u.Id == uf.FollowedUserId).FirstOrDefault();
                 var posts = _context.Post.Where(u => u.ApplicationUserId == uf.FollowedUserId).ToList();
-                var userWithPosts = new UserPostVm()
-                {
-                    BeingFollowedId = uf.FollowedUserId,
-                    ProfileImage = user.ImageUrl,
-                    FirstNameOfPersonWhoPosted = user.FirstName,
-                    LastNameOfPersonWhoPosted = user.LastName
-
-
-                };
-
-                foreach (var posted in posts)
-                {
-                    foreach (var artist in posts)
+                         
+                   foreach (var post in posts)
                     {
-                        var artistinfo = _context.ApplicationArtist.Where(m => m.Id == posted.ApplicationArtistId).FirstOrDefault();
-                        userWithPosts.ArtistName = artistinfo.Name;
-                        userWithPosts.ApplicationArtistId = artistinfo.Id;
-                    }
+                    var user = _context.ApplicationUser.Where(ui => ui.Id == post.ApplicationUserId).FirstOrDefault();
+                    var artist = _context.ApplicationArtist.Where(ai => ai.Id == post.ApplicationArtistId).FirstOrDefault();
+                    var UserFollowedInfo = new UserPostVm()
+                    {
+                        UserId = user.Id,
+                        ProfileImage =  user.ImageUrl,
+                        ArtistName = artist.Name,
+                        PostId = post.PostId,
+                        Media = post.Media,
+                        Video = post.Video,
+                        Caption = post.caption,
+                        DateCreated = post.DateCreated,
+                        UserName = user.UserName,
+                        ApplicationArtistId = artist.Id
+                        
+                    };
 
-                    userWithPosts.PostId = posted.PostId;
-                    userWithPosts.media = posted.Media;
-                    userWithPosts.Video = posted.Video;
-                    userWithPosts.Caption = posted.caption;
-                    userWithPosts.DateCreated = posted.DateCreated;
-
+                    allPosts.Add(UserFollowedInfo);
                 }
-                allPosts.Add(userWithPosts);
-
+                              
             }
 
             return allPosts;
