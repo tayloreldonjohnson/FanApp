@@ -108,37 +108,37 @@ namespace Hello.Controllers
 
         }
 
-        //[HttpGet("{id}")]
-        ////public List<Post> GetFollowedPost(string id)
-        //public PostsFollowDataVM GetFollowedPost(string id)
-        //{
-        //    var data = new PostsFollowDataVM();
-        //    var allPosts = new List<Post>();
-        //    var YouFollow = _context.UserFollow.Where(uf => uf.FollowingUserId == id).ToList();
-        //    var followingYou = _context.UserFollow.Where(uf => uf.FollowedUserId == id).ToList();
-        //    var countOfYourFollowers = followingYou.Count();
-        //    var NumberOfPeopleYouFollow = YouFollow.Count();
+        [HttpGet("{id}")]
+        //public List<Post> GetFollowedPost(string id)
+        public PostsFollowDataVM GetFollowedPost(string id)
+        {
+            var data = new PostsFollowDataVM();
+            var allPosts = new List<Post>();
+            var YouFollow = _context.UserFollow.Where(uf => uf.FollowingUserId == id).ToList();
+            var followingYou = _context.UserFollow.Where(uf => uf.FollowedUserId == id).ToList();
+            var countOfYourFollowers = followingYou.Count();
+            var NumberOfPeopleYouFollow = YouFollow.Count();
 
 
-        //    foreach (var user in YouFollow)
-        //    {
-        //        var postList = _context.Post.Where(p => p.ApplicationUserId == user.FollowedUserId).ToList();
+            foreach (var user in YouFollow)
+            {
+                var postList = _context.Post.Where(p => p.ApplicationUserId == user.FollowedUserId).ToList();
 
-        //        foreach (var post in postList)
-        //        {
-        //            allPosts.Add(post);
-        //        }
+                foreach (var post in postList)
+                {
+                    allPosts.Add(post);
+                }
 
-        //    }
-        //    data.Posts = allPosts;
+            }
+            data.Posts = allPosts;
 
-        //    data.NumberOfFollowers = countOfYourFollowers;
-        //    data.NumberOfFollowing = NumberOfPeopleYouFollow;
-        //    return data;
-        //}
-        //----------------------------
+            data.NumberOfFollowers = countOfYourFollowers;
+            data.NumberOfFollowing = NumberOfPeopleYouFollow;
+            return data;
+        }
+      //  ----------------------------
 
-        [HttpPost("duplicates")]
+        [HttpPost]
         public async Task<IActionResult> PostUserFollowerWithNoDuplicates([FromBody] UserFollow userFollow)
         {
             if (!ModelState.IsValid)
@@ -250,19 +250,19 @@ namespace Hello.Controllers
         }
 
         // POST: api/UserFollowers
-        [HttpPost]
-        public async Task<IActionResult> PostUserFollower([FromBody] UserFollow userFollow)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPost]
+        //public async Task<IActionResult> PostUserFollower([FromBody] UserFollow userFollow)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
            
-            _context.UserFollow.Add(userFollow);
-            await _context.SaveChangesAsync();
+        //    _context.UserFollow.Add(userFollow);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUserFollower", new { id = userFollow.Id }, userFollow);
-        }
+        //    return CreatedAtAction("GetUserFollower", new { id = userFollow.Id }, userFollow);
+        //}
 
         // DELETE: api/UserFollowers/5
         [HttpDelete("{id}")]
