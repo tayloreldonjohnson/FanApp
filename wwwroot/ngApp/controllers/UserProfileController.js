@@ -9,8 +9,8 @@
 		this.getUserProfile(); 
         this.user;
         this.getFollowInfo();
-        this.getNumberOfPosts();
-        
+		this.getNumberOfPosts();  
+		this.postinfo;
     }
 
     getFollowInfo() {
