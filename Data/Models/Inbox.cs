@@ -21,7 +21,7 @@ namespace Hello.Data.Models
         public ApplicationUser MessagerUser { get; set; }
         [ForeignKey("ApplicationUserId")]
 
-
+        public string Message { get; set; }
         public string RecieverOfMessageId { get; set; }
         public ApplicationUser RecieverOfMessage { get; set; }
     }
