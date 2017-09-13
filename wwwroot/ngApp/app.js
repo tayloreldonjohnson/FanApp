@@ -1,7 +1,8 @@
-var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ui.bootstrap']);
+var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ngAnimate', 'ui.bootstrap']);
 
 myApp.controller("AboutController", AboutController);
 myApp.controller("AccountController", AccountController);
+myApp.controller("ArtistProfileController", ArtistProfileController, ModalPostController);
 myApp.controller("ConfirmEmailController", ConfirmEmailController);
 myApp.controller("ExternalRegisterController", ExternalRegisterController);
 myApp.controller("HomeController", HomeController);
@@ -95,7 +96,13 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			templateUrl: '/ngApp/views/artistProfile.html',
 			controller: ArtistProfileController,
 			controllerAs: 'controller'
-		})
+        })
+        .state('modalPost', {
+            url: '/modalPost/:id',
+            templateUrl: '/ngApp/views/modalPost.html',
+            controller: ModalPostController,
+            controllerAs: 'controller'
+        })
            .state('notFound', {
             url: '/notFound',
             templateUrl: '/ngApp/views/notFound.html'
@@ -168,26 +175,4 @@ myApp.filter('myArtistfilter', function () {
 
 
 
-/*----------------------------------------------  FILESTACK  ---------------------------------------------------------------*/
-//angular.module('myApp')
-//    .service('angularFilepicker', function ($window) {
-//        return $window.filepicker;
-//    });
 
-
-//angular.module('angularFilepickerExample')
-//    .controller('UserProfileController', function ($scope, angularFilepicker) {
-//        $scope.files = [];
-       
-
-//        $scope.pickFile = pickFile;
-
-        
-
-
-//        function onSuccess(Blob) {
-//            $scope.files.push(Blob);
-//            $scope.$apply();
-//        };
-
-//    });

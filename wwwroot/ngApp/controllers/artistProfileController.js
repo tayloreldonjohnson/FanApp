@@ -1,5 +1,5 @@
 ﻿class ArtistProfileController {
-	constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state) {
+	constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state, $uibModal) {
 		this.$ArtistProfileService = $ArtistProfileService;
 		this.$state = $state;
 		this.$http = $http;
@@ -20,12 +20,15 @@
 		this.getPostId();
 		this.file;
 		this.filepicker = $filepicker;
-		this.filepicker.setKey('A7qbx1ZNSuGCfsnjhoIXuz');
+        this.filepicker.setKey('AfFjXrzLQi24J9Obh6rewz');
         this.artists;
+
+        this.$uibModal = $uibModal;      
    
 		//this.getlastfm();
 
-    }
+    }    
+
     findPostId() {
 
         this.$http.get("api/Posts/" + this.post.ApplicationArtistId)
@@ -33,8 +36,8 @@
                 this.posts = res.data;
                 console.log("postdata" + res.date);
 
-            })
-    };
+            });
+    }
 	getArtist() {
 		this.$ArtistProfileService.getArtist(this.id)
 			.then((res) => {
@@ -67,9 +70,9 @@
             {
                 cropRatio: 1/1,
                 mimetype: 'image/*',
-                container: 'window',
-                imageQuality: 60,
-                conversions: ['crop', 'rotate',]
+                container: 'window',                
+                imageQuality: 80,
+                conversions: ['crop', 'rotate']                
 			},
             this.fileUploaded.bind(this)
 		);
@@ -79,9 +82,23 @@
 		this.file = file;
 		console.log(this.file.url);
 		console.log(this);
-	}
+    }
 
-	//getlastfm() {
+    showModalPost() {
+        this.$uibModal.open({
+            templateUrl: '/ngApp/views/modalPost.html',
+            controller: 'ModalPostController',
+            controllerAs: 'controller',
+            resolve: {
+                //postId: () => postId
+            }
+        }).closed.then(() => {
+            this.addPost();
+        });
+    }
+
+    
+   	//getlastfm() {
 	//	this.$http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=87bdb2c24f5d7ea2e34ac5d1bdc419f1&format=json&limit=1000")
 	//		.then((res) => {
 	//			this.artists = res.data;
@@ -89,4 +106,19 @@
 	//			this.$http.post("api/artists", this.artists);
 	//		});
 	//}
+}
+
+
+class ModalPostController {
+    constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state, $uibModal, $uibModalInstance) {
+        this.getPostId();
+    }
+
+    savePost() {
+        this.$ArtistProfileService.savePost(this.post)
+            .then(() => {
+                this.$state.reload();
+                this.$uibModalInstance.close();
+            });
+    }
 }
