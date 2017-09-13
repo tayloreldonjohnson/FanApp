@@ -45,9 +45,9 @@
                     <!--<li><a href="#" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-globe"></a></li>
                     <li><a href="#" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-bell"></a></li>
                     <li><a href="#" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-envelope"></a></li>-->
+                    <li><a style="pointer-events: none; color:white;" ng-show="account.isLoggedIn()">Hello&nbsp{{account.getUserName()}}!</a></li>
                     <li><a href="/login" ng-show="!account.isLoggedIn()">Login</a></li>
-                    <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>                    
-                    {{account.getUserName()}}
+                    <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
                 </ul>
             </div>
         </div>
