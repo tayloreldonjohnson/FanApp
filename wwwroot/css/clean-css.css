@@ -269,6 +269,9 @@ ul#home-list {
     margin-bottom: .1em;
     border-radius: 50%;
 }
+profile-list{
+    flex:1;
+}
 
 .users-list:first-child {
     margin-top: 2em;
@@ -402,25 +405,30 @@ ul.user-info {
 .card-header-post {
     padding: 0.5em 1em 0 1em;
     text-align: left;
+    display:flex;
 }
 
 .profile-img-post {
-    display: inline-block;    
+        
     width: 3em;
-    height: auto;
+    height: 3em;
     border-radius: 50%;
     position: relative;
     margin-right: 1em;
-    padding: 0 0 0.5em 0;
+    
+    
 }
 
 .profile-info-post {
     display: inline-block;
+    display:flex;
+    
 }
 
 .name-post {
     font-size: 14px;
     font-weight: 700;
+    margin-top: 0.75em;
 }
 
 .content-post img{
@@ -432,4 +440,46 @@ ul.user-info {
 .card-footer {
     padding: 0 1em 1em 1em;
     text-align: left;
+    
+}
+.time{
+  
+   flex: 1;
+   margin-left: 20em;
+   margin-top: 0.75em
+  
+}
+.icon-tridots {
+    color: white;
+    margin-left: 32em;
+    flex: 1;
+    cursor: pointer;
+}
+.icon-tridots:hover {
+    color: lightgreen;
+    text-decoration: none;
+    cursor:pointer;
+    flex: 1;
+    margin-left:32em;
+}
+.favorites {
+   
+}
+.description {
+   
+}
+.icon-tridots-drop {
+    margin-left: 32em;
+    background: rgba(0,0,0,.5);
+}
+.delete-d:not(.nohover):hover {
+    background: linear-gradient(132deg, #F40E00, #fe6363, #F40E00 );
+    background-size: 400% 400%;
+    animation: backgroundgradient 5s ease infinite;
+    color: white;
+}
+.delete-d:hover{
+    background: linear-gradient(132deg, #F40E00, #fe6363, #F40E00 );
+    background-size: 400% 400%;
+    animation: backgroundgradient 1s ease infinite;
 }
