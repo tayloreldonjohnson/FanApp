@@ -47,7 +47,7 @@
 
                 <div class="location"></div>
             </div>
-            <div>{{p.dateCreated | date}}</div>
+            <div>{{p.dateCreated |  date:'MMMM dd, y @ h:mma' }}</div>
         </div>
         <div class="content-post">
             <img ng-src="{{p.media}}" />

@@ -1,6 +1,6 @@
 ﻿<h1>Home Feed</h1>
 
-<section class="container-post" ng-repeat="p in controller.post ">
+<section class="container-post" ng-repeat="p in controller.post | orderBy:'dateCreated':true ">
     <div class="card-post"   >
         <div class="card-header-post" >
             <img class="profile-img-post" ng-src="{{p.profileImage}}" />
@@ -8,12 +8,12 @@
 
 
             <div class="profile-info-post">
-                <div class="name-post">{{p.firstNameOfPersonWhoPosted}} {{p.lastNameOfPersonWhoPosted}} posted on {{p.artistName}} profile</div>
+                <div class="name-post">{{p.userName}} posted on {{p.artistName}} profile</div>
                 <div class="location"></div>
 
             </div>
             <div class="time" {{p.dateCreated | date}}>
-                
+                {{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}
             </div>
 
         </div>
