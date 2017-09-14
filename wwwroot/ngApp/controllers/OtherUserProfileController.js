@@ -12,6 +12,13 @@
         this.userfollower;
         this.userfollowerinfo;
         this.getFollowInfo(); 
+        this.inbox = {
+
+            DateCreated: new Date(),
+            MessagerUserId: this.userid,
+            RecieverOfMessageId: this.otherid
+
+        };
      
   
         this.getOtherUserProfile();
@@ -62,6 +69,17 @@
                 .then((res) => {
                     this.user = res.data;
                     console.log(res.data);
+                });
+        }
+      
+           InboxUser(message) {
+                        console.log("addMessage");
+                    this.inbox.Message = message;
+                      console.log(this.post);
+                   this.$http.post("api/Inboxes", this.inbox)
+                     .then((res) => {
+                 
+                    console.log("after put");
                 });
         }
      }
