@@ -11,9 +11,10 @@ using System;
 namespace Hello.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170913203233_inboxwithPostedDate")]
+    partial class inboxwithPostedDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,8 +126,6 @@ namespace Hello.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateCreated");
-
-                    b.Property<string>("Message");
 
                     b.Property<string>("MessagerUserId");
 

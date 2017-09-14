@@ -117,12 +117,13 @@ body {
 }
 
 .profile-cols {
-    display: inline-block;
+    display: block;
     padding: 2em 4em;
 }
 
 .profile-cols ul li {
     padding: 0.75em 0em;
+    list-style-type: none;
 }
 
 .profile-img img {
@@ -134,7 +135,7 @@ body {
 
 ul.profile-lists {
     list-style-type: none;
-    text-align: left;
+  
 }
 
 ul.posts-lists {

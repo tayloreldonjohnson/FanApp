@@ -3,7 +3,7 @@
         this.state = $state;    
         this.$http = $http;
         this.email = $stateParams["email"];
-        this.followeduser ;
+        this.followeduser;
         this.id = $stateParams["id"];
         sessionStorage.setItem("otherid", this.id);
         this.userid = sessionStorage.getItem("userid");
@@ -12,12 +12,19 @@
         this.userfollower;
         this.userfollowerinfo;
         this.getFollowInfo(); 
+        this.inbox = {
+
+            DateCreated: new Date(),
+            MessagerUserId: this.userid,
+            RecieverOfMessageId: this.otherid
+
+        };
      
   
         this.getOtherUserProfile();
         this.userfollower = {         
             FollowingUserId: this.userid,
-            FollowedUserId: this.otherid,
+            FollowedUserId: this.otherid
 		};
     }
 
@@ -62,6 +69,17 @@
                 .then((res) => {
                     this.user = res.data;
                     console.log(res.data);
+                });
+        }
+      
+           InboxUser(message) {
+                        console.log("addMessage");
+                    this.inbox.Message = message;
+                      console.log(this.post);
+                   this.$http.post("api/Inboxes", this.inbox)
+                     .then((res) => {
+                 
+                    console.log("after put");
                 });
         }
      }

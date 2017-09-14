@@ -12,6 +12,7 @@ myApp.controller("CreateProfileController",CreateProfileController);
 myApp.controller("UserProfileController", UserProfileController);
 myApp.controller("SearchUserController", SearchUserController);
 myApp.controller("ArtistController", ArtistController);
+myApp.controller("HomeFeedController", HomeFeedController);
 
 
 myApp.service("$accountService", AccountService);
@@ -28,6 +29,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/',
             templateUrl: '/ngApp/views/home.html',
             controller: HomeController,
+            controllerAs: 'controller'
+        })
+        .state('homeFeed', {
+            url: '/homeFeed',
+            templateUrl: '/ngApp/views/homeFeed.html',
+            controller: HomeFeedController,
             controllerAs: 'controller'
         })
         .state('secret', {
