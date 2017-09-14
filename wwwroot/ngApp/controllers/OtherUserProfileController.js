@@ -3,7 +3,7 @@
         this.state = $state;    
         this.$http = $http;
         this.email = $stateParams["email"];
-        this.followeduser ;
+        this.followeduser;
         this.id = $stateParams["id"];
         sessionStorage.setItem("otherid", this.id);
         this.userid = sessionStorage.getItem("userid");
@@ -24,7 +24,7 @@
         this.getOtherUserProfile();
         this.userfollower = {         
             FollowingUserId: this.userid,
-            FollowedUserId: this.otherid,
+            FollowedUserId: this.otherid
 		};
     }
 

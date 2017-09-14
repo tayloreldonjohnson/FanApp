@@ -27,16 +27,43 @@
             <a href="#" class="btn gen-btn btn-lg" ng-click="controller.InboxUser(message)">Send Personal Message</a>
         </div>
     </div>
-    <div class="row">
+</div>
+    <!--<div class="row">
         <ul class="posts-lists">
             <li ng-repeat="post in controller.user.posts">
                 <div class="posts-img">
-                    <img ng-src="{{post.media}}" />{{post.dateCreated | date}}
+                    <img ng-src="{post.media}}" />{post.dateCreated | date}}
                 </div>
             </li>
         </ul>
     </div>
-</div>
+</div>-->
+<section ng-repeat="p in controller.user.posts" class="container-post">
+    <div class="card-post">
+        <div class="card-header-post">
+            <img class="profile-img-post" ng-src="{{p.imageUrl}}" />
+            <div class="profile-info-post">
+                <div class="name-post">{{p.userName}}</div>
+
+                <div class="location"></div>
+            </div>
+            <div>{{p.dateCreated |  date:'MMMM dd, y @ h:mma' }}</div>
+        </div>
+        <div class="content-post">
+            <img ng-src="{{p.media}}" />
+        </div>
+        <div class="card-footer">
+            <div class="Favorites">## FAVORITES</div>
+            <div class="description">TEST DESCRIPTION</div>
+            <div class="comments"></div>
+            <div class="form"></div>
+        </div>
+    </div>
+    <br />
+    <br />
+
+</section>
+
 
 
 <!--<div class="user-container">
@@ -66,8 +93,13 @@
             <div>{{controller.user.aboutMe}}</div>
             <br />
             <div>
+
                 <a href="#" class="btn gen-btn btn-lg" ng-click="controller.addFollower()">Follow</a>
+<<<<<<< HEAD
+
+=======
              
+>>>>>>> master
             </div>
         </div>
     </div>
