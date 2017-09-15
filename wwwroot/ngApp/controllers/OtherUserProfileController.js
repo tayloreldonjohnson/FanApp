@@ -39,7 +39,7 @@
 				this.state.reload();
             });
         //this.$templateCache.removeAll();
-        this.state.reload();
+        //this.state.reload();
     }
         getFollowInfo() {
 			this.$http.get("api/UserFollowers/" + this.otherid)
@@ -53,9 +53,8 @@
             this.$http.delete("api/UserFollowers/unfollow/" + this.otherid + "/" + this.userid)
                 .then(res => {
                     console.log(res.data);
-
+					this.state.reload();
                 });
-            this.state.reload();
         }
 
 
