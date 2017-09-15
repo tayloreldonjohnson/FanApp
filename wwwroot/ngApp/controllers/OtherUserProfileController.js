@@ -1,6 +1,7 @@
 ﻿class OtherUserProfileController {
-    constructor( $stateParams, $http, $state) {
-        this.state = $state;    
+    constructor($stateParams, $http, $state, $templateCache) {
+        this.$templateCache = $templateCache;
+        this.state = $state;
         this.$http = $http;
         this.email = $stateParams["email"];
         this.followeduser;
@@ -8,10 +9,12 @@
         sessionStorage.setItem("otherid", this.id);
         this.userid = sessionStorage.getItem("userid");
         this.otherid = sessionStorage.getItem("otherid");
-        this.getNumberOfPosts();       
+        this.getNumberOfPosts();
         this.userfollower;
         this.userfollowerinfo;
-        this.getFollowInfo(); 
+        this.getFollowInfo();
+        this.isFollowing();
+        this.isfollowing;
         this.inbox = {
 
             DateCreated: new Date(),
@@ -19,26 +22,28 @@
             RecieverOfMessageId: this.otherid
 
         };
-     
-  
+
+
         this.getOtherUserProfile();
-        this.userfollower = {         
+        this.userfollower = {
             FollowingUserId: this.userid,
             FollowedUserId: this.otherid
 		};
     }
+    addFollower() {
+        this.$http.post("api/UserFollowers", this.userfollower)
+            .then(res => {
+                this.followeduser = res.data;
+                console.log(res.data);
+            });
+       
+  
 
-        addFollower() {
-            //this.userfollower.FollowedUserId = user;
-            //this.userfollower.FollowingUserId = otheruser;
-            this.$http.post("api/UserFollowers", this.userfollower)
-                .then(res => {
-                    this.followeduser = res.data;
-                    console.log(res.data);
-                });
-            this.state.reload();
-        }
-
+     
+       this.$templateCache.removeAll()
+        this.state.reload();
+    }
+                
         getFollowInfo() {
 			this.$http.get("api/UserFollowers/" + this.otherid)
                 .then(res => {
@@ -52,7 +57,8 @@
 			this.$http.delete("api/UserFollowers/unfollow/" + this.otherid + "/" + this.userid)
 				.then(res => {
 					console.log(res.data);
-				});
+                });
+            this.state.reload();
 
 		}
 
@@ -82,6 +88,15 @@
                     console.log("after put");
                 });
         }
+           isFollowing() {
+            
+               this.$http.get("api/UserFollowers/isFollowing/" + this.otherid + "/" + this.userid)
+                   .then((res) => {
+                       this.isfollowing = res.data;
+                       console.log(res.data);
+                       console.log("after put");
+                   });
+           }
      }
         
     

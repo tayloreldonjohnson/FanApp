@@ -20,7 +20,60 @@ namespace Hello.Controllers
         {
             _context = context;
         }
+//------------------------------------------------------------------Testing below this-------------------------------------------------------
+        [HttpGet("postbyemail/{email}")]
+        public List<UserPostVm> getbyemailProfile(string email)
+        {
 
+            var allPosts = new List<UserPostVm>();
+
+            //get a list of people being followed by the user
+            var userid = "";
+            var listOfUsers = _context.ApplicationUser.ToList();
+            var listOfFollowers = _context.UserFollow.ToList();
+            foreach (var user in listOfUsers)
+            {
+                user.Id = userid;
+            }
+            var useridOfFollowers = _context.ApplicationUser.Where(uf => uf.Email == email).ToList();
+            var usersBeingFollowed = _context.UserFollow.Where(uf => uf.FollowingUserId == userid).ToList();
+            var followers = _context.UserFollow.Where(uf => uf.FollowedUserId == userid).ToList();
+
+            //loop through list of people being followed
+            foreach (var uf in usersBeingFollowed)
+            {
+
+
+                // gets all posts of all people being followed
+                var posts = _context.Post.Where(u => u.ApplicationUserId == uf.FollowedUserId).ToList();
+                //go through the posts and get info about the post 
+                foreach (var post in posts)
+                {
+                    var user = _context.ApplicationUser.Where(ui => ui.Id == post.ApplicationUserId).FirstOrDefault();
+                    var artist = _context.ApplicationArtist.Where(ai => ai.Id == post.ApplicationArtistId).FirstOrDefault();
+                    var UserFollowedInfo = new UserPostVm()
+                    {
+                        UserId = user.Id,
+                        ProfileImage = user.ImageUrl,
+                        ArtistName = artist.Name,
+                        PostId = post.PostId,
+                        Media = post.Media,
+                        Video = post.Video,
+                        Caption = post.caption,
+                        DateCreated = post.DateCreated,
+                        UserName = user.UserName,
+                        ApplicationArtistId = artist.Id
+
+                    };
+
+                    allPosts.Add(UserFollowedInfo);
+                }
+
+            }
+
+            return allPosts;
+        }
+//---------------------------------------------------------Testing above this------------------------------------------------------------------
         // GET: api/UserFollowers
         [HttpGet]
         public IEnumerable<UserFollow> GetUserFollower()
@@ -50,25 +103,29 @@ namespace Hello.Controllers
         //public List<Post> GetFollowedPost(string id)
         public List<UserPostVm> GetPostWithProfile(string id)
         {
-          
+
             var allPosts = new List<UserPostVm>();
+
+            //get a list of people being followed by the user
             var usersBeingFollowed = _context.UserFollow.Where(uf => uf.FollowingUserId == id).ToList();
-            //var followingYou = _context.UserFollow.Where(uf => uf.FollowedUserId == id).ToList();
+            var followers = _context.UserFollow.Where(uf => uf.FollowedUserId == id).ToList();
 
-
+            //loop through list of people being followed
             foreach (var uf in usersBeingFollowed)
             {
-           //     var user = _context.ApplicationUser.Where(u => u.Id == uf.FollowedUserId).FirstOrDefault();
+
+
+                // gets all posts of all people being followed
                 var posts = _context.Post.Where(u => u.ApplicationUserId == uf.FollowedUserId).ToList();
-                         
-                   foreach (var post in posts)
-                    {
+                //go through the posts and get info about the post 
+                foreach (var post in posts)
+                {
                     var user = _context.ApplicationUser.Where(ui => ui.Id == post.ApplicationUserId).FirstOrDefault();
                     var artist = _context.ApplicationArtist.Where(ai => ai.Id == post.ApplicationArtistId).FirstOrDefault();
                     var UserFollowedInfo = new UserPostVm()
                     {
                         UserId = user.Id,
-                        ProfileImage =  user.ImageUrl,
+                        ProfileImage = user.ImageUrl,
                         ArtistName = artist.Name,
                         PostId = post.PostId,
                         Media = post.Media,
@@ -77,12 +134,12 @@ namespace Hello.Controllers
                         DateCreated = post.DateCreated,
                         UserName = user.UserName,
                         ApplicationArtistId = artist.Id
-                        
+
                     };
 
                     allPosts.Add(UserFollowedInfo);
                 }
-                              
+
             }
 
             return allPosts;
@@ -126,7 +183,7 @@ namespace Hello.Controllers
             data.NumberOfFollowing = NumberOfPeopleYouFollow;
             return data;
         }
-      //  ----------------------------
+        //  ----------------------------
 
         [HttpPost]
         public async Task<IActionResult> PostUserFollowerWithNoDuplicates([FromBody] UserFollow userFollow)
@@ -204,8 +261,8 @@ namespace Hello.Controllers
         //    return Ok(userFollower);
         //}
 
-		// PUT: api/UserFollowers/5
-		[HttpPut("{id}")]
+        // PUT: api/UserFollowers/5
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutUserFollower([FromRoute] int id, [FromBody] UserFollow userFollow)
         {
             if (!ModelState.IsValid)
@@ -238,6 +295,25 @@ namespace Hello.Controllers
 
             return NoContent();
         }
+        //public class IsFollowed {
+
+        //    public bool isFollowed { get; set; }
+        //}
+        [HttpGet("isFollowing/{followedid}/{followerid}")]
+        public  bool DetermineIfFollowed(string followedid, string followerid){
+            var isFollowed = true;
+            //var users = _context.UserFollow.Where(uf => uf.FollowingUserId == followerid &&  uf.FollowedUserId == followedid).ToList();
+
+            if (_context.UserFollow.Any(u => u.FollowingUserId == followerid && u.FollowedUserId == followedid))
+            {
+                isFollowed = true;
+            }
+            else
+            {
+                isFollowed = false;
+            }
+            return isFollowed;
+        }
 
         // POST: api/UserFollowers
         //[HttpPost]
@@ -247,15 +323,15 @@ namespace Hello.Controllers
         //    {
         //        return BadRequest(ModelState);
         //    }
-           
-        //    _context.UserFollow.Add(userFollow);
-        //    await _context.SaveChangesAsync();
 
-        //    return CreatedAtAction("GetUserFollower", new { id = userFollow.Id }, userFollow);
-        //}
+            //    _context.UserFollow.Add(userFollow);
+            //    await _context.SaveChangesAsync();
 
-		// DELETE: api/UserFollowers/5
-		[HttpDelete("unfollow/{followedid}/{followingid}")]
+            //    return CreatedAtAction("GetUserFollower", new { id = userFollow.Id }, userFollow);
+            //}
+
+            // DELETE: api/UserFollowers/5
+        [HttpDelete("unfollow/{followedid}/{followingid}")]
 		public async Task<IActionResult> DeleteUserFollower([FromRoute] string followedid, string followingid)
 		{
 			if (!ModelState.IsValid)
