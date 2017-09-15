@@ -12,7 +12,7 @@ myApp.controller("CreateProfileController",CreateProfileController);
 myApp.controller("UserProfileController", UserProfileController);
 myApp.controller("SearchUserController", SearchUserController);
 myApp.controller("ArtistController", ArtistController);
-
+myApp.controller("MessagesController", MessagesController);
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
@@ -79,7 +79,8 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controllerAs: 'controller'
         })
         .state('otherUserProfile', {
-            url: '/OtherUserProfile/:id',
+            url: '/OtherUserProfile/',
+            params: {id: null},
             templateUrl: '/ngApp/views/OtherUserProfile.html',
             controller: OtherUserProfileController,
             controllerAs: 'controller'
@@ -95,7 +96,13 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			templateUrl: '/ngApp/views/artistProfile.html',
 			controller: ArtistProfileController,
 			controllerAs: 'controller'
-		})
+        })
+        .state('messages', {
+            url: '/messages',
+            templateUrl: '/ngApp/views/messages.html',
+            controller: MessagesController,
+            controllerAs: 'controller'
+        })
            .state('notFound', {
             url: '/notFound',
             templateUrl: '/ngApp/views/notFound.html'

@@ -23,15 +23,11 @@
     }
     
     getNumberOfPosts() {
-
-
         this.$http.get("api/posts/numberOfPosts/" + this.posts)
             .then(res => {
                 this.post = res.data;
                 console.log("amount of Posts " + this.post.numberOfPosts);
             });
-
-
     }
     getUserProfile() {
 
@@ -42,13 +38,10 @@
 				console.log(res.data);
             });       
     } 
-
-
 	getPost() {
 		this.$http.get("api/Posts/" + this.posts)
 			.then(res => {
 				this.posts = res.data;
-				//console.log(res.data);
 			});
 	}
 
