@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hello.Data.Models
 {
-    public class Inbox
+    public class InboxUserVm
     {
 
         [Key]

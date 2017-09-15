@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Hello.Data;
 using Hello.Data.Models;
+using Microsoft.EntityFrameworkCore.Internal;
+using MoreLinq;
 
 namespace Hello.Controllers
 {
@@ -23,11 +25,126 @@ namespace Hello.Controllers
 
         // GET: api/Inboxes
         [HttpGet]
-        public IEnumerable<Inbox> GetInbox()
+        public IEnumerable<InboxUserVm> GetInbox()
         {
             return _context.Inbox;
         }
+        public class UserInboxVm
+        {
+            public string MessagerUserId { get; set; }
+            public string UserName { get; set; }
+            public string profileImage { get; set; }
+            public DateTime DateCreated { get; set; }
+            public string message { get; set; }
+        }
 
+        // -----------------------------------------------Still Testing------------------------------------------------------------------------------------------------
+        //[HttpGet("messageandprofile/{recieverofMessageid}")]
+        ////public List<Post> GetFollowedPost(string id)
+        //public List<Inbox> GetInboxtWithProfile(string recieverofMessageid)
+        //{
+        //    var inboxes = new UserInboxVm();
+        //    var MessagesFromOneUser = new List<UserInboxVm>();
+        //   // get a list of all messages intended for user 
+        //    var messages = _context.Inbox.Where(um => um.RecieverOfMessageId == recieverofMessageid).OrderByDescending(m => m.DateCreated).OrderBy(um => um.MessagerUserId).ToList();
+
+        //    // loop through the list and get info about the message
+        //    foreach (var message in messages)
+        //    {
+        //        var sender = _context.ApplicationUser.Where(u => u.Id == message.MessagerUserId).FirstOrDefault();
+
+
+
+
+        //        inboxes.message = message.Message;
+        //        inboxes.DateCreated = message.DateCreated;
+
+
+        //    }
+
+        //    //MessagesFromOneUser.Add(inboxes);
+
+
+        //    return messages;
+
+        //}
+        //----------------------------------------------------------------------Still Testing --------------------------------------------------------------------------------------------------------------
+        public class SendersOfMessageVm
+        {
+            public string UserName { get; set; }
+            public string ProfileImage { get; set; }
+            public  DateTime LatestMessageDate { get; set; }
+            public string Snippet { get; set; }
+        }
+
+        [HttpGet("messageandprofile/{recieverofMessageid}")]
+        //public List<Post> GetFollowedPost(string id)
+        public List<SendersOfMessageVm> GetInboxtWithProfile(string recieverofMessageid)
+        {
+          
+            
+            var ListOfSenders = new List<SendersOfMessageVm>();
+            // get a list of all messages intended for user 
+            var userMessages = _context.Inbox.Where(um => um.RecieverOfMessageId == recieverofMessageid).ToList();
+     
+            // loop through the list and get info about the message
+            foreach (var message in userMessages)
+            {
+                var user = _context.ApplicationUser.Where(u => u.Id == message.MessagerUserId).FirstOrDefault();
+                var messagevm = _context.Inbox.Where(si => si.MessagerUserId == user.Id).Where(ri => ri.RecieverOfMessageId == recieverofMessageid)
+                         .OrderByDescending(d => d.DateCreated).FirstOrDefault();
+                var snippet = "";
+                if (messagevm.Message.Length < 5  )
+                {
+
+                    snippet = messagevm.Message;
+                }
+                if (messagevm.Message == null || messagevm.Message == "")
+                {
+                    snippet = "No message";
+                }
+                else
+                {
+                    snippet = messagevm.Message.Substring(0, 5) + "...";
+                }
+                var sender = new SendersOfMessageVm()
+                {
+
+                    UserName = user.UserName,
+                    ProfileImage = user.ImageUrl,
+                    LatestMessageDate = messagevm.DateCreated,
+                    Snippet = snippet 
+                   
+
+                };
+
+                ListOfSenders.Add(sender);
+
+            }
+            return ListOfSenders.DistinctBy(u => u.UserName).ToList();
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //--------------------------------------------------------------------------------------------------------Testing get first message of all users----------------
         // GET: api/Inboxes/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetInbox([FromRoute] int id)
@@ -49,7 +166,7 @@ namespace Hello.Controllers
 
         // PUT: api/Inboxes/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInbox([FromRoute] int id, [FromBody] Inbox inbox)
+        public async Task<IActionResult> PutInbox([FromRoute] int id, [FromBody] InboxUserVm inbox)
         {
             if (!ModelState.IsValid)
             {
@@ -84,7 +201,7 @@ namespace Hello.Controllers
 
         // POST: api/Inboxes
         [HttpPost]
-        public async Task<IActionResult> PostInbox([FromBody] Inbox inbox)
+        public async Task<IActionResult> PostInbox([FromBody] InboxUserVm inbox)
         {
             if (!ModelState.IsValid)
             {
