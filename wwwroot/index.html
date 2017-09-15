@@ -2,9 +2,12 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello App</title>
+
+
     <link href="/libs/bootstrap.min.css" rel="stylesheet" />
     <link href="/libs/bootstrap-theme.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
     <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Monoton&effect=-neon|neon" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
@@ -29,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand logo-name" id="logo-name-index" href="/" >FanBase</a>
+                <a class="navbar-brand logo-name" id="logo-name-index" href="/" >CS</a>
             </div>
             <div class="collapse navbar-collapse" id="appNavbar">
                 <ul class="nav navbar-nav">
@@ -39,6 +42,7 @@
                     <!--<li><a href="/createProfile" ng-show="account.isLoggedIn()">Create Profile</a></li>-->
                     <li><a href="/searchUser" ng-show="account.isLoggedIn()">Search Users</a></li>
                     <li><a href="/artist" ng-show="account.isLoggedIn()">Search Artists</a></li>
+                    <li><a href="/messages" ng-show="account.isLoggedIn()">Inbox</a></li>
                     <!--<li><a href="/secret">Secret</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -58,8 +62,12 @@
 
     
     <!-- Bootstrap -->
+    
+    
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
 
     <!-- Library Files -->
     <script src="/libs/angular.min.js"></script>
@@ -89,6 +97,7 @@
     <script src="/ngapp/controllers/artistController.js"></script>
 	<script src="/ngapp/controllers/artistProfileController.js"></script>
     <script src="/ngapp/controllers/homeFeedController.js"></script>
+    <script src="/ngapp/controllers/messagesController.js"></script>
 
 
     <!-- services -->

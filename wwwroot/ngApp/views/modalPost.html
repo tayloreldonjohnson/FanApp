@@ -1,0 +1,20 @@
+﻿<div class="post-modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title">Post Your Content</h3>
+    </div>
+    <div class="modal-body">
+        <p>Post your favorite memorabilia, merchandise, concert photos, and more!</p>
+        <p>Use the <span class="big-text">Upload</span> button below to add your files, then click <span class="big-text">Submit</span> to save your post.</p>
+    </div>
+    <div class="modal-footer">
+        <center>
+            <form ng-submit="controller.savePost()">
+                <button type="button" ng-click="controller.pickFile()" class="btn gen-btn btn-lg">Upload</button>
+                <input type="submit" value="Submit" class="btn gen-btn btn-lg" id="modal-submit">                
+            </form>
+        </center>
+    </div>
+</div>

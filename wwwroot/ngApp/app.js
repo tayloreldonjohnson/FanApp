@@ -1,7 +1,8 @@
-var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ui.bootstrap']);
+var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ngAnimate', 'ui.bootstrap']);
 
 myApp.controller("AboutController", AboutController);
 myApp.controller("AccountController", AccountController);
+myApp.controller("ArtistProfileController", ArtistProfileController);
 myApp.controller("ConfirmEmailController", ConfirmEmailController);
 myApp.controller("ExternalRegisterController", ExternalRegisterController);
 myApp.controller("HomeController", HomeController);
@@ -12,8 +13,9 @@ myApp.controller("CreateProfileController",CreateProfileController);
 myApp.controller("UserProfileController", UserProfileController);
 myApp.controller("SearchUserController", SearchUserController);
 myApp.controller("ArtistController", ArtistController);
+myApp.controller("MessagesController", MessagesController);
 myApp.controller("HomeFeedController", HomeFeedController);
-
+myApp.controller("ModalPostController", ModalPostController);
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
@@ -86,7 +88,8 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controllerAs: 'controller'
         })
         .state('otherUserProfile', {
-            url: '/OtherUserProfile/:id',
+            url: '/OtherUserProfile/',
+            params: {id: null},
             templateUrl: '/ngApp/views/OtherUserProfile.html',
             controller: OtherUserProfileController,
             controllerAs: 'controller'
@@ -102,7 +105,20 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			templateUrl: '/ngApp/views/artistProfile.html',
 			controller: ArtistProfileController,
 			controllerAs: 'controller'
-		})
+        })
+        .state('messages', {
+            url: '/messages',
+            templateUrl: '/ngApp/views/messages.html',
+            controller: MessagesController,
+            controllerAs: 'controller'
+        })
+        
+        .state('modalPost', {
+            url: '/modalPost/',
+            templateUrl: '/ngApp/views/modalPost.html',
+            controller: ModalPostController,
+            controllerAs: 'controller'
+        })
            .state('notFound', {
             url: '/notFound',
             templateUrl: '/ngApp/views/notFound.html'
@@ -189,7 +205,7 @@ myApp.filter('myArtistfilter', function () {
 
 //        $scope.pickFile = pickFile;
 
-        
+
 
 
 //        function onSuccess(Blob) {

@@ -19,8 +19,13 @@
                     Followers  &nbsp &nbsp {{controller.posts.numberOfFollowers}}
                 </li>
                 <li>{{controller.user.aboutMe}}</li>
-                <li><a href="#" class="btn gen-btn btn-lg" ng-click="controller.addFollower()">Follow</a></li>
-				<li><a href="#" class="btn gen-btn btn-lg" ng-click="controller.deleteFollower()">Un-Follow</a></li>
+
+                <!--<li><a href="#" class="btn gen-btn btn-lg" ng-click="controller.addFollower()">Follow</a></li>
+                <li><a href="#" class="btn gen-btn btn-lg" ng-click="controller.deleteFollower()">Un-Follow</a></li>-->
+            
+                <li><a href="#" class="btn gen-btn btn-lg" ng-click="controller.isfollowing == true ? controller.deleteFollower() : controller.addFollower()">{{ controller.isfollowing == true ? 'unfollow' : 'follow' }}</a></li>
+                
+
                 <li></li>
             </ul>
             <input type="text" ng-model="message"/>
@@ -41,7 +46,7 @@
 <section ng-repeat="p in controller.user.posts" class="container-post">
     <div class="card-post">
         <div class="card-header-post">
-            <img class="profile-img-post" ng-src="{{p.imageUrl}}" />
+            <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
             <div class="profile-info-post">
                 <div class="name-post">{{p.userName}}</div>
 
