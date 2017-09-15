@@ -293,7 +293,34 @@ form {
 
 /*--------------------------------------  Register  ----------------------------------------------------*/
 
+.reg-username {
+    background-color: rgba(0,0,0,.5);
+    color: white;
+    border: 0.05em solid;
+    outline: white;
+    height: 2.5em;
+    transition: height 1s;
+    -webkit-transition: height 1s;
+    margin: 1em 0;
+}
 
+    .reg-username::-webkit-input-placeholder { /* Chrome */
+        color: white;
+    }
+
+    .reg-username:-ms-input-placeholder { /* IE 10+ */
+        color: white;
+    }
+
+    .reg-username::-moz-placeholder { /* Firefox 19+ */
+        color: white;
+        opacity: 1;
+    }
+
+    .reg-username:-moz-placeholder { /* Firefox 4 - 18 */
+        color: white;
+        opacity: 1;
+    }
 /*--------------------------------------  User Profiles  ----------------------------------------------------*/
 
 .username {    
