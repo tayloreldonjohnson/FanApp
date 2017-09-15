@@ -62,7 +62,7 @@ class AccountService {
     isLoggedIn() {
         return this.window.sessionStorage.getItem('userName');
     }
-
+   
     // associate external login (e.g., Twitter) with local user account
     registerExternal(email) {
         return this.q((resolve, reject) => {

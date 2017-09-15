@@ -13,8 +13,9 @@ myApp.controller("CreateProfileController",CreateProfileController);
 myApp.controller("UserProfileController", UserProfileController);
 myApp.controller("SearchUserController", SearchUserController);
 myApp.controller("ArtistController", ArtistController);
+myApp.controller("MessagesController", MessagesController);
+myApp.controller("HomeFeedController", HomeFeedController);
 myApp.controller("ModalPostController", ModalPostController);
-
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
@@ -30,6 +31,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/',
             templateUrl: '/ngApp/views/home.html',
             controller: HomeController,
+            controllerAs: 'controller'
+        })
+        .state('homeFeed', {
+            url: '/homeFeed',
+            templateUrl: '/ngApp/views/homeFeed.html',
+            controller: HomeFeedController,
             controllerAs: 'controller'
         })
         .state('secret', {
@@ -81,7 +88,8 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controllerAs: 'controller'
         })
         .state('otherUserProfile', {
-            url: '/OtherUserProfile/:id',
+            url: '/OtherUserProfile/',
+            params: {id: null},
             templateUrl: '/ngApp/views/OtherUserProfile.html',
             controller: OtherUserProfileController,
             controllerAs: 'controller'
@@ -97,6 +105,13 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			templateUrl: '/ngApp/views/artistProfile.html',
 			controller: ArtistProfileController,
 			controllerAs: 'controller'
+        })
+        .state('messages', {
+            url: '/messages',
+            templateUrl: '/ngApp/views/messages.html',
+            controller: MessagesController,
+            controllerAs: 'controller'
+        })
         })
         .state('modalPost', {
             url: '/modalPost/',
@@ -176,4 +191,26 @@ myApp.filter('myArtistfilter', function () {
 
 
 
+/*----------------------------------------------  FILESTACK  ---------------------------------------------------------------*/
+//angular.module('myApp')
+//    .service('angularFilepicker', function ($window) {
+//        return $window.filepicker;
+//    });
 
+
+//angular.module('angularFilepickerExample')
+//    .controller('UserProfileController', function ($scope, angularFilepicker) {
+//        $scope.files = [];
+       
+
+//        $scope.pickFile = pickFile;
+
+
+
+
+//        function onSuccess(Blob) {
+//            $scope.files.push(Blob);
+//            $scope.$apply();
+//        };
+
+//    });

@@ -4,7 +4,7 @@
 		this.$UserProfileService = $UserProfileService;
 		this.$http = $http;
 		this.email = sessionStorage.getItem("email");
-		this.posts = sessionStorage.getItem("userid");
+        this.posts = sessionStorage.getItem("userid");
 		this.getPost();
 		this.getUserProfile(); 
         this.user;
@@ -23,16 +23,13 @@
     }
     
     getNumberOfPosts() {
-
-
         this.$http.get("api/posts/numberOfPosts/" + this.posts)
             .then(res => {
                 this.post = res.data;
                 console.log("amount of Posts " + this.post.numberOfPosts);
             });
-
-
     }
+
     getUserProfile() {
 
         this.$UserProfileService.getUserProfile(this.email)
@@ -42,13 +39,11 @@
 				console.log(res.data);
             });       
     } 
-
-
 	getPost() {
 		this.$http.get("api/Posts/" + this.posts)
 			.then(res => {
 				this.posts = res.data;
-				//console.log(res.data);
+				console.log(res.data);
 			});
 	}
 

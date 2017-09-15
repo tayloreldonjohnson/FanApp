@@ -36,12 +36,13 @@
             </div>
             <div class="collapse navbar-collapse" id="appNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/" class="glyphicon glyphicon-home"></a></li>
+                    <li class="active"><a href="/homeFeed" class="glyphicon glyphicon-home"></a></li>
                     <li><a href="/about" class="glyphicon glyphicon-info-sign"></a></li>
                     <li><a href="/userProfile" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-user"></a></li>
                     <!--<li><a href="/createProfile" ng-show="account.isLoggedIn()">Create Profile</a></li>-->
                     <li><a href="/searchUser" ng-show="account.isLoggedIn()">Search Users</a></li>
                     <li><a href="/artist" ng-show="account.isLoggedIn()">Search Artists</a></li>
+                    <li><a href="/messages" ng-show="account.isLoggedIn()">Inbox</a></li>
                     <!--<li><a href="/secret">Secret</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -53,6 +54,7 @@
                     <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
                 </ul>
             </div>
+
         </div>
     </nav>
     
@@ -94,7 +96,8 @@
     <script src="/ngapp/controllers/OtherUserProfileController.js"></script>
     <script src="/ngapp/controllers/artistController.js"></script>
 	<script src="/ngapp/controllers/artistProfileController.js"></script>
-    
+    <script src="/ngapp/controllers/homeFeedController.js"></script>
+    <script src="/ngapp/controllers/messagesController.js"></script>
 
 
     <!-- services -->
