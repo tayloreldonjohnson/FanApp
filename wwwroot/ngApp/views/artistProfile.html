@@ -1,6 +1,39 @@
 ﻿<!--Artist Merch to post: Ramones, Madonna, Jesus&MaryChain, Talking Heads, Cat Power, Crystal Castles, Angel Olsen, Nick Cave, Warpaint, Rolling Stones, NIN, Radiohead-->
 
-<div class="container-fluid text-center">  
+<div class="container-fluid text-center">
+    <!--<script type="text/ng-template" id="myModal.html">
+        <div class="modal" id="postModal" aria-labelledby="postModal" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content post-modal">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Post Your Content</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Post your favorite memorabilia, merchandise, concert photos, and more!</p>
+                        <p>Use the <span class="big-text">Upload</span> button below to add your files, then click <span class="big-text">Submit</span> to save your post.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <center>
+                            <form ng-submit="controller.addPost( controller.file.url)">
+                                <button type="button" ng-click="controller.pickFile()" class="btn gen-btn btn-lg">Upload</button>
+
+                                <input type="submit" value="Submit" class="btn gen-btn btn-lg" id="modal-submit">
+
+                                    data-dismiss="modal"     onclick="$('#postModal'.modal('hide'))"
+                        </form>
+                    </center>
+                </div>
+                    </div>
+                </div>
+            </div>
+    </script>-->
+
+
+
+ 
 
     <div class="row profile-container">
         <div class="col-sm-6 col-md-4 col-lg-2 artist-profile-img">
@@ -14,19 +47,10 @@
 		        0 Followers
             </div>
             <div class="artist-profile">
-                <p>This is the FanBase Page for <span class="big-text">{{controller.artist.name}}</span>.</p>
-                <p>Post your favorite memorabilia, merchandise, concert photos, and more!</p>
-                <p>Use the <span class="big-text">Upload</span> button below to add your files, then click <span class="big-text">Submit</span> to save your post.</p>
-                <div>
-                    <!--How You Feel: <input type="text" name="text">-->
-                    <form ng-submit="controller.addPost( controller.file.url)">
-                        <button type="button" ng-click="controller.pickFile()" class="btn gen-btn btn-lg">Upload</button>
-                        <!--<div class="image-post">
-                                <img class="image-post" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
-                            </div>-->
-                        <input type="submit" value="Submit" class="btn gen-btn btn-lg">
-                    </form>
-                </div>
+                <button type="button" class="btn gen-btn btn-lg" data-toggle="modal" data-target="#postModal" ng-click="controller.showModalPost()">Post</button>
+                <!--data-toggle="modal" data-target="#postModal"-->
+                
+                
             </div>
 		</div>
     </div>
@@ -56,7 +80,17 @@
 
 </div>
 
-
+<!--
+<script>
+    $(document).ready(function () {
+       
+        // Hide the Modal
+        $("#modal-submit").click(function () {
+            $("#postModal").modal("hide");
+        });
+    });
+</script>
+-->
 
 <!--
     
@@ -80,48 +114,14 @@
     </div>
 </div>
 
-<div class="artist-profile">
-    <p>This is the FanBase Page for <span class="big-text">{{controller.artist.name}}</span>.</p>
-    <p>Post your favorite memorabilia, merchandise, concert photos, and more!</p>
-    <p>Use the <span class="big-text">Upload</span> button below to add your files and click <span class="big-text">Submit</span> to save your post.</p>
-    <div>
-        How You Feel: <input type="text" name="text">
-        <form ng-submit="controller.addPost( controller.file.url)">
-            <input type="submit" value="Submit">
-            <div class="main-column">
-                <button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
-                <div class="image-post">
-                    <img class="image-post" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
-                </div>
+<!--<p>Use the <span class="big-text">Upload</span> button below to add your files, then click <span class="big-text">Submit</span> to save your post.</p>
+<div>
+    How You Feel: <input type="text" name="text">
+    <form ng-submit="controller.addPost( controller.file.url)">
+        <button type="button" ng-click="controller.pickFile()" class="btn gen-btn btn-lg">Upload</button>
+        <div class="image-post">
+                <img class="image-post" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
             </div>
-        </form>
-    </div>
-</div>
-
-<<<<<<< HEAD
-		<button type="button" ng-click="controller.pickFile()" class="btn btn-warning">Upload Snapshot</button>
-		<div class="image-post"><img class="image-post" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" /></div>
-		<br />
-	</div>
-    <div class="main-column">
-
-        <button type="button" ng-click="controller.pickVideo()" class="btn btn-warning">Upload Video</button>
-        <img class="profile-img" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
-        <br />
-    </div>
-</form>
-
-<!--<ul>
-    <li ng-repeat="p in controller.posts">
-        <img class="profile-img" ng-src="{p.media}" />
-        <video width="320" height="240" controls>
-            <source src="{p.mediaVid}" type="video/mp4">
-        </video>
-        {p.dateCreated | date}
-    </li>
-</ul>-->		
-
-
-
-
-			
+        <input type="submit" value="Submit" class="btn gen-btn btn-lg">
+    </form>
+</div>-->

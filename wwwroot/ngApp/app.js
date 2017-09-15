@@ -1,7 +1,8 @@
-var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ui.bootstrap']);
+var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ngAnimate', 'ui.bootstrap']);
 
 myApp.controller("AboutController", AboutController);
 myApp.controller("AccountController", AccountController);
+myApp.controller("ArtistProfileController", ArtistProfileController);
 myApp.controller("ConfirmEmailController", ConfirmEmailController);
 myApp.controller("ExternalRegisterController", ExternalRegisterController);
 myApp.controller("HomeController", HomeController);
@@ -14,6 +15,7 @@ myApp.controller("SearchUserController", SearchUserController);
 myApp.controller("ArtistController", ArtistController);
 myApp.controller("MessagesController", MessagesController);
 myApp.controller("HomeFeedController", HomeFeedController);
+myApp.controller("ModalPostController", ModalPostController);
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
@@ -110,6 +112,13 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: MessagesController,
             controllerAs: 'controller'
         })
+        
+        .state('modalPost', {
+            url: '/modalPost/',
+            templateUrl: '/ngApp/views/modalPost.html',
+            controller: ModalPostController,
+            controllerAs: 'controller'
+        })
            .state('notFound', {
             url: '/notFound',
             templateUrl: '/ngApp/views/notFound.html'
@@ -196,7 +205,7 @@ myApp.filter('myArtistfilter', function () {
 
 //        $scope.pickFile = pickFile;
 
-        
+
 
 
 //        function onSuccess(Blob) {
