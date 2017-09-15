@@ -12,10 +12,10 @@
 
 
 
-    };
+    }
 
     getMessages() {
-        this.$http.get("api/Inboxes/messageandprofile/" + this.userid)
+        this.$http.get("api/Inboxes/messageandprofile/" + this.userid )
             .then(res => {
                 this.messages = res.data;
                 console.log(res.data);
