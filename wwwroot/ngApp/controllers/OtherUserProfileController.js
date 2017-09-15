@@ -27,8 +27,8 @@
         this.getOtherUserProfile();
         this.userfollower = {
             FollowingUserId: this.userid,
-            FollowedUserId: this.otherid,
-        };
+            FollowedUserId: this.otherid
+		};
     }
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)

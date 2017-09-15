@@ -20,7 +20,7 @@
 		this.getPostId();
 		this.file;
 		this.filepicker = $filepicker;
-		this.filepicker.setKey('A7qbx1ZNSuGCfsnjhoIXuz');
+        this.filepicker.setKey('Aowd5dVQ06CyRYPl9EaAVz');
         this.artists;
    
 		//this.getlastfm();
@@ -33,8 +33,8 @@
                 this.posts = res.data;
                 console.log("postdata" + res.date);
 
-            })
-    };
+            });
+    }
 	getArtist() {
 		this.$ArtistProfileService.getArtist(this.id)
 			.then((res) => {
@@ -62,6 +62,17 @@
 			});
 	}
 
+	//pickVideo() {
+	//	this.filepicker.pick(
+	//		{
+ //               imageQuality: 60,  
+ //               mimetype: 'video/mp4'
+ //           },
+			
+	//		this.fileUploaded.bind(this)
+	//	);
+	//}
+ 
 	pickFile() {
         this.filepicker.pick(
             
@@ -69,12 +80,14 @@
                 cropRatio: 5/6,
 				mimetype: 'image/*',
                 imageQuality: 60,
-                conversions: ['crop', 'rotate',]
+                services: ['CONVERT', 'COMPUTER'],
+                conversions: ['crop', 'rotate']
 			},
             this.fileUploaded.bind(this)
 
 		);
 	}
+
 
 	fileUploaded(file) {
 		this.file = file;
