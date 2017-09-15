@@ -1,5 +1,5 @@
-﻿                          class ArtistProfileController {
-	constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state) {
+﻿class ArtistProfileController {
+	constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state, $uibModal) {
 		this.$ArtistProfileService = $ArtistProfileService;
 		this.$state = $state;
 		this.$http = $http;
@@ -18,14 +18,15 @@
 		};
 		this.getArtist();
 		this.getPostId();
-		this.file;
-		this.filepicker = $filepicker;
-        this.filepicker.setKey('Aowd5dVQ06CyRYPl9EaAVz');
+
         this.artists;
+
+        this.$uibModal = $uibModal;      
    
 		//this.getlastfm();
 
-    }
+    }    
+
     findPostId() {
 
         this.$http.get("api/Posts/" + this.post.ApplicationArtistId)
@@ -50,52 +51,23 @@
 				console.log("postdata" + this.posts.id);
 			});
 	}
-	addPost(media) {
-		console.log("addPost");
-		this.post.Media = media;
-		console.log(this.post);
-		this.$http.post("api/Posts", this.post)
-			.then((res) => {
-				this.getPostId();
-				this.$state.reload();
-				console.log("after put");
-			});
-	}
+	
 
-	//pickVideo() {
-	//	this.filepicker.pick(
-	//		{
- //               imageQuality: 60,  
- //               mimetype: 'video/mp4'
- //           },
-			
-	//		this.fileUploaded.bind(this)
-	//	);
-	//}
- 
-	pickFile() {
-        this.filepicker.pick(
-            
-            {
-                cropRatio: 5/6,
-				mimetype: 'image/*',
-                imageQuality: 60,
-                services: ['CONVERT', 'COMPUTER'],
-                conversions: ['crop', 'rotate']
-			},
-            this.fileUploaded.bind(this)
+    showModalPost() {
+        this.$uibModal.open({
+            templateUrl: '/ngApp/views/modalPost.html',
+            controller: ModalPostController,
+            controllerAs: 'controller',
+            resolve: {
+                post: () => this.post
+            }
+        }).closed.then(() => {
+           // this.addPost();
+        });
+    }
 
-		);
-	}
-
-
-	fileUploaded(file) {
-		this.file = file;
-		console.log(this.file.url);
-		console.log(this);
-	}
-
-	//getlastfm() {
+    
+   	//getlastfm() {
 	//	this.$http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=87bdb2c24f5d7ea2e34ac5d1bdc419f1&format=json&limit=1000")
 	//		.then((res) => {
 	//			this.artists = res.data;
@@ -103,4 +75,81 @@
 	//			this.$http.post("api/artists", this.artists);
 	//		});
 	//}
+}
+
+
+class ModalPostController {
+    constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state, $uibModalInstance) {
+        
+        this.$http = $http;
+        this.id = $stateParams["id"];
+        sessionStorage.setItem("id", this.id);
+        this.user = sessionStorage.getItem("userid");
+        this.filepicker = $filepicker;
+        this.filepicker.setKey('AfFjXrzLQi24J9Obh6rewz');
+        this.artistId = sessionStorage.getItem("id");
+        this.post = {
+            ApplicationArtistId: this.artistId,
+            ApplicationUserId: this.user,
+            DateCreated: new Date(),
+            Media: "",
+            Caption: ""
+        };
+        this.$state = $state;
+        this.modal = $uibModalInstance;
+        this.aps = $ArtistProfileService;
+        this.file;
+        
+        
+    }
+
+    getPostId() {
+        this.$http.get("api/Posts/" + this.posts)
+            .then((res) => {
+                this.posts = res.data;
+                console.log("postdata" + this.posts.id);
+            });
+    }
+
+    addPost(media) {
+        console.log("addPost");
+        this.post.Media = media;
+        console.log(this.post);
+        this.$http.post("api/Posts", this.post)
+            .then((res) => {
+                this.getPostId();
+                this.$state.reload();
+                console.log("after put");
+            });
+    }
+
+    pickFile() {
+        this.filepicker.pick(
+            {
+                cropRatio: 1 / 1,
+                mimetype: 'image/*',
+                container: 'window',
+                imageQuality: 80,
+                conversions: ['crop', 'rotate']
+            },
+            this.fileUploaded.bind(this)
+        );
+    }
+
+    fileUploaded(file) {
+        this.file = file;
+        console.log(this.file.url);
+        return this.file.url;
+    }
+
+    savePost() {
+        this.post.Media = this.file.url;
+        this.aps.savePost(this.post)
+            .then(() => {
+                this.$state.reload();
+                this.modal.close();
+            });
+    }
+
+    
 }
