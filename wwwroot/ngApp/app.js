@@ -2,7 +2,7 @@ var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ngAnimate', 'ui
 
 myApp.controller("AboutController", AboutController);
 myApp.controller("AccountController", AccountController);
-myApp.controller("ArtistProfileController", ArtistProfileController, ModalPostController);
+myApp.controller("ArtistProfileController", ArtistProfileController);
 myApp.controller("ConfirmEmailController", ConfirmEmailController);
 myApp.controller("ExternalRegisterController", ExternalRegisterController);
 myApp.controller("HomeController", HomeController);
@@ -13,6 +13,7 @@ myApp.controller("CreateProfileController",CreateProfileController);
 myApp.controller("UserProfileController", UserProfileController);
 myApp.controller("SearchUserController", SearchUserController);
 myApp.controller("ArtistController", ArtistController);
+myApp.controller("ModalPostController", ModalPostController);
 
 
 myApp.service("$accountService", AccountService);
@@ -98,7 +99,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			controllerAs: 'controller'
         })
         .state('modalPost', {
-            url: '/modalPost/:id',
+            url: '/modalPost/',
             templateUrl: '/ngApp/views/modalPost.html',
             controller: ModalPostController,
             controllerAs: 'controller'

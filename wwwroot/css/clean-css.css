@@ -88,9 +88,7 @@ form {
     margin: 0.8em 0.2em;
 }
 
-#modal-submit {
-    margin-bottom: 0.8em;
-}
+
 
 .input-group {
     margin: 0.75em;
@@ -171,7 +169,7 @@ ul.posts-lists {
     background-color: rgba(0,0,0,0.75);
     background-size: cover;
     padding: .25em;
-    width: 85%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -284,13 +282,14 @@ profile-list{
 .user-info-list {
     font-size: 1.25em;
     color: white;
-    display: inline-block;
+    display: inline-block;   
     text-align: justify;
     padding-left: 2em;    
 }
 
 ul.user-info {
     list-style-type: none;
+    padding-left: 0em;
 }
 
 .user-info-list a:link{
@@ -313,25 +312,30 @@ ul.user-info {
 .artist-block {
     margin-top: 25px;
     margin: 0 auto;
-    width: 95%;
+    width: 80%;
+}
+
+.artist-jumbo {
+
 }
 
 .artist-block li {
-    list-style-type: none;
+    list-style-type: none; 
+    display: inline-block;
 }
 
 .artists-list {
     background-color: rgba(0,0,0,0.75);
     margin: 1em;
     padding: 0.5em;
-    width: 22em;
-    height: 22em;
+    width: 18em;
+    height: 18em;
     border-radius: 2em/2em;
     text-align: center;
 }
 
 .artist-img img {
-    width: 16em;
+    width: 12em;
     height: auto;
     padding-bottom: 1em;
     border-radius: 50%;
@@ -371,10 +375,10 @@ ul.user-info {
 
 .artist-profile-img img {
     margin: 2em 2em 1em 1em;
-    width: 12em;
-    height: auto;
+    /*width: 15%;
+    height: auto;*/
     /*padding: 1em;*/
-    border-radius: 50%;
+    /*border-radius: 50%;*/
 
 }
 
@@ -389,6 +393,8 @@ ul.user-info {
     color: #000;
     font-size: 1em;
 }
+
+
 
 /*------------------------------------------------- UserPosts  ---------------------------------------------*/
 
@@ -487,16 +493,21 @@ ul.user-info {
     background-size: 400% 400%;
     animation: backgroundgradient 1s ease infinite;
 }
-}
+
 
 
 /*--------------------------------------------  Post Modal  --------------------------------------------*/
 
-.modal {
-    margin-top: 8em;
-}
+
 
 .post-modal {
-    background-color: rgba(120,224,0, 0.75);
-    color: #000;
+    background-color: rgba(120,224,0, 0.85);
+    padding: 0.25em;
+    font-size: 1.2em;
+    color: #000;  
+    text-align: center;
+}
+
+#modal-submit {
+    margin-bottom: 0.8em;
 }

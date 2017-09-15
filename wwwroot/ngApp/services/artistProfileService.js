@@ -6,5 +6,9 @@
 
 	getArtist(id) {
 		return this.http.get(this.route + id);
-	}
+    }
+
+    savePost(post) {
+        return this.http.post("api/Posts", post);
+    }
 }
