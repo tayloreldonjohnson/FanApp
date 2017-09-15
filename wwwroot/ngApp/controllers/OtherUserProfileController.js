@@ -35,13 +35,10 @@
         this.$http.post("api/UserFollowers", this.userfollower)
             .then(res => {
                 this.followeduser = res.data;
-                console.log(res.data);
+				console.log(res.data);
+				this.state.reload();
             });
-       
-  
-
-     
-        this.$templateCache.removeAll();
+        //this.$templateCache.removeAll();
         this.state.reload();
     }
         getFollowInfo() {
