@@ -112,7 +112,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: MessagesController,
             controllerAs: 'controller'
         })
-        })
+        
         .state('modalPost', {
             url: '/modalPost/',
             templateUrl: '/ngApp/views/modalPost.html',
