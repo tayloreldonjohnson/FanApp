@@ -1,15 +1,9 @@
 ﻿<h1> This is your messages</h1>
 
-<ul class="posts-lists">
-    <li ng-repeat="message in controller.messages">
-        <div class="posts-img">
-  
-            <!--<img ng-src="{message.messagerUser.imageUrl}}" />
-            {message.messagerUser.userName}}
-                    {message.message}}
-            {message.dateCreated}}-->
-     
-        </div>
-    </li>
-</ul>
-{{controller.messages.message}}
+<button style="color:lightskyblue;" class="panel panel-default" id="inbox" data-toggle="modal" data-target="#exampleModal" ng-repeat="m in controller.messages">
+
+ <img class="panel-body" style="width:200px; height:200px;" src="{{m.profileImage}}" />
+        {{m.userName}} - {{m.snippet}}   recieved  {{m.latestMessageDate | date}}
+
+ </button>
+

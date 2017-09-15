@@ -28,7 +28,8 @@
         this.userfollower = {
             FollowingUserId: this.userid,
             FollowedUserId: this.otherid
-		};
+        };
+      
     }
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)
@@ -40,27 +41,26 @@
   
 
      
-       this.$templateCache.removeAll()
+        this.$templateCache.removeAll();
         this.state.reload();
     }
-                
         getFollowInfo() {
 			this.$http.get("api/UserFollowers/" + this.otherid)
                 .then(res => {
 					this.posts = res.data;
 					console.log(this.posts);
-					console.log(this.posts.numberOfFollowing);
-				});
+                    console.log(this.posts.numberOfFollowing);
+                });
 		}
+        deleteFollower() {
+            this.$http.delete("api/UserFollowers/unfollow/" + this.otherid + "/" + this.userid)
+                .then(res => {
+                    console.log(res.data);
 
-		deleteFollower() {
-			this.$http.delete("api/UserFollowers/unfollow/" + this.otherid + "/" + this.userid)
-				.then(res => {
-					console.log(res.data);
                 });
             this.state.reload();
+        }
 
-		}
 
         getNumberOfPosts() {
             this.$http.get("api/posts/numberOfPosts/" + this.otherid)

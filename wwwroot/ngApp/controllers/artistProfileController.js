@@ -1,4 +1,4 @@
-﻿class ArtistProfileController {
+﻿                          class ArtistProfileController {
 	constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state) {
 		this.$ArtistProfileService = $ArtistProfileService;
 		this.$state = $state;
