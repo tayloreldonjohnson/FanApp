@@ -12,6 +12,7 @@
     getUserProfile(email) {
         return this.http.get(this.route + email);
     }
+
     //getUserFollowers(posts) {
     //    return this.http.get(this.routeToFollow + "followers/" + posts)
     //}
