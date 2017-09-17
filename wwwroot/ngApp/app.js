@@ -14,6 +14,7 @@ myApp.controller("SearchUserController", SearchUserController);
 myApp.controller("ArtistController", ArtistController);
 myApp.controller("MessagesController", MessagesController);
 myApp.controller("HomeFeedController", HomeFeedController);
+myApp.controller("UserMessageController", UserMessageController);
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
@@ -108,6 +109,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/messages',
             templateUrl: '/ngApp/views/messages.html',
             controller: MessagesController,
+            controllerAs: 'controller'
+        })
+        .state('userMessage', {
+            url: '/messages/:id',
+            templateUrl: '/ngApp/views/userMessage.html',
+            controller: UserMessageController,
             controllerAs: 'controller'
         })
            .state('notFound', {
