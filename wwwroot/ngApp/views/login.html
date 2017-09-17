@@ -1,27 +1,38 @@
 <div class="container-fluid text-center site-form">
-    <center>
-        <fieldset>
-            <ul>
-                <li ng-repeat="error in controller.validationmessages">
-                    {{error}}
-                </li>
-            </ul>
-            <form ng-submit="controller.login()">
-                <div class="input-group">
-                    <div class="form-group">
-                        <!--<label>Username</label>-->
-                        <input placeholder="Username" class="login-username form-control" ng-model="controller.loginUser.username" />
+    <center >
+       
+            <fieldset >
+                <ul>
+                    <li ng-repeat="error in controller.validationmessages">
+                        {{error}}
+                    </li>
+                </ul>
+                <img class="form-image" src="https://s-media-cache-ak0.pinimg.com/736x/9b/ee/66/9bee667aa25b15f424c43bd26b678564--dj-party-music-party.jpg" />
+                <div class="form-cover"></div>
+                <form ng-submit="controller.login()">
+                    <div class="login-intro">
+                        <h1>Crowd Surf</h1>
+                      
                     </div>
-                    <div class="form-group">
-                        <!--<label>Password</label>-->
-                        <input placeholder="Password" class="login-username form-control" type="password" ng-model="controller.loginUser.password" />
+                    <div class="input-group">
+
+                        <div class="form-group">
+                            <!--<label>Username</label>-->
+                            <input placeholder="Username" class="login-username form-control" ng-model="controller.loginUser.username" />
+                        </div>
+                        <div class="form-group">
+                            <!--<label>Password</label>-->
+                            <input placeholder="Password" class="login-username form-control" type="password" ng-model="controller.loginUser.password" />
+                        </div>
+                       <div class="login-con">
+                        <h5>Crowd Surf lets you share and experience <br /> other fan's limited merch and special events!</h5>
+                        </div>
+                        <div>
+                            <button class="btn gen-btn btn-lg" type="submit">Log In</button>
+                            <a href="/register" class="btn gen-btn btn-lg">Register</a>
+                        </div>
                     </div>
-                    <div>
-                        <button class="btn gen-btn btn-lg" type="submit">Log In</button>
-                        <a href="/register" class="btn gen-btn btn-lg">Register</a>
-                    </div>
-                </div>
-            </form>
-        </fieldset>
+                </form>
+            </fieldset>
     </center>
 </div>
