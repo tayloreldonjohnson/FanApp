@@ -66,8 +66,9 @@
                 </div>
                 <div class="time" {{p.dateCreated | date:'MMMM dd, y @ h:mma'}}></div>
             </div>
-            <div class="content-post">
-                <img ng-src="{{p.media}}" />
+            <div class="content-post" >
+                <img  ng-src="{{p.media}}" />
+                <video width="320" height="240" controls ng-src="{{p.media}}"></video>
             </div>
             <div class="card-footer">
                 <div class="Favorites">## FAVORITES</div>
@@ -77,6 +78,7 @@
             </div>
         </div>
     </section>
+
 
 </div>
 
