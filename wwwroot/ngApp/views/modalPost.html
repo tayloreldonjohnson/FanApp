@@ -1,11 +1,13 @@
 ﻿<div class="post-modal">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="controller.closeModal()">
+    <!--Added this to close modal-->        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="controller.closeModal()">-->
+                <span aria-hidden="true">&times;</span>
+            </button>
         <h3 class="modal-title">Post Your Content</h3>
     </div>
     <div class="modal-body">
+       
         <p>Post your favorite memorabilia, merchandise, concert photos, and more!</p>
         <p>Use the <span class="big-text">Upload</span> button below to add your files, then click <span class="big-text">Submit</span> to save your post.</p>
     </div>

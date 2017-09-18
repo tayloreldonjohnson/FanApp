@@ -150,6 +150,10 @@ class ModalPostController {
                 this.modal.close();
             });
     }
+    closeModal() {
+
+       this.modal.dismiss();
+    }
 
     
 }
