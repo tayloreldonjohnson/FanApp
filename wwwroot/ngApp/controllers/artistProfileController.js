@@ -8,13 +8,16 @@
 		sessionStorage.setItem("id", this.id);
 		this.user = sessionStorage.getItem("userid");
 		//this.route = "api/Posts";
-		this.posts = sessionStorage.getItem("id");
+        this.artistId = sessionStorage.getItem("id");
+        this.posts;
+      
 		this.post = {
 			ApplicationArtistId: this.posts,
 			ApplicationUserId: this.user,
 			DateCreated: new Date(),
 			Media: "",
-            Caption: ""
+            Caption: "",
+            Video: ""
 		};
 		this.getArtist();
 		this.getPostId();
@@ -45,10 +48,12 @@
 	}
 
 	getPostId() {
-		this.$http.get("api/Posts/" + this.posts)
+		this.$http.get("api/Posts/" + this.artistId)
 			.then((res) => {
 				this.posts = res.data;
-				console.log("postdata" + this.posts.id);
+                console.log("postdata" + this.posts.id);
+           
+               
 			});
 	}
 	
@@ -88,6 +93,7 @@ class ModalPostController {
         this.filepicker = $filepicker;
         this.filepicker.setKey('Aowd5dVQ06CyRYPl9EaAVz');
         this.artistId = sessionStorage.getItem("id");
+      
         this.post = {
             ApplicationArtistId: this.artistId,
             ApplicationUserId: this.user,
@@ -158,12 +164,15 @@ class ModalPostController {
     addVideoPost(video) {
         console.log("addVideoPost");
         this.post.Video = video;
+        this.post.Type = 'video';
         console.log(this.post);
+
         this.$http.post("api/Posts", this.post)
             .then((res) => {
                 this.getPostId();
                 this.$state.reload();
                 console.log("after put");
+                this.modal.close();
             });
     }
     pickVideo() {
@@ -190,6 +199,6 @@ class ModalPostController {
                 this.$state.reload();
                 this.modal.close();
             });
-    }
-    
+      this.modal.dismiss();
+    }    
 }
