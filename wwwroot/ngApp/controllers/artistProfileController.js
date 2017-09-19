@@ -8,13 +8,16 @@
 		sessionStorage.setItem("id", this.id);
 		this.user = sessionStorage.getItem("userid");
 		//this.route = "api/Posts";
-		this.posts = sessionStorage.getItem("id");
+        this.artistId = sessionStorage.getItem("id");
+        this.posts;
+      
 		this.post = {
 			ApplicationArtistId: this.posts,
 			ApplicationUserId: this.user,
 			DateCreated: new Date(),
 			Media: "",
-            Caption: ""
+            Caption: "",
+            Video: ""
 		};
 		this.getArtist();
 		this.getPostId();
@@ -45,10 +48,12 @@
 	}
 
 	getPostId() {
-		this.$http.get("api/Posts/" + this.posts)
+		this.$http.get("api/Posts/" + this.artistId)
 			.then((res) => {
 				this.posts = res.data;
-				console.log("postdata" + this.posts.id);
+                console.log("postdata" + this.posts.id);
+           
+               
 			});
 	}
 	
@@ -86,19 +91,23 @@ class ModalPostController {
         sessionStorage.setItem("id", this.id);
         this.user = sessionStorage.getItem("userid");
         this.filepicker = $filepicker;
-        this.filepicker.setKey('AfFjXrzLQi24J9Obh6rewz');
+        this.filepicker.setKey('Aowd5dVQ06CyRYPl9EaAVz');
         this.artistId = sessionStorage.getItem("id");
+      
         this.post = {
             ApplicationArtistId: this.artistId,
             ApplicationUserId: this.user,
             DateCreated: new Date(),
             Media: "",
-            Caption: ""
+            Caption: "",
+            Video: "",
+            Type:""
         };
         this.$state = $state;
         this.modal = $uibModalInstance;
         this.aps = $ArtistProfileService;
         this.file;
+        this.video;
         
         
     }
@@ -122,7 +131,7 @@ class ModalPostController {
                 console.log("after put");
             });
     }
-
+    
     pickFile() {
         this.filepicker.pick(
             {
@@ -135,13 +144,42 @@ class ModalPostController {
             this.fileUploaded.bind(this)
         );
     }
-
     fileUploaded(file) {
         this.file = file;
+        this.post.Type = "image";
         console.log(this.file.url);
         return this.file.url;
     }
+   
+    addVideoPost(video) {
+        console.log("addVideoPost");
+        this.post.Video = video;
+        this.post.Type = 'video';
+        console.log(this.post);
 
+        this.$http.post("api/Posts", this.post)
+            .then((res) => {
+                this.getPostId();
+                this.$state.reload();
+                console.log("after put");
+                this.modal.close();
+            });
+    }
+    pickVideo() {
+        this.filepicker.pick(
+            {
+                mimetype: 'video/*',
+                container: 'window'
+            },
+            this.videoUpload.bind(this)
+        );
+    }
+    videoUpload(video) {
+        this.file = video;
+        this.post.Type = "video";
+        //console.log(this.video.url);
+        //return this.video.url;
+    }
     savePost() {
         this.post.Media = this.file.url;
         this.aps.savePost(this.post)
@@ -149,6 +187,10 @@ class ModalPostController {
                 this.$state.reload();
                 this.modal.close();
             });
+    }
+    closeModal() {
+
+       this.modal.dismiss();
     }
 
     

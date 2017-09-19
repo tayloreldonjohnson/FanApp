@@ -1,9 +1,9 @@
-﻿<h1> This is your messages</h1>
+﻿<h1> Sneak peek at your messages</h1>
 
 <button style="color:lightskyblue;" class="panel panel-default" id="inbox" data-toggle="modal" data-target="#exampleModal" ng-repeat="m in controller.messages">
 
  <img class="panel-body" style="width:200px; height:200px;" src="{{m.profileImage}}" />
-        {{m.userName}} - {{m.snippet}}   recieved  {{m.latestMessageDate | date}}
-
- </button>
+  - {{m.snippet}}   recieved  {{m.latestMessageDate | date}}
+    <a ui-sref="userMessage({ id: m.senderId })">{{m.userName}}</a>
+</button>
 

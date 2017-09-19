@@ -9,6 +9,7 @@ using Hello.Data;
 using Hello.Data.Models;
 using Microsoft.EntityFrameworkCore.Internal;
 using MoreLinq;
+using Hello.Migrations;
 
 namespace Hello.Controllers
 {
@@ -36,6 +37,7 @@ namespace Hello.Controllers
             public string profileImage { get; set; }
             public DateTime DateCreated { get; set; }
             public string message { get; set; }
+      
         }
 
         // -----------------------------------------------Still Testing------------------------------------------------------------------------------------------------
@@ -75,6 +77,7 @@ namespace Hello.Controllers
             public string ProfileImage { get; set; }
             public  DateTime LatestMessageDate { get; set; }
             public string Snippet { get; set; }
+            public string senderId { get; set; }
         }
 
         [HttpGet("messageandprofile/{recieverofMessageid}")]
@@ -113,8 +116,8 @@ namespace Hello.Controllers
                     UserName = user.UserName,
                     ProfileImage = user.ImageUrl,
                     LatestMessageDate = messagevm.DateCreated,
-                    Snippet = snippet 
-                   
+                    Snippet = snippet, 
+                    senderId = user.Id
 
                 };
 
@@ -126,19 +129,33 @@ namespace Hello.Controllers
         }
 
 
+        //---------------------------------------
 
 
+        [HttpGet("message/{senderid}/{recieverId}")]
+        //public List<Post> GetFollowedPost(string id)
+        public List<UserInboxVm> GetMessageOfUser(string senderId, string recieverId)
+        {
+            var Messages = _context.Inbox.Where(x => x.MessagerUserId == senderId && x.RecieverOfMessageId == recieverId).ToList();
+            var ListOfMessages = new List<UserInboxVm>();
 
+            foreach (var Message in Messages)
+            {
 
-
-
-
-
-
-
-
-
-
+                var user = _context.ApplicationUser.Where(u => u.Id == Message.MessagerUserId).FirstOrDefault();
+                var Messagevm = new UserInboxVm
+                {
+                    message = Message.Message,
+                    UserName = user.UserName,
+                    profileImage = user.ImageUrl,
+                    DateCreated = Message.DateCreated
+                    
+        
+                };
+                ListOfMessages.Add(Messagevm);
+            }
+            return ListOfMessages;
+        }
 
 
 
