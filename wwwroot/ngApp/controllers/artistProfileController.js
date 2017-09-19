@@ -183,16 +183,14 @@ class ModalPostController {
         );
     }
     videoUpload(video) {
-        this.video.url = video;
+        this.video = video;
         this.post.Type = "video";
         console.log(this.post.Type);
         //return this.video.url;
     }
-    savePost(caption , video) {
+    savePost() {
         this.post.Media = this.file.url;
-        this.post.Video = this.video.url;
-        this.post.Caption = caption;
-        this.aps.savePost(this.post)
+        this.aps.savePost(this.post )
             .then(() => {
                 this.$state.reload();
                 this.modal.close();
