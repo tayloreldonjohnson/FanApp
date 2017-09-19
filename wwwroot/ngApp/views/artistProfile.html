@@ -28,16 +28,11 @@
                 </div>
                 <div class="time" {{p.dateCreated | date:'MMMM dd, y @ h:mma'}}></div>
             </div>
-<<<<<<< HEAD
-            <div class="content-post" >
-                <img ng-show="p.media" ng-src="{{p.media}}" />
-                <video  width="320" height="240" controls ng-src="{{p.video}}"></video>
-=======
-            <div class="content-post">
-                <img ng-src="{{p.media}}" />
-                <video width="320" height="240" controls ng-src="{{p.media}}"></video>
->>>>>>> master
+                <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
             </div>
+			<div class="content-post">
+				<video ng-hide ="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+			</div>
             <div class="card-footer">
                 <center>
                     <h3>{{p.caption}}</h3>
@@ -49,9 +44,10 @@
                 <div class="comments"></div>
                 <div class="form"></div>
             </div>
-        </div>
-    </section>
-</div>
+       </section>
+   </div>
+  
+
 <!--
 <script>
     $(document).ready(function () {

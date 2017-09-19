@@ -70,9 +70,7 @@
            // this.addPost();
         });
     }
-
-    
-   	//getlastfm() {
+  	//getlastfm() {
 	//	this.$http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=87bdb2c24f5d7ea2e34ac5d1bdc419f1&format=json&limit=1000")
 	//		.then((res) => {
 	//			this.artists = res.data;
@@ -187,8 +185,8 @@ class ModalPostController {
     videoUpload(video) {
         this.video.url = video;
         this.post.Type = "video";
-        console.log(this.video.url);
-        return this.video.url;
+        console.log(this.post.Type);
+        //return this.video.url;
     }
     savePost(caption , video) {
         this.post.Media = this.file.url;
