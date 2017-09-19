@@ -29,7 +29,7 @@
 
 <br />
 <br />
-    <section  class="container-post" ng-repeat="p in controller.posts ">
+    <section  class="container-post" ng-repeat="p in controller.posts" ng-model="controller.posts.media">
         <div class="card-post">
             <div class="card-header-post">
                 <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
@@ -42,7 +42,7 @@
                 
             </div>
             <div class="content-post">
-                <img ng-src="{{p.media}}" />
+                <img ng-src="{{p.media}}"ng-show ="controller.posts.media == 'http://media.gettyimages.com/photos/lindsey-stirling-performs-during-the-music-box-tour-at-meadow-brook-picture-id478687692'" />
             </div>
             <div class="card-footer">
                 <div class="favorites">## FAVORITES</div>

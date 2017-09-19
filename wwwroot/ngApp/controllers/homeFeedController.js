@@ -26,5 +26,9 @@
                 this.post = res.data;
                 console.log(res.data);
             });
-    }
+    
+
+
+
+    
 }
