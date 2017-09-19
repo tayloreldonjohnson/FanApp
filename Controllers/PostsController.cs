@@ -188,21 +188,23 @@ namespace Hello.Controllers
 
         //[HttpPost("{ApplicationArtistId}")]
         [HttpPost]
-      
+
         public async Task<IActionResult> PostMedia([FromBody] Post post)
         {
 
-          //  try
-          //  {
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(ModelState);
-                }
+            //  try
+            //  {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-                _context.Post.Add(post);
-                await _context.SaveChangesAsync();
+            _context.Post.Add(post);
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetPost", new { id = post.PostId }, post);
+
+        }
             //}
             //catch (WebException webex)
             //{
@@ -214,7 +216,7 @@ namespace Hello.Controllers
             //    }
             //}
 
-        }
+        
         //   POST: api/Posts
         //[HttpPost]
         //public async Task<IActionResult> PostPost([FromBody] Post post)
