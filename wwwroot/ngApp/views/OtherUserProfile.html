@@ -28,8 +28,8 @@
 
                 <li></li>
             </ul>
-            <input type="text" ng-model="message"/>
-            <a href="#" class="btn gen-btn btn-lg" ng-click="controller.InboxUser(message)">Send Personal Message</a>
+            <button type="button" class="btn gen-btn btn-lg" data-toggle="modal" data-target="#ModalMessages" ng-click="controller.showModal()">Message {{controller.user.userName}}?</button>
+           
         </div>
     </div>
 </div>
@@ -61,6 +61,10 @@
 			<video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
 		</div>
         <div class="card-footer">
+            <center>
+                <h3>{{p.caption}}</h3>
+            </center>
+            <button ng-click="controller.favorite(post)"  class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
             <div class="Favorites">## FAVORITES</div>
             <div class="description">TEST DESCRIPTION</div>
             <div class="comments"></div>

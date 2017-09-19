@@ -17,7 +17,8 @@
 			DateCreated: new Date(),
 			Media: "",
             Caption: "",
-            Video: ""
+            Video: "",
+            Type: ""
 		};
 		this.getArtist();
 		this.getPostId();
@@ -70,9 +71,7 @@
            // this.addPost();
         });
     }
-
-    
-   	//getlastfm() {
+  	//getlastfm() {
 	//	this.$http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=87bdb2c24f5d7ea2e34ac5d1bdc419f1&format=json&limit=1000")
 	//		.then((res) => {
 	//			this.artists = res.data;
@@ -85,7 +84,7 @@
 
 class ModalPostController {
     constructor($ArtistProfileService, $stateParams, $http, $filepicker, $state, $uibModalInstance) {
-        
+
         this.$http = $http;
         this.id = $stateParams["id"];
         sessionStorage.setItem("id", this.id);
@@ -93,7 +92,7 @@ class ModalPostController {
         this.filepicker = $filepicker;
         this.filepicker.setKey('Aowd5dVQ06CyRYPl9EaAVz');
         this.artistId = sessionStorage.getItem("id");
-      
+
         this.post = {
             ApplicationArtistId: this.artistId,
             ApplicationUserId: this.user,
@@ -101,17 +100,16 @@ class ModalPostController {
             Media: "",
             Caption: "",
             Video: "",
-            Type:""
+            Type: ""
         };
         this.$state = $state;
         this.modal = $uibModalInstance;
         this.aps = $ArtistProfileService;
         this.file;
         this.video;
-        
-        
-    }
 
+
+    }
     getPostId() {
         this.$http.get("api/Posts/" + this.posts)
             .then((res) => {
@@ -119,7 +117,6 @@ class ModalPostController {
                 console.log("postdata" + this.posts.id);
             });
     }
-
     addPost(media) {
         console.log("addPost");
         this.post.Media = media;
@@ -131,7 +128,7 @@ class ModalPostController {
                 console.log("after put");
             });
     }
-    
+
     pickFile() {
         this.filepicker.pick(
             {
@@ -150,13 +147,13 @@ class ModalPostController {
         console.log(this.file.url);
         return this.file.url;
     }
-   
-    addVideoPost(video) {
+
+    addVideoPost(video , caption) {
         console.log("addVideoPost");
         this.post.Video = video;
+        this.post.Caption = caption;
         this.post.Type = 'video';
         console.log(this.post);
-
         this.$http.post("api/Posts", this.post)
             .then((res) => {
                 this.getPostId();
@@ -180,8 +177,21 @@ class ModalPostController {
         console.log(this.post.Type);
         //return this.video.url;
     }
-    savePost() {
+    addCaption(caption) {
+        console.log("addCaption");
+        this.post.Caption = caption;
+        console.log(this.post);
+        this.$http.post("api/Posts", this.post)
+            .then((res) => {
+                this.getPostId();
+                this.$state.reload();
+                console.log("after put");
+                this.modal.close();
+            });
+    }
+    savePost(caption) {
         this.post.Media = this.file.url;
+        this.post.Caption = caption;
         this.aps.savePost(this.post)
             .then(() => {
                 this.$state.reload();
@@ -189,9 +199,6 @@ class ModalPostController {
             });
     }
     closeModal() {
-
-       this.modal.dismiss();
+        this.modal.dismiss();
     }
-
-    
 }
