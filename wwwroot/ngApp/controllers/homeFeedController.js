@@ -1,4 +1,4 @@
-﻿class HomeFeedController{
+﻿class HomeFeedController {
     constructor($http, $stateParams) {
         this.$http = $http;
         this.post = sessionStorage.getItem("postid");
@@ -16,8 +16,8 @@
         //    Caption: "",
         //    ProfileImage:""
         //};
-     
-        this.getPostWithProfile();     
+
+        this.getPostWithProfile();
     }
 
     getPostWithProfile() {
@@ -26,9 +26,10 @@
                 this.post = res.data;
                 console.log(res.data);
             });
-    
 
 
 
-    
+
+
+    }
 }

@@ -177,7 +177,7 @@ class ModalPostController {
     videoUpload(video) {
         this.file = video;
         this.post.Type = "video";
-        //console.log(this.video.url);
+        console.log(this.post.Type);
         //return this.video.url;
     }
     savePost() {

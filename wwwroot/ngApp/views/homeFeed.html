@@ -18,8 +18,11 @@
 
         </div>
         <div class="content-post" width="498" height="500" >
-            <img ng-src="{{p.media}}"  width="498" height="500"/>
+            <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" width="498" height="500" />
         </div>
+		<div class="content-post">
+			<video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+		</div>
 
         <div class="card-footer">
             <div class="Favorites">
