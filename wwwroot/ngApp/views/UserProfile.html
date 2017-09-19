@@ -12,12 +12,12 @@
             <img ng-src="{{controller.user.imageUrl}}" style="width:200px; height:200px;" />
         </div>
         <div class="col-sm-6 col-lg-4 profile-cols">
-            <ul >
-                <li>
-                    <p>Uploads &nbsp &nbsp  {{controller.post.numberOfPosts}}</p>
-                    <p>Following &nbsp &nbsp {{controller.postinfo.numberOfFollowing}}</p>
-                    <p>Followers  &nbsp &nbsp {{controller.postinfo.numberOfFollowers}}</p>
-                </li>
+            <ul>
+                <li>{{controller.post.numberOfPosts}} Uploads</li>
+                <li>{{controller.postinfo.numberOfFollowing}} Following</li>
+                <li>{{controller.postinfo.numberOfFollowers}} Followers</li>
+            </ul>
+            <ul>
                 <li>{{controller.user.aboutMe}}</li>
                 <li><a href="/createProfile" class="btn gen-btn btn-lg">Edit Profile</a></li>
             </ul>
@@ -25,49 +25,73 @@
     </div>
 </div>
 
-	<h1>My Posts</h1>
+<h1>My Posts</h1>
 
-<br />
-<br />
-    <section  class="container-post" ng-repeat="p in controller.posts ">
-        <div class="card-post">
-            <div class="card-header-post">
-                <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
-                <div class="profile-info-post">
-                    <div class="name-post">{{controller.user.userName}}</div>
-
-                    <div class="location"></div>
-                    <div class="time">{{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}</div>
-                </div>
-                
-            </div>
-            <div class="content-post">
-                <img ng-src="{{p.media}}" />
-            </div>
-            <div class="card-footer">
-                <div class="favorites">## FAVORITES</div>
-                <div class="description">TEST DESCRIPTION</div>
-                <div class="comments"></div>
-                <div class="form"></div>
-                <div class="dropdown">
-                    <a class="glyphicon glyphicon-option-horizontal icon-tridots"  data-toggle="dropdown"></a>
-                    <ul class="dropdown-menu icon-tridots-drop">
-                        <li><a href="#" class="btn gen-btn btn-sm delete-d" style="color:white;" ng-click="controller.deletePost(p.postId)">Delete</a></li>
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                    </ul>
-                </div>
-
-
-
+<section  class="container-post" ng-repeat="p in controller.posts ">
+    <div class="card-post-userfeed">
+        <div class="row card-header-post-userfeed">            
+            <img class="w3-quarter profile-img-post-userfeed" ng-src="{{controller.user.imageUrl}}" />            
+            <div class="w3-quarter name-post-userfeed">{{controller.user.userName}}</div>
+            <!--<div class="location"></div>-->
+            <div class="w3-half time-userfeed">{{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}</div>
+        </div>
+        <div class="content-post-userfeed">
+            <img ng-src="{{p.media}}" />
+        </div>
+        <div class="card-footer-userfeed">
+            <div class="favorites">## FAVORITES</div>
+            <div class="description">TEST DESCRIPTION</div>
+            <!--
+            <div class="comments"></div>
+            <div class="form"></div>
+            -->
+            <div class="dropdown-userfeed">
+                <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
+                <ul class="dropdown-menu icon-tridots-drop">
+                    <li>
+                        <a href="#" class="btn gen-btn btn-md delete-d" style="color:white;" ng-click="controller.deletePost(p.postId)">Delete</a>
+                    </li>
+                    <!--
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    -->
+                </ul>
             </div>
         </div>
-
-        <br />
-        <br />
-   
+    </div>
 </section>
 
+
+<!--<section class="container-post" ng-repeat="p in controller.posts ">
+    <div class="card-post">
+        <div class="card-header-post">
+            <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
+            <div class="profile-info-post">
+                <div class="name-post">{{controller.user.userName}}</div>
+
+                <div class="location"></div>
+                <div class="time">{{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}</div>
+            </div>
+        </div>
+        <div class="content-post">
+            <img ng-src="{{p.media}}" />
+        </div>
+        <div class="card-footer">
+            <div class="favorites">## FAVORITES</div>
+            <div class="description">TEST DESCRIPTION</div>
+            <div class="comments"></div>
+            <div class="form"></div>
+            <div class="dropdown">
+                <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
+                <ul class="dropdown-menu icon-tridots-drop">
+                    <li><a href="#" class="btn gen-btn btn-sm delete-d" style="color:white;" ng-click="controller.deletePost(p.postId)">Delete</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>-->
 
 
 

@@ -7,6 +7,10 @@ body {
     font-family: 'Mukta Mahee', 'Lucida Sans', sans-serif;    
 }
 
+fieldset {
+    border:none;
+    margin-top: 2em;
+}
 
 @keyframes backgroundgradient {
     0% {
@@ -88,7 +92,7 @@ body {
 
 
 .input-group {
-    margin: 0.75em;
+    margin: 2em 0.75em;
 }
 
 .search-input {
@@ -97,6 +101,7 @@ body {
 
 .logo-name {
     font-family: 'Monoton', cursive;
+    color: deeppink;
 }
 
 #logo-name-index {
@@ -166,9 +171,15 @@ ul.posts-lists {
 .jumbotron {
     background-color: rgba(0,0,0,0.75);
     background-size: cover;
-    padding: .25em;
-    width: 80%;
+    /*padding: .25em;
+    width: 80%;*/
     margin: 0 auto;
+}
+
+.jumbo-home {
+    width: 80%;
+    padding: 0.25em;
+    margin: 2em auto;
 }
 
 .jumbotron img{
@@ -178,11 +189,11 @@ ul.posts-lists {
     border-radius: 0.5em/0.5em;
 }
 
-#logo-name-home {
+/*#logo-name-home {
     font-size: 4em;
     color: deeppink;
     margin-bottom: 0.4em;
-}
+}*/
 
 ul#home-list {
     list-style-type: none;
@@ -240,7 +251,7 @@ ul#home-list {
     color: white;
     opacity: 1;
 }
-form {
+/*form {
     margin: auto;
     position: absolute;
     top: 0;
@@ -248,9 +259,9 @@ form {
     bottom: 0;
     right: 0;
     margin-top: 21em;
-}
+}*/
 
-.form-image {
+/*.form-image {
     margin: auto;
     position: absolute;
     top: 0;
@@ -259,9 +270,9 @@ form {
     right: 0;
     height: 500px;
     width: 400px;
-}
+}*/
 
-.form-cover {
+/*.form-cover {
     margin: auto;
     position: absolute;
     top: 0;
@@ -271,10 +282,25 @@ form {
     height: 500px;
     width: 400px;
     background: rgba(0,0,0,.5);
+}*/
+
+.form-cover {
+    background-image: url(https://s-media-cache-ak0.pinimg.com/736x/9b/ee/66/9bee667aa25b15f424c43bd26b678564--dj-party-music-party.jpg);
+    height: 36em;
+    width: 28em;
+    margin: 0 auto;
+    padding: 1em;
+    
 }
 
-.login-intro {
-    margin: auto;
+.logo-login {
+    font-family: 'Monoton', cursive;
+    font-size: 3em;
+    color: deeppink;
+}
+
+/*.login-intro {
+    margin:  5em auto;
     position: absolute;
     top: 0;
     left: 0;
@@ -282,16 +308,20 @@ form {
     right: 0;
     margin-top: -10em;
 }
+    */
+
+.login-buttons {
+    margin: 3em 0.5em 1em;
+    padding-top: 5em;
+}
 
 .login-con {
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin-top: 16em;
+    margin-top: 10em;
+    background-color: rgba(0,0,0,.4);
+    border-radius: 1em/1em;
 }
+
+
 
 /*--------------------------------------  Register  ----------------------------------------------------*/
 
@@ -393,7 +423,7 @@ ul.user-info {
 }
 
 .artist-jumbo {
-
+    background-color:red;
 }
 
 .artist-block li {
@@ -403,7 +433,7 @@ ul.user-info {
 
 .artists-list {
     background-color: rgba(0,0,0,0.75);
-    margin: 1em;
+    display: inline-block;
     padding: 0.5em;
     width: 18em;
     height: 18em;
@@ -479,7 +509,57 @@ ul.user-info {
     margin: 2em;
 }
 
-.card-post {
+.card-post-userfeed {
+    background-color: rgba(0,0,0,0.75);
+    margin: 0 auto;
+    width: 500px;
+    height: auto;
+    border: 1px solid rgba(0,0,0,0.75);
+    border-radius: 0.15em;
+    color: white;
+}
+
+.card-header-post-userfeed {
+    padding: 0 0 0 0.5em;
+    text-align: left;
+    width: 100%;
+    display: inline-block;
+}
+
+.profile-img-post-userfeed {        
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    margin: 0.5em 0 0 1em;   
+}
+
+.name-post-userfeed {
+    font-size: 0.9em;
+    font-weight: 500;
+    margin: 0.5em 1em;
+}
+
+.time-userfeed {
+    margin-top: 0.5em;
+    float: right;
+    text-align: right;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.content-post-userfeed img{
+    width: 498px;
+    height: 500px;
+    padding: 0.85em;
+}
+
+.card-footer-userfeed {
+    padding: 0 1em 1em 1em;
+    text-align: left;    
+}
+
+
+/*.card-post {
     background-color: rgba(0,0,0,0.75);
     margin: 0 auto;
     width: 500px;
@@ -492,24 +572,20 @@ ul.user-info {
 .card-header-post {
     padding: 0.5em 1em 0 1em;
     text-align: left;
-    display:flex;
+    display: flex;
 }
 
 .profile-img-post {
-        
     width: 3em;
     height: 3em;
     border-radius: 50%;
     position: relative;
     margin-right: 1em;
-    
-    
 }
 
 .profile-info-post {
     display: inline-block;
-    display:flex;
-    
+    display: flex;
 }
 
 .name-post {
@@ -518,7 +594,7 @@ ul.user-info {
     margin-top: 0.75em;
 }
 
-.content-post img{
+.content-post img {
     width: 498px;
     height: 500px;
     padding: 15px;
@@ -527,15 +603,72 @@ ul.user-info {
 .card-footer {
     padding: 0 1em 1em 1em;
     text-align: left;
-    
+}*/
+
+
+/*--------------------------------  HOMEFEED  -----------------------------------*/
+
+.card-post-homefeed {
+    background-color: rgba(0,0,0,0.75);
+    margin: 0 auto;
+    width: 500px;
+    height: auto;
+    border: 1px solid rgba(0,0,0,0.75);
+    border-radius: 0.15em;
+    color: white;
 }
-.time{
-  
-   flex: 1;
-   margin-left: 20em;
-   margin-top: 0.75em
-  
+
+.card-header-post-homefeed {
+    padding: 0 0 0 0.5em;
+    text-align: left;
+    display: inline-block;
 }
+
+.profile-img-post-homefeed {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    margin: 0.5em 0 0 1em;
+}
+
+.profile-info-post-homefeed {
+    display: inline-block;    
+}
+
+.name-post-homefeed {
+    font-size: 0.9em;
+    font-weight: 500;
+    margin: 0.5em 1em;
+}
+
+.content-post-homefeed img {
+    width: 498px;
+    height: 500px;
+    padding: 1.5em;
+}
+
+.card-footer-homefeed {
+    margin: 0 1em 1em 1em;
+    text-align: left;
+}
+#home-feed-headline {
+    display: inline-block;    
+    background-color: rgba(0,0,0,0.85);
+    border-radius: 1em/1.5em;
+    margin: 0em 0.5em;
+    padding: 0.4em;
+    width: 500px;
+    font-size: 3.5em;
+}
+
+.time-homefeed {
+    margin: 0.5em 2em 0 0;
+    float: right;
+    text-align: right;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
 .icon-tridots {
     color: white;
     margin-left: 32em;

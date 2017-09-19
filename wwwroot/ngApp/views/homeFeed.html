@@ -1,8 +1,40 @@
-﻿<h1>Home Feed</h1>
+﻿<center>
+    <h1 class="font-effect-neon logo-name" id="home-feed-headline">Home Feed</h1>
+    <section class="container-post" ng-repeat="p in controller.post | orderBy:'dateCreated':true ">
+        <div class="card-post-homefeed">
+            <div class="row card-header-post-homefeed">
+                
+                <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.profileImage}}" />
+                
+                <div class="w3-half name-post-homefeed">{{p.userName}} posted on {{p.artistName}}'s profile</div>
+                <!--<div class="location"></div>-->
+                
+                <div class="w3-quarter time-homefeed" {{p.dateCreated | date}}>
+                    {{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}
+                </div>
+            </div>
+            <div class="content-post-homefeed">
+                <img ng-src="{{p.media}}" />
+            </div>
+            <div class="card-footer-homefeed">
+                <div class="favorites">21 Favorites</div>
+                <div class="description"><p><span>{{controller.user.userName}}</span></p></div>
+                <!--
+                <div class="comments"></div>
+                <div class="form"></div>
+                -->
+            </div>
+        </div>
+    </section>
+</center>
 
+
+<!--
 <section class="container-post" ng-repeat="p in controller.post | orderBy:'dateCreated':true ">
-    <div class="card-post"   >
-        <div class="card-header-post" >
+    <h1 class="font-effect-neon logo-name" id="home-feed-headline">Home Feed</h1>
+
+    <div class="card-post">
+        <div class="card-header-post">
             <img class="profile-img-post" ng-src="{{p.profileImage}}" />
 
 
@@ -17,7 +49,7 @@
             </div>
 
         </div>
-        <div class="content-post" width="498" height="500" >
+        <div class="content-post" width="498" height="500">
             <img ng-src="{{p.media}}" width="498" height="500" />
         </div>
 
@@ -27,7 +59,7 @@
             </div>
             <div class="description">
                 <p>
-                    <!--<span>{controller.user.userName}}</span>-->
+                    <span>{controller.user.userName}}</span>
 
                 </p>
 
@@ -44,3 +76,4 @@
     <br />
 
 </section>
+-->
