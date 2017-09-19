@@ -113,7 +113,17 @@ class ModalPostController {
                 console.log("postdata" + this.posts.id);
             });
     }
-
+    addCaptionPost(caption) {
+        console.log("addCaptionPost");
+        this.post.Caption = caption;
+        console.log(this.post);
+        this.$http.post("api/Posts", this.post)
+            .then(res => {
+                this.getPostId();
+                this.$state.reload();
+                console.log("after put");
+            });
+    }
     addPost(media) {
         console.log("addPost");
         this.post.Media = media;
@@ -166,19 +176,20 @@ class ModalPostController {
         );
     }
     videoUpload(video) {
-        this.file = video;
+        this.video.url = video;
         this.post.Type = "video";
-        //console.log(this.video.url);
-        //return this.video.url;
+        console.log(this.video.url);
+        return this.video.url;
     }
-    savePost() {
+    savePost(caption , video) {
         this.post.Media = this.file.url;
+        this.post.Video = this.video.url;
+        this.post.Caption = caption;
         this.aps.savePost(this.post)
             .then(() => {
                 this.$state.reload();
                 this.modal.close();
             });
     }
-
     
 }

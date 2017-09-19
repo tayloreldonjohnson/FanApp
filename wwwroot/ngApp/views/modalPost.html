@@ -11,9 +11,10 @@
     </div>
     <div class="modal-footer">
         <center>
-            <form ng-submit="controller.savePost()">
+            <form ng-submit="controller.savePost(caption)">
                 <button type="button" ng-click="controller.pickFile()" class="btn gen-btn btn-lg">Upload Photo</button>            
                 <button type="button" ng-click="controller.pickVideo()" class="btn gen-btn btn-lg">Upload Video</button>
+                <textarea placeholder="Caption..." class="form-control" rows="1" ng-model="caption"></textarea>
                 <input type="submit" value="Submit" class="btn gen-btn btn-lg" id="modal-submit">    
             </form>
         </center>
