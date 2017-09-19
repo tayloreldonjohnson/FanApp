@@ -16,7 +16,7 @@ class UserMessageController {
 
     getMessage() {
 
-        this.$http.get("api/Inboxes/message/" + this.userid + "/" + this.id)
+        this.$http.get("api/Inboxes/message/" + this.id + "/" + this.userid)
             .then(res => {
             this.messages = res.data;
             console.log(res.data);
