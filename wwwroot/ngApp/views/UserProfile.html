@@ -42,8 +42,11 @@
                 
             </div>
             <div class="content-post">
-                <img ng-src="{{p.media}}" />
+                <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
             </div>
+			<div class="content-post">
+				<video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+			</div>
             <div class="card-footer">
                 <div class="favorites">## FAVORITES</div>
                 <div class="description">TEST DESCRIPTION</div>
