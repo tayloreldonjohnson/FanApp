@@ -27,6 +27,14 @@
 
 <h1>My Posts</h1>
 
+<br />
+<br />
+    <section  class="container-post" ng-repeat="p in controller.posts" ng-model="controller.posts.media">
+        <div class="card-post">
+            <div class="card-header-post">
+                <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
+                <div class="profile-info-post">
+                    <div class="name-post">{{controller.user.userName}}</div>
 <section  class="container-post" ng-repeat="p in controller.posts ">
     <div class="card-post-userfeed">
         <div class="row card-header-post-userfeed">            
@@ -69,29 +77,46 @@
             <div class="profile-info-post">
                 <div class="name-post">{{controller.user.userName}}</div>
 
-                <div class="location"></div>
-                <div class="time">{{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}</div>
+                    <div class="location"></div>
+                    <div class="time">{{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}</div>
+                </div>
+                
             </div>
-        </div>
-        <div class="content-post">
-            <img ng-src="{{p.media}}" />
-        </div>
-        <div class="card-footer">
-            <div class="favorites">## FAVORITES</div>
-            <div class="description">TEST DESCRIPTION</div>
-            <div class="comments"></div>
-            <div class="form"></div>
-            <div class="dropdown">
-                <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
-                <ul class="dropdown-menu icon-tridots-drop">
-                    <li><a href="#" class="btn gen-btn btn-sm delete-d" style="color:white;" ng-click="controller.deletePost(p.postId)">Delete</a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                </ul>
+            <div class="content-post">
+                <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
             </div>
-        </div>
-    </div>
-</section>-->
+			<div class="content-post">
+				<video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+			</div>
+            
+            <div class="card-footer">
+                <center>
+                    <h3>{{p.caption}}</h3>
+                </center>
+                <div class="favorites">## FAVORITES</div>
+                <div class="description">TEST DESCRIPTION</div>
+                <div class="comments"></div>
+                <div class="form"></div>
+                <div class="dropdown">
+                    <a class="glyphicon glyphicon-option-horizontal icon-tridots"  data-toggle="dropdown"></a>
+                    <ul class="dropdown-menu icon-tridots-drop">
+                        <li><a href="#" class="btn gen-btn btn-sm delete-d" style="color:white;" ng-click="controller.deletePost(p.postId)">Delete</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                    </ul>
+                </div>
+
+
+
+
+                </div>
+            </div>
+
+        <br />
+        <br />
+   
+</section>
+
 
 
 

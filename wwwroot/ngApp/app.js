@@ -17,6 +17,7 @@ myApp.controller("MessagesController", MessagesController);
 myApp.controller("HomeFeedController", HomeFeedController);
 myApp.controller("ModalPostController", ModalPostController);
 myApp.controller("UserMessageController", UserMessageController);
+myApp.controller("ModalController", ModalController);
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
@@ -118,6 +119,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/modalPost/',
             templateUrl: '/ngApp/views/modalPost.html',
             controller: ModalPostController,
+            controllerAs: 'controller'
+        })
+        .state('modalMessages', {
+            url: '/modalMessages/',
+            templateUrl: '/ngApp/views/modalMessages.html',
+            controller: ModalController,
             controllerAs: 'controller'
         })
         .state('userMessage', {

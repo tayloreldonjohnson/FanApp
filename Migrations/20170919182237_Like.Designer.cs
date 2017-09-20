@@ -11,9 +11,10 @@ using System;
 namespace Hello.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170919182237_Like")]
+    partial class Like
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,18 +145,19 @@ namespace Hello.Migrations
             modelBuilder.Entity("Hello.Data.Models.Like", b =>
                 {
                     b.Property<int>("LikeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("LikeId");
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateLiked");
 
-                    b.Property<int?>("PostId");
+                    b.Property<string>("PostId");
+
+                    b.Property<int?>("PostId1");
 
                     b.Property<string>("UserId");
 
                     b.HasKey("LikeId");
 
-                    b.HasIndex("PostId");
+                    b.HasIndex("PostId1");
 
                     b.HasIndex("UserId");
 
@@ -341,7 +343,7 @@ namespace Hello.Migrations
                 {
                     b.HasOne("Hello.Data.Models.Post", "post")
                         .WithMany()
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId1");
 
                     b.HasOne("Hello.Data.ApplicationUser", "User")
                         .WithMany()
