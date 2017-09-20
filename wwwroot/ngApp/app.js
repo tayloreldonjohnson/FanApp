@@ -128,7 +128,8 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controllerAs: 'controller'
         })
         .state('userMessage', {
-            url: '/messages/:id',
+			url: '/messages/',
+			params: { id: null },
             templateUrl: '/ngApp/views/userMessage.html',
             controller: UserMessageController,
             controllerAs: 'controller'

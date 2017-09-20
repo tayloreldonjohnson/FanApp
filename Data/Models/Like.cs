@@ -19,8 +19,8 @@ namespace Hello.Data.Models
 
 
         [ForeignKey("PostId")]
- 
-        public Post post { get; set; }
+		public int PostId { get; set; }
+		public Post post { get; set; }
 
         public DateTime DateLiked { get; set; }
     }
