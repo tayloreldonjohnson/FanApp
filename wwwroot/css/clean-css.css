@@ -54,7 +54,8 @@ fieldset {
 }
 
 .glyphicon {
-    top: 0;
+    position:inherit;
+
 }
 
 .icon-bar {
@@ -599,6 +600,9 @@ a:active .artist-name {
     text-align: left;    
 }
 
+.footer-section-1 {
+    padding: 0 0.5em;
+}
 
 /*.card-post {
     background-color: rgba(0,0,0,0.75);
@@ -712,38 +716,44 @@ a:active .artist-name {
 
 .icon-tridots {
     color: white;
-    margin-left: 32em;
-    flex: 1;
+    padding: 1em 1em 0 0;
     cursor: pointer;
+    float: right;
+    text-align: right;
 }
 .icon-tridots:hover {
     color: lightgreen;
     text-decoration: none;
     cursor:pointer;
-    flex: 1;
-    margin-left:32em;
+    float: right;
+    padding: 1em 1em 0 0;
+    
 }
-.favorites {
-   
-}
-.description {
-   
-}
+
 .icon-tridots-drop {
-    margin-left: 32em;
-    background: rgba(0,0,0,.5);
+    background-color: rgba(0,0,0,.5);
+    float: right;
+    padding: 1em 1em 0 0;
 }
+
+
+.dropdown {
+    margin: 2em 0 0 2em;
+}
+
 .delete-d:not(.nohover):hover {
     background: linear-gradient(132deg, #F40E00, #fe6363, #F40E00 );
     background-size: 400% 400%;
-    animation: backgroundgradient 5s ease infinite;
-    color: white;
+    animation: backgroundgradient 5s ease infinite;    
 }
+
 .delete-d:hover{
     background: linear-gradient(132deg, #F40E00, #fe6363, #F40E00 );
     background-size: 400% 400%;
     animation: backgroundgradient 1s ease infinite;
+    float: right;    
 }
+
 
 
 

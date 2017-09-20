@@ -28,47 +28,12 @@
 
                 <li></li>
             </ul>
-            <button type="button" class="btn gen-btn btn-lg" data-toggle="modal" data-target="#ModalMessages" ng-click="controller.showModal()">Message {{controller.user.userName}}?</button>
+            <button type="button" class="btn gen-btn btn-lg" data-toggle="modal" data-target="#ModalMessages" ng-click="controller.showModal()">Message {{controller.user.userName}}</button>
            
         </div>
     </div>
 </div>
-    <!--<div class="row">
-        <ul class="posts-lists">
-            <li ng-repeat="post in controller.user.posts">
-                <div class="posts-img">
-                    <img ng-src="{post.media}}" />{post.dateCreated | date}}
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>-->
 
-                <div class="location"></div>
-            </div>
-            <div>{{p.dateCreated |  date:'MMMM dd, y @ h:mma' }}</div>
-        </div>
-        <div class="content-post">
-            <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
-        </div>
-		<div class="content-post">
-			<video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
-		</div>
-        <div class="card-footer">
-            <center>
-                <h3>{{p.caption}}</h3>
-            </center>
-            <button ng-click="controller.favorite(post)"  class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
-            <div class="Favorites">## FAVORITES</div>
-            <div class="description">TEST DESCRIPTION</div>
-            <div class="comments"></div>
-            <div class="form"></div>
-        </div>
-    </div>
-    <br />
-    <br />
-
-</section>
 
 <center>
     <section class="container-post" ng-repeat="p in controller.user.posts">
@@ -82,10 +47,22 @@
                 
                 <div class="w3-quarter time-userfeed">{{p.dateCreated |  date:'MMMM dd, y @ h:mma' }}</div>
             </div>
+
             <div class="content-post-userfeed">
-                <img ng-src="{{p.media}}" />
+                <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
             </div>
+
+            <div class="content-post-userfeed">
+                <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+            </div>
+
             <div class="card-footer-userfeed">
+                <center>
+                    <h3>{{p.caption}}</h3>
+                </center>
+                <button ng-click="controller.favorite(post)" class="btn gen-btn btn-lg">
+                    <img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" />
+                </button>
                 <div class="favorites">## FAVORITES</div>
                 <div class="description">TEST DESCRIPTION</div>
                 <!--
