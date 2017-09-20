@@ -1,6 +1,9 @@
 ﻿class HomeFeedController {
     constructor($http, $stateParams) {
         this.$http = $http;
+        this.id = $stateParams["id"];
+        sessionStorage.setItem("otherid", this.id);
+        this.otherid = sessionStorage.getItem("otherid");
         this.post = sessionStorage.getItem("postid");
         this.user = sessionStorage.getItem("userid");
         //this.allPosts = {
@@ -16,8 +19,11 @@
         //    Caption: "",
         //    ProfileImage:""
         //};
-
         this.getPostWithProfile();
+        this.like = {
+            UserId: this.id,
+            PostId: this.post
+        };
     }
 
     getPostWithProfile() {
@@ -26,10 +32,14 @@
                 this.post = res.data;
                 console.log(res.data);
             });
-
-
-
-
-
+    }
+    likePost(post) {
+        console.log("likePost");
+        this.like.Post = post;
+        console.log(this.post);
+        this.$http.post("api/Likes" , this.like)
+            .then(res => {
+                console.log("after put");
+            });
     }
 }

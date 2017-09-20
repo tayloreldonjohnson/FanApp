@@ -122,5 +122,36 @@ namespace Hello.Controllers
         {
             return _context.Like.Any(e => e.LikeId == id);
         }
+        // Likes with no duplicates
+        //[HttpPost]
+        //public async Task<IActionResult> LikesWithNoDuplicates([FromBody] Like like)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    var duplicates = _context.Like.Where(uf => uf.Like == LikeId.UserId && uf.Like == LikeId.PostId).Count();
+
+        //    if (duplicates > 0 || LikeId.UserId == LikeId.PostId)
+        //    {
+
+        //        var error = new
+        //        {
+        //            message = "You are either liked this post lready or attempting to like again",
+        //            status = Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError
+        //        };
+        //        //Context.Response.StatusCode = error.status;
+        //        return new ObjectResult(error);
+
+
+        //    }
+
+        //    _context.UserLike.Add(LikeId);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetUserLike", new { id = LikeId.Id }, likeId);
+        //}
+
     }
 }

@@ -4,13 +4,12 @@
 		this.$state = $state;
 		this.$http = $http;
 		//this.name = $stateParams["name"];
-		this.id = $stateParams["id"];
-		sessionStorage.setItem("id", this.id);
+        this.id = $stateParams["id"];
+        sessionStorage.setItem("id", this.id);
 		this.user = sessionStorage.getItem("userid");
 		//this.route = "api/Posts";
         this.artistId = sessionStorage.getItem("id");
         this.posts;
-      
 		this.post = {
 			ApplicationArtistId: this.posts,
 			ApplicationUserId: this.user,
@@ -22,7 +21,7 @@
 		};
 		this.getArtist();
 		this.getPostId();
-
+        this.likes = {};
         this.artists;
 
         this.$uibModal = $uibModal;      
