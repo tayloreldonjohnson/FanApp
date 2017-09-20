@@ -1,27 +1,45 @@
-﻿
-<div class="container-fluid">
-    <div class="row">
-        <div class="jumbotron artist-jumbo col-12">
+﻿<div class="artist-search-container">
+    <div class="artist-jumbo">
+        <div class="input-group-artist">
+            <input type="text" class="search-input form-control" placeholder="Search Artist" ng-model="myArtistFilter.name" aria-describedby="basic-addon1">
+        </div>
+    </div>
+    <div class="center-block text-center">
+        <div ng-show="myArtistFilter.name" ng-repeat="artist in controller.artists | filter:myArtistFilter | orderBy:'name'" class="w3-card artist-card">
+            <div class="w3-display-container w3-hover-sepia artist-container">
+                <a ui-sref="artistProfile({ id: artist.id })" id="no-underline">
+                    <div class="artist-img text-center">
+                        <img class="w3-circle" ng-src="{{artist.imageUrl}}" />
+                    </div>
+                    <div class="w3-display-middlebottom artist-name text-center">{{artist.name}}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="container-fluid">
+    
+        <div class="jumbotron artist-jumbo">
             <div class="input-group">
                 <input type="text" class="search-input form-control" placeholder="Search Artist" ng-model="myArtistFilter.name" aria-describedby="basic-addon1">
             </div>
         </div>
 
-        <div class="row artist-block" ng-show="myArtistFilter.name">
-            <div class="col-12">
+        <div class="artist-block" ng-show="myArtistFilter.name">
+            
                 <ul class="user-info">
                     <li ng-repeat="artist in controller.artists | filter:myArtistFilter | orderBy:'name'" class="artists-list">
                         <a ui-sref="artistProfile({ id: artist.id })">
-                            <img class="img-circle" ng-src="{{artist.imageUrl}}" />
+                            <div class="artist-img"> <img ng-src="{{artist.imageUrl}}" /> </div>
                             
                             <div class="artist-name">
                                 {{artist.name}}
                             </div>
                         </a>
                     </li>
-                </ul>
-            </div>
-            <div class="clearfix visible-xs"></div>
-        </div>
-    </div>
-</div>
+                </ul>            
+        </div>    
+</div>-->
+
+

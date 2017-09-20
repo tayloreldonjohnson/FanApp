@@ -1,5 +1,5 @@
 ﻿class OtherUserProfileController {
-    constructor($stateParams, $http, $state, $templateCache) {
+    constructor($stateParams, $http, $state, $templateCache, $uibModal) {
         this.$templateCache = $templateCache;
         this.state = $state;
         this.$http = $http;
@@ -29,7 +29,7 @@
             FollowingUserId: this.userid,
             FollowedUserId: this.otherid
         };
-      
+        this.$uibModal = $uibModal;  
     }
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)
@@ -73,17 +73,7 @@
                     console.log(res.data);
                 });
         }
-      
-           InboxUser(message) {
-                        console.log("addMessage");
-                    this.inbox.Message = message;
-                      console.log(this.post);
-                   this.$http.post("api/Inboxes", this.inbox)
-                     .then((res) => {
-                 
-                    console.log("after put");
-                });
-        }
+     
            isFollowing() {
             
                this.$http.get("api/UserFollowers/isFollowing/" + this.otherid + "/" + this.userid)
@@ -93,6 +83,44 @@
                        console.log("after put");
                    });
            }
+           showModal() {
+               this.$uibModal.open({
+                   templateUrl: '/ngApp/views/modalMessages.html',
+                   controller: ModalController,
+                   controllerAs: 'controller',
+                   resolve: {
+                       message: () => this.inbox
+                   }
+               }).closed.then(() => {
+                   // this.addPost();
+               });
+           }
      }
         
-    
+class ModalController {
+    constructor($stateParams, $http, $state, $uibModalInstance) {
+        this.$http = $http;
+        this.id = $stateParams["id"];
+        sessionStorage.setItem("otherid", this.id);
+        this.userid = sessionStorage.getItem("userid");
+        this.otherid = sessionStorage.getItem("otherid");
+        this.inbox = {
+            Message: "",
+            DateCreated: new Date(),
+            MessagerUserId: this.userid,
+            RecieverOfMessageId: this.otherid
+
+        };
+        this.modal = $uibModalInstance;
+    }
+    InboxUser(message) {
+        console.log("addMessage");
+        this.inbox.Message = message;
+        console.log(this.post);
+        this.$http.post("api/Inboxes", this.inbox)
+            .then((res) => {
+                console.log("after put");
+            });
+
+    }
+}
