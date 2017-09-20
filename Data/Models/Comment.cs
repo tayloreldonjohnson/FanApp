@@ -7,22 +7,17 @@ using System.Threading.Tasks;
 
 namespace Hello.Data.Models
 {
-    public class Like
+    public class Comment
     {
         [Key]
-        public int LikeId { get; set; }
-   
+        public int CommentId { get; set; }
 
-        [ForeignKey("ApplicationUserId")]  
-        public string UserId { get; set; }
-        public ApplicationUser User { get; set; }
-
-
-       
-       public int PostId { get; set; }
-
+        public int PostId { get; set; }
         public Post post { get; set; }
-
-        public DateTime DateLiked { get; set; }
+        [ForeignKey("ApplicationUserId")]
+        public string UserId { get; set; }
+   
+        public ApplicationUser User { get; set; }
+        public string Text { get; set; }
     }
 }
