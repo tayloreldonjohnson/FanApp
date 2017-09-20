@@ -23,6 +23,7 @@
             Video: "",
             Type: ""
 		};
+		
 		this.getArtist();
 		this.getPostId();
 
@@ -32,7 +33,14 @@
    
 		//this.getlastfm();
 
-    }    
+	}    
+
+	likePost(postId) {
+		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user, PostId: postId })
+			.then((res) => {
+
+			});
+	}
 
     findPostId() {
 
@@ -127,7 +135,8 @@ class ModalPostController {
         this.video;
 
 
-    }
+	}
+
     getPostId() {
         this.$http.get("api/Posts/" + this.posts)
             .then((res) => {

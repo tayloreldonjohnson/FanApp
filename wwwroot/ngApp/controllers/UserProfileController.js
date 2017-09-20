@@ -13,6 +13,13 @@
 		this.postinfo;
     }
 
+	likePost(postId) {
+		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user.userId, PostId: postId })
+			.then((res) => {
+
+			});
+	}
+
     getFollowInfo() {
         this.$http.get("api/UserFollowers/" + this.posts)
             .then(res => {

@@ -27,14 +27,6 @@
 
 <h1>My Posts</h1>
 
-<br />
-<br />
-    <section  class="container-post" ng-repeat="p in controller.posts track by $index" ng-model="controller.posts.media">
-        <div class="card-post">
-            <div class="card-header-post">
-                <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
-                <div class="profile-info-post">
-                    <div class="name-post">{{controller.user.userName}}</div>
 
 <section  class="container-post" ng-repeat="p in controller.posts ">
     <div class="card-post-userfeed">
@@ -57,8 +49,9 @@
         
         <div class="row card-footer-userfeed">
             <div class="w3-half footer-section-1">
-                <div class="favorites">## FAVORITES</div>
-                <div class="description">TEST DESCRIPTION</div>
+				<button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
+				<div class="favorites">## FAVORITES</div>
+				<div class="description">{{p.caption}}</div>
             </div>
             <!--
             <div class="comments"></div>

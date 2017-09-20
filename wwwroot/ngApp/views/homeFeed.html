@@ -24,14 +24,11 @@
 
 
             <div class="card-footer-homefeed">
-                <center>
-                    <h3>{{p.caption}}</h3>
-                </center>
-                <button ng-click="controller.favorite(post)" class="btn gen-btn btn-lg">
-                    <img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" />
-                </button>
-                <div class="favorites">## Favorites</div>
-                <div class="description"><p><span>{{controller.user.userName}}</span></p></div>
+				<button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
+				<div class="Favorites">
+					21 Favorites
+				</div>
+				<div class="description">{{p.caption}}</div>
                 <!--
                 <div class="comments"></div>
                 <div class="form"></div>
