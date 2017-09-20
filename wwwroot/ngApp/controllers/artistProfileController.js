@@ -4,12 +4,15 @@
 		this.$state = $state;
 		this.$http = $http;
 		//this.name = $stateParams["name"];
-		this.id = $stateParams["id"];
+        this.id = $stateParams["id"];
+        this.postid = $stateParams["postid"];
 		sessionStorage.setItem("id", this.id);
 		this.user = sessionStorage.getItem("userid");
 		//this.route = "api/Posts";
         this.artistId = sessionStorage.getItem("id");
         this.posts;
+        this.number;
+      
       
 		this.post = {
 			ApplicationArtistId: this.posts,
@@ -45,6 +48,7 @@
             .then((res) => {
                 this.posts = res.data;
                 console.log("postdata" + res.date);
+              
 
             });
     }
@@ -61,12 +65,11 @@
 			.then((res) => {
 				this.posts = res.data;
                 console.log(res.data);
-           
-               
-			});
+                console.log(this.posts.media);
+
+            });
 	}
 	
-
     showModalPost() {
         this.$uibModal.open({
             templateUrl: '/ngApp/views/modalPost.html',
@@ -79,7 +82,22 @@
            // this.addPost();
         });
     }
+    AddComment(postId, text) {
+        this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.user })
+            .then((res) => {
+
+                this.$state.reload();
+                console.log("comments");
+            });
+
+    }
+
+
+    }
+   	//getlastfm() {
+
   	//getlastfm() {
+
 	//	this.$http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=87bdb2c24f5d7ea2e34ac5d1bdc419f1&format=json&limit=1000")
 	//		.then((res) => {
 	//			this.artists = res.data;
@@ -87,7 +105,7 @@
 	//			this.$http.post("api/artists", this.artists);
 	//		});
 	//}
-}
+
 
 
 class ModalPostController {
@@ -198,6 +216,7 @@ class ModalPostController {
                 this.modal.close();
             });
     }
+
     savePost(caption) {
         this.post.Media = this.file.url;
         this.post.Caption = caption;

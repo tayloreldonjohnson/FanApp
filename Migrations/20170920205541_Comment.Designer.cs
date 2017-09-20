@@ -11,8 +11,8 @@ using System;
 namespace Hello.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170919182237_Like")]
-    partial class Like
+    [Migration("20170920205541_Comment")]
+    partial class Comment
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -100,6 +100,28 @@ namespace Hello.Migrations
                     b.ToTable("ApplicationArtist");
                 });
 
+            modelBuilder.Entity("Hello.Data.Models.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("PostId");
+
+                    b.Property<string>("Text");
+
+                    b.Property<string>("User");
+
+                    b.Property<string>("userId");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("PostId");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Comment");
+                });
+
             modelBuilder.Entity("Hello.Data.Models.Follow", b =>
                 {
                     b.Property<int>("Id")
@@ -149,15 +171,13 @@ namespace Hello.Migrations
 
                     b.Property<DateTime>("DateLiked");
 
-                    b.Property<string>("PostId");
-
-                    b.Property<int?>("PostId1");
+                    b.Property<int>("PostId");
 
                     b.Property<string>("UserId");
 
                     b.HasKey("LikeId");
 
-                    b.HasIndex("PostId1");
+                    b.HasIndex("PostId");
 
                     b.HasIndex("UserId");
 
@@ -316,6 +336,18 @@ namespace Hello.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Hello.Data.Models.Comment", b =>
+                {
+                    b.HasOne("Hello.Data.Models.Post", "post")
+                        .WithMany("Comment")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Hello.Data.ApplicationUser", "user")
+                        .WithMany("Comment")
+                        .HasForeignKey("userId");
+                });
+
             modelBuilder.Entity("Hello.Data.Models.Follow", b =>
                 {
                     b.HasOne("Hello.Data.Models.ApplicationArtist", "FollowedArtist")
@@ -342,8 +374,9 @@ namespace Hello.Migrations
             modelBuilder.Entity("Hello.Data.Models.Like", b =>
                 {
                     b.HasOne("Hello.Data.Models.Post", "post")
-                        .WithMany()
-                        .HasForeignKey("PostId1");
+                        .WithMany("Like")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Hello.Data.ApplicationUser", "User")
                         .WithMany()
