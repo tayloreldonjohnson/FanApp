@@ -49,6 +49,7 @@ namespace Hello.Controllers
                 //go through the posts and get info about the post 
                 foreach (var post in posts)
                 {
+                    var comment = _context.Comment.Where(ui => ui.PostId == post.PostId).FirstOrDefault();
                     var user = _context.ApplicationUser.Where(ui => ui.Id == post.ApplicationUserId).FirstOrDefault();
                     var artist = _context.ApplicationArtist.Where(ai => ai.Id == post.ApplicationArtistId).FirstOrDefault();
                     var UserFollowedInfo = new UserPostVm()
@@ -62,8 +63,9 @@ namespace Hello.Controllers
                         Caption = post.caption,
                         DateCreated = post.DateCreated,
                         UserName = user.UserName,
-                        ApplicationArtistId = artist.Id
-
+                        ApplicationArtistId = artist.Id,
+                        Text = comment.Text
+                        
                     };
 
                     allPosts.Add(UserFollowedInfo);
@@ -94,7 +96,7 @@ namespace Hello.Controllers
             public string Video { get; set; }
             public string Caption { get; set; }
             public string ProfileImage { get; set; }
-
+            public string  Text { get; set; }
 
 
         }
@@ -117,9 +119,12 @@ namespace Hello.Controllers
 
                 // gets all posts of all people being followed
                 var posts = _context.Post.Where(u => u.ApplicationUserId == uf.FollowedUserId).ToList();
+                  
                 //go through the posts and get info about the post 
                 foreach (var post in posts)
                 {
+
+                    var comment = _context.Comment.Where(ui => ui.PostId == post.PostId  ).FirstOrDefault();
                     var user = _context.ApplicationUser.Where(ui => ui.Id == post.ApplicationUserId).FirstOrDefault();
                     var artist = _context.ApplicationArtist.Where(ai => ai.Id == post.ApplicationArtistId).FirstOrDefault();
                     var UserFollowedInfo = new UserPostVm()
@@ -133,10 +138,11 @@ namespace Hello.Controllers
                         Caption = post.caption,
                         DateCreated = post.DateCreated,
                         UserName = user.UserName,
-                        ApplicationArtistId = artist.Id
+                        ApplicationArtistId = artist.Id,
+                      
 
                     };
-
+            
                     allPosts.Add(UserFollowedInfo);
                 }
 
