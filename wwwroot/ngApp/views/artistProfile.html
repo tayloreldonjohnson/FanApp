@@ -30,9 +30,12 @@
             </div>
             <div class="content-post">
                 <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
+                <button ng-hide="p.media == null || p.media == ''" type="button" class="btn gen-btn btn-lg" 
+                        ng-click="controller.LikePost(p.postId)">Like</button>
             </div>
 			<div class="content-post">
 				<video ng-hide ="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+  <button ng-hide ="p.video == null || p.video == ''" type="button" class="btn gen-btn btn-lg"   ng-click="controller.LikePost(p.postId)">Like</button>
 			</div>
             <div class="card-footer">
                 <div class="Favorites">## FAVORITES</div>

@@ -29,7 +29,7 @@
 
 <br />
 <br />
-    <section  class="container-post" ng-repeat="p in controller.posts" ng-model="controller.posts.media">
+    <section  class="container-post" ng-repeat="p in controller.posts track by $index" ng-model="controller.posts.media">
         <div class="card-post">
             <div class="card-header-post">
                 <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />

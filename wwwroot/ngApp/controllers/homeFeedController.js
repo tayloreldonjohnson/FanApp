@@ -27,9 +27,14 @@
                 console.log(res.data);
             });
 
+    }
 
-
-
+    Like() {
+        this.$http.post("api/Like/" + this.user)
+            .then(res => {
+                this.post = res.data;
+                console.log(res.data);
+            });
 
     }
 }

@@ -4,12 +4,19 @@
 		this.$state = $state;
 		this.$http = $http;
 		//this.name = $stateParams["name"];
-		this.id = $stateParams["id"];
+        this.id = $stateParams["id"];
+        this.postid = $stateParams["postid"];
 		sessionStorage.setItem("id", this.id);
 		this.user = sessionStorage.getItem("userid");
 		//this.route = "api/Posts";
         this.artistId = sessionStorage.getItem("id");
         this.posts;
+        this.number;
+        this.Like = {
+            DateLiked: "2015 - 09 - 06 18: 15:48.3776670",
+            PostId: RealPostId,
+            UserId: this.user              
+        }
       
 		this.post = {
 			ApplicationArtistId: this.posts,
@@ -36,6 +43,7 @@
             .then((res) => {
                 this.posts = res.data;
                 console.log("postdata" + res.date);
+              
 
             });
     }
@@ -51,7 +59,8 @@
 		this.$http.get("api/Posts/" + this.artistId)
 			.then((res) => {
 				this.posts = res.data;
-                console.log("postdata" + this.posts.id);
+                console.log(res.data);
+                console.log(this.posts.media);
            
                
 			});
@@ -71,7 +80,17 @@
         });
     }
 
-    
+    LikePost(RealPostId) {
+        
+        this.$http.post("api/Likes", this.Like)
+            .then((res) => {
+             RealPostId =   this.number 
+                console.log(res.data);
+            });
+
+
+
+    }
    	//getlastfm() {
 	//	this.$http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=87bdb2c24f5d7ea2e34ac5d1bdc419f1&format=json&limit=1000")
 	//		.then((res) => {

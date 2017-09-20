@@ -29,9 +29,11 @@ namespace Hello.Data
 			.HasColumnName("UserId");
 
 
-            builder.Entity<Like>()
-        .Property(p => p.LikeId)
-        .HasColumnName("LikeId");
+
+        //    builder.Entity<Like>()
+        //.Property(p => p.LikeId)
+        //.HasColumnName("LikeId");
+         
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
@@ -44,6 +46,7 @@ namespace Hello.Data
 		public DbSet<UserFollow> UserFollow { get; set; }
         public DbSet<InboxUserVm> Inbox { get; set; }
         public DbSet<Like> Like { get; set; }
+        public DbSet<Comment> Comment { get; set; }
 
     }
 }
