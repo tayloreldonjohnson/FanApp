@@ -36,6 +36,7 @@
         </div>
         <div class="content-post-homefeed">
             <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+
         </div>
         <div class="card-footer-homefeed">
             <center>
@@ -44,21 +45,23 @@
             <button ng-click="controller.favorite(post)" class="btn gen-btn btn-lg">
                 <img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" />
             </button>
-            <div class="favorites">## FAVORITES</div>
-            <div class="description">TEST DESCRIPTION</div>
-            <!--
-            <div class="comments"></div>
-            <div class="form"></div>
-            -->
-            <div class="dropdown">
-                <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
-                <ul class="dropdown-menu icon-tridots-drop">
-                    <li><a href="#" class="btn gen-btn btn-sm delete-d" style="color:white;" ng-click="controller.deletePost(p.postId)">Delete</a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                </ul>
-            </div>
-        </div>
+            <input type="text" ng-model="comment"/>
+            <button ng-click="controller.AddComment(p.postId, comment)" class="btn gen-btn btn-lg">comment</button>
+                <div class="favorites">## FAVORITES</div>
+                <div class="description">TEST DESCRIPTION</div>
+                <!--
+        <div class="comments"></div>
+        <div class="form"></div>
+        -->
+                <div class="dropdown">
+                    <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
+                    <ul class="dropdown-menu icon-tridots-drop">
+                        <li><a href="#" class="btn gen-btn btn-sm delete-d" style="color:white;" ng-click="controller.deletePost(p.postId)">Delete</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                    </ul>
+                </div>
+</div>
     </div>
 </section>
 

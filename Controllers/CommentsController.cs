@@ -21,6 +21,16 @@ namespace Hello.Controllers
             _context = context;
         }
 
+        public class CommentVm
+        {
+            public string UserId { get; set; }
+            public string UserName { get; set; }
+            public string profileImage { get; set; }
+            public DateTime DateCreated { get; set; }
+            public string Text { get; set; }
+
+        }
+
         // GET: api/Comments
         [HttpGet]
         public IEnumerable<Comment> GetComment()
