@@ -43,65 +43,32 @@
         </ul>
     </div>
 </div>-->
-<section ng-repeat="p in controller.user.posts" class="container-post">
-    <div class="card-post">
-        <div class="card-header-post">
-            <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
-            <div class="profile-info-post">
-                <div class="name-post">{{p.userName}}</div>
 
-                <div class="location"></div>
+<center>
+    <section class="container-post" ng-repeat="p in controller.user.posts">
+        <div class="card-post-userfeed">
+            <div class="row card-header-post-userfeed">
+                
+                <img class="w3-quarter profile-img-post-userfeed" ng-src="{{controller.user.imageUrl}}" />
+                
+                <div class="w3-half name-post-userfeed">{{p.userName}}</div>
+                <!--<div class="location"></div>-->
+                
+                <div class="w3-quarter time-userfeed">{{p.dateCreated |  date:'MMMM dd, y @ h:mma' }}</div>
             </div>
-            <div>{{p.dateCreated |  date:'MMMM dd, y @ h:mma' }}</div>
-        </div>
-        <div class="content-post">
-            <img ng-src="{{p.media}}" />
-        </div>
-        <div class="card-footer">
-            <div class="Favorites">## FAVORITES</div>
-            <div class="description">TEST DESCRIPTION</div>
-            <div class="comments"></div>
-            <div class="form"></div>
-        </div>
-    </div>
-    <br />
-    <br />
-
-</section>
-
-
-
-<!--<div class="user-container">
-    <div class="username">
-        <h1>{{controller.user.userName}}</h1>
-    </div>
-    <div class="column-layout">
-        <div class="left-column">
-            <div class="profile-name">{{controller.user.firstName}} {{controller.user.lastName}}</div>
-            <br />
-            <div>{{controller.user.email}}</div>
-            <br />
-            <div>Member since: {{controller.user.dateCreated | date}}</div>
-        </div>
-        <div class="main-column">
-            <div class="profile-img">
-                <img ng-src="{{controller.user.imageUrl}}" />
+            <div class="content-post-userfeed">
+                <img ng-src="{{p.media}}" />
+            </div>
+            <div class="card-footer-userfeed">
+                <div class="favorites">## FAVORITES</div>
+                <div class="description">TEST DESCRIPTION</div>
+                <!--
+                <div class="comments"></div>
+                <div class="form"></div>
+                -->
             </div>
         </div>
-        <div class="right-column">
-            <div>
-                Uploads &nbsp &nbsp  {{controller.post.numberOfPosts}}
-                Following &nbsp &nbsp {{controller.posts.numberOfFollowing}}
-                Followers  &nbsp &nbsp {{controller.posts.numberOfFollowers}}
-            </div>
-            <br />
-            <div>{{controller.user.aboutMe}}</div>
-            <br />
+    </section>
+</center>
 
-</div>
-<div>
-    <h1>Posts</h1>
-    <ul>
-        <li ng-repeat="post in controller.user.posts"><img ng-src="{{post.media}}" /></li>
-    </ul>
-</div>-->
+

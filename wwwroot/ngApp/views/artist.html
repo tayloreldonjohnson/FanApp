@@ -1,23 +1,21 @@
-﻿<div>
-
+﻿<div class="artist-search-container">
     <div class="artist-jumbo">
-        <div class="input-group">
+        <div class="input-group-artist">
             <input type="text" class="search-input form-control" placeholder="Search Artist" ng-model="myArtistFilter.name" aria-describedby="basic-addon1">
         </div>
     </div>
-
-    <div ng-show="myArtistFilter.name" ng-repeat="artist in controller.artists | filter:myArtistFilter | orderBy:'name'" class="w3-card" style="width: 20%; display: inline-block;">
-        
-        <div class="w3-display-container">
-            <a ui-sref="artistProfile({ id: artist.id })">
-                <img class="w3-circle" ng-src="{{artist.imageUrl}}" />
-                <div class="w3-display-middle artist-name text-center">{{artist.name}}</div>
-            </a>
+    <div class="center-block text-center">
+        <div ng-show="myArtistFilter.name" ng-repeat="artist in controller.artists | filter:myArtistFilter | orderBy:'name'" class="w3-card artist-card">
+            <div class="w3-display-container w3-hover-sepia artist-container">
+                <a ui-sref="artistProfile({ id: artist.id })" id="no-underline">
+                    <div class="artist-img text-center">
+                        <img class="w3-circle" ng-src="{{artist.imageUrl}}" />
+                    </div>
+                    <div class="w3-display-middlebottom artist-name text-center">{{artist.name}}</div>
+                </a>
+            </div>
         </div>
-        
-        
     </div>
-
 </div>
 
 <!--<div class="container-fluid">

@@ -416,15 +416,45 @@ ul.user-info {
 }
 
 /*--------------------------------------  ArtistProfiles  Search----------------------------------------------------*/
-.artist-block {
-    margin-top: 25px;
+.artist-search-container {
     margin: 0 auto;
-    width: 80%;
+    width: 85%;
+}
+
+.center-block {
+    margin: 0 auto;
+}
+
+.input-group-artist {
+    margin: 0.5em;
+    padding-left: 6em;
 }
 
 .artist-jumbo {
-    background-color:red;
+    background-color: rgba(0,0,0,0.75);
+    margin: 0 auto;
+    padding: 0.5em;
+    border-radius: 1em/1em;
 }
+
+.artist-card {
+    display: inline-block;
+    box-shadow: none;
+    margin: 0.5em;
+    width: 20em;
+    height: 20em;    
+}
+
+.artist-container {
+    background-color: rgba(0,0,0,0.75);
+    height: 20em;
+    padding: 1em 0 0 0;
+    border-radius: 2em/2em;    
+}
+
+/*a .w3-hover-sepia:hover {
+    text-decoration: none;
+}*/
 
 .artist-block li {
     list-style-type: none; 
@@ -441,33 +471,44 @@ ul.user-info {
     text-align: center;
 }
 
+.artist-img {
+    margin: 0 0 0.25em 0;
+}
+
 .artist-img img {
-    width: 12em;
-    height: auto;
-    padding-bottom: 1em;
-    border-radius: 50%;
+    margin: 0 auto;
+    width: 15em;
+    height: 15em;    
+}
+
+#no-underline {
+    text-decoration: none;
 }
 
 .artist-name {
+    white-space: nowrap;
     text-transform: capitalize;
-    font-size: 1.6em;
-    padding-bottom: .5em;
+    font-size: 1.4em;
+    padding: 0.5em 1em;    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
 }
 
-.artists-list a:link {
+a:link .artist-name {
     color: deeppink;
 }
 
-.artists-list a:visited {
+a:visited .artist-name {
     color: #CC1075;
 }
 
-.artists-list a:hover {
+a:hover .artist-name {
     color: #93FF14;
-    text-decoration: underline;
+    
 }
 
-.artists-list a:active {
+a:active .artist-name {
     color: deeppink;
     text-decoration: none;
 }
