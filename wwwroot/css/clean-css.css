@@ -172,8 +172,8 @@ ul.posts-lists {
 .jumbotron {
     background-color: rgba(0,0,0,0.75);
     background-size: cover;
-    /*padding: .25em;
-    width: 80%;*/
+    padding: .25em;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -362,6 +362,22 @@ ul#home-list {
     padding-bottom: .5em;
 }
 
+.user-search-container {
+    margin: 0 auto;
+    width: 85%;
+}
+
+.jumbo-users {
+    background-color: rgba(0,0,0,0.75);
+    margin: 0 auto;
+    padding: 0.5em;
+    border-radius: 1em/1em;
+}
+
+.input-group-users {
+    margin: 0.5em;
+}
+
 .user-name {
     text-transform: capitalize;
     font-weight: bold;
@@ -427,8 +443,7 @@ ul.user-info {
 }
 
 .input-group-artist {
-    margin: 0.5em;
-    padding-left: 6em;
+    margin: 0.5em;    
 }
 
 .artist-jumbo {
