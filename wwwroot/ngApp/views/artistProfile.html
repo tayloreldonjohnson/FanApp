@@ -1,7 +1,9 @@
-﻿<div class="container-fluid text-center">
+﻿<!--Artist Merch to post: Ramones, Madonna, Jesus&MaryChain, Talking Heads, Cat Power, Crystal Castles, Angel Olsen, Nick Cave, Warpaint, Rolling Stones, NIN, Radiohead-->
+
+<div class="container-fluid text-center">
     <div class="row profile-container">
         <div class="col-sm-6 col-md-4 col-lg-2 artist-profile-img">
-            <img ng-src="{{controller.artist.imageUrl}}" />
+            <img class="w3-circle" ng-src="{{controller.artist.imageUrl}}" />
         </div>
         <div class="col-sm-6 col-md-8 col-lg-10 artist-profile-cols">
             <h2>{{controller.artist.name}}</h2>
@@ -13,36 +15,43 @@
             <div class="artist-profile">
                 <button type="button" class="btn gen-btn btn-lg" data-toggle="modal" data-target="#postModal" ng-click="controller.showModalPost()">Post</button>
                 <!--data-toggle="modal" data-target="#postModal"-->
-
-
             </div>
         </div>
     </div>
   </div>
   <section class="container-post" ng-repeat="p in controller.posts" ng-model="controller.posts.media">
-    <div class="card-post">
-        <div class="card-header-post">
-            <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
-            <div class="profile-info-post">
-                <div class="name-post">{{controller.user.userName}}</div>
+    <div class="card-post-homefeed">
+        <div class="row card-header-post-homefeed">
+            
+            <img class="w3-quarter profile-img-post-homefeed" ng-src="{{controller.user.imageUrl}}" />
+            
+            <div class="w3-half name-post-homefeed">{{controller.user.userName}}</div>
+            <!--<div class="location"></div>-->
 
-                <div class="location"></div>
-                <div class="time">{{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}</div>
-            </div>
-
+            <div class="w3-quarter time-homefeed">{{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}</div>
         </div>
-        <div class="content-post">
+
+        <div class="content-post-homefeed">
             <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
         </div>
-        <div class="content-post">
+        <div class="content-post-homefeed">
             <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
         </div>
-        <div class="card-footer">
-            <button ng-click="controller.postLike(postId , userId)" class="btn gen-btn btn-lg">like</button>
+        <div class="card-footer-homefeed">
+            <center>
+                <h3>{{p.caption}}</h3>
+            </center>
+            <button ng-click="controller.favorite(post)" class="btn gen-btn btn-lg">
+                <img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" />
+            </button>
             <div class="favorites">## FAVORITES</div>
             <div class="description">{{p.caption}}</div>
-            <div class="comments"></div>
-            <div class="form"></div>
+            <div class="comments">
+                <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="comment"></textarea>
+                <button class="btn gen-btn btn-lg" type="submit"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
+            </div>
+            <!--<div class="form"></div>
+            -->
             <div class="dropdown">
                 <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
                 <ul class="dropdown-menu icon-tridots-drop">
@@ -51,62 +60,37 @@
                     <li><a href="#"></a></li>
                 </ul>
             </div>
-
-
-
-
         </div>
     </div>
-
-    <br />
-    <br />
-
 </section>
 
 <!--
 <script>
     $(document).ready(function () {
 
-        // Hide the Modal
-        $("#modal-submit").click(function () {
-            $("#postModal").modal("hide");
-        });
-    });
-</script>
--->
-<!--
 
-    <div class="artist-profile">
-    <div class="column-layout">
-        style="background-image:url({{controller.artist.headerUrl}}); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"
-        <div class="main-artist-column">
-            <p class="profile-img">
-                <img ng-src="{{controller.artist.imageUrl}}" />
-            </p>
-        </div>
-        <div class="right-artist-column">
-            <h2>{{controller.artist.name}}</h2>
-            <div>Genre: &nbsp{{controller.artist.genre}}</div> <br />
-            <div>
-                0 Uploads &nbsp &nbsp
-                0 Following &nbsp &nbsp
-                0 Followers
+    <section ng-repeat="p in controller.posts" class="container-post">
+        <div class="card-post">
+            <div class="card-header-post">
+                <img class="profile-img-post" ng-src="{{controller.user.imageUrl}}" />
+                <div class="profile-info-post">
+                    <div class="name-post">{{controller.user.userName}}</div>
+                    <div class="location"></div>
+                </div>
+                <div class="time" {{p.dateCreated | date:'MMMM dd, y @ h:mma'}}></div>
+            </div>
+            <div class="content-post">
+                <img ng-src="{{p.media}}" />
+                <video width="320" height="240" controls ng-src="{{p.media}}"></video>
+            </div>
+            <div class="card-footer">
+                <div class="Favorites">## FAVORITES</div>
+                <div class="description">TEST DESCRIPTION</div>
+                <div class="comments"></div>
+                <div class="form"></div>
             </div>
         </div>
-    </div>
+    </section>
+
 </div>
-<!--<p>Use the <span class="big-text">Upload</span> button below to add your files, then click <span class="big-text">Submit</span> to save your post.</p>
-<div>
-    How You Feel: <input type="text" name="text">
-    <form ng-submit="controller.addPost( controller.file.url)">
-        <button type="button" ng-click="controller.pickFile()" class="btn gen-btn btn-lg">Upload</button>
-        <div class="image-post">
-                <img class="image-post" ng-src="{{controller.file.url}}" alt="{{controller.file.filename}}" />
-            </div>
-        <input type="submit" value="Submit" class="btn gen-btn btn-lg">
-    </form>
-</div>-->
-
-    
-
-  
+    -->

@@ -33,13 +33,8 @@
                 console.log(res.data);
             });
     }
-    likePost(post) {
-        console.log("likePost");
-        this.like.Post = post;
-        console.log(this.post);
-        this.$http.post("api/Likes" , this.like)
-            .then(res => {
-                console.log("after put");
-            });
+    addComment(comment) {
+        this.comment.PostId = post;
+        this.comment.UserId = user;
     }
 }
