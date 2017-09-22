@@ -36,22 +36,19 @@
         </div>
         <div class="content-post-homefeed">
             <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+
         </div>
         <div class="card-footer-homefeed">
-            <center>
-                <h3>{{p.caption}}</h3>
-            </center>
-            <button ng-click="controller.favorite(post)" class="btn gen-btn btn-lg">
-                <img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" />
-            </button>
+    
+            <button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
             <div class="favorites">## FAVORITES</div>
             <div class="description">{{p.caption}}</div>
             <div class="comments">
-                <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="comment"></textarea>
-                <button class="btn gen-btn btn-lg" type="submit"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
+                <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="text"></textarea>
+                <button class="btn gen-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId , text)"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
             </div>
-            <!--<div class="form"></div>
-            -->
+            <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments()">See All Comments</a></div>
+            <div class="form"></div>
             <div class="dropdown">
                 <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
                 <ul class="dropdown-menu icon-tridots-drop">
@@ -80,9 +77,14 @@
                 <div class="time" {{p.dateCreated | date:'MMMM dd, y @ h:mma'}}></div>
             </div>
             <div class="content-post">
-                <img ng-src="{{p.media}}" />
-                <video width="320" height="240" controls ng-src="{{p.media}}"></video>
+                <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
+                <button ng-hide="p.media == null || p.media == ''" type="button" class="btn gen-btn btn-lg" 
+                        ng-click="controller.LikePost(p.postId)">Like</button>
             </div>
+			<div class="content-post">
+				<video ng-hide ="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+  <button ng-hide ="p.video == null || p.video == ''" type="button" class="btn gen-btn btn-lg"   ng-click="controller.LikePost(p.postId)">Like</button>
+			</div>
             <div class="card-footer">
                 <div class="Favorites">## FAVORITES</div>
                 <div class="description">TEST DESCRIPTION</div>

@@ -18,6 +18,8 @@ myApp.controller("HomeFeedController", HomeFeedController);
 myApp.controller("ModalPostController", ModalPostController);
 myApp.controller("UserMessageController", UserMessageController);
 myApp.controller("ModalController", ModalController);
+myApp.controller("ModalCommentController", ModalCommentController);
+
 
 myApp.service("$accountService", AccountService);
 myApp.service("$UserProfileService", UserProfileService);
@@ -106,7 +108,8 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			url: '/artistProfile/:id',
 			templateUrl: '/ngApp/views/artistProfile.html',
 			controller: ArtistProfileController,
-			controllerAs: 'controller'
+            controllerAs: 'controller',
+       
         })
         .state('messages', {
             url: '/messages',
@@ -127,8 +130,15 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: ModalController,
             controllerAs: 'controller'
         })
+        .state('modalComments', {
+            url: '/modalComments/',
+            templateUrl: '/ngApp/views/modalComments.html',
+            controller: ModalCommentController,
+            controllerAs: 'controller'
+        })
         .state('userMessage', {
-            url: '/messages/:id',
+			url: '/messages/',
+			params: { id: null },
             templateUrl: '/ngApp/views/userMessage.html',
             controller: UserMessageController,
             controllerAs: 'controller'

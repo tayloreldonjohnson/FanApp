@@ -50,19 +50,15 @@
         
         <div class="row card-footer-userfeed">
             <div class="w3-half footer-section-1">
-                <div class="favorites">{{p.caption}}</div>
-                <div class="description">TEST DESCRIPTION</div>
+				<button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
+				<div class="favorites">## FAVORITES</div>
+				<div class="description">{{p.caption}}</div>
             </div>
-        <div class="comments">
-            <div class="row">
-                <div class="">
-                <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="comment"></textarea>
-                </div>
-                <div class="" >
-                <button class="btn gen-btn btn-lg" type="submit"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
-               </div>
+            <div class="comments">
+                <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="text"></textarea>
+                <button class="btn gen-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId , text)"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
             </div>
-        </div>
+            <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments()">See All Comments</a></div>
             <div class="form"></div>
             <div class="w3-half">
 

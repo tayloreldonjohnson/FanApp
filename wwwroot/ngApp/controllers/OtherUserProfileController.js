@@ -29,8 +29,17 @@
             FollowingUserId: this.userid,
             FollowedUserId: this.otherid
         };
+        this.comment;
         this.$uibModal = $uibModal;  
-    }
+	}
+
+	likePost(postId) {
+		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user.userId, PostId: postId })
+			.then((res) => {
+
+			});
+	}
+
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)
             .then(res => {
@@ -82,6 +91,15 @@
                        console.log(res.data);
                        console.log("after put");
                    });
+        }
+           AddComment(postId, text) {
+               this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.user })
+                   .then((res) => {
+
+                       this.$state.reload();
+                       console.log("comments");
+                   });
+
            }
            showModal() {
                this.$uibModal.open({
@@ -90,6 +108,18 @@
                    controllerAs: 'controller',
                    resolve: {
                        message: () => this.inbox
+                   }
+               }).closed.then(() => {
+                   // this.addPost();
+               });
+           }
+           showModalComments() {
+               this.$uibModal.open({
+                   templateUrl: '/ngApp/views/modalComments.html',
+                   controller: ModalCommentController,
+                   controllerAs: 'controller',
+                   resolve: {
+                       comment: () => this.comment
                    }
                }).closed.then(() => {
                    // this.addPost();
@@ -119,8 +149,30 @@ class ModalController {
         console.log(this.post);
         this.$http.post("api/Inboxes", this.inbox)
             .then((res) => {
-                console.log("after put");
+				console.log("after put");
+				this.modal.close();
             });
 
     }
 }
+//class ModalCommentController {
+//    constructor($stateParams, $http, $state, $uibModalInstance) {
+//        this.$http = $http;
+//        this.$state = $state;
+//        this.modal = $uibModalInstance;
+//        this.id = $stateParams["id"];
+//        sessionStorage.setItem("otherid", this.id);
+//        this.otherid = sessionStorage.getItem("otherid");
+//        this.post = sessionStorage.getItem("postid");
+//        this.user = sessionStorage.getItem("userid");
+//        this.comment;
+//        this.getComments();
+//    }
+//    getComments(postId, text) {
+//        this.$http.get("api/Comments", { PostId: postId, Text: text, UserId: this.user })
+//            .then(res => {
+//                this.comment = res.data;
+//                console.log(res.data);
+//            });
+//    }
+//}

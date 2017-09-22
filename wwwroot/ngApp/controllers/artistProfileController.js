@@ -5,11 +5,12 @@
 		this.$http = $http;
 		//this.name = $stateParams["name"];
         this.id = $stateParams["id"];
-        sessionStorage.setItem("id", this.id);
 		this.user = sessionStorage.getItem("userid");
 		//this.route = "api/Posts";
         this.artistId = sessionStorage.getItem("id");
         this.posts;
+        this.number;
+     
 		this.post = {
 			ApplicationArtistId: this.posts,
 			ApplicationUserId: this.user,
@@ -19,16 +20,25 @@
             Video: "",
             Type: ""
 		};
+		
 		this.getArtist();
 		this.getPostId();
         this.likes = {};
         this.artists;
 
+        this.comment;
         this.$uibModal = $uibModal;      
    
 		//this.getlastfm();
 
-    }    
+	}    
+
+	likePost(postId) {
+		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user, PostId: postId })
+			.then((res) => {
+
+			});
+	}
 
     findPostId() {
 
@@ -36,6 +46,7 @@
             .then((res) => {
                 this.posts = res.data;
                 console.log("postdata" + res.date);
+              
 
             });
     }
@@ -51,13 +62,12 @@
 		this.$http.get("api/Posts/" + this.artistId)
 			.then((res) => {
 				this.posts = res.data;
-                console.log("postdata" + this.posts.id);
-           
-               
-			});
+                console.log(res.data);
+                console.log(this.posts.media);
+
+            });
 	}
 	
-
     showModalPost() {
         this.$uibModal.open({
             templateUrl: '/ngApp/views/modalPost.html',
@@ -70,7 +80,36 @@
            // this.addPost();
         });
     }
+
+    showModalComments() {
+        this.$uibModal.open({
+            templateUrl: '/ngApp/views/modalComments.html',
+            controller: ModalCommentController,
+            controllerAs: 'controller',
+            resolve: {
+                comment: () => this.comment
+            }
+        }).closed.then(() => {
+            // this.addPost();
+        });
+    }
+
+    AddComment(postId, text) {
+        this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.user })
+            .then((res) => {
+
+                this.$state.reload();
+                console.log("comments");
+            });
+
+    }
+
+
+}
+
+   	//getlastfm() {
   	//getlastfm() {
+
 	//	this.$http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=87bdb2c24f5d7ea2e34ac5d1bdc419f1&format=json&limit=1000")
 	//		.then((res) => {
 	//			this.artists = res.data;
@@ -78,7 +117,7 @@
 	//			this.$http.post("api/artists", this.artists);
 	//		});
 	//}
-}
+
 
 
 class ModalPostController {
@@ -108,7 +147,8 @@ class ModalPostController {
         this.video;
 
 
-    }
+	}
+
     getPostId() {
         this.$http.get("api/Posts/" + this.posts)
             .then((res) => {
@@ -188,6 +228,7 @@ class ModalPostController {
                 this.modal.close();
             });
     }
+
     savePost(caption) {
         this.post.Media = this.file.url;
         this.post.Caption = caption;
@@ -200,4 +241,28 @@ class ModalPostController {
     closeModal() {
         this.modal.dismiss();
     }
-}
+ }
+
+
+ 
+//class ModalCommentController {
+//    constructor($stateParams, $http, $state, $uibModalInstance) {
+//        this.$http = $http;
+//        this.$state = $state;
+//        this.modal = $uibModalInstance;
+//        this.id = $stateParams["id"];
+//        sessionStorage.setItem("otherid", this.id);
+//        this.otherid = sessionStorage.getItem("otherid");
+//        this.post = sessionStorage.getItem("postid");
+//        this.user = sessionStorage.getItem("userid");
+//        this.comment;
+//        this.getComments();
+//    }
+//    getComments(postId, text) {
+//        this.$http.get("api/Comments", { PostId: postId, Text: text, UserId: this.user })
+//            .then(res => {
+//                this.comment = res.data;
+//                console.log(res.data);
+//            });
+//    }
+//}

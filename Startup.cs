@@ -50,7 +50,8 @@ namespace Hello
                 // Perform automatic migration
                 using (var context = provider.GetRequiredService<ApplicationDbContext>())
                 {
-                    context.Database.Migrate();
+                    
+
                 }
             }
 
