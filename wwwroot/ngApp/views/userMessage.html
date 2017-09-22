@@ -1,8 +1,15 @@
 ﻿<h1> user message view</h1>
 <section ng-repeat="something in controller.messages" class="container-post">
- 
-    {{something.userName}}
-    {{something.message}}
-    <img ng-src="{{something.profileImage}}" />
-    {{something.dateCreated}}
-    </section>
+
+	{{something.userName}}
+	{{something.message}}
+	<img ng-src="{{something.profileImage}}" />
+	{{something.dateCreated}}
+</section>
+
+	<section ng-repeat="loguser in controller.usermessage" class="container-post">
+		{{loguser.userName}}
+		{{loguser.message}}
+		<img ng-src="{{loguser.profileImage}}" />
+		{{loguser.dateCreated}}
+	</section>
