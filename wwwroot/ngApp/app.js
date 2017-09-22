@@ -30,7 +30,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $stateProvider
         .state('home', {
-            url: '/',
+            url: '/home',
             templateUrl: '/ngApp/views/home.html',
             controller: HomeController,
             controllerAs: 'controller'
@@ -48,7 +48,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controllerAs: 'controller'
         })
         .state('login', {
-            url: '/login',
+            url: '/',
             templateUrl: '/ngApp/views/login.html',
             controller: LoginController,
             controllerAs: 'controller'

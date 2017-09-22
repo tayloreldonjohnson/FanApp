@@ -187,7 +187,7 @@ ul.posts-lists {
 ul#home-list {
     list-style-type: none;
     font-size: 2em;
-    font-family: 'Graduate', sans-serif;
+   
 }
 
 #friends-icon {
@@ -259,6 +259,7 @@ form {
     right: 0;
     height: 500px;
     width: 400px;
+    border-radius:0.5em;
 }
 
 .form-cover {
@@ -296,7 +297,7 @@ form {
 /*--------------------------------------  Register  ----------------------------------------------------*/
 
 .reg-username {
-    background-color: rgba(0,0,0,.5);
+    background:transparent;
     color: white;
     border: 0.05em solid;
     outline: white;
@@ -304,6 +305,17 @@ form {
     transition: height 1s;
     -webkit-transition: height 1s;
     margin: 1em 0;
+}
+.register-background {
+    background-color: black;
+    width: 400px;
+    height: 500px;
+    margin-top: -10em;
+    padding-top: 1.5em;
+    border-radius: .5em;
+}
+.register-header {
+    padding-bottom:-2em;
 }
 
     .reg-username::-webkit-input-placeholder { /* Chrome */
@@ -587,4 +599,75 @@ ul.user-info {
 
 #modal-submit {
     margin-bottom: 0.8em;
+}
+
+/*----------------------------------------------- All Messages ----------------------------------------------*/
+
+#inbox {
+    background-color: #353337;
+    color: white;
+    width: 30em;
+    height: 7em;
+    display: flex;
+    border: none;
+    border-radius: 0.5em;
+    margin: .35em;
+}
+.messages-header {
+    position:absolute; 
+    margin-left:1em;
+}
+.messages-background {
+    background: black;
+    width: 100%;
+    height: 90%;
+    padding-top: 5em;
+}
+
+#inbox:hover{
+    background:#1A8FE3
+}
+
+.panel panel-default:hover {
+    background: #1A8FE3
+}
+.panel-body-messages {
+    width:5em;
+    height:5em; 
+    border-radius: 50%;
+}
+.all-usernames {
+    margin-top: 1em;
+    margin-left: 1em;
+}
+.all-messagedates {
+    margin-top: 1em;
+    margin-left: 6em;
+}
+.all-messages {
+    margin-top: 3.5em;
+    text-align: left;
+    margin-left: -14.5em;
+}
+.conversations {
+    max-height: 44.5em;
+    overflow-y: auto;
+    list-style: none;
+    width: 35em;
+}
+
+/*--------------------------------------------- Personal Messages -------------------------------------------*/
+
+.messages-hr{
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #353337;
+    margin: 1em 0;
+    padding: 0;
+}
+.pmessages-user {
+    text-align: center;
+    margin-top: 1em;
+    
 }

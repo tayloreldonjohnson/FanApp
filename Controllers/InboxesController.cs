@@ -108,7 +108,7 @@ namespace Hello.Controllers
                 }
                 else
                 {
-                    snippet = messagevm.Message.Substring(0, 5) + "...";
+                    snippet = messagevm.Message.Substring(0, 1) + "...";
                 }
                 var sender = new SendersOfMessageVm()
                 {
