@@ -108,7 +108,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			url: '/artistProfile/:id',
 			templateUrl: '/ngApp/views/artistProfile.html',
 			controller: ArtistProfileController,
-            controllerAs: 'controller',
+            controllerAs: 'controller'
        
         })
         .state('messages', {

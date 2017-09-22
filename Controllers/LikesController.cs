@@ -28,8 +28,27 @@ namespace Hello.Controllers
             return _context.Like;
         }
 
-        // GET: api/Likes/5
-        [HttpGet("{id}")]
+		public class LikesDataVM
+		{
+			public List<Like> Likes { get; set; }
+			public int NumberOfLikes { get; set; }
+
+		}
+
+		[HttpGet("numberlikes/{postid}")]
+		public LikesDataVM GetPostLikes(int postid)
+		{
+			var data = new LikesDataVM();
+			//var allPosts = new List<Post>();
+			var userLikes = _context.Like.Where(u => u.PostId == postid).ToList();
+			var NumberOfLikes = userLikes.Count();
+			data.Likes = userLikes;
+			data.NumberOfLikes = NumberOfLikes;
+			return data;
+		}
+
+		// GET: api/Likes/5
+		[HttpGet("{id}")]
         public async Task<IActionResult> GetLike([FromRoute] int id)
         {
             if (!ModelState.IsValid)

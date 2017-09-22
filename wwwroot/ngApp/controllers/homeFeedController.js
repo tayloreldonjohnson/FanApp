@@ -94,29 +94,18 @@ class ModalCommentController {
         this.cid = $stateParams["id"];
         sessionStorage.setItem("commentId", this.cid);
         this.commentId = sessionStorage.getItem("commentId");
-        this.comments;
-        this.comment = {
-            CommentId: this.comments,
-            UserId: this.otherid,
-            PostId: this.post
-        }
-        this.findCommentId();
+        this.comment;
+       
+        this.getComment();
         //this.getComments();
 
         
     }
-    //getComments(commentId) {
-    //    this.$http.get("api/Comments", { CommentId : commentId })
-    //        .then(res => {
-    //            this.comments = res.data;
-    //            console.log(res.data);
-    //        });
-    //}
-    findCommentId() {
-        this.$http.get("api/Comments/" + this.commentId)
-            .then((res) => {
-                this.comments = res.data;
-                console.log("postdata" + res.date);
+    getComment(commentId, postId, userId, text) {
+        this.$http.get("api/Comments/" + { PostId: postId, Text: text, UserId: this.user, CommentId: commentId })
+            .then(res => {
+                this.comment = res.data;
+                console.log(res.data);
             });
     }
 }

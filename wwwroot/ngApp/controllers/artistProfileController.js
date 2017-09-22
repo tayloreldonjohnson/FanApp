@@ -10,7 +10,6 @@
         this.artistId = sessionStorage.getItem("id");
         this.posts;
         this.number;
-     
 		this.post = {
 			ApplicationArtistId: this.posts,
 			ApplicationUserId: this.user,
@@ -18,9 +17,8 @@
 			Media: "",
             Caption: "",
             Video: "",
-            Type: ""
+			Type: ""
 		};
-		
 		this.getArtist();
 		this.getPostId();
         this.likes = {};
@@ -30,6 +28,8 @@
         this.$uibModal = $uibModal;      
    
 		//this.getlastfm();
+		
+		this.getNumberOfLikes();
 
 	}    
 
@@ -41,11 +41,10 @@
 	}
 
     findPostId() {
-
         this.$http.get("api/Posts/" + this.post.ApplicationArtistId)
             .then((res) => {
                 this.posts = res.data;
-                console.log("postdata" + res.date);
+                //console.log("postdata" + res.date);
               
 
             });
@@ -54,7 +53,7 @@
 		this.$ArtistProfileService.getArtist(this.id)
 			.then((res) => {
 				this.artist = res.data;
-				console.log(this.artist);
+				//console.log(this.artist);
 			});
 	}
 
@@ -63,11 +62,19 @@
 			.then((res) => {
 				this.posts = res.data;
                 console.log(res.data);
-                console.log(this.posts.media);
+                //console.log(this.posts.media);
 
             });
 	}
-	
+
+	getNumberOfLikes() {
+		this.$http.get("api/Likes/numberlikes/" + { PostId: this.postId })
+			.then(res => {
+				this.like = res.data;
+				//console.log("amount of Likes " + this.post.numberOfLikes);
+			});
+	}
+
     showModalPost() {
         this.$uibModal.open({
             templateUrl: '/ngApp/views/modalPost.html',
@@ -99,7 +106,7 @@
             .then((res) => {
 
                 this.$state.reload();
-                console.log("comments");
+                //console.log("comments");
             });
 
     }
