@@ -19,3 +19,7 @@
 		<img ng-src="{{loguser.profileImage}}" />
 		{{loguser.dateCreated}}
 	</section>
+<center>
+    <textarea type="text" ng-model="message" ></textarea>
+    <button href="#" class="btn gen-btn btn-lg" ng-click="controller.InboxUser(message)">Send</button>
+</center>
