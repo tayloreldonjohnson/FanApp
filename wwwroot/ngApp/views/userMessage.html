@@ -12,3 +12,10 @@
     {{something.dateCreated}}
     
 </div>
+
+	<section ng-repeat="loguser in controller.usermessage" class="container-post">
+		{{loguser.userName}}
+		{{loguser.message}}
+		<img ng-src="{{loguser.profileImage}}" />
+		{{loguser.dateCreated}}
+	</section>

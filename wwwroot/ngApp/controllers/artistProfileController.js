@@ -4,13 +4,14 @@
 		this.$state = $state;
 		this.$http = $http;
 		//this.name = $stateParams["name"];
-		this.id = $stateParams["id"];
+        this.id = $stateParams["id"];
+        this.postid = $stateParams["postid"];
 		sessionStorage.setItem("id", this.id);
 		this.user = sessionStorage.getItem("userid");
 		//this.route = "api/Posts";
         this.artistId = sessionStorage.getItem("id");
         this.posts;
-      
+        this.number;
 		this.post = {
 			ApplicationArtistId: this.posts,
 			ApplicationUserId: this.user,
@@ -18,25 +19,28 @@
 			Media: "",
             Caption: "",
             Video: "",
-            Type: ""
+			Type: "",
 		};
 		this.getArtist();
 		this.getPostId();
+		this.artists;
+		this.$uibModal = $uibModal;
+		this.getNumberOfLikes();
+	}    
 
-        this.artists;
+	likePost(postId) {
+		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user, PostId: postId })
+			.then((res) => {
 
-        this.$uibModal = $uibModal;      
-   
-		//this.getlastfm();
-
-    }    
+			});
+	}
 
     findPostId() {
-
         this.$http.get("api/Posts/" + this.post.ApplicationArtistId)
             .then((res) => {
                 this.posts = res.data;
-                console.log("postdata" + res.date);
+                //console.log("postdata" + res.date);
+              
 
             });
     }
@@ -44,7 +48,7 @@
 		this.$ArtistProfileService.getArtist(this.id)
 			.then((res) => {
 				this.artist = res.data;
-				console.log(this.artist);
+				//console.log(this.artist);
 			});
 	}
 
@@ -52,12 +56,19 @@
 		this.$http.get("api/Posts/" + this.artistId)
 			.then((res) => {
 				this.posts = res.data;
-                console.log("postdata" + this.posts.id);
-           
-               
+                console.log(res.data);
+                //console.log(this.posts.media);
+
+            });
+	}
+
+	getNumberOfLikes() {
+		this.$http.get("api/Likes/numberlikes/" + { PostId: this.postId })
+			.then(res => {
+				this.like = res.data;
+				//console.log("amount of Likes " + this.post.numberOfLikes);
 			});
 	}
-	
 
     showModalPost() {
         this.$uibModal.open({
@@ -71,7 +82,22 @@
            // this.addPost();
         });
     }
+    AddComment(postId, text) {
+        this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.user })
+            .then((res) => {
+
+                this.$state.reload();
+                //console.log("comments");
+            });
+
+    }
+
+
+    }
+   	//getlastfm() {
+
   	//getlastfm() {
+
 	//	this.$http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=87bdb2c24f5d7ea2e34ac5d1bdc419f1&format=json&limit=1000")
 	//		.then((res) => {
 	//			this.artists = res.data;
@@ -79,7 +105,7 @@
 	//			this.$http.post("api/artists", this.artists);
 	//		});
 	//}
-}
+
 
 
 class ModalPostController {
@@ -109,7 +135,8 @@ class ModalPostController {
         this.video;
 
 
-    }
+	}
+
     getPostId() {
         this.$http.get("api/Posts/" + this.posts)
             .then((res) => {
@@ -189,6 +216,7 @@ class ModalPostController {
                 this.modal.close();
             });
     }
+
     savePost(caption) {
         this.post.Media = this.file.url;
         this.post.Caption = caption;
