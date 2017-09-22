@@ -4,7 +4,9 @@
 		this.$state = $state;
 		this.$http = $http;
 		//this.name = $stateParams["name"];
-        this.id = $stateParams["id"];
+		this.id = $stateParams["id"];
+		this.postid = $stateParams["postid"];
+		sessionStorage.setItem("id", this.id);
 		this.user = sessionStorage.getItem("userid");
 		//this.route = "api/Posts";
         this.artistId = sessionStorage.getItem("id");
@@ -29,7 +31,7 @@
    
 		//this.getlastfm();
 		
-		this.getNumberOfLikes();
+		//this.getNumberOfLikes();
 
 	}    
 
@@ -48,7 +50,8 @@
               
 
             });
-    }
+	}
+
 	getArtist() {
 		this.$ArtistProfileService.getArtist(this.id)
 			.then((res) => {
