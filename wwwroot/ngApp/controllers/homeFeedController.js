@@ -25,10 +25,15 @@
             UserId: this.id,
             PostId: this.post
         };
-        this.comment;
         this.cid = $stateParams["id"];
         sessionStorage.setItem("commentId", this.cid);
         this.commentId = sessionStorage.getItem("commentId");
+        this.comment = {
+            PostId: this.post,
+            UserId: this.otherid,
+            CommentId: this.cid
+
+        };
         this.getComments();
         this.$uibModal = $uibModal;
     }
