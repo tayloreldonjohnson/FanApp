@@ -18,8 +18,11 @@ namespace Hello.Data.Models
         public ApplicationUser User { get; set; }
 
 
+
+        [ForeignKey("PostId")]
        
        public int PostId { get; set; }
+
 
         public Post post { get; set; }
 

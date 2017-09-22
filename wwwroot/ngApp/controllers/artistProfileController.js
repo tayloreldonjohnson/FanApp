@@ -5,8 +5,6 @@
 		this.$http = $http;
 		//this.name = $stateParams["name"];
         this.id = $stateParams["id"];
-        this.postid = $stateParams["postid"];
-		sessionStorage.setItem("id", this.id);
 		this.user = sessionStorage.getItem("userid");
 		//this.route = "api/Posts";
         this.artistId = sessionStorage.getItem("id");
@@ -19,13 +17,20 @@
 			Media: "",
             Caption: "",
             Video: "",
-			Type: "",
+			Type: ""
 		};
 		this.getArtist();
 		this.getPostId();
-		this.artists;
-		this.$uibModal = $uibModal;
+        this.likes = {};
+        this.artists;
+
+        this.comment;
+        this.$uibModal = $uibModal;      
+   
+		//this.getlastfm();
+		
 		this.getNumberOfLikes();
+
 	}    
 
 	likePost(postId) {
@@ -82,6 +87,20 @@
            // this.addPost();
         });
     }
+
+    showModalComments() {
+        this.$uibModal.open({
+            templateUrl: '/ngApp/views/modalComments.html',
+            controller: ModalCommentController,
+            controllerAs: 'controller',
+            resolve: {
+                comment: () => this.comment
+            }
+        }).closed.then(() => {
+            // this.addPost();
+        });
+    }
+
     AddComment(postId, text) {
         this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.user })
             .then((res) => {
@@ -93,9 +112,9 @@
     }
 
 
-    }
-   	//getlastfm() {
+}
 
+   	//getlastfm() {
   	//getlastfm() {
 
 	//	this.$http.get("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=87bdb2c24f5d7ea2e34ac5d1bdc419f1&format=json&limit=1000")
@@ -229,4 +248,28 @@ class ModalPostController {
     closeModal() {
         this.modal.dismiss();
     }
-}
+ }
+
+
+ 
+//class ModalCommentController {
+//    constructor($stateParams, $http, $state, $uibModalInstance) {
+//        this.$http = $http;
+//        this.$state = $state;
+//        this.modal = $uibModalInstance;
+//        this.id = $stateParams["id"];
+//        sessionStorage.setItem("otherid", this.id);
+//        this.otherid = sessionStorage.getItem("otherid");
+//        this.post = sessionStorage.getItem("postid");
+//        this.user = sessionStorage.getItem("userid");
+//        this.comment;
+//        this.getComments();
+//    }
+//    getComments(postId, text) {
+//        this.$http.get("api/Comments", { PostId: postId, Text: text, UserId: this.user })
+//            .then(res => {
+//                this.comment = res.data;
+//                console.log(res.data);
+//            });
+//    }
+//}
