@@ -136,7 +136,7 @@ namespace Hello.Controllers
         //public List<Post> GetFollowedPost(string id)
         public List<UserInboxVm> GetMessageOfUser(string senderId, string recieverId)
         {
-            var Messages = _context.Inbox.Where(x => x.MessagerUserId == senderId && x.RecieverOfMessageId == recieverId).ToList();
+            var Messages = _context.Inbox.Where(x => x.MessagerUserId == senderId && x.RecieverOfMessageId == recieverId && x.MessagerUserId == senderId && x.RecieverOfMessageId == recieverId).ToList();
             var ListOfMessages = new List<UserInboxVm>();
 
             foreach (var Message in Messages)
@@ -149,21 +149,52 @@ namespace Hello.Controllers
                     UserName = user.UserName,
                     profileImage = user.ImageUrl,
                     DateCreated = Message.DateCreated
-                    
-        
                 };
                 ListOfMessages.Add(Messagevm);
             }
             return ListOfMessages;
         }
 
+		//public class LogUserInboxVm
+		//{
+		//	public string MessagerUserId { get; set; }
+		//	public string LogUserName { get; set; }
+		//	public string UserprofileImage { get; set; }
+		//	public DateTime UserDateCreated { get; set; }
+		//	public string usermessage { get; set; }
+
+		//}
+
+		//[HttpGet("usermessage/{recieverId}/{senderid}")]
+		////public List<Post> GetFollowedPost(string id)
+		//public List<UserInboxVm> GetMessagefromUser(string senderId, string recieverId)
+		//{
+		//	var Messages = _context.Inbox.Where(x => x.MessagerUserId == senderId && x.RecieverOfMessageId == recieverId).ToList();
+		//	var ListOfMessages = new List<UserInboxVm>();
+
+		//	foreach (var Message in Messages)
+		//	{
+
+		//		var user = _context.ApplicationUser.Where(u => u.Id == Message.MessagerUserId).FirstOrDefault();
+		//		var UserMessagevm = new LogUserInboxVm
+		//		{
+		//			usermessage = Message.Message,
+		//			LogUserName = user.UserName,
+		//			UserprofileImage = user.ImageUrl,
+		//			UserDateCreated = Message.DateCreated
+
+
+		//		};
+		//		ListOfMessages.Add(LogUserInboxVm);
+		//	}
+		//	return ListOfMessages;
+		//}
 
 
 
-
-        //--------------------------------------------------------------------------------------------------------Testing get first message of all users----------------
-        // GET: api/Inboxes/5
-        [HttpGet("{id}")]
+		//--------------------------------------------------------------------------------------------------------Testing get first message of all users----------------
+		// GET: api/Inboxes/5
+		[HttpGet("{id}")]
         public async Task<IActionResult> GetInbox([FromRoute] int id)
         {
             if (!ModelState.IsValid)
