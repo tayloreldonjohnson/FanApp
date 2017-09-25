@@ -76,7 +76,6 @@ class ModalCommentController {
 		this.$http.get("api/Comments/" + this.postId)
 			.then(res => {
 				this.comment = res.data;
-				console.log(res.data);
 			});
 	}
 }
