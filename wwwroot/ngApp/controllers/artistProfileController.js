@@ -26,6 +26,7 @@
         this.likes = {};
         this.artists;
 
+        this.getComments();
         this.comment;
         this.$uibModal = $uibModal;      
    
@@ -91,12 +92,21 @@
         });
     }
 
-    showModalComments() {
+    getComments() {
+        this.$http.get("api/Comments/")
+            .then(res => {
+                this.comments = res.data;
+                console.log(res.data);
+            });
+    }
+    showModalComments(postId) {
         this.$uibModal.open({
             templateUrl: '/ngApp/views/modalComments.html',
             controller: ModalCommentController,
+            // controller: controller,
             controllerAs: 'controller',
             resolve: {
+                postId: postId,     // JLT: this will get passed to the postId param in the constructor of ModalCommentController
                 comment: () => this.comment
             }
         }).closed.then(() => {
