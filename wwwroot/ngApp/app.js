@@ -30,108 +30,108 @@ myApp.service("$filepicker", function ($window) {
 
 myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    $stateProvider
-        .state('home', {
-            url: '/',
-            templateUrl: '/ngApp/views/home.html',
-            controller: HomeController,
-            controllerAs: 'controller'
-        })
-        .state('homeFeed', {
-            url: '/homeFeed',
-            templateUrl: '/ngApp/views/homeFeed.html',
-            controller: HomeFeedController,
-            controllerAs: 'controller'
-        })
-        .state('secret', {
-            url: '/secret',
-            templateUrl: '/ngApp/views/secret.html',
-            controller: SecretController,
-            controllerAs: 'controller'
-        })
-        .state('login', {
-            url: '/login',
-            templateUrl: '/ngApp/views/login.html',
-            controller: LoginController,
-            controllerAs: 'controller'
-        })
-        .state('register', {
-            url: '/register',
-            templateUrl: '/ngApp/views/register.html',
-            controller: RegisterController,
-            controllerAs: 'controller'
-        })
-        .state('externalRegister', {
-            url: '/externalRegister',
-            templateUrl: '/ngApp/views/externalRegister.html',
-            controller: ExternalRegisterController,
-            controllerAs: 'controller'
-        })
-        .state('about', {
-            url: '/about',
-            templateUrl: '/ngApp/views/about.html',
-            controller: AboutController,
-            controllerAs: 'controller'
-        })
-        .state('createProfile', {
-            url: '/createProfile',
-            templateUrl: '/ngApp/views/createProfile.html',
-            controller: CreateProfileController,
-            controllerAs: 'controller'
-        })
-        .state('userProfile', {
-            url: '/userProfile',
-            templateUrl: '/ngApp/views/UserProfile.html',
-            controller: UserProfileController,
-            controllerAs: 'controller'
-        })
-        .state('searchUser', {
-            url: '/searchUser',
+	$stateProvider
+		.state('home', {
+			url: '/',
+			templateUrl: '/ngApp/views/home.html',
+			controller: HomeController,
+			controllerAs: 'controller'
+		})
+		.state('homeFeed', {
+			url: '/homeFeed',
+			templateUrl: '/ngApp/views/homeFeed.html',
+			controller: HomeFeedController,
+			controllerAs: 'controller'
+		})
+		.state('secret', {
+			url: '/secret',
+			templateUrl: '/ngApp/views/secret.html',
+			controller: SecretController,
+			controllerAs: 'controller'
+		})
+		.state('login', {
+			url: '/login',
+			templateUrl: '/ngApp/views/login.html',
+			controller: LoginController,
+			controllerAs: 'controller'
+		})
+		.state('register', {
+			url: '/register',
+			templateUrl: '/ngApp/views/register.html',
+			controller: RegisterController,
+			controllerAs: 'controller'
+		})
+		.state('externalRegister', {
+			url: '/externalRegister',
+			templateUrl: '/ngApp/views/externalRegister.html',
+			controller: ExternalRegisterController,
+			controllerAs: 'controller'
+		})
+		.state('about', {
+			url: '/about',
+			templateUrl: '/ngApp/views/about.html',
+			controller: AboutController,
+			controllerAs: 'controller'
+		})
+		.state('createProfile', {
+			url: '/createProfile',
+			templateUrl: '/ngApp/views/createProfile.html',
+			controller: CreateProfileController,
+			controllerAs: 'controller'
+		})
+		.state('userProfile', {
+			url: '/userProfile',
+			templateUrl: '/ngApp/views/UserProfile.html',
+			controller: UserProfileController,
+			controllerAs: 'controller'
+		})
+		.state('searchUser', {
+			url: '/searchUser',
 			templateUrl: '/ngApp/views/searchUser.html',
 			controller: SearchUserController,
-            controllerAs: 'controller'
-        })
-        .state('otherUserProfile', {
-            url: '/OtherUserProfile/',
-            params: {id: null},
-            templateUrl: '/ngApp/views/OtherUserProfile.html',
-            controller: OtherUserProfileController,
-            controllerAs: 'controller'
-        })
-        .state('artist', {
-            url: '/artist',
-            templateUrl: '/ngApp/views/artist.html',
-            controller: ArtistController,
-            controllerAs: 'controller'
+			controllerAs: 'controller'
+		})
+		.state('otherUserProfile', {
+			url: '/OtherUserProfile/',
+			params: { id: null },
+			templateUrl: '/ngApp/views/OtherUserProfile.html',
+			controller: OtherUserProfileController,
+			controllerAs: 'controller'
+		})
+		.state('artist', {
+			url: '/artist',
+			templateUrl: '/ngApp/views/artist.html',
+			controller: ArtistController,
+			controllerAs: 'controller'
 		})
 		.state('artistProfile', {
 			url: '/artistProfile/:id',
 			templateUrl: '/ngApp/views/artistProfile.html',
 			controller: ArtistProfileController,
-            controllerAs: 'controller'
-       
-        })
-        .state('messages', {
-            url: '/messages',
-            templateUrl: '/ngApp/views/messages.html',
-            controller: MessagesController,
-            controllerAs: 'controller'
-        })
-        
-        .state('modalPost', {
-            url: '/modalPost/',
-            templateUrl: '/ngApp/views/modalPost.html',
-            controller: ModalPostController,
-            controllerAs: 'controller'
-        })
-        .state('modalMessages', {
-            url: '/modalMessages/',
-            templateUrl: '/ngApp/views/modalMessages.html',
-            controller: ModalController,
-            controllerAs: 'controller'
-        })
-        .state('modalComments', {
-            url: '/modalComments/',
+			controllerAs: 'controller'
+
+		})
+		.state('messages', {
+			url: '/messages',
+			templateUrl: '/ngApp/views/messages.html',
+			controller: MessagesController,
+			controllerAs: 'controller'
+		})
+
+		.state('modalPost', {
+			url: '/modalPost/',
+			templateUrl: '/ngApp/views/modalPost.html',
+			controller: ModalPostController,
+			controllerAs: 'controller'
+		})
+		.state('modalMessages', {
+			url: '/modalMessages/',
+			templateUrl: '/ngApp/views/modalMessages.html',
+			controller: ModalController,
+			controllerAs: 'controller'
+		})
+		.state('modalComments', {
+			url: '/modalComments/',
             templateUrl: '/ngApp/views/modalComments.html',
             controller: ModalCommentController,
             controllerAs: 'controller'

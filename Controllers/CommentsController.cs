@@ -40,25 +40,26 @@ namespace Hello.Controllers
 
         // GET: api/Comments/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetComment([FromRoute] int id)
+        public List<Comment> GetComment([FromRoute] int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            var comment = await _context.Comment.SingleOrDefaultAsync(m => m.CommentId == id);
+			var comments = _context.Comment.Where(m => m.PostId == id).ToList();
 
-            if (comment == null)
-            {
-                return NotFound();
-            }
+			return comments;
+			//if (comment == null)
+			//         {
+			//             return NotFound();
+			//         }
 
-            return Ok(comment);
-        }
+			//         return Ok(comment);
+		}
 
-        // PUT: api/Comments/5
-        [HttpPut("{id}")]
+		// PUT: api/Comments/5
+		[HttpPut("{id}")]
         public async Task<IActionResult> PutComment([FromRoute] int id, [FromBody] Comment comment)
         {
             if (!ModelState.IsValid)
