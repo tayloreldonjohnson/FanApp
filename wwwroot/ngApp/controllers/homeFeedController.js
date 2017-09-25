@@ -67,12 +67,14 @@
                 console.log(res.data);
             });
     }
-    showModalComments() {
+    showModalComments(postId) {
         this.$uibModal.open({
             templateUrl: '/ngApp/views/modalComments.html',
             controller: ModalCommentController,
+            // controller: controller,
             controllerAs: 'controller',
             resolve: {
+                postId: postId,     // JLT: this will get passed to the postId param in the constructor of ModalCommentController
                 comment : () => this.comment
             }
         }).closed.then(() => {
@@ -82,7 +84,9 @@
 }
  
 class ModalCommentController {
-    constructor($stateParams, $http, $state, $uibModalInstance) {
+    // JLT: adding postId as a param of this constructor.  postId is passed via the 'resolve' property above
+    constructor(postId, $stateParams, $http, $state, $uibModalInstance) {
+        this.postId = postId;  
         this.$http = $http;
         this.$state = $state;
         this.modal = $uibModalInstance;
