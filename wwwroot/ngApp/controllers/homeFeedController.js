@@ -63,20 +63,20 @@
 }
  
 class ModalCommentController {
-    // JLT: adding postId as a param of this constructor.  postId is passed via the 'resolve' property above
-    constructor(postId, $stateParams, $http, $state, $uibModalInstance) {
-        this.postId = postId;  
-        this.$http = $http;
-        this.$state = $state;
-        this.modal = $uibModalInstance;
-		this.postId = $stateParams["postId"]
-        this.getComment();
+	// JLT: adding postId as a param of this constructor.  postId is passed via the 'resolve' property above
+	constructor(postId, $stateParams, $http, $state, $uibModalInstance) {
+		this.postId = postId;
+		this.$http = $http;
+		this.$state = $state;
+		this.modal = $uibModalInstance;
+		this.getComment();
 	}
 
-    getComment(postId) {
-        this.$http.get("api/Comments/" + postId)
-            .then(res => {
-                
-            });
-    }
+	getComment() {
+		this.$http.get("api/Comments/" + this.postId)
+			.then(res => {
+				this.comment = res.data;
+				console.log(res.data);
+			});
+	}
 }
