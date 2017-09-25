@@ -14,9 +14,8 @@
         this.getComments();
 		this.$uibModal = $uibModal;
 		this.postId = $stateParams["postId"];
+		
     }
-
-	
 
     getPostWithProfile() {
         this.$http.get("api/UserFollowers/postandprofile/" + this.user)
@@ -52,14 +51,14 @@
 		console.log(postId);
 	// find out how to get $state, $http, etc from the angular IOC container, dependency injector
 	// $inject
-		let controller = new ModelCommentController(postId); 
+		//let controller = new ModelCommentController(postId); 
 		this.$uibModal.open({
 			templateUrl: '/ngApp/views/modalComments.html',
 			controller: ModalCommentController,
 			controllerAs: 'controller',
 			resolve: {
 				postId: () => this.postId
-			}
+			},
 			// is there another property to add arbitrary data?
 		});
 	}
