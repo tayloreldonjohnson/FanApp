@@ -71,7 +71,7 @@
             });
 
     }
-    showModalComments() {
+    showModalComments(postId) {
         this.$uibModal.open({
             templateUrl: '/ngApp/views/modalComments.html',
             controller: ModalCommentController,
