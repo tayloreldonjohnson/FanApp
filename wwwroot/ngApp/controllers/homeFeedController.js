@@ -45,27 +45,27 @@
                 this.comments = res.data;
                 console.log(res.data);
             });
-	}
-
-	showModalComments(postId) {
-		console.log(postId);
-	// find out how to get $state, $http, etc from the angular IOC container, dependency injector
-	// $inject
-		//let controller = new ModelCommentController(postId); 
-		this.$uibModal.open({
-			templateUrl: '/ngApp/views/modalComments.html',
-			controller: ModalCommentController,
-			controllerAs: 'controller',
-			resolve: {
-				postId: () => this.postId
-			},
-			// is there another property to add arbitrary data?
-		});
-	}
+    }
+    showModalComments(postId) {
+        this.$uibModal.open({
+            templateUrl: '/ngApp/views/modalComments.html',
+            controller: ModalCommentController,
+            // controller: controller,
+            controllerAs: 'controller',
+            resolve: {
+                postId: postId,     // JLT: this will get passed to the postId param in the constructor of ModalCommentController
+                comment : () => this.comment
+            }
+        }).closed.then(() => {
+            // this.addPost();
+        });
+    }
 }
  
 class ModalCommentController {
+    // JLT: adding postId as a param of this constructor.  postId is passed via the 'resolve' property above
     constructor(postId, $stateParams, $http, $state, $uibModalInstance) {
+        this.postId = postId;  
         this.$http = $http;
         this.$state = $state;
         this.modal = $uibModalInstance;
