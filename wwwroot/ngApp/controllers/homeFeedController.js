@@ -70,14 +70,14 @@ class ModalCommentController {
         this.$http = $http;
         this.$state = $state;
         this.modal = $uibModalInstance;
-		this.postId = $stateParams["postId"]
+		//this.postId = $stateParams["postId"]
         this.getComment();
 	}
 
-    getComment(postId) {
-        this.$http.get("api/Comments/" + postId)
+    getComment() {
+        this.$http.get("api/Comments/" + this.postId)
             .then(res => {
-                
+				this.comment = res.data;
             });
     }
 }
