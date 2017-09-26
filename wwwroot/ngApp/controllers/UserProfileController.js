@@ -51,7 +51,7 @@
     } 
 	
     getPost() {
-        this.$http.get("api/Posts/likes/" + this.posts)
+        this.$http.get("api/Posts/likes/" + this.userid)
             .then(res => {
                 this.posts = res.data;
                 console.log(res.data);
