@@ -29,6 +29,7 @@
                 console.log(this.posts.numberOfFollowing);
             });
     }
+
     
     getNumberOfPosts() {
         this.$http.get("api/posts/numberOfPosts/" + this.posts)
@@ -47,14 +48,15 @@
 				console.log(res.data);
             });       
     } 
-	getPost() {
-		this.$http.get("api/Posts/" + this.posts)
-			.then(res => {
-				this.posts = res.data;
-				console.log(res.data);
-			});
-	}
-
+	
+    getPost() {
+        this.$http.get("api/Posts/likes/" + this.posts)
+            .then(res => {
+                this.posts = res.data;
+                console.log(res.data);
+            });
+    }
+  
 	deletePost(postid) {
 		this.$http.delete("api/Posts/" + postid)
 			.then((res) => {

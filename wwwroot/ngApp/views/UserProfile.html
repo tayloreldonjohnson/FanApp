@@ -29,7 +29,7 @@
 
 
 
-<section  class="container-post" ng-repeat="p in controller.posts ">
+<section  class="container-post" ng-repeat="p in controller.posts">
     <div class="card-post-userfeed">
         <div class="row card-header-post-userfeed">            
             <img class="w3-quarter profile-img-post-userfeed" ng-src="{{controller.user.imageUrl}}" />            
@@ -41,12 +41,14 @@
         
         <div class="content-post-homefeed">
             <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
+     
         </div>
         <div class="content-post-homefeed">
             <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+         
         </div>
         
-        
+        {{p.numberofLikes}}
         
         <div class="row card-footer-userfeed">
             <div class="w3-half footer-section-1">
