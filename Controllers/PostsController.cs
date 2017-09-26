@@ -36,14 +36,53 @@ namespace Hello.Controllers
             return _context.Post;
         }
 
-		//GET: api/Posts/5
-		// Gets Posts for Artist by ArtistId
-		[HttpGet("{id:int}")]
-		public List<Post> Get(int id)
-		{
-			var posts = _context.Post.Where(u => u.ApplicationArtistId == id).ToList();
-			return posts;
-		}
+        //GET: api/Posts/5
+        // Gets Posts for Artist by ArtistId
+        //[HttpGet("{id:int}")]
+        //public List<Post> Get(int id)
+        //{
+        //	var posts = _context.Post.Where(u => u.ApplicationArtistId == id).ToList();
+        //	return posts;
+        //}
+
+
+
+
+        [HttpGet("artist/{id}")]
+        public List<PostsLikedDataVM> GetPostsWithLikesbyArtist(int id)
+        {
+            var userposts = _context.Post.Where(u => u.ApplicationArtistId == id).ToList();
+
+
+            var PostsLiked = new List<PostsLikedDataVM>();
+            foreach (var post in userposts)
+            {
+                var userLikes = _context.Like.Where(u => u.PostId == post.PostId).ToList();
+                var user = _context.ApplicationUser.Where(ui => ui.Id == post.ApplicationUserId).FirstOrDefault();
+                var PostswithLikes = new PostsLikedDataVM
+                {
+                    ProfileImage = user.ImageUrl,
+                    UserName = user.UserName,
+                    PostId = post.PostId,
+                    Media = post.Media,
+                    Caption = post.caption,
+                    Video = post.Video,
+                    DateCreated = post.DateCreated,
+
+                };
+                foreach (var like in userLikes)
+                {
+                    var NumberOfLikes = userLikes.Count();
+                    PostswithLikes.NumberofLikes = NumberOfLikes;
+                }
+
+
+                PostsLiked.Add(PostswithLikes);
+            }
+
+
+            return PostsLiked;
+        }
 
         // Added to get amount of uploads will change how you get posts----------------------------------------------------------------------------------------------------------
         public class PostsUploadedDataVM
@@ -93,7 +132,7 @@ namespace Hello.Controllers
             foreach (var post in userposts)
             {
                 var userLikes = _context.Like.Where(u => u.PostId == post.PostId).ToList();
-
+            
                 var PostswithLikes = new PostsLikedDataVM {
                 PostId = post.PostId,
                 Media = post.Media,
