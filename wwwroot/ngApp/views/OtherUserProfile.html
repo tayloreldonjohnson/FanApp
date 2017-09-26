@@ -1,34 +1,34 @@
 ﻿<div class="container-fluid text-center">
-    <div class="row profile-container">
-        <div class="col-sm-4 profile-cols">
+    <div class="w3-row profile-container">
+        <div class="w3-third w3-container profile-cols">
             <ul class="profile-lists">
                 <li class="user-name">{{controller.user.firstName}} {{controller.user.lastName}}</li>
                 <li>{{controller.user.email}}</li>
                 <li>Member Since: {{controller.user.dateCreated | date}}</li>
             </ul>
         </div>
-        <div class="col-sm-4 profile-cols profile-img">
+        <div class="w3-third w3-container profile-img">
             <h1 class="username">{{controller.user.userName}}</h1>
             <img ng-src="{{controller.user.imageUrl}}" />
         </div>
-        <div class="col-sm-4 profile-cols">
-            <ul class="profile-lists">
+        <div class="w3-third w3-container profile-cols">
+            <ul>
                 <li>
-                    Uploads &nbsp &nbsp  {{controller.post.numberOfPosts}}
-                    Following &nbsp &nbsp {{controller.posts.numberOfFollowing}}
-                    Followers  &nbsp &nbsp {{controller.posts.numberOfFollowers}}
-                </li>
+                    <span class="user-stats">Uploads: {{controller.post.numberOfPosts}}</span>
+                    <span class="user-stats">Following: {{controller.posts.numberOfFollowing}}</span>
+                    Followers: {{controller.posts.numberOfFollowers}}
+</li>
                 <li>{{controller.user.aboutMe}}</li>
 
                 <!--<li><a href="#" class="btn gen-btn btn-lg" ng-click="controller.addFollower()">Follow</a></li>
                 <li><a href="#" class="btn gen-btn btn-lg" ng-click="controller.deleteFollower()">Un-Follow</a></li>-->
             
                 <li><a href="#" class="btn gen-btn btn-lg" ng-click="controller.isfollowing == true ? controller.deleteFollower() : controller.addFollower()">{{ controller.isfollowing == true ? 'Unfollow' : 'Follow' }}</a></li>
-                
-
-                <li></li>
+                <li>
+                    <button type="button" class="btn gen-btn btn-lg" data-toggle="modal" data-target="#ModalMessages" ng-click="controller.showModal()">Message {{controller.user.userName}}</button>
+                </li>
             </ul>
-            <button type="button" class="btn gen-btn btn-lg" data-toggle="modal" data-target="#ModalMessages" ng-click="controller.showModal()">Message {{controller.user.userName}}</button>
+            
            
         </div>
     </div>
@@ -45,7 +45,7 @@
                 <div class="w3-half name-post-userfeed">{{p.userName}}</div>
                 <!--<div class="location"></div>-->
                 
-                <div class="w3-quarter time-userfeed">{{p.dateCreated |  date:'MMMM dd, y @ h:mma' }}</div>
+                <div class="w3-quarter time-userfeed" id="other-user-time">{{p.dateCreated |  date:'MMMM dd, y @ h:mma' }}</div>
             </div>
 
             <div class="content-post-userfeed">
@@ -68,10 +68,19 @@
                     <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="text"></textarea>
                     <button class="btn gen-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId , text)"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
                 </div>
-                <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments()">See All Comments</a></div>
+                <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a></div>
                 <!--<div class="form"></div>-->
 
             </div> 
+                <div class="favorites">## FAVORITES</div>
+                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
+				
+				<div class="description">{{p.caption}}</div>
+                <!--
+                <div class="comments"></div>
+                <div class="form"></div>
+                -->
+            </div>
         </div>
     </section>
 </center>

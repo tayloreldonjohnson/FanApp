@@ -1,7 +1,7 @@
 ﻿class OtherUserProfileController {
     constructor($stateParams, $http, $state, $templateCache, $uibModal) {
         this.$templateCache = $templateCache;
-        this.state = $state;
+        this.$state = $state;
         this.$http = $http;
         this.email = $stateParams["email"];
         this.followeduser;
@@ -22,13 +22,12 @@
             RecieverOfMessageId: this.otherid
 
         };
-
-
         this.getOtherUserProfile();
         this.userfollower = {
             FollowingUserId: this.userid,
             FollowedUserId: this.otherid
         };
+        this.getComments();
         this.comment;
         this.$uibModal = $uibModal;  
 	}
@@ -45,7 +44,7 @@
             .then(res => {
                 this.followeduser = res.data;
 				console.log(res.data);
-				this.state.reload();
+				this.$state.reload();
             });
         //this.$templateCache.removeAll();
         //this.state.reload();
@@ -62,7 +61,7 @@
             this.$http.delete("api/UserFollowers/unfollow/" + this.otherid + "/" + this.userid)
                 .then(res => {
                     console.log(res.data);
-					this.state.reload();
+					this.$state.reload();
                 });
         }
 
@@ -93,7 +92,7 @@
                    });
         }
            AddComment(postId, text) {
-               this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.user })
+               this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.userid })
                    .then((res) => {
 
                        this.$state.reload();
@@ -113,12 +112,21 @@
                    // this.addPost();
                });
            }
-           showModalComments() {
+           getComments() {
+               this.$http.get("api/Comments/")
+                   .then(res => {
+                       this.comments = res.data;
+                       console.log(res.data);
+                   });
+           }
+           showModalComments(postId) {
                this.$uibModal.open({
                    templateUrl: '/ngApp/views/modalComments.html',
                    controller: ModalCommentController,
+                   // controller: controller,
                    controllerAs: 'controller',
                    resolve: {
+                       postId: postId,     // JLT: this will get passed to the postId param in the constructor of ModalCommentController
                        comment: () => this.comment
                    }
                }).closed.then(() => {
