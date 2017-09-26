@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ngAnimate', 'ui.bootstrap']);
+var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ngAnimate', 'ui.bootstrap', 'angular-preload-image']);
 
 myApp.controller("AboutController", AboutController);
 myApp.controller("AccountController", AccountController);

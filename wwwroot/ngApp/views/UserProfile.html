@@ -1,21 +1,28 @@
 ﻿<div class="container-fluid text-center">    
-    <div class="row profile-container">        
-        <div class="col-sm-3 col-lg-4 profile-cols">
+    <div class="w3-row profile-container">        
+        <div class="w3-third w3-container profile-cols">  
             <ul class="profile-lists">
                 <li class="user-name">{{controller.user.firstName}} {{controller.user.lastName}}</li>
                 <li>{{controller.user.email}}</li>
                 <li>Member Since: {{controller.user.dateCreated | date}}</li>
             </ul>
         </div>
-        <div class="col-sm-3 col-lg-4 profile-cols profile-img">
+        <div class="w3-third w3-container profile-img">  
             <h1 class="username">{{controller.user.userName}}</h1>
-            <img ng-src="{{controller.user.imageUrl}}" style="width:200px; height:200px;" />
+            <img ng-src="{{controller.user.imageUrl}}" />
         </div>
-        <div class="col-sm-6 col-lg-4 profile-cols">
+        <div class="w3-third w3-container profile-cols">  
             <ul>
-                <li>{{controller.post.numberOfPosts}} Uploads</li>
-                <li>{{controller.postinfo.numberOfFollowing}} Following</li>
-                <li>{{controller.postinfo.numberOfFollowers}} Followers</li>
+                <li>
+                    <span class="user-stats">Uploads: {{controller.post.numberOfPosts}}</span>
+                    <span class="user-stats">Following: {{controller.postinfo.numberOfFollowing}}</span>
+                    Followers: {{controller.postinfo.numberOfFollowers}}
+                </li>
+                
+                <!--
+                <li>Following: {{controller.postinfo.numberOfFollowing}}</li>
+                <li>Followers: {{controller.postinfo.numberOfFollowers}}</li>
+                -->
             </ul>
             <ul>
                 <li>{{controller.user.aboutMe}}</li>
@@ -25,14 +32,10 @@
     </div>
 </div>
 
-<h1>My Posts</h1>
-
-
-
-<section  class="container-post" ng-repeat="p in controller.posts ">
+<section class="container-post" ng-repeat="p in controller.posts ">
     <div class="card-post-userfeed">
         <div class="row card-header-post-userfeed">            
-            <img class="w3-quarter profile-img-post-userfeed" ng-src="{{controller.user.imageUrl}}" />            
+            <img class="w3-quarter profile-img-post-userfeed" id="profile-img-adj" ng-src="{{controller.user.imageUrl}}" />            
             <div class="w3-quarter name-post-userfeed">{{controller.user.userName}}</div>
             <!--<div class="location"></div>-->
             <div class="w3-half time-userfeed">{{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}</div>
@@ -42,16 +45,16 @@
         <div class="content-post-homefeed">
             <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
         </div>
-        <div class="content-post-homefeed">
-            <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
-        </div>
+        <div class="content-post-homefeed text-center">
+            <video ng-hide="p.video == null || p.video == ''" controls ng-src="{{p.video}}" class="video-style"><!--video dimensions: width="320" height="240"--></video>
+        </div>       
         
         
-        
-        <div class="row card-footer-userfeed">
+        <div class="w3-row card-footer-userfeed">
             <div class="w3-half footer-section-1">
-				<button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
 				<div class="favorites">## FAVORITES</div>
+                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
+				
 				<div class="description">{{p.caption}}</div>
             </div>
             <div class="comments">
@@ -60,18 +63,18 @@
             </div>
             <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a></div>
             <div class="form"></div>
-            <div class="w3-half">
-
-                <div class="dropdown">
+            
+            <div class="w3-half drop-menu">
+                <div class="w3-dropdown-click">
                     <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
                     <ul class="dropdown-menu icon-tridots-drop">
                         <li>
-                            <a href="#" class="btn gen-btn btn-md delete-d" style="color:white;" ng-click="controller.deletePost(p.postId)">Delete</a>
+                            <a href="#" class="btn btn-md delete-d" id="delete-btn" ng-click="controller.deletePost(p.postId)">Delete</a>
                         </li>
                         <!--
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                -->
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        -->
                     </ul>
                 </div>
             </div>
