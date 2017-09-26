@@ -14,9 +14,8 @@
         this.getComments();
 		this.$uibModal = $uibModal;
 		this.postId = $stateParams["postId"];
+		
     }
-
-	
 
     getPostWithProfile() {
         this.$http.get("api/UserFollowers/postandprofile/" + this.user)
@@ -58,7 +57,6 @@
                 comment : () => this.comment
             }
         }).closed.then(() => {
-            // this.addPost();
         });
     }
 }
@@ -70,7 +68,6 @@ class ModalCommentController {
         this.$http = $http;
         this.$state = $state;
         this.modal = $uibModalInstance;
-		//this.postId = $stateParams["postId"]
         this.getComment();
 	}
 
