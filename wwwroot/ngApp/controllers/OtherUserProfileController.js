@@ -34,11 +34,11 @@
 
 	likePost(postId) {
 		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user.userId, PostId: postId })
-			.then((res) => {
-
+            .then((res) => {
+                this.$state.reload();
 			});
-	}
-
+    }
+    
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)
             .then(res => {
@@ -52,6 +52,7 @@
         getFollowInfo() {
 			this.$http.get("api/UserFollowers/" + this.otherid)
                 .then(res => {
+                    //posts #1 by userid
 					this.posts = res.data;
 					console.log(this.posts);
                     console.log(this.posts.numberOfFollowing);

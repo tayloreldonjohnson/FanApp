@@ -21,7 +21,15 @@
 
 			});
 	}
+    getPostLikes(postId) {
+        this.$http.get("api/Likes/numberlikes/" + postId)
+            .then(res => {
 
+                this.likes = res.data;
+                console.log("amount of Likes" + this.likes.numberOfLikes);
+
+            });
+    }
 	getFollowInfo() {
 		this.$http.get("api/UserFollowers/" + this.userid)
             .then(res => {
@@ -30,6 +38,7 @@
                 console.log(this.userid.numberOfFollowing);
             });
     }
+
     
     getNumberOfPosts() {
 		this.$http.get("api/posts/numberOfPosts/" + this.userid)
@@ -48,14 +57,15 @@
 				console.log(res.data);
             });       
     } 
-	getPost() {
-		this.$http.get("api/Posts/" + this.userid)
-			.then(res => {
-				this.posts = res.data;
-				console.log(res.data);
-			});
-	}
-
+	
+    getPost() {
+        this.$http.get("api/Posts/likes/" + this.userid)
+            .then(res => {
+                this.posts = res.data;
+                console.log(res.data);
+            });
+    }
+  
 	deletePost(postid) {
 		this.$http.delete("api/Posts/" + postid)
 			.then((res) => {
