@@ -25,24 +25,14 @@
 
 
             <div class="card-footer-homefeed">
-                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
-                <div class="favorites">## Favorites</div>
-                <div class="description"> {{p.caption}} {{p.numberofLikes}}</div>
+                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button> {{p.numberofLikes}}
+                <div class="description"> {{p.caption}}</div>
                 <div class="comments">
                     <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="text"></textarea>
                     <button class="btn gen-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId , text)"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
                 </div>
                 <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)" >See All Comments</a></div>
                 <!--<div class="form"></div>-->
-				
-                <div class="favorites">## FAVORITES</div>
-                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
-				
-				<div class="description">{{p.caption}}</div>
-                <!--
-                <div class="comments"></div>
-                <div class="form"></div>
-                -->
             </div>
         </div>
     </section>
