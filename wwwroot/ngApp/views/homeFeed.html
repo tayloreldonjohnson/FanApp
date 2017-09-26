@@ -26,7 +26,7 @@
 
             <div class="card-footer-homefeed">
                 <button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
-                <div class="favorites">## Favorites</div>
+                <div class="favorites">{{controller.likes.numberOfLikes}}</div>
                 <div class="description"> {{p.caption}} </div>
                 <div class="comments">
                     <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="text"></textarea>

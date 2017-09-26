@@ -85,24 +85,34 @@
                 });
         }
      
-           isFollowing() {
+       isFollowing() {
             
-               this.$http.get("api/UserFollowers/isFollowing/" + this.otherid + "/" + this.userid)
-                   .then((res) => {
-                       this.isfollowing = res.data;
-                       console.log(res.data);
-                       console.log("after put");
-                   });
-        }
-           AddComment(postId, text) {
-               this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.user })
-                   .then((res) => {
+        this.$http.get("api/UserFollowers/isFollowing/" + this.otherid + "/" + this.userid)
+           .then((res) => {
+              this.isfollowing = res.data;
+              console.log(res.data);
+              console.log("after put");
+           });
+       }
 
-                       this.$state.reload();
+       AddComment(postId, text) {
+            this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.userid })
+               .then((res) => {
+
+                       this.state.reload();
                        console.log("comments");
                    });
 
-           }
+       } 
+      
+       getComments() {
+           this.$http.get("api/Comments/")
+               .then(res => {
+                   this.comments = res.data;
+                   console.log(res.data);
+               });
+       }
+
            showModal() {
                this.$uibModal.open({
                    templateUrl: '/ngApp/views/modalMessages.html',
@@ -115,13 +125,7 @@
                    // this.addPost();
                });
            }
-           getComments() {
-               this.$http.get("api/Comments/")
-                   .then(res => {
-                       this.comments = res.data;
-                       console.log(res.data);
-                   });
-           }
+    
            showModalComments(postId) {
                this.$uibModal.open({
                    templateUrl: '/ngApp/views/modalComments.html',

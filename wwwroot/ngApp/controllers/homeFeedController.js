@@ -31,7 +31,14 @@
 			.then((res) => {
 
 			});
-	}
+    }
+    getPostLikes(postId) {
+        this.$http.get("api/Likes/numberlikes/" + postId)
+            .then(res => {
+                this.likes = res.data;
+                console.log("amount of Likes" + this.likes.numberOfLikes);
+            });
+    }
     AddComment(postId, text) {
         this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.user })
             .then((res) => {
