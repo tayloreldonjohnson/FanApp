@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ngAnimate', 'ui.bootstrap']);
+var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ngAnimate', 'ui.bootstrap', 'angular-preload-image']);
 
 myApp.controller("AboutController", AboutController);
 myApp.controller("AccountController", AccountController);
@@ -106,7 +106,8 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			url: '/artistProfile/:id',
 			templateUrl: '/ngApp/views/artistProfile.html',
 			controller: ArtistProfileController,
-			controllerAs: 'controller'
+            controllerAs: 'controller',
+       
         })
         .state('messages', {
             url: '/messages',
@@ -128,7 +129,8 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             controllerAs: 'controller'
         })
         .state('userMessage', {
-            url: '/messages/:id',
+			url: '/messages/',
+			params: { id: null },
             templateUrl: '/ngApp/views/userMessage.html',
             controller: UserMessageController,
             controllerAs: 'controller'

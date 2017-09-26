@@ -30,7 +30,15 @@
             FollowedUserId: this.otherid
         };
         this.$uibModal = $uibModal;  
-    }
+	}
+
+	likePost(postId) {
+		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user.userId, PostId: postId })
+			.then((res) => {
+
+			});
+	}
+
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)
             .then(res => {
@@ -119,7 +127,8 @@ class ModalController {
         console.log(this.post);
         this.$http.post("api/Inboxes", this.inbox)
             .then((res) => {
-                console.log("after put");
+				console.log("after put");
+				this.modal.close();
             });
 
     }

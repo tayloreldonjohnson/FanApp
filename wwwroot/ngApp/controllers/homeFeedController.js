@@ -26,10 +26,12 @@
                 this.post = res.data;
                 console.log(res.data);
             });
+	}
 
+	likePost(postId) {
+		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user, PostId: postId })
+			.then((res) => {
 
-
-
-
-    }
+			});
+	}
 }

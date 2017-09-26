@@ -68,7 +68,7 @@ fieldset {
 .gen-btn {
     background-color: #000;
     color: #F7FFF7;
-    margin: 1em 0.2em;
+    margin: 0.2em;
     border: .005em solid white;
 }
 
@@ -85,12 +85,27 @@ fieldset {
     color: #F7FFF7;
 }
 
-.btn-danger {
-    border: .1em solid white;
+a.btn-danger {
+    border: 0.005em solid white;
     margin: 0.8em 0.2em;
+    border-radius: 0.25em/0.25em;
 }
 
+a.btn-danger:hover {
+    border: 0.005em solid #000;
+    color: #000;
+}
 
+.like-btn {
+    padding: 0.25em 0.5em;
+    margin: 0.25em 0 0.5em 0;
+}
+
+.like-btn img {
+    height: 1.25em;
+    width: 1.25em;
+    margin-bottom: 0;
+}
 
 .input-group {
     margin: 2em 0.75em;
@@ -98,6 +113,8 @@ fieldset {
 
 .search-input {
     display: block;
+    margin: 0 auto;
+    width: 90%;
 }
 
 .logo-name {
@@ -118,26 +135,26 @@ fieldset {
 .profile-container {
     background-color: rgba(0,0,0,0.75);
     margin: 0 auto;
-    padding: 0em 0.5em 1em 0.5em;
+    padding: 1em 0.5em;
     width: 85%;
     border-radius: 2em/2em;
-    font-size: 1.5em;
+    font-size: 1.5em;   
 }
 
 .profile-cols {
-    display: block;
-    padding: 2em 4em;
+    display: block;  /*block*/
+    /*padding: 2em 4em;*/
 }
 
 .profile-cols ul li {
-    padding: 0.75em 0em;
-    list-style-type: none;
+    padding: 0.25em 0em;
+    list-style-type: none;    
 }
 
 .profile-img img {
-    width: 10em;
-    height: auto;
-    margin-bottom: .1em;
+    width: 8em;
+    height: auto;    
+    margin-bottom: 0.1em;
     border-radius: 50%;
 }
 
@@ -160,6 +177,17 @@ ul.posts-lists {
     height: 30em;
 }
 
+#artist-profile-header {
+    width: 100%;
+}
+
+#profile-img-adj {
+    margin-left: 2em;
+}
+
+#other-user-time {
+    padding-right: 0.5em;
+}
 
 
 /*------------------------------------  Grid  ----------------------------------------------------*/
@@ -252,38 +280,7 @@ ul#home-list {
     color: white;
     opacity: 1;
 }
-/*form {
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin-top: 21em;
-}*/
 
-/*.form-image {
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 500px;
-    width: 400px;
-}*/
-
-/*.form-cover {
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 500px;
-    width: 400px;
-    background: rgba(0,0,0,.5);
-}*/
 
 .form-cover {
     background-image: url(https://s-media-cache-ak0.pinimg.com/736x/9b/ee/66/9bee667aa25b15f424c43bd26b678564--dj-party-music-party.jpg);
@@ -291,7 +288,9 @@ ul#home-list {
     width: 28em;
     margin: 0 auto;
     padding: 1em;
-    
+    -webkit-box-shadow: 6px 4px 4px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 4px 4px 0px rgba(0,0,0,0.75);
+    box-shadow: 6px 4px 4px 0px rgba(0,0,0,0.75);
 }
 
 .logo-login {
@@ -300,16 +299,6 @@ ul#home-list {
     color: deeppink;
 }
 
-/*.login-intro {
-    margin:  5em auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin-top: -10em;
-}
-    */
 
 .login-buttons {
     margin: 3em 0.5em 1em;
@@ -359,7 +348,16 @@ ul#home-list {
 .username {    
     text-align: center;
     color: white;
-    padding-bottom: .5em;
+    margin-top: -0.2em;
+}
+
+.user-about {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.user-stats {
+    margin-right: 1em;
 }
 
 .user-search-container {
@@ -369,8 +367,9 @@ ul#home-list {
 
 .jumbo-users {
     background-color: rgba(0,0,0,0.75);
-    margin: 0 auto;
+    margin: 0 auto;   
     padding: 0.5em;
+    width: 60%;
     border-radius: 1em/1em;
 }
 
@@ -395,9 +394,7 @@ ul#home-list {
     margin-bottom: .1em;
     border-radius: 50%;
 }
-profile-list{
-    flex:1;
-}
+
 
 .users-list:first-child {
     margin-top: 2em;
@@ -443,14 +440,16 @@ ul.user-info {
 }
 
 .input-group-artist {
-    margin: 0.5em;    
+    margin: 0.5em;
 }
 
 .artist-jumbo {
     background-color: rgba(0,0,0,0.75);
     margin: 0 auto;
+    margin-bottom: 1em;
     padding: 0.5em;
     border-radius: 1em/1em;
+    width: 70%;
 }
 
 .artist-card {
@@ -537,13 +536,14 @@ a:active .artist-name {
     padding: 0.5em 1em;
 }
 
-.artist-profile-img img {
-    margin: 2em 2em 1em 1em;
-    /*width: 15%;
-    height: auto;*/
-    /*padding: 1em;*/
-    /*border-radius: 50%;*/
+.artist-profile-name {
+    margin-bottom: 1em;
+}
 
+.artist-profile-img img {
+    margin: 0.5em;
+    width: 10em;
+    height: 10em;
 }
 
 .artist-profile {
@@ -618,6 +618,47 @@ a:active .artist-name {
 .footer-section-1 {
     padding: 0 0.5em;
 }
+
+.video-style {
+    width: 100%;
+    height: auto;
+    padding: 0.5em;
+}
+
+.favorites {
+    margin: 0.5em 0 1em 0;
+}
+
+.artist-comment {
+    width: 95%;
+    margin: 0.5em 0 1em 0;
+    float: right;
+}
+
+#btn-post-comment {
+    float: right;
+}
+
+.site-inputs {
+    color: #000;    
+    font-weight: bold;
+}
+
+    .site-inputs::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #1B2631;
+    }
+
+    .site-inputs::-moz-placeholder { /* Firefox 19+ */
+        color: #1B2631;
+    }
+
+    .site-inputs:-ms-input-placeholder { /* IE 10+ */
+        color: #1B2631;
+    }
+
+    .site-inputs:-moz-placeholder { /* Firefox 18- */
+        color: #1B2631;
+    }
 
 /*.card-post {
     background-color: rgba(0,0,0,0.75);
@@ -704,7 +745,7 @@ a:active .artist-name {
 .content-post-homefeed img {
     width: 498px;
     height: 500px;
-    padding: 1.5em;
+    padding: 0.5em;
 }
 
 .card-footer-homefeed {
@@ -729,44 +770,48 @@ a:active .artist-name {
     font-weight: 500;
 }
 
-.icon-tridots {
-    color: white;
-    padding: 1em 1em 0 0;
-    cursor: pointer;
-    float: right;
+.drop-menu {
     text-align: right;
+    padding: 3.5em 0.5em 0.25em 0;
+}
+
+.icon-tridots {
+    cursor: pointer;
+    
 }
 .icon-tridots:hover {
-    color: lightgreen;
     text-decoration: none;
     cursor:pointer;
-    float: right;
-    padding: 1em 1em 0 0;
-    
+          
 }
 
 .icon-tridots-drop {
-    background-color: rgba(0,0,0,.5);
-    float: right;
-    padding: 1em 1em 0 0;
+    background-color: transparent;    
 }
 
+.delete-d {
+    color: white;
+    background-color: #000;
+    border: 0.005em solid white;
+}
 
-.dropdown {
-    margin: 2em 0 0 2em;
+#delete-btn {
+    color: white;
 }
 
 .delete-d:not(.nohover):hover {
     background: linear-gradient(132deg, #F40E00, #fe6363, #F40E00 );
     background-size: 400% 400%;
-    animation: backgroundgradient 5s ease infinite;    
+    animation: backgroundgradient 5s ease infinite;
+    color: white;
+    
 }
 
 .delete-d:hover{
     background: linear-gradient(132deg, #F40E00, #fe6363, #F40E00 );
     background-size: 400% 400%;
-    animation: backgroundgradient 1s ease infinite;
-    float: right;    
+    animation: backgroundgradient 1s ease infinite;      
+    
 }
 
 

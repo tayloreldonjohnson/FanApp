@@ -2,15 +2,15 @@
     <h1 class="font-effect-neon logo-name" id="home-feed-headline">Home Feed</h1>
     <section class="container-post" ng-repeat="p in controller.post | orderBy:'dateCreated':true ">
         <div class="card-post-homefeed">
-            <div class="row card-header-post-homefeed">
+            <div class="w3-row card-header-post-homefeed">
 
                 <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.profileImage}}" />
 
                 <div class="w3-half name-post-homefeed">{{p.userName}} posted on {{p.artistName}}'s profile</div>
                 <!--<div class="location"></div>-->
 
-                <div class="w3-quarter time-homefeed" {{p.dateCreated | date}}>
-                    {{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}
+                <div class="w3-quarter time-homefeed">
+                    {{p.dateCreated | date:'MMMM dd, y @ h:mma'}}
                 </div>
             </div>            
 
@@ -24,14 +24,10 @@
 
 
             <div class="card-footer-homefeed">
-                <center>
-                    <h3>{{p.caption}}</h3>
-                </center>
-                <button ng-click="controller.favorite(post)" class="btn gen-btn btn-lg">
-                    <img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" />
-                </button>
-                <div class="favorites">## Favorites</div>
-                <div class="description"><p><span>{{controller.user.userName}}</span></p></div>
+                <div class="favorites">## FAVORITES</div>
+                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
+				
+				<div class="description">{{p.caption}}</div>
                 <!--
                 <div class="comments"></div>
                 <div class="form"></div>

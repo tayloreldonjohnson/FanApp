@@ -11,8 +11,8 @@ using System;
 namespace Hello.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170919184401_Like2")]
-    partial class Like2
+    [Migration("20170920190011_Like1")]
+    partial class Like1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -145,12 +145,11 @@ namespace Hello.Migrations
             modelBuilder.Entity("Hello.Data.Models.Like", b =>
                 {
                     b.Property<int>("LikeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("LikeId");
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateLiked");
 
-                    b.Property<int?>("PostId");
+                    b.Property<int>("PostId");
 
                     b.Property<string>("UserId");
 
@@ -341,8 +340,9 @@ namespace Hello.Migrations
             modelBuilder.Entity("Hello.Data.Models.Like", b =>
                 {
                     b.HasOne("Hello.Data.Models.Post", "post")
-                        .WithMany()
-                        .HasForeignKey("PostId");
+                        .WithMany("Like")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Hello.Data.ApplicationUser", "User")
                         .WithMany()

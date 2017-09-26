@@ -11,9 +11,10 @@ using System;
 namespace Hello.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170920210014_Comment2")]
+    partial class Comment2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,17 +105,19 @@ namespace Hello.Migrations
                     b.Property<int>("CommentId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("ApplicationUserId");
+
                     b.Property<int>("PostId");
 
                     b.Property<string>("Text");
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("User");
 
                     b.HasKey("CommentId");
 
-                    b.HasIndex("PostId");
+                    b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("PostId");
 
                     b.ToTable("Comment");
                 });
@@ -335,14 +338,14 @@ namespace Hello.Migrations
 
             modelBuilder.Entity("Hello.Data.Models.Comment", b =>
                 {
+                    b.HasOne("Hello.Data.ApplicationUser")
+                        .WithMany("Comment")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("Hello.Data.Models.Post", "post")
                         .WithMany("Comment")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Hello.Data.ApplicationUser", "User")
-                        .WithMany("Comment")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Hello.Data.Models.Follow", b =>

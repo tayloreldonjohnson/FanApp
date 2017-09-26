@@ -1,16 +1,18 @@
 ﻿<!--Artist Merch to post: Ramones, Madonna, Jesus&MaryChain, Talking Heads, Cat Power, Crystal Castles, Angel Olsen, Nick Cave, Warpaint, Rolling Stones, NIN, Radiohead-->
 
 <div class="container-fluid text-center">
-    <div class="row profile-container">
-        <div class="col-sm-6 col-md-4 col-lg-2 artist-profile-img">
+    <div class="w3-row profile-container">
+        <div class="w3-half artist-profile-img">
             <img class="w3-circle" ng-src="{{controller.artist.imageUrl}}" />
         </div>
-        <div class="col-sm-6 col-md-8 col-lg-10 artist-profile-cols">
-            <h2>{{controller.artist.name}}</h2>
+        <div class="w3-half artist-profile-cols">
+            <h2 class="artist-profile-name">{{controller.artist.name}}</h2>
             <div>
-                0 Uploads &nbsp &nbsp
+                0 Uploads
+                <!--
                 0 Following &nbsp &nbsp
                 0 Followers
+                -->
             </div>
             <div class="artist-profile">
                 <button type="button" class="btn gen-btn btn-lg" data-toggle="modal" data-target="#postModal" ng-click="controller.showModalPost()">Post</button>
@@ -18,17 +20,17 @@
             </div>
         </div>
     </div>
-  </div>
-  <section class="container-post" ng-repeat="p in controller.posts" ng-model="controller.posts.media">
+</div>
+<section class="container-post" ng-repeat="p in controller.posts" ng-model="controller.posts.media">
     <div class="card-post-homefeed">
-        <div class="row card-header-post-homefeed">
+        <div class="w3-row card-header-post-homefeed" id="artist-profile-header">
             
-            <img class="w3-quarter profile-img-post-homefeed" ng-src="{{controller.user.imageUrl}}" />
+            <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.user.imageUrl}}" />
             
-            <div class="w3-half name-post-homefeed">{{controller.user.userName}}</div>
+            <div class="w3-half name-post-homefeed">{{p.user.userName}}Sample userName</div>
             <!--<div class="location"></div>-->
 
-            <div class="w3-quarter time-homefeed">{{p.dateCreated |  date:'MMMM dd, y @ h:mma'}}</div>
+            <div class="w3-quarter time-homefeed">{{p.dateCreated | date:'MMMM dd, y @ h:mma'}}</div>
         </div>
 
         <div class="content-post-homefeed">
@@ -36,28 +38,21 @@
         </div>
         <div class="content-post-homefeed">
             <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+
         </div>
-        <div class="card-footer-homefeed">
-            <center>
-                <h3>{{p.caption}}</h3>
-            </center>
-            <button ng-click="controller.favorite(post)" class="btn gen-btn btn-lg">
-                <img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" />
-            </button>
-            <div class="favorites">## FAVORITES</div>
-            <div class="description">TEST DESCRIPTION</div>
-            <!--
-            <div class="comments"></div>
-            <div class="form"></div>
-            -->
-            <!--<div class="dropdown">
-                <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
-                <ul class="dropdown-menu icon-tridots-drop">
-                    <li><a href="#" class="btn gen-btn btn-sm delete-d" style="color:white;" ng-click="controller.deletePost(p.postId)">Delete</a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                </ul>
-            </div>-->
+        <div class="w3-row card-footer-homefeed">
+            <div class="w3-half footer-section-1">
+                <div class="favorites">## FAVORITES</div>
+                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
+                
+                <div class="description">{{p.caption}}</div>
+                <div class="comments"></div>
+                <div class="form"></div>                
+            </div>
+            <div class="w3-half comment-div">
+                <input type="text" placeholder="Comment here..." class="artist-comment site-inputs form-control" ng-model="comment" />
+                <button ng-click="controller.AddComment(p.postId, comment)" class="btn gen-btn btn-md" id="btn-post-comment">Post</button>
+            </div>
         </div>
     </div>
 </section>
@@ -78,9 +73,14 @@
                 <div class="time" {{p.dateCreated | date:'MMMM dd, y @ h:mma'}}></div>
             </div>
             <div class="content-post">
-                <img ng-src="{{p.media}}" />
-                <video width="320" height="240" controls ng-src="{{p.media}}"></video>
+                <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
+                <button ng-hide="p.media == null || p.media == ''" type="button" class="btn gen-btn btn-lg" 
+                        ng-click="controller.LikePost(p.postId)">Like</button>
             </div>
+			<div class="content-post">
+				<video ng-hide ="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+  <button ng-hide ="p.video == null || p.video == ''" type="button" class="btn gen-btn btn-lg"   ng-click="controller.LikePost(p.postId)">Like</button>
+			</div>
             <div class="card-footer">
                 <div class="Favorites">## FAVORITES</div>
                 <div class="description">TEST DESCRIPTION</div>
@@ -89,6 +89,9 @@
             </div>
         </div>
     </section>
-
-</div>
+   
+   </div> 
     -->
+
+
+   
