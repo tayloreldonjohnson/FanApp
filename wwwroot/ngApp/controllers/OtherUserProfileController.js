@@ -1,7 +1,7 @@
 ﻿class OtherUserProfileController {
     constructor($stateParams, $http, $state, $templateCache, $uibModal) {
         this.$templateCache = $templateCache;
-        this.state = $state;
+        this.$state = $state;
         this.$http = $http;
         this.email = $stateParams["email"];
         this.followeduser;
@@ -22,15 +22,12 @@
             RecieverOfMessageId: this.otherid
 
         };
-
-
         this.getOtherUserProfile();
         this.userfollower = {
             FollowingUserId: this.userid,
             FollowedUserId: this.otherid
         };
         this.getComments();
-
         this.comment;
         this.$uibModal = $uibModal;  
 	}
@@ -47,7 +44,7 @@
             .then(res => {
                 this.followeduser = res.data;
 				console.log(res.data);
-				this.state.reload();
+				this.$state.reload();
             });
         //this.$templateCache.removeAll();
         //this.state.reload();
@@ -64,7 +61,7 @@
             this.$http.delete("api/UserFollowers/unfollow/" + this.otherid + "/" + this.userid)
                 .then(res => {
                     console.log(res.data);
-					this.state.reload();
+					this.$state.reload();
                 });
         }
 
@@ -87,13 +84,13 @@
      
        isFollowing() {
             
-        this.$http.get("api/UserFollowers/isFollowing/" + this.otherid + "/" + this.userid)
-           .then((res) => {
-              this.isfollowing = res.data;
-              console.log(res.data);
-              console.log("after put");
-           });
-       }
+               this.$http.get("api/UserFollowers/isFollowing/" + this.otherid + "/" + this.userid)
+                   .then((res) => {
+                       this.isfollowing = res.data;
+                       console.log(res.data);
+                       console.log("after put");
+                   });
+        }
 
        AddComment(postId, text) {
             this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.userid })

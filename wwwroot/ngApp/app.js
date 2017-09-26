@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ngAnimate', 'ui.bootstrap']);
+var myApp = angular.module("myApp", ['ui.router', 'ngResource', 'ngAnimate', 'ui.bootstrap', 'angular-preload-image']);
 
 myApp.controller("AboutController", AboutController);
 myApp.controller("AccountController", AccountController);
@@ -131,7 +131,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			controllerAs: 'controller'
 		})
 		.state('modalComments', {
-			url: '/modalComments/',
+			url: '/modalComments/:postId',
             templateUrl: '/ngApp/views/modalComments.html',
             controller: ModalCommentController,
             controllerAs: 'controller'
