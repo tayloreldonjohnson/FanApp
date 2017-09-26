@@ -48,15 +48,10 @@
         </div>
         <div class="content-post-homefeed text-center">
             <video ng-hide="p.video == null || p.video == ''" controls ng-src="{{p.video}}" class="video-style"><!--video dimensions: width="320" height="240"--></video>
-        </div>       
-        
-        {{p.numberofLikes}}
-        
+        </div>                      
         <div class="row card-footer-userfeed">
             <div class="w3-half footer-section-1">
-				<div class="favorites">## FAVORITES</div>
-                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
-				
+                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button> {{p.numberofLikes}}
 				<div class="description">{{p.caption}}</div>
             </div>
             <div class="comments">
