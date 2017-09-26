@@ -50,10 +50,12 @@
 
             <div class="content-post-userfeed">
                 <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
+              {{controller.posts.numberOfLikes}}
             </div>
 
             <div class="content-post-userfeed">
                 <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+                {{controller.posts.numberOfLikes}}
             </div>
 
             <div class="card-footer-userfeed">

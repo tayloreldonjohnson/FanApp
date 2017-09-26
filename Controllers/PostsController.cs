@@ -64,6 +64,57 @@ namespace Hello.Controllers
             data.NumberOfPosts = NumberOfPosts;
             return data;
         }
+        public class PostsLikedDataVM
+        {
+
+            public int ApplicationArtistId { get; set; }
+            public string UserName { get; set; }
+            public int PostId { get; set; }
+
+            public string ArtistName { get; set; }
+            public string UserId { get; set; }
+            public DateTime DateCreated { get; set; }
+            public string Media { get; set; }
+            public string Video { get; set; }
+            public string Caption { get; set; }
+            public string ProfileImage { get; set; }
+            public string Text { get; set; }
+            public int NumberofLikes { get; set; }
+
+        }
+
+        [HttpGet("Likes/{id}")]
+        public List<PostsLikedDataVM> GetPostsWithLikes(string id)
+        {
+            var userposts = _context.Post.Where(u => u.ApplicationUserId == id).ToList();
+
+           
+            var PostsLiked = new List<PostsLikedDataVM>();
+            foreach (var post in userposts)
+            {
+                var userLikes = _context.Like.Where(u => u.PostId == post.PostId).ToList();
+
+                var PostswithLikes = new PostsLikedDataVM {
+                PostId = post.PostId,
+                Media = post.Media,
+                Caption = post.caption,
+               Video = post.Video,
+               DateCreated = post.DateCreated,
+
+            };
+                foreach (var like in userLikes)
+                {
+                    var NumberOfLikes = userLikes.Count();
+                    PostswithLikes.NumberofLikes = NumberOfLikes;
+                }
+            
+
+               PostsLiked.Add(PostswithLikes);
+            }
+
+          
+            return PostsLiked;
+        }
         // ------------------------------------------------------------------------------------------------------------------------------------------
         // Gets User post by UserId
         [HttpGet("{id}")]

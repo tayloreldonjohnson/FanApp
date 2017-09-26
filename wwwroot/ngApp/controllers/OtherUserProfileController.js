@@ -52,6 +52,7 @@
         getFollowInfo() {
 			this.$http.get("api/UserFollowers/" + this.otherid)
                 .then(res => {
+                    //posts #1 by userid
 					this.posts = res.data;
 					console.log(this.posts);
                     console.log(this.posts.numberOfFollowing);

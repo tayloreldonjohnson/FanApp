@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Hello.Data;
 using Hello.Data.Models;
+using Microsoft.EntityFrameworkCore.Extensions.Internal;
 
 namespace Hello.Controllers
 {
@@ -49,6 +50,9 @@ namespace Hello.Controllers
                 //go through the posts and get info about the post 
                 foreach (var post in posts)
                 {
+                    var comment = _context.Comment.Where(ui => ui.PostId == post.PostId).FirstOrDefault();
+                    var userLikes = _context.Like.Where(u => u.PostId == post.PostId).ToList();
+
                     var user = _context.ApplicationUser.Where(ui => ui.Id == post.ApplicationUserId).FirstOrDefault();
                     var artist = _context.ApplicationArtist.Where(ai => ai.Id == post.ApplicationArtistId).FirstOrDefault();
                     var UserFollowedInfo = new UserPostVm()
@@ -62,9 +66,15 @@ namespace Hello.Controllers
                         Caption = post.caption,
                         DateCreated = post.DateCreated,
                         UserName = user.UserName,
-                        ApplicationArtistId = artist.Id
-
+                        ApplicationArtistId = artist.Id,
+                        Text = comment.Text
+                        
                     };
+                    foreach (var like in userLikes)
+                    {
+                        var NumberOfLikes = userLikes.Count();
+                        UserFollowedInfo.NumberofLikes = NumberOfLikes;
+                    }
 
                     allPosts.Add(UserFollowedInfo);
                 }
@@ -94,7 +104,8 @@ namespace Hello.Controllers
             public string Video { get; set; }
             public string Caption { get; set; }
             public string ProfileImage { get; set; }
-
+            public string  Text { get; set; }
+            public int NumberofLikes { get; set; }
 
 
         }
@@ -117,9 +128,15 @@ namespace Hello.Controllers
 
                 // gets all posts of all people being followed
                 var posts = _context.Post.Where(u => u.ApplicationUserId == uf.FollowedUserId).ToList();
+                  
                 //go through the posts and get info about the post 
                 foreach (var post in posts)
                 {
+
+                    var comment = _context.Comment.Where(ui => ui.PostId == post.PostId  ).FirstOrDefault();
+                   var userLikes = _context.Like.Where(u => u.PostId == post.PostId).ToList();
+
+                   
                     var user = _context.ApplicationUser.Where(ui => ui.Id == post.ApplicationUserId).FirstOrDefault();
                     var artist = _context.ApplicationArtist.Where(ai => ai.Id == post.ApplicationArtistId).FirstOrDefault();
                     var UserFollowedInfo = new UserPostVm()
@@ -133,9 +150,16 @@ namespace Hello.Controllers
                         Caption = post.caption,
                         DateCreated = post.DateCreated,
                         UserName = user.UserName,
-                        ApplicationArtistId = artist.Id
+                        ApplicationArtistId = artist.Id,
+                      
 
                     };
+                    foreach (var like in userLikes)
+                    {
+                        var NumberOfLikes = userLikes.Count();
+                        UserFollowedInfo.NumberofLikes = NumberOfLikes;
+                    }
+
 
                     allPosts.Add(UserFollowedInfo);
                 }
@@ -151,6 +175,7 @@ namespace Hello.Controllers
             public List<Post> Posts { get; set; }
             public int NumberOfFollowers { get; set; }
             public int NumberOfFollowing { get; set; }
+            public List <int> NumberOfLikes { get; set; }
 
 
         }
@@ -161,24 +186,40 @@ namespace Hello.Controllers
         {
             var data = new PostsFollowDataVM();
             var allPosts = new List<Post>();
+            var allLikes = new List<int>();
             var YouFollow = _context.UserFollow.Where(uf => uf.FollowingUserId == id).ToList();
             var followingYou = _context.UserFollow.Where(uf => uf.FollowedUserId == id).ToList();
             var countOfYourFollowers = followingYou.Count();
             var NumberOfPeopleYouFollow = YouFollow.Count();
-
+         
 
             foreach (var user in YouFollow)
             {
                 var postList = _context.Post.Where(p => p.ApplicationUserId == user.FollowedUserId).ToList();
-
+               
+                //loop through posts
                 foreach (var post in postList)
                 {
-                    allPosts.Add(post);
+                    // get a list of all the 
+
+                    //var postLikes = _context.Like.Where(u => u.PostId == post.PostId).GroupBy(lk => lk.PostId).Select(g => g.Count(x => x.LikeId )).FirstOrDefault();
+                    var postLikes = _context.Like.Where(lk => lk.PostId == post.PostId)
+                             .GroupBy(n => n.PostId)
+                              .Select(p => p.Count()
+                              
+
+                                 
+                              );
+ 
+
+                     allPosts.Add(post);
+                  
+                   
                 }
 
             }
             data.Posts = allPosts;
-
+           
             data.NumberOfFollowers = countOfYourFollowers;
             data.NumberOfFollowing = NumberOfPeopleYouFollow;
             return data;
