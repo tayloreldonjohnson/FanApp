@@ -131,7 +131,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			controllerAs: 'controller'
 		})
 		.state('modalComments', {
-			url: '/modalComments/',
+			url: '/modalComments/:postId',
             templateUrl: '/ngApp/views/modalComments.html',
             controller: ModalCommentController,
             controllerAs: 'controller'

@@ -1,4 +1,11 @@
 ﻿<h1> user message view</h1>
+<section class="container-post">
+	<img ng-src="{{controller.otheruserinfo.imageUrl}}" />
+	{{controller.otheruserinfo.userName}}
+	{{controller.otheruserinfo.firstName}}
+	{{controller.otheruserinfo.lastName}}
+</section>
+
 <section ng-repeat="something in controller.messages" class="container-post">
 
 	{{something.userName}}
