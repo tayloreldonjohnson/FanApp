@@ -38,8 +38,8 @@
 
 	likePost(postId) {
 		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user, PostId: postId })
-			.then((res) => {
-				this.$state.reload();
+            .then((res) => {
+                this.$state.reload();
 			});
 	}
 

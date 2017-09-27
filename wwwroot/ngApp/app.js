@@ -5,7 +5,6 @@ myApp.controller("AccountController", AccountController);
 myApp.controller("ArtistProfileController", ArtistProfileController);
 myApp.controller("ConfirmEmailController", ConfirmEmailController);
 myApp.controller("ExternalRegisterController", ExternalRegisterController);
-myApp.controller("HomeController", HomeController);
 myApp.controller("LoginController", LoginController);
 myApp.controller("RegisterController", RegisterController);
 myApp.controller("SecretController", SecretController);
@@ -30,13 +29,13 @@ myApp.service("$filepicker", function ($window) {
 
 myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-	$stateProvider
-		.state('home', {
-			url: '/',
-			templateUrl: '/ngApp/views/home.html',
-			controller: HomeController,
-			controllerAs: 'controller'
-		})
+    $stateProvider
+        .state('login', {
+            url: '/',
+            templateUrl: '/ngApp/views/login.html',
+            controller: LoginController,
+            controllerAs: 'controller'
+        })
 		.state('homeFeed', {
 			url: '/homeFeed',
 			templateUrl: '/ngApp/views/homeFeed.html',
@@ -47,12 +46,6 @@ myApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			url: '/secret',
 			templateUrl: '/ngApp/views/secret.html',
 			controller: SecretController,
-			controllerAs: 'controller'
-		})
-		.state('login', {
-			url: '/login',
-			templateUrl: '/ngApp/views/login.html',
-			controller: LoginController,
 			controllerAs: 'controller'
 		})
 		.state('register', {

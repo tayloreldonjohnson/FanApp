@@ -29,6 +29,9 @@
         };
         this.getComments();
         this.comment;
+        this.getNumberOfPosts();
+      
+        
         this.$uibModal = $uibModal;  
 	}
 
@@ -38,7 +41,7 @@
                 this.$state.reload();
 			});
     }
-    
+   
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)
             .then(res => {
@@ -68,7 +71,7 @@
 
 
         getNumberOfPosts() {
-            this.$http.get("api/posts/numberOfPosts/" + this.otherid)
+            this.$http.get("api/posts/numberOfPosts/" + this.id)
                 .then(res => {
                     this.post = res.data;
                     console.log("amount of Posts " + this.post.numberOfPosts);
