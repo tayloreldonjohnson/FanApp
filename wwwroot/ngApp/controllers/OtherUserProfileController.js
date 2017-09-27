@@ -34,11 +34,11 @@
 
 	likePost(postId) {
 		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user.userId, PostId: postId })
-			.then((res) => {
-
+            .then((res) => {
+                this.$state.reload();
 			});
-	}
-
+    }
+    
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)
             .then(res => {
@@ -83,7 +83,7 @@
                 });
         }
      
-           isFollowing() {
+       isFollowing() {
             
                this.$http.get("api/UserFollowers/isFollowing/" + this.otherid + "/" + this.userid)
                    .then((res) => {
@@ -92,15 +92,25 @@
                        console.log("after put");
                    });
         }
-           AddComment(postId, text) {
-               this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.userid })
-                   .then((res) => {
 
-                       this.$state.reload();
+       AddComment(postId, text) {
+            this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.userid })
+               .then((res) => {
+
+                       this.state.reload();
                        console.log("comments");
                    });
 
-           }
+       } 
+      
+       getComments() {
+           this.$http.get("api/Comments/")
+               .then(res => {
+                   this.comments = res.data;
+                   console.log(res.data);
+               });
+       }
+
            showModal() {
                this.$uibModal.open({
                    templateUrl: '/ngApp/views/modalMessages.html',
@@ -113,13 +123,7 @@
                    // this.addPost();
                });
            }
-           getComments() {
-               this.$http.get("api/Comments/")
-                   .then(res => {
-                       this.comments = res.data;
-                       console.log(res.data);
-                   });
-           }
+    
            showModalComments(postId) {
                this.$uibModal.open({
                    templateUrl: '/ngApp/views/modalComments.html',
