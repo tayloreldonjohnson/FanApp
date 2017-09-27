@@ -797,14 +797,20 @@ a:active .artist-name {
     margin: .35em;
 }
 .messages-header {
-    position:absolute; 
-    margin-left:1em;
+    margin-right: 6.15em;
+    flex: 1;
+}
+#newm {
+    flex: 1;
+    margin-top: .7em;
+    background: #31D843;
+    color: white;
 }
 .messages-background {
     background: black;
     width: 100%;
-    height: 90%;
-    padding-top: 5em;
+    height: 48em;
+    padding-top: 2em;
 }
 
 #inbox:hover{
@@ -820,27 +826,42 @@ a:active .artist-name {
     border-radius: 50%;
 }
 .all-usernames {
-    margin-top: 1em;
+   
     margin-left: 1em;
 }
 .all-messagedates {
-    margin-top: 1em;
-    margin-left: 6em;
+   
+    margin-left: 12em;
 }
 .all-messages {
     margin-top: 3.5em;
     text-align: left;
-    margin-left: -14.5em;
+    margin-left: -19.5em;
 }
 .conversations {
-    max-height: 44.5em;
+    max-height: 36em;
     overflow-y: auto;
     list-style: none;
     width: 35em;
 }
+.conversations::-webkit-scrollbar {
+    width: 10px;
+}
+
+.conversations::-webkit-scrollbar {
+    border-radius: 5px;
+    background: #353337;
+    color:black
+}
 
 /*--------------------------------------------- Personal Messages -------------------------------------------*/
+.messages-background-chat {
+    background: black;
+    width: 100%;
+    height: 46.5em;
+    
 
+}
 .messages-hr{
     display: block;
     height: 1px;
@@ -849,8 +870,135 @@ a:active .artist-name {
     margin: 1em 0;
     padding: 0;
 }
-.pmessages-user {
-    text-align: center;
-    margin-top: 1em;
-    
+
+
+
+
+
+
+.chatbox {
+    width: 50em;
+    min-width: 25px;
+    height: 28em;
+    background: black;
+    padding-top: 25px;
+    margin: 20px auto;
+    border: 1px solid #353337;
 }
+
+.chatlogs {
+    padding: 10px;
+    width: 100%;
+    height: 24em;
+    background: black;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.chatlogs::-webkit-scrollbar{
+    width:10px;
+}
+
+.chatlogs::-webkit-scrollbar{
+    border-radius: 5px;
+    background: rgba(0,0,0,.1);
+}
+
+.chat {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    margin-left: 4em;
+}
+.chat .user-photo {
+    height: 2.7em;
+    width: 2.7em;
+    border-radius: 50%;
+    overflow:hidden;
+}
+
+.chat .user-photo img{
+    width:2.7em;
+}
+.chat-info{
+    margin-top:.5em;
+    font-weight:lighter;
+}
+
+.chat .chat-message {
+    width:80%;
+    
+    padding:15px;
+    margin: 5px 10px 0;
+    
+    font-size:20px;
+}
+
+.friend .chat-message {
+    background: #1A8FE3;
+    border-radius: 15px 15px 15px 0em;
+}
+
+.self .chat-message {
+    background: white;
+    color: black;
+    order: -1;
+    border-radius: 15px 15px 0px 15px;
+}
+
+.chat-form {
+    margin-top: 3em;
+    display: flex;
+    align-items: flex-start;
+    margin-left: 3.8em;
+}
+
+    .chat-form textarea {
+        background: #fbfbfb;
+        width: 75%;
+        height: 50px;
+        border: 2px solid #eee;
+        border-radius: 13px 13px 13px 13px;
+        font-size: 18px;
+        color: #333;
+        margin-left: .5em;
+    
+    }
+
+.chat-form textarea:focus{
+    background: #fff;
+}
+
+.chat-form textarea::-webkit-scrollbar {
+        width: 10px;
+    }
+
+.chat-form textarea::-webkit-scrollbar {
+        border-radius: 5px;
+        background: rgba(0,0,0,.1);
+    }
+
+.chat-form button {
+
+  
+   padding: 5px 15px;
+   font-size: 30px;
+   color:#fff;
+   border: .01em solid white;
+   margin: 0 10px;
+   border-radius:15px 15px 15px 15px;
+  
+    cursor: pointer;
+
+    -webkit-transition: background .2s ease;
+    -moz-transition: background .2s ease;
+    -o-transition: background .2s ease
+}
+
+.chat-form button:hover {
+        background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
+        background-size: 400% 400%;
+        animation: backgroundgradient 5s ease infinite;
+        color: black;
+    }

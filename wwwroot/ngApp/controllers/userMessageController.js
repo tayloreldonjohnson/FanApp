@@ -1,7 +1,7 @@
 ﻿
 class UserMessageController {
 
-    constructor($stateParams, $http, $state) {
+    constructor($stateParams, $http, $state,) {
 
         this.$state = $state;
         this.$http = $http;
@@ -20,7 +20,10 @@ class UserMessageController {
             MessagerUserId: this.userid,
             RecieverOfMessageId: this.otherid
 
+
         };
+        this.otheruserinfo;
+        this.getOtherUserProfile();
 
     }
 
@@ -50,5 +53,13 @@ class UserMessageController {
                 this.$state.reload();
             });
 
+
+    }
+    getOtherUserProfile() {
+        this.$http.get("api/Users/email/" + this.id)
+            .then(res => {
+                this.otheruserinfo = res.data;
+                console.log(res.data);
+            });
     }
 }
