@@ -35,10 +35,11 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand logo-name" id="logo-name-index" href="/homeFeed" >CS</a>
+                <a class="navbar-brand logo-name" id="logo-name-index" href="/" <!--ng-show="account.isLoggedIn()-->" >CS</a>
             </div>
             <div class="collapse navbar-collapse" id="appNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/homeFeed" class="glyphicon glyphicon-home"></a></li>
+                    <li><a href="/homeFeed" class="glyphicon glyphicon-home" ng-show="account.isLoggedIn()"></a></li>
                     <li><a href="/about" class="glyphicon glyphicon-info-sign"></a></li>
                     <li><a href="/userProfile" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-user"></a></li>
                     <!--<li><a href="/createProfile" ng-show="account.isLoggedIn()">Create Profile</a></li>-->
@@ -52,7 +53,7 @@
                     <li><a href="#" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-bell"></a></li>
                     <li><a href="#" ng-show="account.isLoggedIn()" class="glyphicon glyphicon-envelope"></a></li>-->
                     <li><a style="pointer-events: none; color:white;" ng-show="account.isLoggedIn()">Hello&nbsp{{account.getUserName()}}!</a></li>
-                    <li><a href="/login" ng-show="!account.isLoggedIn()">Login</a></li>
+                    <li><a class="active" href="/login" ng-show="!account.isLoggedIn()">Login</a></li>
                     <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
                 </ul>
             </div>
