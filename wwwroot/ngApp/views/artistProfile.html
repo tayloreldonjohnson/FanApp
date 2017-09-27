@@ -21,7 +21,7 @@
         </div>
     </div>
 </div>
-<section class="container-post" ng-repeat="p in controller.posts" ng-model="controller.posts.media">
+<section class="container-post" ng-repeat="p in controller.posts | orderBy:'dateCreated':true" ng-model="controller.posts.media">
     <div class="card-post-homefeed">
         <div class="w3-row card-header-post-homefeed" id="artist-profile-header">
             

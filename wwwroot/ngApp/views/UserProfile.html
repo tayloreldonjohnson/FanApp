@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<section class="container-post" ng-repeat="p in controller.posts ">
+<section class="container-post" ng-repeat="p in controller.posts | orderBy:'dateCreated':true">
     <div class="card-post-userfeed">
         <div class="row card-header-post-userfeed">            
             <img class="w3-quarter profile-img-post-userfeed" id="profile-img-adj" ng-src="{{controller.user.imageUrl}}" />            

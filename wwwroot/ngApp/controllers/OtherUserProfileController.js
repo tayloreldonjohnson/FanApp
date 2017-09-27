@@ -4,6 +4,7 @@
         this.$state = $state;
         this.$http = $http;
         this.email = $stateParams["email"];
+        this.user;
         this.followeduser;
         this.id = $stateParams["id"];
         sessionStorage.setItem("otherid", this.id);
