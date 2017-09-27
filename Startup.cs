@@ -12,6 +12,7 @@ using Hello.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Hello.Services;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace Hello
 {
@@ -53,6 +54,11 @@ namespace Hello
                     context.Database.Migrate();
                 }
             }
+            
+            // Setup rewrite rules to allow page refreshes to work with Angular
+            app.UseRewriter(new RewriteOptions()
+                .AddIISUrlRewrite(env.ContentRootFileProvider, "web.config"));
+
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

@@ -1,7 +1,7 @@
 ﻿<div class="artist-search-container">
     <div class="artist-jumbo">
         <div class="input-group-artist">
-            <input type="text" class="search-input form-control" placeholder="Search Artist" ng-model="myArtistFilter.name" aria-describedby="basic-addon1">
+            <input type="text" class="site-inputs search-input form-control" placeholder="Search Artist" ng-model="myArtistFilter.name" aria-describedby="basic-addon1">
         </div>
     </div>
     <div class="center-block text-center">
@@ -9,7 +9,7 @@
             <div class="w3-display-container w3-hover-sepia artist-container">
                 <a ui-sref="artistProfile({ id: artist.id })" id="no-underline">
                     <div class="artist-img text-center">
-                        <img class="w3-circle" ng-src="{{artist.imageUrl}}" />
+                        <img preload-image class="w3-circle" ng-src="{{artist.imageUrl}}" default-image="http://www.warnerclassics.com/img_style/default_cover_m.jpg" fallback-image="http://www.warnerclassics.com/img_style/default_cover_m.jpg" />
                     </div>
                     <div class="w3-display-middlebottom artist-name text-center">{{artist.name}}</div>
                 </a>

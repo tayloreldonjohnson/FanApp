@@ -36,14 +36,53 @@ namespace Hello.Controllers
             return _context.Post;
         }
 
-		//GET: api/Posts/5
-		// Gets Posts for Artist by ArtistId
-		[HttpGet("{id:int}")]
-		public List<Post> Get(int id)
-		{
-			var posts = _context.Post.Where(u => u.ApplicationArtistId == id).ToList();
-			return posts;
-		}
+        //GET: api/Posts/5
+        // Gets Posts for Artist by ArtistId
+        //[HttpGet("{id:int}")]
+        //public List<Post> Get(int id)
+        //{
+        //	var posts = _context.Post.Where(u => u.ApplicationArtistId == id).ToList();
+        //	return posts;
+        //}
+
+
+
+
+        [HttpGet("artist/{id}")]
+        public List<PostsLikedDataVM> GetPostsWithLikesbyArtist(int id)
+        {
+            var userposts = _context.Post.Where(u => u.ApplicationArtistId == id).ToList();
+
+
+            var PostsLiked = new List<PostsLikedDataVM>();
+            foreach (var post in userposts)
+            {
+                var userLikes = _context.Like.Where(u => u.PostId == post.PostId).ToList();
+                var user = _context.ApplicationUser.Where(ui => ui.Id == post.ApplicationUserId).FirstOrDefault();
+                var PostswithLikes = new PostsLikedDataVM
+                {
+                    ProfileImage = user.ImageUrl,
+                    UserName = user.UserName,
+                    PostId = post.PostId,
+                    Media = post.Media,
+                    Caption = post.caption,
+                    Video = post.Video,
+                    DateCreated = post.DateCreated,
+
+                };
+                foreach (var like in userLikes)
+                {
+                    var NumberOfLikes = userLikes.Count();
+                    PostswithLikes.NumberofLikes = NumberOfLikes;
+                }
+
+
+                PostsLiked.Add(PostswithLikes);
+            }
+
+
+            return PostsLiked;
+        }
 
         // Added to get amount of uploads will change how you get posts----------------------------------------------------------------------------------------------------------
         public class PostsUploadedDataVM
@@ -63,6 +102,57 @@ namespace Hello.Controllers
             data.Posts = userPosts;
             data.NumberOfPosts = NumberOfPosts;
             return data;
+        }
+        public class PostsLikedDataVM
+        {
+
+            public int ApplicationArtistId { get; set; }
+            public string UserName { get; set; }
+            public int PostId { get; set; }
+
+            public string ArtistName { get; set; }
+            public string UserId { get; set; }
+            public DateTime DateCreated { get; set; }
+            public string Media { get; set; }
+            public string Video { get; set; }
+            public string Caption { get; set; }
+            public string ProfileImage { get; set; }
+            public string Text { get; set; }
+            public int NumberofLikes { get; set; }
+
+        }
+
+        [HttpGet("Likes/{id}")]
+        public List<PostsLikedDataVM> GetPostsWithLikes(string id)
+        {
+            var userposts = _context.Post.Where(u => u.ApplicationUserId == id).ToList();
+
+           
+            var PostsLiked = new List<PostsLikedDataVM>();
+            foreach (var post in userposts)
+            {
+                var userLikes = _context.Like.Where(u => u.PostId == post.PostId).ToList();
+            
+                var PostswithLikes = new PostsLikedDataVM {
+                PostId = post.PostId,
+                Media = post.Media,
+                Caption = post.caption,
+               Video = post.Video,
+               DateCreated = post.DateCreated,
+
+            };
+                foreach (var like in userLikes)
+                {
+                    var NumberOfLikes = userLikes.Count();
+                    PostswithLikes.NumberofLikes = NumberOfLikes;
+                }
+            
+
+               PostsLiked.Add(PostswithLikes);
+            }
+
+          
+            return PostsLiked;
         }
         // ------------------------------------------------------------------------------------------------------------------------------------------
         // Gets User post by UserId

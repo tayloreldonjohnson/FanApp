@@ -4,7 +4,9 @@
 		this.$state = $state;
 		this.$http = $http;
 		//this.name = $stateParams["name"];
-        this.id = $stateParams["id"];
+		this.id = $stateParams["id"];
+		this.postid = $stateParams["postid"];
+		sessionStorage.setItem("id", this.id);
 		this.user = sessionStorage.getItem("userid");
 		//this.route = "api/Posts";
         this.artistId = sessionStorage.getItem("id");
@@ -24,12 +26,13 @@
         this.likes = {};
         this.artists;
 
+        this.getComments();
         this.comment;
         this.$uibModal = $uibModal;      
    
 		//this.getlastfm();
 		
-		this.getNumberOfLikes();
+		//this.getNumberOfLikes();
 
 	}    
 
@@ -48,7 +51,8 @@
               
 
             });
-    }
+	}
+
 	getArtist() {
 		this.$ArtistProfileService.getArtist(this.id)
 			.then((res) => {
@@ -57,15 +61,25 @@
 			});
 	}
 
-	getPostId() {
-		this.$http.get("api/Posts/" + this.artistId)
-			.then((res) => {
-				this.posts = res.data;
+	//getPostId() {
+	//	this.$http.get("api/Posts/" + this.artistId)
+	//		.then((res) => {
+	//			this.posts = res.data;
+ //               console.log(res.data);
+ //               //console.log(this.posts.media);
+
+ //           });
+	//}
+
+    getPostId() {
+        this.$http.get("api/Posts/artist/" + this.artistId)
+            .then((res) => {
+                this.posts = res.data;
                 console.log(res.data);
                 //console.log(this.posts.media);
 
             });
-	}
+    }
 
 	getNumberOfLikes() {
 		this.$http.get("api/Likes/numberlikes/" + { PostId: this.postId })
@@ -88,12 +102,21 @@
         });
     }
 
-    showModalComments() {
+    getComments() {
+        this.$http.get("api/Comments/")
+            .then(res => {
+                this.comments = res.data;
+                console.log(res.data);
+            });
+    }
+    showModalComments(postId) {
         this.$uibModal.open({
             templateUrl: '/ngApp/views/modalComments.html',
             controller: ModalCommentController,
+            // controller: controller,
             controllerAs: 'controller',
             resolve: {
+                postId: postId,     // JLT: this will get passed to the postId param in the constructor of ModalCommentController
                 comment: () => this.comment
             }
         }).closed.then(() => {

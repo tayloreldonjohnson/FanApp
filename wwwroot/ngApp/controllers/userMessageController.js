@@ -12,6 +12,7 @@ class UserMessageController {
         this.otherid = sessionStorage.getItem("otherid");
         this.messages;
 		this.usermessage;
+		this.otheruserinfo;
         this.getMessage();
         this.getSentMessage();
         this.inbox = {
@@ -19,16 +20,20 @@ class UserMessageController {
             DateCreated: new Date(),
             MessagerUserId: this.userid,
             RecieverOfMessageId: this.otherid
-
-
-        };
-        this.otheruserinfo;
-        this.getOtherUserProfile();
+		};
+		this.getOtherUserProfile();
 
     }
 
-    getMessage() {
+	getOtherUserProfile() {
+		this.$http.get("api/Users/email/" + this.id)
+			.then(res => {
+				this.otheruserinfo = res.data;
+				console.log(res.data);
+			});
+	}
 
+    getMessage() {
         this.$http.get("api/Inboxes/message/" + this.id + "/" + this.userid)
             .then(res => {
             this.messages = res.data;
