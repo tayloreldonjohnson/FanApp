@@ -1,26 +1,46 @@
-﻿<h1> user message view</h1>
-<section class="container-post">
-	<img ng-src="{{controller.otheruserinfo.imageUrl}}" />
-	{{controller.otheruserinfo.userName}}
-	{{controller.otheruserinfo.firstName}}
-	{{controller.otheruserinfo.lastName}}
-</section>
+﻿
 
-<section ng-repeat="something in controller.messages" class="container-post">
 
-	{{something.userName}}
-	{{something.message}}
-	<img ng-src="{{something.profileImage}}" />
-	{{something.dateCreated}}
-</section>
+   
+<div class="messages-background-chat">
+    <div>
+    <div class="text-center">
+        <img ng-src="{{controller.otheruserinfo.imageUrl}}" style=" height:6em; width:6em; border-radius:50%; margin-top:1em;" />
+        <div class="chat-info">{{controller.otheruserinfo.userName}} &nbsp {{controller.otheruserinfo.firstName}}{{controller.otheruserinfo.lastName}}</div>
+    </div>
+</div>
+    
+    <div class="chatbox">
+    <div class="chatlogs">
+    <div class="chat friend" ng-repeat="something in controller.messages">
+    
+        <div class="user-photo"><img ng-src="{{something.profileImage}}"></div>
+        
+       <p class="chat-message"> {{something.message}}</p>
+        
+        
+    </div>
+        
+    <div class="chat self" ng-repeat="loguser in controller.usermessage" >
+    
+        <div class="user-photo"><img ng-src="{{loguser.profileImage}}"></div>
+        
+        <p class="chat-message">{{loguser.message}}</p>
+        
+         
+     
+        </div>
+         </div>
+        
 
-	<section ng-repeat="loguser in controller.usermessage" class="container-post">
-		{{loguser.userName}}
-		{{loguser.message}}
-		<img ng-src="{{loguser.profileImage}}" />
-		{{loguser.dateCreated}}
-	</section>
-<center>
-    <textarea type="text" ng-model="message" ></textarea>
-    <button href="#" class="btn gen-btn btn-lg" ng-click="controller.InboxUser(message)">Send</button>
-</center>
+   
+    
+    <div class="chat-form">
+        <textarea  type="text" ng-model="message"></textarea>
+        <button href="#" class="btn gen-btn btn-lg" ng-click="controller.InboxUser(message)">Send</button>
+       
+    </div>
+        </div>
+</div>
+   
+	
