@@ -1,4 +1,7 @@
 ﻿<center>
-        <input type="text" ng-model="message" />
+    <div class="comment-body">
+        <h2 class="comment-header">Send A Message</h2>
+        <input type="text" class="site-inputs search-input form-control" id="input-messages" placeholder="Enter message here..." ng-model="message" />
         <a href="#" class="btn gen-btn btn-lg" ng-click="controller.InboxUser(message)">Send</a>
+    </div>
 </center>

@@ -1,4 +1,6 @@
-﻿<h1 style="color:aqua">Comments</h1>
-<div style="color:dodgerblue;" ng-repeat="c in controller.comment">
-    {{c.text}}
+﻿<div class="comment-body">
+    <h2 class="comment-header">Comments</h2>
+    <div class="comment-replies" ng-repeat="c in controller.comment">
+        {{c.text}}
+    </div>
 </div>

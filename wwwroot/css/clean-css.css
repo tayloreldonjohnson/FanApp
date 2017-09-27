@@ -189,6 +189,27 @@ ul.posts-lists {
     padding-right: 0.5em;
 }
 
+.comment-body {
+    background-color: rgba(0,0,0,0.85);
+    padding: 0.25em;
+}
+
+.comment-header {
+    font-family: 'Mukta Mahee', 'Lucida Sans', sans-serif;
+    text-align: center;
+    color: deeppink;
+       
+}
+
+.comment-replies {
+    color: #fff;
+    padding: 0.4em;
+}
+
+#input-messages {
+    margin-bottom: 0.5em;
+}
+
 
 /*------------------------------------  Grid  ----------------------------------------------------*/
 
@@ -635,8 +656,23 @@ a:active .artist-name {
     float: right;
 }
 
+.comment-btn {
+    padding: 0.25em 0.5em;
+    margin: 0.25em 0 0.5em 0;
+}
+
+.comment-btn img {
+    height: 1.25em;
+    width: 1.25em;
+    margin-bottom: 0;
+}
+
 #btn-post-comment {
     float: right;
+}
+
+.comment-modal {
+    padding: 0.1em;
 }
 
 .site-inputs {
