@@ -5,6 +5,9 @@
         </ul>    
         <center>
             <form ng-submit="controller.register()">
+                <div class="register-background">
+                    <h1 class="register-header" >Join CrowdSurf &nbsp<span class="glyphicon glyphicon-pencil"></span></h1>
+
                 <div class="input-group">
                     <div class="form-group">
                         <input placeholder="First Name" class="reg-username form-control" ng-model="controller.registerUser.firstname" />
@@ -30,8 +33,9 @@
                         <input placeholder="Confirm Password" class="reg-username form-control" ng-model="controller.registerUser.confirmPassword" />
                     </div>
                     <div>
-                        <button class="btn gen-btn btn-lg" type="submit">Register New User</button>
+                        <button class="btn gen-btn btn-lg" type="submit">Register</button>
                     </div>
+                </div>
                 </div>
             </form>
         </center>
