@@ -25,8 +25,9 @@
 
 
             <div class="card-footer-homefeed">
-                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
                 <div class="favorites">## Favorites</div>
+                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
+                
                 <div class="description"> {{p.caption}} </div>
                 <div class="comments">
                     <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="text"></textarea>
@@ -35,10 +36,7 @@
                 <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)" >See All Comments</a></div>
                 <!--<div class="form"></div>-->
 				
-                <div class="favorites">## FAVORITES</div>
-                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
-				
-				<div class="description">{{p.caption}}</div>
+               
                 <!--
                 <div class="comments"></div>
                 <div class="form"></div>
