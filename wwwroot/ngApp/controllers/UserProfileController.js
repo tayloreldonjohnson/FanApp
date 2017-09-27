@@ -4,10 +4,10 @@
 		this.$UserProfileService = $UserProfileService;
 		this.$http = $http;
 		this.email = sessionStorage.getItem("email");
-        this.posts = sessionStorage.getItem("userid");
+        this.userid = sessionStorage.getItem("userid");
 		this.getPost();
-		this.getUserProfile(); 
-        this.user;
+		this.getUserProfile();
+		this.user;
         this.getFollowInfo();
 		this.getNumberOfPosts();  
         this.postinfo;
@@ -21,18 +21,27 @@
 
 			});
 	}
+    getPostLikes(postId) {
+        this.$http.get("api/Likes/numberlikes/" + postId)
+            .then(res => {
 
-    getFollowInfo() {
-        this.$http.get("api/UserFollowers/" + this.posts)
+                this.likes = res.data;
+                console.log("amount of Likes" + this.likes.numberOfLikes);
+
+            });
+    }
+	getFollowInfo() {
+		this.$http.get("api/UserFollowers/" + this.userid)
             .then(res => {
                 this.postinfo = res.data;
                 
-                console.log(this.posts.numberOfFollowing);
+                console.log(this.userid.numberOfFollowing);
             });
     }
+
     
     getNumberOfPosts() {
-        this.$http.get("api/posts/numberOfPosts/" + this.posts)
+		this.$http.get("api/posts/numberOfPosts/" + this.userid)
             .then(res => {
                 this.post = res.data;
                 console.log("amount of Posts " + this.post.numberOfPosts);
@@ -48,14 +57,15 @@
 				console.log(res.data);
             });       
     } 
-	getPost() {
-		this.$http.get("api/Posts/" + this.posts)
-			.then(res => {
-				this.posts = res.data;
-				console.log(res.data);
-			});
-	}
-
+	
+    getPost() {
+        this.$http.get("api/Posts/likes/" + this.userid)
+            .then(res => {
+                this.posts = res.data;
+                console.log(res.data);
+            });
+    }
+  
 	deletePost(postid) {
 		this.$http.delete("api/Posts/" + postid)
 			.then((res) => {
@@ -63,8 +73,8 @@
 				this.$state.reload();
 			});
     }
-    AddComment(postId, text) {
-        this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.user })
+	AddComment(postId, text) {
+		this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.userid })
             .then((res) => {
 
                 this.$state.reload();

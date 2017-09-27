@@ -32,7 +32,8 @@
 
             <div class="w3-quarter time-homefeed">{{p.dateCreated | date:'MMMM dd, y @ h:mma'}}</div>
         </div>
-
+        {{p.userName}}
+        <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.profileImage}}" />
         <div class="content-post-homefeed">
             <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
         </div>
@@ -40,23 +41,19 @@
             <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
 
         </div>
+		<center>
+			<div class="description">{{p.caption}}</div>
+		</center>
         <div class="w3-row card-footer-homefeed">
             <div class="w3-half footer-section-1">
-                <div class="favorites">## FAVORITES</div>
-                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
+                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button> {{p.numberofLikes}}
                 
-                <div class="description">{{p.caption}}</div>
+    
                 <div class="comments"></div>
                 <div class="form"></div>                
             </div>
-            <div class="w3-half comment-div">
-                <input type="text" placeholder="Comment here..." class="artist-comment site-inputs form-control" ng-model="comment" />
-                <button ng-click="controller.AddComment(p.postId, comment)" class="btn gen-btn btn-md" id="btn-post-comment">Post</button>
         <div class="card-footer-homefeed">
     
-            <button ng-click="controller.likePost(p.postId)" class="btn gen-btn btn-lg"><img style="height:20px;width:20px;" src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
-            <div class="favorites">{{controller.post.numberOfLikes}}</div>
-            <div class="description">{{p.caption}}</div>
             <div class="comments">
                 <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="text"></textarea>
                 <button class="btn gen-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId , text)"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
@@ -72,6 +69,7 @@
                     <li><a href="#"></a></li>
                 </ul>
             </div>
+          </div>
         </div>
     </div>
 </section>

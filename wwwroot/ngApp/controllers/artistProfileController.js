@@ -61,15 +61,25 @@
 			});
 	}
 
-	getPostId() {
-		this.$http.get("api/Posts/" + this.artistId)
-			.then((res) => {
-				this.posts = res.data;
+	//getPostId() {
+	//	this.$http.get("api/Posts/" + this.artistId)
+	//		.then((res) => {
+	//			this.posts = res.data;
+ //               console.log(res.data);
+ //               //console.log(this.posts.media);
+
+ //           });
+	//}
+
+    getPostId() {
+        this.$http.get("api/Posts/artist/" + this.artistId)
+            .then((res) => {
+                this.posts = res.data;
                 console.log(res.data);
                 //console.log(this.posts.media);
 
             });
-	}
+    }
 
 	getNumberOfLikes() {
 		this.$http.get("api/Likes/numberlikes/" + { PostId: this.postId })

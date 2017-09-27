@@ -1,7 +1,7 @@
 ﻿class OtherUserProfileController {
     constructor($stateParams, $http, $state, $templateCache, $uibModal) {
         this.$templateCache = $templateCache;
-        this.state = $state;
+        this.$state = $state;
         this.$http = $http;
         this.email = $stateParams["email"];
         this.followeduser;
@@ -22,32 +22,29 @@
             RecieverOfMessageId: this.otherid
 
         };
-
-
         this.getOtherUserProfile();
         this.userfollower = {
             FollowingUserId: this.userid,
             FollowedUserId: this.otherid
         };
         this.getComments();
-
         this.comment;
         this.$uibModal = $uibModal;  
 	}
 
 	likePost(postId) {
 		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user.userId, PostId: postId })
-			.then((res) => {
-
+            .then((res) => {
+                this.$state.reload();
 			});
-	}
-
+    }
+    
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)
             .then(res => {
                 this.followeduser = res.data;
 				console.log(res.data);
-				this.state.reload();
+				this.$state.reload();
             });
         //this.$templateCache.removeAll();
         //this.state.reload();
@@ -55,6 +52,7 @@
         getFollowInfo() {
 			this.$http.get("api/UserFollowers/" + this.otherid)
                 .then(res => {
+                    //posts #1 by userid
 					this.posts = res.data;
 					console.log(this.posts);
                     console.log(this.posts.numberOfFollowing);
@@ -64,7 +62,7 @@
             this.$http.delete("api/UserFollowers/unfollow/" + this.otherid + "/" + this.userid)
                 .then(res => {
                     console.log(res.data);
-					this.state.reload();
+					this.$state.reload();
                 });
         }
 
@@ -85,7 +83,7 @@
                 });
         }
      
-           isFollowing() {
+       isFollowing() {
             
                this.$http.get("api/UserFollowers/isFollowing/" + this.otherid + "/" + this.userid)
                    .then((res) => {
@@ -94,15 +92,25 @@
                        console.log("after put");
                    });
         }
-           AddComment(postId, text) {
-               this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.user })
-                   .then((res) => {
 
-                       this.$state.reload();
+       AddComment(postId, text) {
+            this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.userid })
+               .then((res) => {
+
+                       this.state.reload();
                        console.log("comments");
                    });
 
-           }
+       } 
+      
+       getComments() {
+           this.$http.get("api/Comments/")
+               .then(res => {
+                   this.comments = res.data;
+                   console.log(res.data);
+               });
+       }
+
            showModal() {
                this.$uibModal.open({
                    templateUrl: '/ngApp/views/modalMessages.html',
@@ -115,13 +123,7 @@
                    // this.addPost();
                });
            }
-           getComments() {
-               this.$http.get("api/Comments/")
-                   .then(res => {
-                       this.comments = res.data;
-                       console.log(res.data);
-                   });
-           }
+    
            showModalComments(postId) {
                this.$uibModal.open({
                    templateUrl: '/ngApp/views/modalComments.html',
