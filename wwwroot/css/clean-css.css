@@ -329,7 +329,7 @@ ul#home-list {
     background-color: black;
     width: 400px;
     height: 500px;
-    margin-top: -10em;
+    margin-top: .6em;
     padding-top: 1.5em;
     border-radius: .5em;
 }
@@ -918,7 +918,7 @@ a:active .artist-name {
 .messages-background-chat {
     background: black;
     width: 100%;
-    height: 46.5em;
+    height: 47.5em;
     
 
 }
