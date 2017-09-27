@@ -29,9 +29,9 @@
         };
         this.getComments();
         this.comment;
-        this.getNumberOfPosts();  
-
-        this.post;
+        this.getNumberOfPosts();
+      
+        
         this.$uibModal = $uibModal;  
 	}
 
@@ -41,7 +41,7 @@
                 this.$state.reload();
 			});
     }
-    
+   
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)
             .then(res => {
