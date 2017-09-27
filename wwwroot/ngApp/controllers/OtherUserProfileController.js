@@ -100,8 +100,7 @@
             this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.userid })
                .then((res) => {
 
-                       this.state.reload();
-                       console.log("comments");
+                       this.$state.reload();
                    });
 
        } 
