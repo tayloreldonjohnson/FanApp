@@ -27,19 +27,10 @@
 
 	likePost(postId) {
 		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user, PostId: postId })
-            .then((res) => {
-                this.$state.reload();
+			.then((res) => {
+				this.$state.reload();
 			});
-    }
-    getPostLikes(postId) {
-        this.$http.get("api/Likes/numberlikes/" + postId)
-            .then(res => {
-             
-                this.likes = res.data;
-                console.log("amount of Likes" + this.likes.numberOfLikes);
-                
-            });
-    }
+	}
     AddComment(postId, text) {
         this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.user })
             .then((res) => {
