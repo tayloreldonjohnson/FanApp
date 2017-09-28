@@ -37,7 +37,13 @@ namespace Hello.Controllers
             public string profileImage { get; set; }
             public DateTime DateCreated { get; set; }
             public string message { get; set; }
+
+            public string RecieverId { get; set; }
+            public string RecieverUserName { get; set; }
+            public string RecieverprofileImage { get; set; }
       
+            public string Recievermessage { get; set; }
+
         }
 
         // -----------------------------------------------Still Testing------------------------------------------------------------------------------------------------
@@ -97,18 +103,19 @@ namespace Hello.Controllers
                 var messagevm = _context.Inbox.Where(si => si.MessagerUserId == user.Id).Where(ri => ri.RecieverOfMessageId == recieverofMessageid)
                          .OrderByDescending(d => d.DateCreated).FirstOrDefault();
                 var snippet = "";
-                if (messagevm.Message.Length < 5  )
+                if (messagevm.Message == null || messagevm.Message == "")
+                {
+                    snippet = "";
+                }
+               else if (messagevm.Message.Length < 25  )
                 {
 
                     snippet = messagevm.Message;
                 }
-                if (messagevm.Message == null || messagevm.Message == "")
+                
+                else 
                 {
-                    snippet = "No message";
-                }
-                else
-                {
-                    snippet = messagevm.Message.Substring(0, 1) + "...";
+                    snippet = messagevm.Message.Substring(0, 5) + "...";
                 }
                 var sender = new SendersOfMessageVm()
                 {
@@ -129,72 +136,137 @@ namespace Hello.Controllers
         }
 
 
-        //---------------------------------------
-
 
         [HttpGet("message/{senderid}/{recieverId}")]
         //public List<Post> GetFollowedPost(string id)
         public List<UserInboxVm> GetMessageOfUser(string senderId, string recieverId)
         {
-            var Messages = _context.Inbox.Where(x => x.MessagerUserId == senderId && x.RecieverOfMessageId == recieverId && x.MessagerUserId == senderId && x.RecieverOfMessageId == recieverId).ToList();
+            var MessagesRecieved = _context.Inbox.Where(x => x.MessagerUserId == senderId && x.RecieverOfMessageId == recieverId).ToList();
+            var MessagesSent = _context.Inbox.Where(x => x.RecieverOfMessageId == senderId && x.MessagerUserId == recieverId).ToList();
             var ListOfMessages = new List<UserInboxVm>();
 
-            foreach (var Message in Messages)
+            foreach (var Message in MessagesRecieved)
             {
 
                 var user = _context.ApplicationUser.Where(u => u.Id == Message.MessagerUserId).FirstOrDefault();
-                var Messagevm = new UserInboxVm
+
+            var Messagevm = new UserInboxVm
                 {
                     message = Message.Message,
                     UserName = user.UserName,
                     profileImage = user.ImageUrl,
                     DateCreated = Message.DateCreated
+
+                };
+
+                ListOfMessages.Add(Messagevm);
+
+
+            }
+
+            foreach (var MessageSent in MessagesSent)
+            {
+                var user = _context.ApplicationUser.Where(u => u.Id == MessageSent.MessagerUserId).FirstOrDefault();
+                var Messagevm = new UserInboxVm
+                {
+                    RecieverUserName = user.UserName,
+                    Recievermessage = MessageSent.Message,
+                    RecieverprofileImage = user.ImageUrl,
+                    DateCreated = MessageSent.DateCreated
+
                 };
                 ListOfMessages.Add(Messagevm);
             }
+   
             return ListOfMessages;
         }
 
-		//public class LogUserInboxVm
-		//{
-		//	public string MessagerUserId { get; set; }
-		//	public string LogUserName { get; set; }
-		//	public string UserprofileImage { get; set; }
-		//	public DateTime UserDateCreated { get; set; }
-		//	public string usermessage { get; set; }
-
-		//}
-
-		//[HttpGet("usermessage/{recieverId}/{senderid}")]
-		////public List<Post> GetFollowedPost(string id)
-		//public List<UserInboxVm> GetMessagefromUser(string senderId, string recieverId)
-		//{
-		//	var Messages = _context.Inbox.Where(x => x.MessagerUserId == senderId && x.RecieverOfMessageId == recieverId).ToList();
-		//	var ListOfMessages = new List<UserInboxVm>();
-
-		//	foreach (var Message in Messages)
-		//	{
-
-		//		var user = _context.ApplicationUser.Where(u => u.Id == Message.MessagerUserId).FirstOrDefault();
-		//		var UserMessagevm = new LogUserInboxVm
-		//		{
-		//			usermessage = Message.Message,
-		//			LogUserName = user.UserName,
-		//			UserprofileImage = user.ImageUrl,
-		//			UserDateCreated = Message.DateCreated
-
-
-		//		};
-		//		ListOfMessages.Add(LogUserInboxVm);
-		//	}
-		//	return ListOfMessages;
-		//}
 
 
 
-		//--------------------------------------------------------------------------------------------------------Testing get first message of all users----------------
-		// GET: api/Inboxes/5
-		[HttpGet("{id}")]
+
+
+
+
+
+
+
+
+        //---------------------------------------below code is working-------------------
+
+
+        //[HttpGet("message/{senderid}/{recieverId}")]
+        ////public List<Post> GetFollowedPost(string id)
+        //public List<UserInboxVm> GetMessageOfUser(string senderId, string recieverId)
+        //{
+        //    var Messages = _context.Inbox.Where(x => x.MessagerUserId == senderId && x.RecieverOfMessageId == recieverId).ToList();
+        //    var ListOfMessages = new List<UserInboxVm>();
+
+        //    foreach (var Message in Messages)
+        //    {
+
+        //        var user = _context.ApplicationUser.Where(u => u.Id == Message.MessagerUserId).FirstOrDefault();
+        //        var Messagevm = new UserInboxVm
+        //        {
+        //            message = Message.Message,
+        //            UserName = user.UserName,
+        //            profileImage = user.ImageUrl,
+        //            DateCreated = Message.DateCreated
+        //        };
+        //        ListOfMessages.Add(Messagevm);
+        //    }
+        //    return ListOfMessages;
+        //}
+
+        //------------------------------------------------------above code is working-----------------------------------------------
+
+
+
+
+
+
+
+
+        //public class LogUserInboxVm
+        //{
+        //	public string MessagerUserId { get; set; }
+        //	public string LogUserName { get; set; }
+        //	public string UserprofileImage { get; set; }
+        //	public DateTime UserDateCreated { get; set; }
+        //	public string usermessage { get; set; }
+
+        //}
+
+        //[HttpGet("usermessage/{recieverId}/{senderid}")]
+        ////public List<Post> GetFollowedPost(string id)
+        //public List<UserInboxVm> GetMessagefromUser(string senderId, string recieverId)
+        //{
+        //	var Messages = _context.Inbox.Where(x => x.MessagerUserId == senderId && x.RecieverOfMessageId == recieverId).ToList();
+        //	var ListOfMessages = new List<UserInboxVm>();
+
+        //	foreach (var Message in Messages)
+        //	{
+
+        //		var user = _context.ApplicationUser.Where(u => u.Id == Message.MessagerUserId).FirstOrDefault();
+        //		var UserMessagevm = new LogUserInboxVm
+        //		{
+        //			usermessage = Message.Message,
+        //			LogUserName = user.UserName,
+        //			UserprofileImage = user.ImageUrl,
+        //			UserDateCreated = Message.DateCreated
+
+
+        //		};
+        //		ListOfMessages.Add(LogUserInboxVm);
+        //	}
+        //	return ListOfMessages;
+        //}
+
+
+
+        //--------------------------------------------------------------------------------------------------------Testing get first message of all users----------------
+        // GET: api/Inboxes/5
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetInbox([FromRoute] int id)
         {
             if (!ModelState.IsValid)

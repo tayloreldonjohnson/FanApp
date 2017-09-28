@@ -39,6 +39,7 @@
                 this.$state.reload();
 			});
     }
+   
     
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)

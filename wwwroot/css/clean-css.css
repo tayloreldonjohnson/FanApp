@@ -1025,7 +1025,16 @@ a:active .artist-name {
         margin-left: .5em;
     
     }
-
+#recievermessage {
+ 
+    background-color: purple;
+    color: green;
+    order: -1;
+    border-radius: 15px 15px 0px 15px;
+}
+#usermessage {
+    background-color: aqua;
+}
 .chat-form textarea:focus{
     background: #fff;
 }

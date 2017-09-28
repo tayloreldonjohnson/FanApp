@@ -14,6 +14,12 @@ class UserMessageController {
 		this.usermessage;
 		this.otheruserinfo;
         this.getMessage();
+        //this.NestedArray = {
+        //    sender: this.messages.
+
+
+
+        //}
         this.getSentMessage();
         this.inbox = {
             Message: "",

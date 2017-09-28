@@ -18,7 +18,7 @@
 	likePost(postId) {
 		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user.userId, PostId: postId })
 			.then((res) => {
-
+                console.log(res.data)
 			});
 	}
     getPostLikes(postId) {
