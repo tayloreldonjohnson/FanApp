@@ -7,13 +7,7 @@
         </div>
         <div class="w3-half artist-profile-cols">
             <h2 class="artist-profile-name">{{controller.artist.name}}</h2>
-            <div>
-                {{controller.number}} Uploads
-                <!--
-                0 Following &nbsp &nbsp
-                0 Followers
-                -->
-            </div>
+            <div>{{controller.number}} Uploads</div>
             <div class="artist-profile">
                 <button type="button" class="btn gen-btn btn-lg" data-toggle="modal" data-target="#postModal" ng-click="controller.showModalPost()">Post</button>
                 <!--data-toggle="modal" data-target="#postModal"-->
@@ -23,46 +17,47 @@
 </div>
 <section class="container-post" ng-repeat="p in controller.posts | orderBy:'dateCreated':true" ng-model="controller.posts.media">
     <div class="card-post-homefeed">
-        <div class="w3-row card-header-post-homefeed" id="artist-profile-header">
-            
-            <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.profileImage}}" />
-            
-            <div class="w3-half name-post-homefeed"><a ui-sref="otherUserProfile({ id: p.userId })" > {{p.userName}} </a></div>
-            <!--<div class="location"></div>-->
-
-            <div class="w3-quarter time-homefeed">{{p.dateCreated | date:'MMMM dd, y @ h:mma'}}</div>
-        </div>
         
-     
+        <div class="w3-row card-header-post-homefeed" id="artist-profile-header">            
+            <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.profileImage}}" />            
+            <div class="w3-quarter name-post-homefeed"><a ui-sref="otherUserProfile({ id: p.userId })">{{p.userName}}</a></div>            
+            <div class="w3-half time-homefeed">{{p.dateCreated | date:'MMMM dd, y @ h:mma'}}</div>
+        </div>        
+       
         <div class="content-post-homefeed">
             <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
         </div>
         <div class="content-post-homefeed">
             <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
-
-        </div>
-		<center>
-			<div class="description">{{p.caption}}</div>
-		</center>
+        </div>		
+		
         <div class="w3-row card-footer-homefeed">
-            <div class="w3-half footer-section-1">
-                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button> {{p.numberofLikes}}
-                
+            <div class="w3-container caption-footer">{{p.caption}}</div>
+            <div class="w3-quarter w3-container footer-section-1">
+                <div class="likes-footer" id="artist-likes-footer"> Likes: {{p.numberofLikes}}</div>
+                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button> 
+            </div>       
     
-                <div class="comments"></div>
-                <div class="form"></div>                
-            </div>
-        <div class="card-footer-homefeed">
-    
-            <div class="comments">
-                <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="text"></textarea>
-                <button class="btn gen-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId , text)"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
-            </div>
-            <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a></div>
+            <div class="w3-threequarter w3-container">
+                <textarea placeholder="Comment here..." class="site-inputs form-control" rows="1" ng-model="text"></textarea>
+                <div class="w3-row">
+                    <div class="w3-twothird w3-container comment-modal">
+                        <a data-toggle="modal" class="all-comment-footer" id="comment-adjust" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a>
+                    </div>
+                    <div class="w3-third w3-container comment-btn-footer">
+                        <button class="btn gen-btn comment-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId , text)"><img src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
+                    </div>                        
+                </div>             
+            </div>            
+            <!--<div class="dropdown">
+                <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
+                <ul class="dropdown-menu icon-tridots-drop">
+                    <li><a href="#" class="btn gen-btn btn-sm delete-d" style="color:white;" ng-click="controller.deletePost(p.postId)">Delete</a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </div>-->
           
-            <div class="form"></div>
-            
-          </div>
         </div>
     </div>
 </section>

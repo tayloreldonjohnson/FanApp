@@ -16,7 +16,7 @@ class CreateProfileController {
 		//imgstuff
 		this.file;
 		this.filepicker = $filepicker;
-        this.filepicker.setKey('Aowd5dVQ06CyRYPl9EaAVz'); 
+        this.filepicker.setKey('AnykjCnrQTXSX06lalQgfz'); 
 
     }
 	getUserProfile() {

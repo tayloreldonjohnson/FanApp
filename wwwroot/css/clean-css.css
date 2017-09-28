@@ -189,6 +189,31 @@ ul.posts-lists {
     padding-right: 0.5em;
 }
 
+.comment-body {
+    background-color: rgba(0,0,0,0.85);
+    padding: 0.25em;
+}
+
+.comment-header {
+    font-family: 'Mukta Mahee', 'Lucida Sans', sans-serif;
+    text-align: center;
+    color: deeppink;
+       
+}
+
+.comment-replies {
+    color: #fff;
+    padding: 0.4em;
+}
+
+#comment-adjust {
+    margin-left: -1.2em;
+}
+
+#input-messages {
+    margin-bottom: 0.5em;
+}
+
 
 /*------------------------------------  Grid  ----------------------------------------------------*/
 
@@ -227,6 +252,7 @@ ul.posts-lists {
 ul#home-list {
     list-style-type: none;
     font-size: 2em;
+    font-family: 'Graduate', 'Lucida Sans', sans-serif;
    
 }
 
@@ -646,8 +672,44 @@ a:active .artist-name {
     float: right;
 }
 
-#btn-post-comment {
+.caption-footer {
+    text-align: center;
+    font-size: 1.2em;
+    padding-bottom: 0.25em;
+}
+
+.likes-footer {
+    margin-bottom: 1.25em;
+}
+
+#artist-likes-footer {
+    margin: 0 0 0.5em 0;
+}
+
+.all-comment-footer {
+    margin: 0.25em 0 0 0.25em;
+}
+
+.comment-btn-footer {
+    margin: 0.25em 0.35em 0 0;
+    padding: 0em;
+    width: 30%;
+}
+
+.comment-btn {
+    padding: 0.25em 0.5em;
+    margin: 0.25em 0 0.5em 0;
     float: right;
+}
+
+.comment-btn img {
+    height: 1.25em;
+    width: 1.25em;
+    margin-bottom: 0;
+}
+
+.comment-modal {    
+    margin: 0.75em 0 0 0;
 }
 
 .site-inputs {
@@ -655,21 +717,21 @@ a:active .artist-name {
     font-weight: bold;
 }
 
-    .site-inputs::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-        color: #1B2631;
-    }
+.site-inputs::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #1B2631;
+}
 
-    .site-inputs::-moz-placeholder { /* Firefox 19+ */
-        color: #1B2631;
-    }
+.site-inputs::-moz-placeholder { /* Firefox 19+ */
+    color: #1B2631;
+}
 
-    .site-inputs:-ms-input-placeholder { /* IE 10+ */
-        color: #1B2631;
-    }
+.site-inputs:-ms-input-placeholder { /* IE 10+ */
+    color: #1B2631;
+}
 
-    .site-inputs:-moz-placeholder { /* Firefox 18- */
-        color: #1B2631;
-    }
+.site-inputs:-moz-placeholder { /* Firefox 18- */
+    color: #1B2631;
+}
 
 /*.card-post {
     background-color: rgba(0,0,0,0.75);
@@ -786,6 +848,10 @@ a:active .artist-name {
     padding: 3.5em 0.5em 0.25em 0;
 }
 
+#user-drop-menu {
+    padding: 0.5em 0.5em 0.25em 0;
+}
+
 .icon-tridots {
     cursor: pointer;
     
@@ -874,25 +940,27 @@ a:active .artist-name {
 }
 
 #inbox:hover{
-    background:#1A8FE3
+    background:#1A8FE3;
 }
 
 .panel panel-default:hover {
-    background: #1A8FE3
+    background: #1A8FE3;
 }
+
 .panel-body-messages {
     width:5em;
     height:5em; 
     border-radius: 50%;
 }
 .all-usernames {
-   
     margin-left: 1em;
+    text-transform: capitalize;
 }
-.all-messagedates {
-   
+
+.all-messagedates {   
     margin-left: 12em;
 }
+
 .all-messages {
     margin-top: 3.5em;
     text-align: left;
