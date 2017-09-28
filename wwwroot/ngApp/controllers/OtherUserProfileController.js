@@ -4,6 +4,7 @@
         this.$state = $state;
         this.$http = $http;
         this.email = $stateParams["email"];
+        this.user;
         this.followeduser;
         this.id = $stateParams["id"];
         sessionStorage.setItem("otherid", this.id);
@@ -29,8 +30,9 @@
         };
         this.getComments();
         this.comment;
+        this.getNumberOfPosts();        
         this.$uibModal = $uibModal;  
-	}
+    }
 
 	likePost(postId) {
 		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user.userId, PostId: postId })
@@ -38,7 +40,7 @@
                 this.$state.reload();
 			});
     }
-    
+   
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)
             .then(res => {
@@ -68,7 +70,7 @@
 
 
         getNumberOfPosts() {
-            this.$http.get("api/posts/numberOfPosts/" + this.otherid)
+            this.$http.get("api/posts/numberOfPosts/" + this.id)
                 .then(res => {
                     this.post = res.data;
                     console.log("amount of Posts " + this.post.numberOfPosts);
@@ -97,8 +99,7 @@
             this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.userid })
                .then((res) => {
 
-                       this.state.reload();
-                       console.log("comments");
+                       this.$state.reload();
                    });
 
        } 

@@ -6,7 +6,7 @@
 
                 <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.profileImage}}" />
 
-                <div class="w3-half name-post-homefeed">{{p.userName}} posted on {{p.artistName}}'s profile</div>
+                <div class="w3-half name-post-homefeed"><a ui-sref="otherUserProfile({ id: p.userId })">{{p.userName}}</a> posted on<a ui-sref="artistProfile({ id: p.applicationArtistId })"> {{p.artistName}}'s</a> profile</div>
                 <!--<div class="location"></div>-->
 
                 <div class="w3-quarter time-homefeed">

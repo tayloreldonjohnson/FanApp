@@ -1,6 +1,7 @@
 class CreateProfileController {
-	constructor($http, $UserProfileService, $location, $filepicker) {
+	constructor($http, $UserProfileService, $location, $filepicker , $state) {
         this.location = $location;
+        this.state = $state;
         this.http = $http;
         this.route = "api/users/";  
         this.email = sessionStorage.getItem("email");
@@ -22,6 +23,7 @@ class CreateProfileController {
 			.then((res) => {
 				this.user = res.data;
                 console.log(res.data);
+                
 			});
 	}
 
@@ -35,8 +37,9 @@ class CreateProfileController {
 				this.user = {};
 				this.getUserProfile();
 
-
+               
             });
+        this.state.go("userProfile");
 	}
 	//img stuff
 	pickFile() {
