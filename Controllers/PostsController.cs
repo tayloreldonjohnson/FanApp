@@ -62,6 +62,7 @@ namespace Hello.Controllers
                 var PostswithLikes = new PostsLikedDataVM
                 {
                     ProfileImage = user.ImageUrl,
+                    UserId = user.Id,
                     UserName = user.UserName,
                     PostId = post.PostId,
                     Media = post.Media,

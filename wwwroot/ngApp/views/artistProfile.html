@@ -25,15 +25,15 @@
     <div class="card-post-homefeed">
         <div class="w3-row card-header-post-homefeed" id="artist-profile-header">
             
-            <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.user.imageUrl}}" />
+            <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.profileImage}}" />
             
-            <div class="w3-half name-post-homefeed">{{p.user.userName}}Sample userName</div>
+            <div class="w3-half name-post-homefeed"><a ui-sref="otherUserProfile({ id: p.userId })" > {{p.userName}} </a></div>
             <!--<div class="location"></div>-->
 
             <div class="w3-quarter time-homefeed">{{p.dateCreated | date:'MMMM dd, y @ h:mma'}}</div>
         </div>
-        {{p.userName}}
-        <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.profileImage}}" />
+        
+     
         <div class="content-post-homefeed">
             <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
         </div>
@@ -61,14 +61,7 @@
             <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a></div>
           
             <div class="form"></div>
-            <div class="dropdown">
-                <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
-                <ul class="dropdown-menu icon-tridots-drop">
-                    <li><a href="#" class="btn gen-btn btn-sm delete-d" style="color:white;" ng-click="controller.deletePost(p.postId)">Delete</a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                </ul>
-            </div>
+            
           </div>
         </div>
     </div>

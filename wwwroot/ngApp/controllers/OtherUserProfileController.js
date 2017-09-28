@@ -30,6 +30,9 @@
         };
         this.getComments();
         this.comment;
+        this.getNumberOfPosts();
+      
+        
         this.$uibModal = $uibModal;  
 	}
 
@@ -40,7 +43,6 @@
 			});
     }
    
-    
     addFollower() {
         this.$http.post("api/UserFollowers", this.userfollower)
             .then(res => {
@@ -70,7 +72,7 @@
 
 
         getNumberOfPosts() {
-            this.$http.get("api/posts/numberOfPosts/" + this.otherid)
+            this.$http.get("api/posts/numberOfPosts/" + this.id)
                 .then(res => {
                     this.post = res.data;
                     console.log("amount of Posts " + this.post.numberOfPosts);
@@ -99,8 +101,7 @@
             this.$http.post("api/Comments", { PostId: postId, Text: text, UserId: this.userid })
                .then((res) => {
 
-                       this.state.reload();
-                       console.log("comments");
+                       this.$state.reload();
                    });
 
        } 
