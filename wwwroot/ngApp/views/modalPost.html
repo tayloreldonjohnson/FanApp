@@ -15,8 +15,14 @@
         <center>
             <!--<form ng-submit="controller.savePost()">-->
             <form ng-submit="controller.post.Type == 'image'?   controller.savePost(caption): controller.addVideoPost(controller.file.url , caption)">
-                <button type="button" ng-click="controller.pickFile()" class="btn gen-btn btn-lg">Upload Photo</button>
-                <button type="button" ng-click="controller.pickVideo()" class="btn gen-btn btn-lg">Upload Video</button>
+                <div class="w3-row">
+                    <div class="w3-half upload-btns">
+                        <button type="button" ng-click="controller.pickFile()" class="btn gen-btn btn-lg">Upload Photo</button>
+                    </div>
+                    <div class="w3-half upload-btns">
+                        <button type="button" ng-click="controller.pickVideo()" class="btn gen-btn btn-lg">Upload Video</button>
+                    </div>
+                </div>
                 <textarea placeholder="Caption..." class="form-control" rows="1" ng-model="caption"></textarea>
                 <input type="submit" value="Submit" class="btn gen-btn btn-lg" id="modal-submit">
             </form>

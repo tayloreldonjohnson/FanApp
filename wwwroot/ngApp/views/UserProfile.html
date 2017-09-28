@@ -47,7 +47,7 @@
      
         </div>
         <div class="content-post-homefeed text-center">
-            <video ng-hide="p.video == null || p.video == ''" controls ng-src="{{p.video}}" class="video-style"><!--video dimensions: width="320" height="240"--></video>
+            <video ng-hide="p.video == null || p.video == ''" controls ng-src="{{p.video}}" class="video-style"></video>
         </div>                      
         <div class="w3-row card-footer-userfeed">
             
@@ -62,7 +62,7 @@
                     <!--<textarea placeholder="Comment..." class="form-control" rows="1" ng-model="text"></textarea>
                     <button class="btn gen-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId , text)"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>-->
 
-                    <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a></div>    
+                    <a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a>    
                 </div>
                 <div class="w3-quarter drop-menu" id="user-drop-menu">
                     <div class="w3-dropdown-click">
