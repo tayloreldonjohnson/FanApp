@@ -25,7 +25,7 @@
 		this.getPostId();
         this.likes = {};
         this.artists;
-
+        this.getArtistPostNumber();
         this.getComments();
         this.comment;
         this.$uibModal = $uibModal;      
@@ -42,7 +42,14 @@
                 this.$state.reload();
 			});
 	}
+    numberOfPosts() {
 
+
+
+
+
+
+    }
     findPostId() {
         this.$http.get("api/Posts/" + this.post.ApplicationArtistId)
             .then((res) => {
@@ -51,13 +58,20 @@
               
 
             });
-	}
+    }
+    getArtist() {
+        this.$ArtistProfileService.getArtist(this.id)
+            .then((res) => {
+                this.artist = res.data;
+                //console.log(this.artist);
+            });
+    }
 
-	getArtist() {
-		this.$ArtistProfileService.getArtist(this.id)
+	getArtistPostNumber() {
+        this.$http.get("api/posts/artistposts/" + this.id)
 			.then((res) => {
-				this.artist = res.data;
-				//console.log(this.artist);
+				this.number = res.data;
+			console.log(res.data);
 			});
 	}
 

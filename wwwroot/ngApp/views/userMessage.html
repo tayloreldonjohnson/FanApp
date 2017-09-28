@@ -12,33 +12,40 @@
     
     <div class="chatbox">
     <div class="chatlogs">
-    <div class="chat friend" ng-repeat="something in controller.messages">
-    
-        <div class="user-photo"><img ng-src="{{something.profileImage}}"></div>
-        
-       <p class="chat-message"> {{something.message}}</p>
+        <div class="chat friend" ng-repeat="something in controller.messages | orderBy:'dateCreated':false">
+<div class="chat friend">
+            <div class="user-photo"><img ng-src="{{something.profileImage}}"></div>
+            <p  id="recievermessage" class="">   {{something.recievermessage}}</p>
+            </div>
+
+      
+            <div class="user-photo"><img ng-src="{{something.recieverprofileImage}}"></div>
+            <div id="usermessage" class="">{{something.message}}</div>
+        </div>
+            <!--<div class="chat self" ng-repeat="loguser in controller.usermessage">
+
+                <div class="user-photo"><img ng-src="{loguser.profileImage}}"></div>
+
+                <p class="chat-message">{loguser.message}}</p>
+
+
+
+            </div>-->
+     
         
         
     </div>
         
-    <div class="chat self" ng-repeat="loguser in controller.usermessage" >
     
-        <div class="user-photo"><img ng-src="{{loguser.profileImage}}"></div>
-        
-        <p class="chat-message">{{loguser.message}}</p>
-        
-         
-     
-        </div>
-         </div>
         
 
    
     
     <div class="chat-form">
-        <textarea  type="text" ng-model="message"></textarea>
+        <textarea  ng-keydown="[13, 32].includes($event.keyCode) && controller.InboxUser(message)" type="text" ng-model="message"></textarea>
+    
         <button href="#" class="btn gen-btn btn-lg" ng-click="controller.InboxUser(message)">Send</button>
-       
+
     </div>
         </div>
 </div>

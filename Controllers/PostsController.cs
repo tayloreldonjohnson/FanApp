@@ -52,7 +52,7 @@ namespace Hello.Controllers
         public List<PostsLikedDataVM> GetPostsWithLikesbyArtist(int id)
         {
             var userposts = _context.Post.Where(u => u.ApplicationArtistId == id).ToList();
-
+            var numberOfPosts = userposts.Count();
 
             var PostsLiked = new List<PostsLikedDataVM>();
             foreach (var post in userposts)
@@ -77,13 +77,26 @@ namespace Hello.Controllers
                     PostswithLikes.NumberofLikes = NumberOfLikes;
                 }
 
-
+                PostswithLikes.NumberofPosts = numberOfPosts;
                 PostsLiked.Add(PostswithLikes);
             }
 
 
             return PostsLiked;
         }
+        [HttpGet("artistPosts/{id}")]
+        public int  GetArtistPost(int id)
+        {
+
+
+            var userposts = _context.Post.Where(u => u.ApplicationArtistId == id).Count();
+            return userposts;
+        }
+
+
+
+
+
 
         // Added to get amount of uploads will change how you get posts----------------------------------------------------------------------------------------------------------
         public class PostsUploadedDataVM
@@ -120,6 +133,7 @@ namespace Hello.Controllers
             public string ProfileImage { get; set; }
             public string Text { get; set; }
             public int NumberofLikes { get; set; }
+            public int NumberofPosts { get; set; }
 
         }
 

@@ -4,6 +4,7 @@
         this.$state = $state;
         this.$http = $http;
         this.email = $stateParams["email"];
+        this.user;
         this.followeduser;
         this.id = $stateParams["id"];
         sessionStorage.setItem("otherid", this.id);
@@ -29,11 +30,9 @@
         };
         this.getComments();
         this.comment;
-        this.getNumberOfPosts();
-      
-        
+        this.getNumberOfPosts();        
         this.$uibModal = $uibModal;  
-	}
+    }
 
 	likePost(postId) {
 		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user.userId, PostId: postId })

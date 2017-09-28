@@ -36,7 +36,7 @@
 
 
 <center>
-    <section class="container-post" ng-repeat="p in controller.user.posts">
+    <section class="container-post" ng-repeat="p in controller.user.posts  | orderBy:'dateCreated':true">
         <div class="card-post-userfeed">
             <div class="row card-header-post-userfeed">
                 

@@ -110,22 +110,38 @@ namespace Hello.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (_context.Like.Any(u => u.UserId == like.UserId && u.PostId == like.PostId))
+            { 
+
+                var error = new
+                {
+                    message = "You are either following this person or attempting to follow yourself",
+                    status = Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError
+                };
+            //Context.Response.StatusCode = error.status;
+            return new ObjectResult(error);
+
+        }
             _context.Like.Add(like);
+
+
+
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetLike", new { id = like.LikeId }, like);
         }
 
         // DELETE: api/Likes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLike([FromRoute] int id)
+        [HttpDelete("delete/{postid}/{userid}")]
+        public async Task<IActionResult> DeleteLike([FromRoute] int postid, string userid)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var like = await _context.Like.SingleOrDefaultAsync(m => m.LikeId == id);
+            var like = await _context.Like.SingleOrDefaultAsync(m => m.PostId == postid && m.UserId == userid);
             if (like == null)
             {
                 return NotFound();

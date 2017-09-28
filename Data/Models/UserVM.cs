@@ -16,6 +16,13 @@ namespace Hello.Data.Models
 		public string AboutMe { get; set; }
 		public string ImageUrl { get; set; }
 		public List<Post> Posts { get; set; }
+        public int PostId { get; set; }
+        public string media { get; set; }
+        public string video { get; set; }
+        public int MyProperty { get; set; }
+        public int ApplicationArtistId { get; set; }
+        public  string ApplicationUserId { get; set; }
+        public int NumberOfLikes { get; set; }
 
-	}
+    }
 }
