@@ -906,6 +906,10 @@ a:active .artist-name {
     text-align: center;
 }
 
+.upload-btns {
+    padding: 0.25em;
+}
+
 #modal-submit {
     margin-bottom: 0.8em;
 }

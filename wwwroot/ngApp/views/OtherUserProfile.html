@@ -43,7 +43,7 @@
                 <img class="w3-quarter profile-img-post-userfeed" ng-src="{{controller.user.imageUrl}}" />
                 
                 <div class="w3-half name-post-userfeed">{{controller.user.userName}}</div>
-                <!--<div class="location"></div>-->
+                
                 
                 <div class="w3-quarter time-userfeed" id="other-user-time">{{p.dateCreated |  date:'MMMM dd, y @ h:mma' }}</div>
             </div>
@@ -54,7 +54,7 @@
             </div>
 
             <div class="content-post-userfeed">
-                <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+                <video ng-hide="p.video == null || p.video == ''" class="video-style" controls ng-src="{{p.video}}"></video>
             </div>
 
             <div class="w3-row card-footer-userfeed">

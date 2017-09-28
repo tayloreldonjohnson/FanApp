@@ -7,8 +7,7 @@
                 <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.profileImage}}" />
 
                 <div class="w3-half name-post-homefeed"><a ui-sref="otherUserProfile({ id: p.userId })">{{p.userName}}</a> posted on<a ui-sref="artistProfile({ id: p.applicationArtistId })"> {{p.artistName}}'s</a> profile</div>
-                <!--<div class="location"></div>-->
-
+                
                 <div class="w3-quarter time-homefeed">
                     {{p.dateCreated | date:'MMMM dd, y @ h:mma'}}
                 </div>
@@ -18,7 +17,7 @@
                 <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
             </div>
             <div class="content-post-homefeed">
-                <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+                <video ng-hide="p.video == null || p.video == ''" controls ng-src="{{p.video}}" class="video-style"></video>
             </div>
 
             <div class="w3-row card-footer-homefeed">

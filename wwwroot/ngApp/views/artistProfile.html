@@ -1,6 +1,4 @@
-﻿<!--Artist Merch to post: Ramones, Madonna, Jesus&MaryChain, Talking Heads, Cat Power, Crystal Castles, Angel Olsen, Nick Cave, Warpaint, Rolling Stones, NIN, Radiohead-->
-
-<div class="container-fluid text-center">
+﻿<div class="container-fluid text-center">
     <div class="w3-row profile-container">
         <div class="w3-half artist-profile-img">
             <img class="w3-circle" ng-src="{{controller.artist.imageUrl}}" />
@@ -28,7 +26,7 @@
             <img ng-hide="p.media == null || p.media == ''" ng-src="{{p.media}}" />
         </div>
         <div class="content-post-homefeed">
-            <video ng-hide="p.video == null || p.video == ''" width="320" height="240" controls ng-src="{{p.video}}"></video>
+            <video ng-hide="p.video == null || p.video == ''" class="video-style" controls ng-src="{{p.video}}"></video>
         </div>		
 		
         <div class="w3-row card-footer-homefeed">
