@@ -1,6 +1,7 @@
 class CreateProfileController {
-	constructor($http, $UserProfileService, $location, $filepicker , $state) {
+	constructor($http, $UserProfileService, $location, $filepicker , $state, $timeout) {
         this.location = $location;
+        this.$timeout = $timeout;
         this.state = $state;
         this.http = $http;
         this.route = "api/users/";  
@@ -39,7 +40,8 @@ class CreateProfileController {
 
                
             });
-        this.state.go("userProfile");
+
+        this.$timeout(this.state.go.bind(null, "userProfile"), 100);
 	}
 	//img stuff
 	pickFile() {

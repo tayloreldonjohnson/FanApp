@@ -39,8 +39,8 @@ namespace Hello.Controllers
         }
 
         // GET: api/Comments/5
-        [HttpGet("{id}")]
-        public List<Comment> GetComment([FromRoute] int id)
+        [HttpGet("commentvm/{id}")]
+        public List<CommentVm> GetComment([FromRoute] int id)
         {
             //if (!ModelState.IsValid)
             //{
@@ -48,8 +48,25 @@ namespace Hello.Controllers
             //}
 
 			var comments = _context.Comment.Where(m => m.PostId == id).ToList();
+            var ListOfcomments= new List<CommentVm>();
+            foreach (var comment in comments)
+            {
+                var user = _context.ApplicationUser.Where(u => u.Id == comment.UserId).FirstOrDefault();
 
-			return comments;
+                var userCommentVm = new CommentVm
+                {
+                    Text =  comment.Text,
+                    UserName = user.UserName,
+                    profileImage = user.ImageUrl
+
+                };
+                ListOfcomments.Add(userCommentVm);
+
+            }
+
+          
+
+            return ListOfcomments;
 			//if (comment == null)
 			//         {
 			//             return NotFound();
