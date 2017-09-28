@@ -1,8 +1,7 @@
 ﻿<div class="comment-body">
     <h2 class="comment-header">Comments</h2>
     <div class="comment-replies" ng-repeat="c in controller.comment">
-        <div class="user-photo"><img ng-src="{{c.profileImage}}"></div>
-        {{c.userName}} {{c.text}}
-        
+        <img class="profile-img-post-userfeed" ng-src="{{c.profileImage}}" />
+        {{c.userName}}:&nbsp;&nbsp; {{c.text}}
     </div>
 </div>
