@@ -72,9 +72,10 @@ class ModalCommentController {
 	}
 
     getComment() {
-        this.$http.get("api/Comments/" + this.postId)
+        this.$http.get("api/Comments/commentvm/" + this.postId)
             .then(res => {
-				this.comment = res.data;
+                this.comment = res.data;
+                console.log(res.data);
             });
     }
 }

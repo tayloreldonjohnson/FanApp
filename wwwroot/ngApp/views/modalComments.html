@@ -1,4 +1,5 @@
 ﻿<h1 style="color:aqua">Comments</h1>
 <div style="color:dodgerblue;" ng-repeat="c in controller.comment">
-    {{c.text}}
+    {{c.text}} {{c.userName}}
+    <div class="user-photo"><img ng-src="{{c.profileImage}}"></div>
 </div>
