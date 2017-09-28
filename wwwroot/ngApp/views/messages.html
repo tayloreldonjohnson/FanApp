@@ -10,7 +10,7 @@
         <ul class="conversations">
      <li><button id="inbox" data-toggle="modal" data-target="#exampleModal" ng-repeat="m in controller.messages" ui-sref="userMessage({ id: m.senderId })">
          <img class="panel-body-messages" src="{{m.profileImage}}" />
-            <div class="all-usernames"> {{m.userName}} </div>
+            <div class="all-usernames">{{m.userName}}</div>
             <div class="all-messagedates">{{m.latestMessageDate | date}}</div>
             <div class="all-messages">{{m.snippet}}</div>
         </button></li>

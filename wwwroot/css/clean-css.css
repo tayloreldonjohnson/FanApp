@@ -940,25 +940,27 @@ a:active .artist-name {
 }
 
 #inbox:hover{
-    background:#1A8FE3
+    background:#1A8FE3;
 }
 
 .panel panel-default:hover {
-    background: #1A8FE3
+    background: #1A8FE3;
 }
+
 .panel-body-messages {
     width:5em;
     height:5em; 
     border-radius: 50%;
 }
 .all-usernames {
-   
     margin-left: 1em;
+    text-transform: capitalize;
 }
-.all-messagedates {
-   
+
+.all-messagedates {   
     margin-left: 12em;
 }
+
 .all-messages {
     margin-top: 3.5em;
     text-align: left;
