@@ -49,32 +49,33 @@
         <div class="content-post-homefeed text-center">
             <video ng-hide="p.video == null || p.video == ''" controls ng-src="{{p.video}}" class="video-style"><!--video dimensions: width="320" height="240"--></video>
         </div>                      
-        <div class="row card-footer-userfeed">
-            <div class="w3-half footer-section-1">
-                <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button> {{p.numberofLikes}}
-				<div class="description">{{p.caption}}</div>
-            </div>
-            <div class="comments">
-                <textarea placeholder="Comment..." class="form-control" rows="1" ng-model="text"></textarea>
-                <button class="btn gen-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId , text)"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
-            </div>
-            <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a></div>
-            <div class="form"></div>
+        <div class="w3-row card-footer-userfeed">
             
-            <div class="w3-half drop-menu">
-                <div class="w3-dropdown-click">
-                    <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
-                    <ul class="dropdown-menu icon-tridots-drop">
-                        <li>
-                            <a href="#" class="btn btn-md delete-d" id="delete-btn" ng-click="controller.deletePost(p.postId)">Delete</a>
-                        </li>
-                        <!--
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                        -->
-                    </ul>
+            <div class="w3-container caption-footer">{{p.caption}}</div>
+            <div class="w3-row"> 
+                <div class="w3-quarter w3-container footer-section-1">
+                    <div class="likes-footer">Likes: {{p.numberofLikes}}</div>
+                    <!--<button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>--> 
+				
+                </div>
+                <div class="w3-half w3-container">
+                    <!--<textarea placeholder="Comment..." class="form-control" rows="1" ng-model="text"></textarea>
+                    <button class="btn gen-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId , text)"><img style="height:20px;width:20px;" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>-->
+
+                    <div><a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a></div>    
+                </div>
+                <div class="w3-quarter drop-menu" id="user-drop-menu">
+                    <div class="w3-dropdown-click">
+                        <a class="glyphicon glyphicon-option-horizontal icon-tridots" data-toggle="dropdown"></a>
+                        <ul class="dropdown-menu icon-tridots-drop">
+                            <li>
+                                <a href="#" class="btn btn-md delete-d" id="delete-btn" ng-click="controller.deletePost(p.postId)">Delete</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </section>

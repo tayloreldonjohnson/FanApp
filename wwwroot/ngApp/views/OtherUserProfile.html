@@ -58,26 +58,23 @@
             </div>
 
             <div class="w3-row card-footer-userfeed">
-                <div class="w3-third w3-container footer-section-1">
-                    <div>{{controller.posts.numberOfLikes}} Likes</div>                    
-                    <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>
-                    <div class="description">{{p.caption}}</div>
+                <div class="w3-container caption-footer">{{p.caption}}</div>
+                <div class="w3-quarter w3-container footer-section-1">
+                    <div class="likes-footer">Likes: {{controller.posts.numberOfLikes}}</div>                    
+                    <button ng-click="controller.likePost(p.postId)" class="btn gen-btn like-btn btn-lg"><img src="https://image.flaticon.com/icons/svg/478/478791.svg" /></button>                    
                 </div>
-
-                <div class="w3-twothird w3-container">
-                    <textarea placeholder="Comment..." class="site-inputs search-input form-control" rows="1" ng-model="text"></textarea>
-                    <div class="w3-row">
-                        
+                <div class="w3-threequarter w3-container">
+                    <textarea placeholder="Comment here..." class="site-inputs search-input form-control" rows="1" ng-model="text"></textarea>
+                    <div class="w3-row comment-footer">                        
                         <div class="w3-twothird w3-container comment-modal">
-                            <a data-toggle="modal" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a>
+                            <a data-toggle="modal" class="all-comment-footer" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a>
                         </div>
-
-                        <div class="w3-third w3-container">
-                            <button class="btn gen-btn comment-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId , text)"><img src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
+                        <div class="w3-third w3-container comment-btn-footer">
+                            <button class="btn gen-btn comment-btn btn-lg" type="submit" ng-click="controller.AddComment(p.postId, text)"><img src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-10/512/Comment-add-icon.png" /></button>
                         </div>
                     </div>
                 </div>
-                <!--<div class="form"></div>-->
+                
             </div>
        </div>
     </section>

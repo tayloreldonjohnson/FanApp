@@ -206,6 +206,10 @@ ul.posts-lists {
     padding: 0.4em;
 }
 
+#comment-adjust {
+    margin-left: -1.2em;
+}
+
 #input-messages {
     margin-bottom: 0.5em;
 }
@@ -248,6 +252,7 @@ ul.posts-lists {
 ul#home-list {
     list-style-type: none;
     font-size: 2em;
+    font-family: 'Graduate', 'Lucida Sans', sans-serif;
    
 }
 
@@ -667,9 +672,34 @@ a:active .artist-name {
     float: right;
 }
 
+.caption-footer {
+    text-align: center;
+    font-size: 1.2em;
+    padding-bottom: 0.25em;
+}
+
+.likes-footer {
+    margin-bottom: 1.25em;
+}
+
+#artist-likes-footer {
+    margin: 0 0 0.5em 0;
+}
+
+.all-comment-footer {
+    margin: 0.25em 0 0 0.25em;
+}
+
+.comment-btn-footer {
+    margin: 0.25em 0.35em 0 0;
+    padding: 0em;
+    width: 30%;
+}
+
 .comment-btn {
     padding: 0.25em 0.5em;
     margin: 0.25em 0 0.5em 0;
+    float: right;
 }
 
 .comment-btn img {
@@ -678,12 +708,8 @@ a:active .artist-name {
     margin-bottom: 0;
 }
 
-#btn-post-comment {
-    float: right;
-}
-
-.comment-modal {
-    padding: 0.1em;
+.comment-modal {    
+    margin: 0.75em 0 0 0;
 }
 
 .site-inputs {
@@ -691,21 +717,21 @@ a:active .artist-name {
     font-weight: bold;
 }
 
-    .site-inputs::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-        color: #1B2631;
-    }
+.site-inputs::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #1B2631;
+}
 
-    .site-inputs::-moz-placeholder { /* Firefox 19+ */
-        color: #1B2631;
-    }
+.site-inputs::-moz-placeholder { /* Firefox 19+ */
+    color: #1B2631;
+}
 
-    .site-inputs:-ms-input-placeholder { /* IE 10+ */
-        color: #1B2631;
-    }
+.site-inputs:-ms-input-placeholder { /* IE 10+ */
+    color: #1B2631;
+}
 
-    .site-inputs:-moz-placeholder { /* Firefox 18- */
-        color: #1B2631;
-    }
+.site-inputs:-moz-placeholder { /* Firefox 18- */
+    color: #1B2631;
+}
 
 /*.card-post {
     background-color: rgba(0,0,0,0.75);
@@ -820,6 +846,10 @@ a:active .artist-name {
 .drop-menu {
     text-align: right;
     padding: 3.5em 0.5em 0.25em 0;
+}
+
+#user-drop-menu {
+    padding: 0.5em 0.5em 0.25em 0;
 }
 
 .icon-tridots {

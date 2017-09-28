@@ -158,7 +158,7 @@ class ModalPostController {
         sessionStorage.setItem("id", this.id);
         this.user = sessionStorage.getItem("userid");
         this.filepicker = $filepicker;
-        this.filepicker.setKey('Aowd5dVQ06CyRYPl9EaAVz');
+        this.filepicker.setKey('AnykjCnrQTXSX06lalQgfz');
         this.artistId = sessionStorage.getItem("id");
 
         this.post = {
