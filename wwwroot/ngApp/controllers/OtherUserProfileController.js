@@ -30,11 +30,9 @@
         };
         this.getComments();
         this.comment;
-        this.getNumberOfPosts();
-      
-        
+        this.getNumberOfPosts();        
         this.$uibModal = $uibModal;  
-	}
+    }
 
 	likePost(postId) {
 		this.$http.post("api/Likes/", { DateLiked: new Date(), UserId: this.user.userId, PostId: postId })

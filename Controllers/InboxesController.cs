@@ -107,7 +107,7 @@ namespace Hello.Controllers
                 {
                     snippet = "";
                 }
-               else if (messagevm.Message.Length < 25  )
+               else if (messagevm.Message.Length < 26  )
                 {
 
                     snippet = messagevm.Message;
@@ -115,7 +115,7 @@ namespace Hello.Controllers
                 
                 else 
                 {
-                    snippet = messagevm.Message.Substring(0, 5) + "...";
+                    snippet = messagevm.Message.Substring(0, 25) + "...";
                 }
                 var sender = new SendersOfMessageVm()
                 {

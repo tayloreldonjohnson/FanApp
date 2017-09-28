@@ -63,8 +63,13 @@ class UserMessageController {
                 console.log("after put");
                 this.$state.reload();
             });
+ 
 
+    }
 
+    myFunct(keyEvent) {
+        if (keyEvent.which === 13)
+        console.log('I am an alert');
     }
     getOtherUserProfile() {
         this.$http.get("api/Users/email/" + this.id)
