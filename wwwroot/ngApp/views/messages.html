@@ -1,19 +1,21 @@
 ﻿
 <div class="messages-background text-center">
     <div style="display:inline-flex">
-    <h1 class="messages-header"> Messages</h1>
-    <div ><button  id="newm" type="button" class="btn btn-default btn-lg" ><span class="glyphicon glyphicon-envelope"></span></button></div>
-        </div>
+        <h1 class="messages-header">Messages</h1>
+        <button id="newm" type="button" class="btn btn-default btn-lg" ><span class="glyphicon glyphicon-envelope"></span></button>
+    </div>
     
     <center>
         <hr style="width: 31.7em; margin-left: 3.2em;"/>
         <ul class="conversations">
-     <li><button id="inbox" data-toggle="modal" data-target="#exampleModal" ng-repeat="m in controller.messages" ui-sref="userMessage({ id: m.senderId })">
-         <img class="panel-body-messages" src="{{m.profileImage}}" />
-            <div class="all-usernames">{{m.userName}}</div>
-            <div class="all-messagedates">{{m.latestMessageDate | date}}</div>
-            <div class="all-messages">{{m.snippet}}</div>
-        </button></li>
-            </ul>
+            <li>
+                <button id="inbox" data-toggle="modal" data-target="#exampleModal" ng-repeat="m in controller.messages" ui-sref="userMessage({ id: m.senderId })">
+                    <img class="panel-body-messages" src="{{m.profileImage}}" />
+                    <div class="all-usernames">{{m.userName}}</div>
+                    <div class="all-messagedates">{{m.latestMessageDate | date}}</div>
+                    <div class="all-messages">{{m.snippet}}</div>
+                </button>
+            </li>
+        </ul>
     </center>
 </div>

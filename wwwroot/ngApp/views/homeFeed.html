@@ -6,7 +6,7 @@
 
                 <img class="w3-quarter profile-img-post-homefeed" ng-src="{{p.profileImage}}" />
 
-                <div class="w3-half name-post-homefeed"><a ui-sref="otherUserProfile({ id: p.userId })">{{p.userName}}</a> posted on<a ui-sref="artistProfile({ id: p.applicationArtistId })"> {{p.artistName}}'s</a> profile</div>
+                <div class="w3-half user-name-prof name-post-homefeed"><a ui-sref="otherUserProfile({ id: p.userId })">{{p.userName}}</a> posted on<a ui-sref="artistProfile({ id: p.applicationArtistId })"> {{p.artistName}}'s</a> profile</div>
                 
                 <div class="w3-quarter time-homefeed">
                     {{p.dateCreated | date:'MMMM dd, y @ h:mma'}}
@@ -29,7 +29,7 @@
                 <div class="w3-threequarter w3-container">
                     <textarea placeholder="Comment here..." class="site-inputs form-control" rows="1" ng-model="text"></textarea>
                     <div class="w3-row">
-                        <div class="w3-twothird w3-container comment-modal">
+                        <div class="w3-twothird w3-container user-name-prof comment-modal">
                             <a data-toggle="modal" class="all-comment-footer" id="comment-adjust" data-target="#ModalComments" ng-click="controller.showModalComments(p.postId)">See All Comments</a>
                         </div>
                         <div class="w3-third w3-container comment-btn-footer">

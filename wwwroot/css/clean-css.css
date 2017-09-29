@@ -69,7 +69,7 @@ fieldset {
     background-color: #000;
     color: #F7FFF7;
     margin: 0.2em;
-    border: .005em solid white;
+    border: .05em solid white;
 }
 
 .gen-btn:hover {
@@ -463,6 +463,27 @@ ul.user-info {
 }
 
 .user-info-list a:active {
+    color: white;
+}
+
+.user-name-prof {
+    color: white;
+}
+
+.user-name-prof a:link {
+    color: white;
+}
+
+.user-name-prof a:visited {
+    color: deeppink;
+}
+
+.user-name-prof a:hover {
+    color: deeppink;
+    text-decoration: none;
+}
+
+.user-name-prof a:active {
     color: white;
 }
 
@@ -933,13 +954,13 @@ a:active .artist-name {
 #newm {
     flex: 1;
     margin-top: .7em;
-    background: #31D843;
+    background-color: #31D843;
     color: white;
 }
 .messages-background {
-    background: black;
+    background-color: rgba(0,0,0,0.9);
     width: 100%;
-    height: 48em;
+    height: 80%;
     padding-top: 2em;
 }
 
@@ -1003,26 +1024,24 @@ a:active .artist-name {
     padding: 0;
 }
 
-
-
-
-
-
 .chatbox {
-    width: 50em;
+    /*width: 50em;
     min-width: 25px;
     height: 28em;
     background: black;
-    padding-top: 25px;
-    margin: 20px auto;
+    padding-top: 25px;*/
+    margin: 1em auto;
     border: 1px solid #353337;
+    width: 50%;
+    background-color: rgba(0,0,0,0.9);
+    padding: 1em 0 0 0;
 }
 
 .chatlogs {
     padding: 10px;
     width: 100%;
-    height: 24em;
-    background: black;
+    height: 60%;
+    background-color: rgba(0,0,0,0.9);
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -1043,6 +1062,7 @@ a:active .artist-name {
     margin-bottom: 10px;
     margin-left: 4em;
 }
+
 .chat .user-photo {
     height: 2.7em;
     width: 2.7em;
@@ -1059,17 +1079,23 @@ a:active .artist-name {
 }
 
 .chat .chat-message {
-    width:80%;
-    
+    width:80%;    
     padding:15px;
-    margin: 5px 10px 0;
-    
+    margin: 5px 10px 0;    
     font-size:20px;
 }
 
 .friend .chat-message {
     background: #1A8FE3;
     border-radius: 15px 15px 15px 0em;
+}
+
+.user-1 {
+    width: 5em;
+}
+
+.user-2 {
+    width: 5em;
 }
 
 .self .chat-message {
@@ -1086,27 +1112,42 @@ a:active .artist-name {
     margin-left: 3.8em;
 }
 
-    .chat-form textarea {
-        background: #fbfbfb;
-        width: 75%;
-        height: 50px;
-        border: 2px solid #eee;
-        border-radius: 13px 13px 13px 13px;
-        font-size: 18px;
-        color: #333;
-        margin-left: .5em;
-    
-    }
-#recievermessage {
- 
-    background-color: purple;
-    color: green;
+.chat-form textarea {
+    background: #fbfbfb;
+    width: 75%;
+    height: 50px;
+    border: 2px solid #eee;
+    border-radius: 13px 13px 13px 13px;
+    font-size: 18px;
+    color: #333;
+    margin-left: .5em;    
+}
+
+#recievermessage { 
+    background-color: cornflowerblue;
+    color: black;
     order: -1;
     border-radius: 15px 15px 0px 15px;
+    font-size: 1.5em;
+    padding: 0.25em 0;
 }
+
 #usermessage {
-    background-color: aqua;
+    background-color: #fff;
+    color: black;
+    border-radius: 15px 15px 15px 0px;
+    font-size: 1.5em;
+    padding: 0.25em 0;
 }
+
+#user-img {
+    float: right;
+}
+
+#receiver-img {
+    float: left;
+}
+
 .chat-form textarea:focus{
     background: #fff;
 }
@@ -1120,26 +1161,32 @@ a:active .artist-name {
         background: rgba(0,0,0,.1);
     }
 
-.chat-form button {
-
-  
+.chat-form button {  
    padding: 5px 15px;
    font-size: 30px;
    color:#fff;
-   border: .01em solid white;
+   border: .02em solid white;
    margin: 0 10px;
-   border-radius:15px 15px 15px 15px;
-  
+   border-radius:15px 15px 15px 15px;  
     cursor: pointer;
-
     -webkit-transition: background .2s ease;
     -moz-transition: background .2s ease;
     -o-transition: background .2s ease
 }
 
 .chat-form button:hover {
-        background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
-        background-size: 400% 400%;
-        animation: backgroundgradient 5s ease infinite;
-        color: black;
-    }
+    background: linear-gradient(132deg, #31D843, #F9FC3A, #31D843 );
+    background-size: 400% 400%;
+    animation: backgroundgradient 5s ease infinite;
+    color: black;
+}
+
+
+
+/*----------------Inbox Messaging -------------------*/
+
+.prof-img {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+}

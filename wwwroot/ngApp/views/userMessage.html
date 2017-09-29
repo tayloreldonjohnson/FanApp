@@ -1,53 +1,40 @@
-﻿
-
-
-   
-<div class="messages-background-chat">
-    <div>
-    <div class="text-center">
-        <img ng-src="{{controller.otheruserinfo.imageUrl}}" style=" height:6em; width:6em; border-radius:50%; margin-top:1em;" />
-        <div class="chat-info">{{controller.otheruserinfo.userName}} &nbsp {{controller.otheruserinfo.firstName}} {{controller.otheruserinfo.lastName}}</div>
-    </div>
-</div>
-    
-    <div class="chatbox">
-    <div class="chatlogs">
-        <div class="chat friend" ng-repeat="something in controller.messages | orderBy:'dateCreated':false">
-<div class="chat friend">
-            <div class="user-photo"><img ng-src="{{something.profileImage}}"></div>
-            <p  id="recievermessage" class="">   {{something.recievermessage}}</p>
+﻿<div class="messages-background-chat">
+    <div class="text-center user-name-prof">
+        <a ui-sref="otherUserProfile({ id: controller.otheruserinfo.userId })">
+            <img ng-src="{{controller.otheruserinfo.imageUrl}}" style="height:6em; width:6em; border-radius:50%; margin-top:1em;" />
+            <div class="chat-info">
+                {{controller.otheruserinfo.userName}}&nbsp; - &nbsp;{{controller.otheruserinfo.firstName}}&nbsp;{{controller.otheruserinfo.lastName}}
             </div>
-
-      
-            <div class="user-photo"><img ng-src="{{something.recieverprofileImage}}"></div>
-            <div id="usermessage" class="">{{something.message}}</div>
-        </div>
-            <!--<div class="chat self" ng-repeat="loguser in controller.usermessage">
-
-                <div class="user-photo"><img ng-src="{loguser.profileImage}}"></div>
-
-                <p class="chat-message">{loguser.message}}</p>
-
-
-
-            </div>-->
-     
-        
-        
+        </a>
     </div>
-        
-    
-        
+    <div class="chatbox">
+        <div class="chatlogs">
+            <div class="chat friend text-center" ng-repeat="something in controller.messages | orderBy:'dateCreated':false">
+                <div class="chat friend">
+                    <div class="user-photo">
+                        <img ng-src="{{something.profileImage}}">
+                    </div>
+                    <p id="recievermessage">{{something.recievermessage}}</p>
+                </div>                
+                <div class="user-photo">
+                    <img ng-src="{{something.recieverprofileImage}}">
+                </div>
 
-   
-    
-    <div class="chat-form">
-        <textarea  ng-keydown="[13, 32].includes($event.keyCode) && controller.InboxUser(message)" type="text" ng-model="message"></textarea>
-    
-        <button href="#" class="btn gen-btn btn-lg" ng-click="controller.InboxUser(message)">Send</button>
-
-    </div>
+                <div id="usermessage">{{something.message}}</div>
+            </div>       
         </div>
+        <div class="chat-form">
+            <textarea type="text" ng-model="message"></textarea> <!--ng-keydown="[13, 32].includes($event.keyCode) && controller.InboxUser(message)"--> 
+            <button href="#" class="btn gen-btn btn-lg" ng-click="controller.InboxUser(message)">Send</button>
+        </div>
+    </div>
 </div>
-   
-	
+
+
+
+<!--
+           <div class="chat self" ng-repeat="loguser in controller.usermessage">
+           <div class="user-photo"><img ng-src="{loguser.profileImage}}"></div>
+           <p class="chat-message">{loguser.message}}</p>
+           </div>
+              -->
