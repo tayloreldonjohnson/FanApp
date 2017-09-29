@@ -167,6 +167,7 @@ angular.module('myApp')
 angular.module('myApp').config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');
 });
+
 /*----search bar filters----*/
 myApp.filter('myfilter', function () {
     function strStartsWith(str, prefix) {
